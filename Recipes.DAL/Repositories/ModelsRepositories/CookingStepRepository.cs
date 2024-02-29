@@ -5,7 +5,7 @@ namespace Recipes.DAL.Repositories.ModelsRepositories;
 
 public class CookingStepRepository : GenericRepository<CookingStep>, ICookingStepRepository
 {
-    protected CookingStepRepository(RecipesContext databaseContext) : base(databaseContext)
+    public CookingStepRepository(RecipesContext databaseContext) : base(databaseContext)
     {
     }
 }

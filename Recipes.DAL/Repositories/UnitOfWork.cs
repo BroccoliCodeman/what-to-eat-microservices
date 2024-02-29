@@ -14,15 +14,15 @@ public class UnitOfWork : IUnitOfWork
     public IRespondRepository RespondRepository { get; }
     public ISavedRecipeRepository SavedRecipeRepository { get; }
     public IWeightUnitRepository WeightUnitRepository { get; }
-    
+
     public UnitOfWork(
-        RecipesContext databaseContext, 
-        ICookingStepRepository cookingStepRepository, 
-        IIngredientRepository ingredientRepository, 
-        IRecipeIngredientRepository recipeIngredientRepository, 
-        IRecipeRepository recipeRepository, 
-        IRespondRepository respondRepository, 
-        ISavedRecipeRepository savedRecipeRepository, 
+        RecipesContext databaseContext,
+        ICookingStepRepository cookingStepRepository,
+        IIngredientRepository ingredientRepository,
+        IRecipeIngredientRepository recipeIngredientRepository,
+        IRecipeRepository recipeRepository,
+        IRespondRepository respondRepository,
+        ISavedRecipeRepository savedRecipeRepository,
         IWeightUnitRepository weightUnitRepository)
     {
         this.DatabaseContext = databaseContext;
@@ -34,7 +34,9 @@ public class UnitOfWork : IUnitOfWork
         SavedRecipeRepository = savedRecipeRepository;
         WeightUnitRepository = weightUnitRepository;
     }
-    
-    public async Task SaveChangesAsync() =>
-        await DatabaseContext.SaveChangesAsync();
+
+    public async Task SaveChangesAsync()
+    {
+        var saved = await DatabaseContext.SaveChangesAsync();
+    }
 }

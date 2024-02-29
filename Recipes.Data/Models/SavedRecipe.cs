@@ -2,6 +2,7 @@ namespace Recipes.Data.Models;
 
 public class SavedRecipe
 {
+    public Guid Id { get; set; }
     public bool IsSaved { get; set; }
     
     public Guid RecipeId { get; set; }
