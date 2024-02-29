@@ -5,7 +5,7 @@ namespace Recipes.DAL.Repositories.ModelsRepositories;
 
 public class RespondRepository : GenericRepository<Respond>, IRespondRepository
 {
-    protected RespondRepository(RecipesContext databaseContext) : base(databaseContext)
+    public RespondRepository(RecipesContext databaseContext) : base(databaseContext)
     {
     }
 }

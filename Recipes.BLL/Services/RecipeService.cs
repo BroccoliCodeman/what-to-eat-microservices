@@ -20,9 +20,23 @@ public class RecipeService : IRecipeService
         _mapper = mapper;
     }
 
-    public Task<IBaseResponse<RecipeDto>> GetById(Guid id)
+    public async Task<IBaseResponse<RecipeDto>> GetById(Guid id)
     {
-        throw new NotImplementedException();
+        try
+        {
+            var recipe = await _unitOfWork.RecipeRepository.GetByIdAsync(id);
+            if (recipe == null)
+            {
+                return CreateBaseResponse<RecipeDto>($"The recipe with id {id} wasn't found", StatusCode.NotFound);
+            }
+
+            return CreateBaseResponse<RecipeDto>("Sucess!", StatusCode.Ok, _mapper.Map<RecipeDto>(recipe));
+        }
+        catch (Exception ex)
+        {
+            return CreateBaseResponse<RecipeDto>(ex.Message, StatusCode.InternalServerError);
+
+        }
     }
 
     public async Task<IBaseResponse<IEnumerable<RecipeDto>>> Get()
@@ -40,7 +54,7 @@ public class RecipeService : IRecipeService
 
             return BaseResponse<RecipeDto>.CreateBaseResponse<IEnumerable<RecipeDto>>("Success!", StatusCode.Ok, dtoList, dtoList.Count);
         }
-        catch(Exception e) 
+        catch (Exception e)
         {
             return BaseResponse<RecipeDto>.CreateBaseResponse<IEnumerable<RecipeDto>>(e.Message, StatusCode.InternalServerError);
         }
@@ -54,7 +68,7 @@ public class RecipeService : IRecipeService
                 return BaseResponse<RecipeDto>.CreateBaseResponse<string>("Objet can`t be empty...", StatusCode.BadRequest);
             
             modelDto.Id = Guid.NewGuid();
-                
+
             await _unitOfWork.RecipeRepository.InsertAsync(_mapper.Map<Recipe>(modelDto));
             await _unitOfWork.SaveChangesAsync();
 

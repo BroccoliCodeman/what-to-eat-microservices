@@ -2,6 +2,7 @@ namespace Recipes.Data.Models;
 
 public class Respond
 {
+    public Guid Id { get; set; }
     public string Text { get; set; } = string.Empty;
     public int Rate { get; set; }
     

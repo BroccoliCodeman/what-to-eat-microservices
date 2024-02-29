@@ -5,7 +5,7 @@ namespace Recipes.DAL.Repositories.ModelsRepositories;
 
 public class RecipeRepository : GenericRepository<Recipe>, IRecipeRepository
 {
-    protected RecipeRepository(RecipesContext databaseContext) : base(databaseContext)
+    public RecipeRepository(RecipesContext databaseContext) : base(databaseContext)
     {
     }
 }

@@ -5,7 +5,7 @@ namespace Recipes.DAL.Repositories.ModelsRepositories;
 
 public class WeightUnitRepository : GenericRepository<WeightUnit>, IWeightUnitRepository
 {
-    protected WeightUnitRepository(RecipesContext databaseContext) : base(databaseContext)
+    public WeightUnitRepository(RecipesContext databaseContext) : base(databaseContext)
     {
     }
 }

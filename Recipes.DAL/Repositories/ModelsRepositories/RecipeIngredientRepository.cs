@@ -5,7 +5,7 @@ namespace Recipes.DAL.Repositories.ModelsRepositories;
 
 public class RecipeIngredientRepository : GenericRepository<RecipeIngredient>, IRecipeIngredientRepository
 {
-    protected RecipeIngredientRepository(RecipesContext databaseContext) : base(databaseContext)
+    public RecipeIngredientRepository(RecipesContext databaseContext) : base(databaseContext)
     {
     }
 }
