@@ -33,16 +33,16 @@ public class CookingStepService : ICookingStepService
 
             if (models.Count is 0)
             {
-                return CreateBaseResponse<IEnumerable<CookingStepDto>>("0 objects found", StatusCode.NotFound);
+                return BaseResponse<CookingStepDto>.CreateBaseResponse<IEnumerable<CookingStepDto>>("0 objects found", StatusCode.NotFound);
             }
 
             var dtoList = models.Select(model => _mapper.Map<CookingStepDto>(model)).ToList();
 
-            return CreateBaseResponse<IEnumerable<CookingStepDto>>("Success!", StatusCode.Ok, dtoList, dtoList.Count);
+            return BaseResponse<CookingStepDto>.CreateBaseResponse<IEnumerable<CookingStepDto>>("Success!", StatusCode.Ok, dtoList, dtoList.Count);
         }
         catch(Exception e) 
         {
-            return CreateBaseResponse<IEnumerable<CookingStepDto>>(e.Message, StatusCode.InternalServerError);
+            return BaseResponse<CookingStepDto>.CreateBaseResponse<IEnumerable<CookingStepDto>>(e.Message, StatusCode.InternalServerError);
         }
     }
 
@@ -51,19 +51,19 @@ public class CookingStepService : ICookingStepService
         try
         {
             if (modelDto is null) 
-                return CreateBaseResponse<string>("Objet can`t be empty...", StatusCode.BadRequest);
+                return BaseResponse<CookingStepDto>.CreateBaseResponse<string>("Objet can`t be empty...", StatusCode.BadRequest);
             
             modelDto.Id = Guid.NewGuid();
                 
             await _unitOfWork.CookingStepRepository.InsertAsync(_mapper.Map<CookingStep>(modelDto));
             await _unitOfWork.SaveChangesAsync();
 
-            return CreateBaseResponse<string>("Object inserted!", StatusCode.Ok, resultsCount: 1);
+            return BaseResponse<CookingStepDto>.CreateBaseResponse<string>("Object inserted!", StatusCode.Ok, resultsCount: 1);
 
         }
         catch (Exception e)
         {
-            return CreateBaseResponse<string>(e.Message, StatusCode.InternalServerError);
+            return BaseResponse<CookingStepDto>.CreateBaseResponse<string>(e.Message, StatusCode.InternalServerError);
         }
     }
 
@@ -74,22 +74,13 @@ public class CookingStepService : ICookingStepService
             await _unitOfWork.CookingStepRepository.DeleteAsync(id);
             await _unitOfWork.SaveChangesAsync();
 
-            return CreateBaseResponse<string>("Object deleted!", StatusCode.Ok, resultsCount: 1);
+            return BaseResponse<CookingStepDto>.CreateBaseResponse<string>("Object deleted!", StatusCode.Ok, resultsCount: 1);
         }
         catch (Exception e)
         {
-            return CreateBaseResponse<string>($"{e.Message} or object not found", StatusCode.InternalServerError);
+            return BaseResponse<CookingStepDto>.CreateBaseResponse<string>($"{e.Message} or object not found", StatusCode.InternalServerError);
         }
     }
     
-    private BaseResponse<T> CreateBaseResponse<T>(string description, StatusCode statusCode, T? data = default, int resultsCount = 0)
-    {
-        return new BaseResponse<T>()
-        {
-            ResultsCount = resultsCount,
-            Data = data!,
-            Description = description,
-            StatusCode = statusCode
-        };
-    }
+   
 }

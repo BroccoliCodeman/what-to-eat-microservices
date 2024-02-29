@@ -33,16 +33,16 @@ public class WeightUnitService : IWeightUnitService
 
             if (models.Count is 0)
             {
-                return CreateBaseResponse<IEnumerable<WeightUnitDto>>("0 objects found", StatusCode.NotFound);
+                return BaseResponse<WeightUnitDto>.CreateBaseResponse<IEnumerable<WeightUnitDto>>("0 objects found", StatusCode.NotFound);
             }
 
             var dtoList = models.Select(model => _mapper.Map<WeightUnitDto>(model)).ToList();
 
-            return CreateBaseResponse<IEnumerable<WeightUnitDto>>("Success!", StatusCode.Ok, dtoList, dtoList.Count);
+            return BaseResponse<WeightUnitDto>.CreateBaseResponse<IEnumerable<WeightUnitDto>>("Success!", StatusCode.Ok, dtoList, dtoList.Count);
         }
         catch(Exception e) 
         {
-            return CreateBaseResponse<IEnumerable<WeightUnitDto>>(e.Message, StatusCode.InternalServerError);
+            return BaseResponse<WeightUnitDto>.CreateBaseResponse<IEnumerable<WeightUnitDto>>(e.Message, StatusCode.InternalServerError);
         }
     }
 
@@ -51,19 +51,19 @@ public class WeightUnitService : IWeightUnitService
         try
         {
             if (modelDto is null) 
-                return CreateBaseResponse<string>("Objet can`t be empty...", StatusCode.BadRequest);
+                return BaseResponse<WeightUnitDto>.CreateBaseResponse<string>("Objet can`t be empty...", StatusCode.BadRequest);
             
             modelDto.Id = Guid.NewGuid();
                 
             await _unitOfWork.WeightUnitRepository.InsertAsync(_mapper.Map<WeightUnit>(modelDto));
             await _unitOfWork.SaveChangesAsync();
 
-            return CreateBaseResponse<string>("Object inserted!", StatusCode.Ok, resultsCount: 1);
+            return BaseResponse<WeightUnitDto>.CreateBaseResponse<string>("Object inserted!", StatusCode.Ok, resultsCount: 1);
 
         }
         catch (Exception e)
         {
-            return CreateBaseResponse<string>(e.Message, StatusCode.InternalServerError);
+            return BaseResponse<WeightUnitDto>.CreateBaseResponse<string>(e.Message, StatusCode.InternalServerError);
         }
     }
 
@@ -74,22 +74,13 @@ public class WeightUnitService : IWeightUnitService
             await _unitOfWork.WeightUnitRepository.DeleteAsync(id);
             await _unitOfWork.SaveChangesAsync();
 
-            return CreateBaseResponse<string>("Object deleted!", StatusCode.Ok, resultsCount: 1);
+            return BaseResponse<WeightUnitDto>.CreateBaseResponse<string>("Object deleted!", StatusCode.Ok, resultsCount: 1);
         }
         catch (Exception e)
         {
-            return CreateBaseResponse<string>($"{e.Message} or object not found", StatusCode.InternalServerError);
+            return BaseResponse<WeightUnitDto>.CreateBaseResponse<string>($"{e.Message} or object not found", StatusCode.InternalServerError);
         }
     }
     
-    private BaseResponse<T> CreateBaseResponse<T>(string description, StatusCode statusCode, T? data = default, int resultsCount = 0)
-    {
-        return new BaseResponse<T>()
-        {
-            ResultsCount = resultsCount,
-            Data = data!,
-            Description = description,
-            StatusCode = statusCode
-        };
-    }
+
 }

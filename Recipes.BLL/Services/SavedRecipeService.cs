@@ -33,16 +33,16 @@ public class SavedRecipeService : ISavedRecipeService
 
             if (models.Count is 0)
             {
-                return CreateBaseResponse<IEnumerable<SavedRecipeDto>>("0 objects found", StatusCode.NotFound);
+                return BaseResponse<SavedRecipeDto>.CreateBaseResponse<IEnumerable<SavedRecipeDto>>("0 objects found", StatusCode.NotFound);
             }
 
             var dtoList = models.Select(model => _mapper.Map<SavedRecipeDto>(model)).ToList();
 
-            return CreateBaseResponse<IEnumerable<SavedRecipeDto>>("Success!", StatusCode.Ok, dtoList, dtoList.Count);
+            return BaseResponse<SavedRecipeDto>.CreateBaseResponse<IEnumerable<SavedRecipeDto>>("Success!", StatusCode.Ok, dtoList, dtoList.Count);
         }
         catch(Exception e) 
         {
-            return CreateBaseResponse<IEnumerable<SavedRecipeDto>>(e.Message, StatusCode.InternalServerError);
+            return BaseResponse<SavedRecipeDto>.CreateBaseResponse<IEnumerable<SavedRecipeDto>>(e.Message, StatusCode.InternalServerError);
         }
     }
 
@@ -51,17 +51,17 @@ public class SavedRecipeService : ISavedRecipeService
         try
         {
             if (modelDto is null)
-                return CreateBaseResponse<string>("Objet can`t be empty...", StatusCode.BadRequest);
+                return BaseResponse<SavedRecipeDto>.CreateBaseResponse<string>("Objet can`t be empty...", StatusCode.BadRequest);
             
             await _unitOfWork.SavedRecipeRepository.InsertAsync(_mapper.Map<SavedRecipe>(modelDto));
             await _unitOfWork.SaveChangesAsync();
 
-            return CreateBaseResponse<string>("Object inserted!", StatusCode.Ok, resultsCount: 1);
+            return BaseResponse<SavedRecipeDto>.CreateBaseResponse<string>("Object inserted!", StatusCode.Ok, resultsCount: 1);
 
         }
         catch (Exception e)
         {
-            return CreateBaseResponse<string>(e.Message, StatusCode.InternalServerError);
+            return BaseResponse<SavedRecipeDto>.CreateBaseResponse<string>(e.Message, StatusCode.InternalServerError);
         }
     }
 
@@ -72,22 +72,13 @@ public class SavedRecipeService : ISavedRecipeService
             await _unitOfWork.SavedRecipeRepository.DeleteAsync(id);
             await _unitOfWork.SaveChangesAsync();
 
-            return CreateBaseResponse<string>("Object deleted!", StatusCode.Ok, resultsCount: 1);
+            return BaseResponse<SavedRecipeDto>.CreateBaseResponse<string>("Object deleted!", StatusCode.Ok, resultsCount: 1);
         }
         catch (Exception e)
         {
-            return CreateBaseResponse<string>($"{e.Message} or object not found", StatusCode.InternalServerError);
+            return BaseResponse<SavedRecipeDto>.CreateBaseResponse<string>($"{e.Message} or object not found", StatusCode.InternalServerError);
         }
     }
     
-    private BaseResponse<T> CreateBaseResponse<T>(string description, StatusCode statusCode, T? data = default, int resultsCount = 0)
-    {
-        return new BaseResponse<T>()
-        {
-            ResultsCount = resultsCount,
-            Data = data!,
-            Description = description,
-            StatusCode = statusCode
-        };
-    }
+
 }

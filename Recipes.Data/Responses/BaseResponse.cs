@@ -23,5 +23,16 @@ public class BaseResponse<T> : IBaseResponse<T>
     /// <summary>
     /// Received data from DAL
     /// </summary>
-    public T Data { get; set; }
+    public T Data { get; set; } 
+
+    public static BaseResponse<T> CreateBaseResponse<T>(string description, StatusCode statusCode, T? data = default, int resultsCount = 0)
+    {
+        return new BaseResponse<T>()
+        {
+            ResultsCount = resultsCount,
+            Data = data!,
+            Description = description,
+            StatusCode = statusCode
+        };
+    }
 }
