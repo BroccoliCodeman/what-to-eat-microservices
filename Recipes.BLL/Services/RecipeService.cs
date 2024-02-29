@@ -27,14 +27,14 @@ public class RecipeService : IRecipeService
             var recipe = await _unitOfWork.RecipeRepository.GetByIdAsync(id);
             if (recipe == null)
             {
-                return CreateBaseResponse<RecipeDto>($"The recipe with id {id} wasn't found", StatusCode.NotFound);
+                return BaseResponse<RecipeDto>.CreateBaseResponse<RecipeDto>($"The recipe with id {id} wasn't found", StatusCode.NotFound);
             }
 
-            return CreateBaseResponse<RecipeDto>("Sucess!", StatusCode.Ok, _mapper.Map<RecipeDto>(recipe));
+            return BaseResponse<RecipeDto>.CreateBaseResponse<RecipeDto>("Sucess!", StatusCode.Ok, _mapper.Map<RecipeDto>(recipe));
         }
         catch (Exception ex)
         {
-            return CreateBaseResponse<RecipeDto>(ex.Message, StatusCode.InternalServerError);
+            return BaseResponse<RecipeDto>.CreateBaseResponse<RecipeDto>(ex.Message, StatusCode.InternalServerError);
 
         }
     }
