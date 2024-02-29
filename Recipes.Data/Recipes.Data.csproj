@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Compile Remove="Class1.cs" />
+      <Compile Remove="Models\BaseModel.cs" />
+      <Compile Remove="Models\RecipeToIngredient.cs" />
+    </ItemGroup>
+
+</Project>

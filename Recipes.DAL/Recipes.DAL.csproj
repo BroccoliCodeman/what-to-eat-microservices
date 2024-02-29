@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Compile Remove="Class1.cs" />
+      <Compile Remove="Interfaces\ModelsRepositoriesInterfaces.cs" />
+      <Compile Remove="Interfaces\ModelsRepositoriesInterfaces\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.16" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Recipes.Data\Recipes.Data.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Remove="Interfaces\ModelsRepositoriesInterfaces\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Interfaces\ModelsRepositoriesInterfaces\**" />
+    </ItemGroup>
+
+</Project>
