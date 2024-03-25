@@ -1,4 +1,4 @@
-namespace Recipes.Data.Models;
+/*namespace Recipes.Data.Models;
 
 public class RecipeIngredient
 {
@@ -9,4 +9,4 @@ public class RecipeIngredient
     
     public Guid IngredientId { get; set; }
     public Ingredient Ingredient { get; set; } = null!;
-}
+}*/

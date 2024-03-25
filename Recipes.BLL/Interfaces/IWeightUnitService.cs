@@ -8,5 +8,5 @@ public interface IWeightUnitService
     Task<IBaseResponse<WeightUnitDto>> GetById(Guid id);
     Task<IBaseResponse<IEnumerable<WeightUnitDto>>> Get();
     Task<IBaseResponse<string>> Insert(WeightUnitDto? modelDto);
-    Task<IBaseResponse<string>> DeleteById(Guid id);
+    Task<IBaseResponse<string>> DeleteById(int id);
 }

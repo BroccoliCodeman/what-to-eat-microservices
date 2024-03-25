@@ -1,6 +1,8 @@
 using AutoMapper;
+using Microsoft.IdentityModel.Abstractions;
 using Recipes.BLL.Interfaces;
 using Recipes.DAL.Interfaces;
+using Recipes.DAL.Repositories;
 using Recipes.Data.DataTransferObjects;
 using Recipes.Data.Enums;
 using Recipes.Data.Interfaces;
@@ -54,8 +56,18 @@ public class IngredientService : IIngredientService
                 return BaseResponse<IngredientDto>.CreateBaseResponse<string>("Objet can`t be empty...", StatusCode.BadRequest);
             
             modelDto.Id = Guid.NewGuid();
-                
-            await _unitOfWork.IngredientRepository.InsertAsync(_mapper.Map<Ingredient>(modelDto));
+
+            var ing = _mapper.Map<Ingredient>(modelDto);
+
+            var value = _unitOfWork.WeightUnitRepository.GetAsync().Result.Where(p=>p.Type == modelDto.WeightUnit.Type);
+
+            if (value.Count()!=0){
+
+                await _unitOfWork.WeightUnitRepository.InsertAsync(_mapper.Map<WeightUnit>(modelDto.WeightUnit));
+
+            }
+
+            await _unitOfWork.IngredientRepository.InsertAsync(ing);
             await _unitOfWork.SaveChangesAsync();
 
             return BaseResponse<IngredientDto>.CreateBaseResponse<string>("Object inserted!", StatusCode.Ok, resultsCount: 1);

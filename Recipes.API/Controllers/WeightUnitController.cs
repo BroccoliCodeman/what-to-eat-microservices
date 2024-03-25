@@ -28,7 +28,7 @@ public class WeightUnitController : ControllerBase
     }
 
     [HttpDelete]
-    public async Task<ActionResult> DeleteById(Guid id)
+    public async Task<ActionResult> DeleteById(int id)
     {
         return Ok(await _service.DeleteById(id));
     }

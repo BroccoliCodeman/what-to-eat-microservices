@@ -2,7 +2,7 @@ using Recipes.Data.Models;
 
 namespace Recipes.Data.DataTransferObjects;
 
-public class RecipeDto
+public class RecipeDtoWithIngredients
 {
     public Guid? Id { get; set; } = null;
     public int? Servings { get; set; }
@@ -13,6 +13,7 @@ public class RecipeDto
     public int? Calories { get; set; }
     public DateTime CreationDate { get; set; } = DateTime.Now;
 
+    public List<IngredientDto> ingredients { get; set; } = new List<IngredientDto>();
 
 
 

@@ -2,11 +2,18 @@ namespace Recipes.Data.Models;
 
 public class Ingredient
 {
+    public Ingredient()
+    {
+        Id = Guid.NewGuid();
+    }
     public Guid Id { get; set; }
     public float Quantity { get; set; }
-    
-    public Guid WeightUnitId { get; set; }
-    public WeightUnit WeightUnit { get; set; } = null!;
-    
-    public ICollection<RecipeIngredient> RecipeIngredients { get; set; } = null!;
+    public string Name { get; set; }
+    public int? WeightUnitId { get; set; }
+    public WeightUnit WeightUnit { get; set; } = null!; 
+    // треба викорситовувати список можливих одиниць  виміру а не кожну окремо 
+    //public ICollection<WeightUnit> WeightUnits { get; set; } = null!;
+
+
+    public ICollection<Recipe> Recipes { get; set; } = null!;
 }
