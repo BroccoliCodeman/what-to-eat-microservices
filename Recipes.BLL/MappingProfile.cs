@@ -8,25 +8,20 @@ public class MappingProfile : Profile
 {
     public MappingProfile()
     {
-        CreateMap<CookingStep, CookingStepDto>();
-        CreateMap<CookingStepDto, CookingStep>();
+        CreateMap<CookingStep, CookingStepDto>().ReverseMap();
         
-        CreateMap<Ingredient, IngredientDto>();
-        CreateMap<IngredientDto, Ingredient>();
+        CreateMap<Ingredient, IngredientDto>().ReverseMap();
         
-        CreateMap<Recipe, RecipeDto>();
-        CreateMap<RecipeDto, Recipe>();
+        CreateMap<Recipe, RecipeDto>().ReverseMap();
+        CreateMap<Recipe, RecipeDtoWithIngredients>().ReverseMap();
+
+
+        // CreateMap<RecipeIngredient, RecipeIngredientDto>().ReverseMap();
+
+        CreateMap<Respond, RespondDto>().ReverseMap();
         
-        CreateMap<RecipeIngredient, RecipeIngredientDto>();
-        CreateMap<RecipeIngredientDto, RecipeIngredient>();
+        CreateMap<SavedRecipe, SavedRecipeDto>().ReverseMap();
         
-        CreateMap<Respond, RespondDto>();
-        CreateMap<RespondDto, Respond>();
-        
-        CreateMap<SavedRecipe, SavedRecipeDto>();
-        CreateMap<SavedRecipeDto, SavedRecipe>();
-        
-        CreateMap<WeightUnit, WeightUnitDto>();
-        CreateMap<WeightUnitDto, WeightUnit>();
+        CreateMap<WeightUnit, WeightUnitDto>().ReverseMap();
     }
 }

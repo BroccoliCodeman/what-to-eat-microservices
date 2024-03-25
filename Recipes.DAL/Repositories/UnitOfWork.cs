@@ -9,7 +9,7 @@ public class UnitOfWork : IUnitOfWork
 
     public ICookingStepRepository CookingStepRepository { get; }
     public IIngredientRepository IngredientRepository { get; }
-    public IRecipeIngredientRepository RecipeIngredientRepository { get; }
+  //  public IRecipeIngredientRepository RecipeIngredientRepository { get; }
     public IRecipeRepository RecipeRepository { get; }
     public IRespondRepository RespondRepository { get; }
     public ISavedRecipeRepository SavedRecipeRepository { get; }
@@ -19,7 +19,7 @@ public class UnitOfWork : IUnitOfWork
         RecipesContext databaseContext,
         ICookingStepRepository cookingStepRepository,
         IIngredientRepository ingredientRepository,
-        IRecipeIngredientRepository recipeIngredientRepository,
+       // IRecipeIngredientRepository recipeIngredientRepository,
         IRecipeRepository recipeRepository,
         IRespondRepository respondRepository,
         ISavedRecipeRepository savedRecipeRepository,
@@ -28,7 +28,7 @@ public class UnitOfWork : IUnitOfWork
         this.DatabaseContext = databaseContext;
         CookingStepRepository = cookingStepRepository;
         IngredientRepository = ingredientRepository;
-        RecipeIngredientRepository = recipeIngredientRepository;
+    //    RecipeIngredientRepository = recipeIngredientRepository;
         RecipeRepository = recipeRepository;
         RespondRepository = respondRepository;
         SavedRecipeRepository = savedRecipeRepository;

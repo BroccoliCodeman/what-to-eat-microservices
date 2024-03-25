@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Recipes.DAL;
 
@@ -11,9 +12,11 @@ using Recipes.DAL;
 namespace Recipes.DAL.Migrations
 {
     [DbContext(typeof(RecipesContext))]
-    partial class RecipesContextModelSnapshot : ModelSnapshot
+    [Migration("20240324194613_initial")]
+    partial class initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,21 +24,6 @@ namespace Recipes.DAL.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
-            modelBuilder.Entity("IngredientRecipe", b =>
-                {
-                    b.Property<Guid>("IngredientsId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("RecipesId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("IngredientsId", "RecipesId");
-
-                    b.HasIndex("RecipesId");
-
-                    b.ToTable("IngredientRecipe", (string)null);
-                });
 
             modelBuilder.Entity("Recipes.Data.Models.CookingStep", b =>
                 {
@@ -59,7 +47,7 @@ namespace Recipes.DAL.Migrations
 
                     b.HasIndex("RecipeId");
 
-                    b.ToTable("CookingSteps", (string)null);
+                    b.ToTable("CookingSteps");
                 });
 
             modelBuilder.Entity("Recipes.Data.Models.Ingredient", b =>
@@ -75,14 +63,14 @@ namespace Recipes.DAL.Migrations
                     b.Property<float>("Quantity")
                         .HasColumnType("real");
 
-                    b.Property<int?>("WeightUnitId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("WeightUnitId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
                     b.HasIndex("WeightUnitId");
 
-                    b.ToTable("Ingredients", (string)null);
+                    b.ToTable("Ingredients");
                 });
 
             modelBuilder.Entity("Recipes.Data.Models.Recipe", b =>
@@ -107,6 +95,7 @@ namespace Recipes.DAL.Migrations
                         .HasColumnType("nvarchar(3000)");
 
                     b.Property<string>("Photo")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Servings")
@@ -119,7 +108,28 @@ namespace Recipes.DAL.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Recipes", (string)null);
+                    b.ToTable("Recipes");
+                });
+
+            modelBuilder.Entity("Recipes.Data.Models.RecipeIngredient", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("IngredientId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("RecipeId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IngredientId");
+
+                    b.HasIndex("RecipeId");
+
+                    b.ToTable("RecipeIngredients");
                 });
 
             modelBuilder.Entity("Recipes.Data.Models.Respond", b =>
@@ -144,7 +154,7 @@ namespace Recipes.DAL.Migrations
 
                     b.HasIndex("RecipeId");
 
-                    b.ToTable("Responds", (string)null);
+                    b.ToTable("Responds");
                 });
 
             modelBuilder.Entity("Recipes.Data.Models.SavedRecipe", b =>
@@ -163,16 +173,14 @@ namespace Recipes.DAL.Migrations
 
                     b.HasIndex("RecipeId");
 
-                    b.ToTable("SavedRecipes", (string)null);
+                    b.ToTable("SavedRecipes");
                 });
 
             modelBuilder.Entity("Recipes.Data.Models.WeightUnit", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Type")
                         .IsRequired()
@@ -181,22 +189,7 @@ namespace Recipes.DAL.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("WeightUnits", (string)null);
-                });
-
-            modelBuilder.Entity("IngredientRecipe", b =>
-                {
-                    b.HasOne("Recipes.Data.Models.Ingredient", null)
-                        .WithMany()
-                        .HasForeignKey("IngredientsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Recipes.Data.Models.Recipe", null)
-                        .WithMany()
-                        .HasForeignKey("RecipesId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.ToTable("WeightUnits");
                 });
 
             modelBuilder.Entity("Recipes.Data.Models.CookingStep", b =>
@@ -213,10 +206,31 @@ namespace Recipes.DAL.Migrations
             modelBuilder.Entity("Recipes.Data.Models.Ingredient", b =>
                 {
                     b.HasOne("Recipes.Data.Models.WeightUnit", "WeightUnit")
-                        .WithMany()
-                        .HasForeignKey("WeightUnitId");
+                        .WithMany("Ingredients")
+                        .HasForeignKey("WeightUnitId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("WeightUnit");
+                });
+
+            modelBuilder.Entity("Recipes.Data.Models.RecipeIngredient", b =>
+                {
+                    b.HasOne("Recipes.Data.Models.Ingredient", "Ingredient")
+                        .WithMany("RecipeIngredients")
+                        .HasForeignKey("IngredientId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Recipes.Data.Models.Recipe", "Recipe")
+                        .WithMany("RecipeIngredients")
+                        .HasForeignKey("RecipeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Ingredient");
+
+                    b.Navigation("Recipe");
                 });
 
             modelBuilder.Entity("Recipes.Data.Models.Respond", b =>
@@ -241,13 +255,25 @@ namespace Recipes.DAL.Migrations
                     b.Navigation("Recipe");
                 });
 
+            modelBuilder.Entity("Recipes.Data.Models.Ingredient", b =>
+                {
+                    b.Navigation("RecipeIngredients");
+                });
+
             modelBuilder.Entity("Recipes.Data.Models.Recipe", b =>
                 {
                     b.Navigation("CookingSteps");
 
+                    b.Navigation("RecipeIngredients");
+
                     b.Navigation("Responds");
 
                     b.Navigation("SavedRecipes");
+                });
+
+            modelBuilder.Entity("Recipes.Data.Models.WeightUnit", b =>
+                {
+                    b.Navigation("Ingredients");
                 });
 #pragma warning restore 612, 618
         }

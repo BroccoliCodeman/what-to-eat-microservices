@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Mvc;
+/*using Microsoft.AspNetCore.Mvc;
 using Recipes.BLL.Interfaces;
 using Recipes.Data.DataTransferObjects;
 
@@ -32,4 +32,4 @@ public class RecipeIngredientController : ControllerBase
     {
         return Ok(await _service.DeleteById(id));
     }
-}
+}*/

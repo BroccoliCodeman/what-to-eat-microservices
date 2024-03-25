@@ -38,7 +38,8 @@ public class RecipeConfiguration : IEntityTypeConfiguration<Recipe>
         builder
             .Property(r => r.CreationDate)
             .IsRequired();
-        
+
+        builder.HasMany(p => p.Ingredients).WithMany(p => p.Recipes);
         
     }
 }

@@ -9,7 +9,8 @@ public class CookingStepConfiguration : IEntityTypeConfiguration<CookingStep>
     public void Configure(EntityTypeBuilder<CookingStep> builder)
     {
         builder.HasKey(cs => cs.Id);
-        
+
+
         builder
             .Property(cs => cs.Description)
             .HasMaxLength(3000)

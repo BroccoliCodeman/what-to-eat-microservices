@@ -9,6 +9,7 @@ public class SavedRecipeConfiguration : IEntityTypeConfiguration<SavedRecipe>
     public void Configure(EntityTypeBuilder<SavedRecipe> builder)
     {
         builder.HasKey(x => x.Id);
+
         builder
             .Property(sr => sr.IsSaved)
             .IsRequired();

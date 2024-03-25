@@ -5,8 +5,8 @@ namespace Recipes.DAL.Repositories;
 
 public abstract class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : class
 {
-    private readonly RecipesContext _databaseContext;
-    private readonly DbSet<TEntity> _table;
+    protected readonly RecipesContext _databaseContext;
+    protected readonly DbSet<TEntity> _table;
 
     public GenericRepository(RecipesContext databaseContext)
     {

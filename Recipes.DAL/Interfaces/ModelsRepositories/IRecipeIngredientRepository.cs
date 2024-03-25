@@ -1,8 +1,8 @@
-using Recipes.Data.Models;
+/*using Recipes.Data.Models;
 
 namespace Recipes.DAL.Interfaces.ModelsRepositories;
 
 public interface IRecipeIngredientRepository : IGenericRepository<RecipeIngredient>
 {
     
-}
+}*/

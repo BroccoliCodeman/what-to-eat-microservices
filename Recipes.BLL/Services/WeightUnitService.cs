@@ -53,7 +53,7 @@ public class WeightUnitService : IWeightUnitService
             if (modelDto is null) 
                 return BaseResponse<WeightUnitDto>.CreateBaseResponse<string>("Objet can`t be empty...", StatusCode.BadRequest);
             
-            modelDto.Id = Guid.NewGuid();
+            
                 
             await _unitOfWork.WeightUnitRepository.InsertAsync(_mapper.Map<WeightUnit>(modelDto));
             await _unitOfWork.SaveChangesAsync();
@@ -67,8 +67,8 @@ public class WeightUnitService : IWeightUnitService
         }
     }
 
-    public async Task<IBaseResponse<string>> DeleteById(Guid id)
-    {
+    public async Task<IBaseResponse<string>> DeleteById(int id)
+    { 
         try
         {
             await _unitOfWork.WeightUnitRepository.DeleteAsync(id);
