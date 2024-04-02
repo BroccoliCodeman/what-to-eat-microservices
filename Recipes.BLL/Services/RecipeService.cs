@@ -101,21 +101,39 @@ public class RecipeService : IRecipeService
             foreach (var newIngredient in newIngredients)
             {
                 newIngredient.Id = Guid.NewGuid();
+                //перевіряємо чи є одиниці виміру які зазаначені в запиті є в базі
                 var unit = _unitOfWork.WeightUnitRepository.GetAsync().Result.FirstOrDefault(p => p.Type == newIngredient.WeightUnit.Type);
 
                 if (unit == null)
                 {
+               
                     await _unitOfWork.WeightUnitRepository.InsertAsync(_mapper.Map<WeightUnit>(newIngredient.WeightUnit));
                     await _unitOfWork.SaveChangesAsync();
                 }
+                else
+                newIngredient.WeightUnit.Id = unit.Id;
             }
 
             // Перезаписати Id інгредієнтів, які вже існують в базі даних
-            foreach (var existingIngredient in recipe.ingredients.Where(dtoIng => existingIngredients.Any(dbIng => dbIng.Name == dtoIng.Name && dbIng.WeightUnit.Type == dtoIng.WeightUnit.Type && dbIng.Quantity == dtoIng.Quantity)))
+            /*
+                        var existingIngredient = recipe.ingredients.Where(dtoIng => existingIngredients.Any(dbIng => dbIng.Name == dtoIng.Name && dbIng.WeightUnit.Type == dtoIng.WeightUnit.Type && dbIng.Quantity == dtoIng.Quantity))
+                            for(int i=0;i<e)*/
+
+
+
+            foreach (var existingIngredient in recipe.ingredients)
             {
-                var existingDbIngredient = existingIngredients.FirstOrDefault(dbIng => dbIng.Name == existingIngredient.Name && dbIng.WeightUnit.Type == existingIngredient.WeightUnit.Type && dbIng.Quantity == existingIngredient.Quantity);
-                existingIngredient.Id = existingDbIngredient.Id;
+                var existingDbIngredient = existingIngredients.FirstOrDefault(dbIng =>
+                    dbIng.Name == existingIngredient.Name &&
+                    dbIng.WeightUnit.Type == existingIngredient.WeightUnit.Type &&
+                    dbIng.Quantity == existingIngredient.Quantity);
+
+                if (existingDbIngredient != null)
+                {
+                    existingIngredient.Id = existingDbIngredient.Id;
+                }
             }
+            
 
             // Вставити рецепт в базу даних
             await _unitOfWork.RecipeRepository.InsertAsync(_mapper.Map<Recipe>(recipe));

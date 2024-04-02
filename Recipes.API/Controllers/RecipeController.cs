@@ -52,10 +52,6 @@ public class RecipeController : ControllerBase
     public async Task<ActionResult<IEnumerable<RecipeDto>>> GetByIngredients( RecipeByIngredientsRequest request)
     {
      
-
-
-
-
         return Ok(await _service.GetByIngredients(request.Ingredients));
     }
 
