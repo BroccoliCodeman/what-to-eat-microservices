@@ -9,7 +9,8 @@ builder.Services.AddControllers();
 
 builder.Services.AddDbContext<RecipesContext>(opt =>
 {
-    opt.UseSqlServer(builder.Configuration.GetConnectionString("RecipesConnectionString"));
+    string connection = builder.Configuration.GetConnectionString("RecipesConnectionString");
+    opt.UseSqlServer(connection);
 });
 
 builder.Services.AddAutoMapper(typeof(MappingProfile));

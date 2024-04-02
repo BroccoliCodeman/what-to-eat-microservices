@@ -1,4 +1,4 @@
-using Microsoft.EntityFrameworkCore;
+/*using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Recipes.Data.Models;
 
@@ -20,4 +20,4 @@ public class RecipeIngredientConfiguration : IEntityTypeConfiguration<RecipeIngr
             .WithMany(i => i.RecipeIngredients)
             .HasForeignKey(ri => ri.IngredientId);
     }
-}
+}*/

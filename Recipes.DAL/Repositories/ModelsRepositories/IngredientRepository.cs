@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using Recipes.DAL.Interfaces.ModelsRepositories;
 using Recipes.Data.Models;
 
@@ -8,4 +9,8 @@ public class IngredientRepository : GenericRepository<Ingredient>, IIngredientRe
     public IngredientRepository(RecipesContext databaseContext) : base(databaseContext)
     {
     }
+
+
+    public override async Task<List<Ingredient>> GetAsync() =>
+    await _table.Include(p=>p.WeightUnit).ToListAsync();
 }
