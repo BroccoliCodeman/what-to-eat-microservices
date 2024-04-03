@@ -13,7 +13,7 @@ public class RecipeDtoWithIngredients
     public int? Calories { get; set; }
     public DateTime CreationDate { get; set; } = DateTime.Now;
 
-    public List<IngredientDto> ingredients { get; set; } = new List<IngredientDto>();
+    public List<IngredientDto> Ingredients { get; set; } = new List<IngredientDto>();
 
 
 

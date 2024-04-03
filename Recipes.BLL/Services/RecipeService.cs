@@ -1,4 +1,5 @@
 using AutoMapper;
+using Microsoft.EntityFrameworkCore.Query.Internal;
 using Recipes.BLL.Interfaces;
 using Recipes.DAL.Interfaces;
 using Recipes.Data.DataTransferObjects;
@@ -82,20 +83,28 @@ public class RecipeService : IRecipeService
     }
 
 
-    public async Task<IBaseResponse<string>> InsertWithIngredients(RecipeDtoWithIngredients? recipe)
+    public async Task<IBaseResponse<string>> InsertWithIngredients(RecipeDtoWithIngredients? recipereqest)
     {
         try
         {
-            if (recipe is null)
+            if (recipereqest is null)
                 return BaseResponse<RecipeDto>.CreateBaseResponse<string>("Object can't be empty...", StatusCode.BadRequest);
 
-            recipe.Id = Guid.NewGuid();
+            recipereqest.Id = Guid.NewGuid();
 
+            var recipe = _mapper.Map<Recipe>(recipereqest);
             // Отримати всі інгредієнти з бази даних
-            var existingIngredients = await _unitOfWork.IngredientRepository.GetAsync();
+            var Ingredients = await _unitOfWork.IngredientRepository.GetAsync();
 
             // Отримати список інгредієнтів з моделі DTO, які відсутні в базі даних
-            var newIngredients = recipe.ingredients.Where(dtoIng => !existingIngredients.Any(dbIng => dbIng.Name == dtoIng.Name && dbIng.WeightUnit.Type == dtoIng.WeightUnit.Type && dbIng.Quantity == dtoIng.Quantity));
+            var newIngredients = recipe.Ingredients.Where(dtoIng => !Ingredients.AsReadOnly().Any(dbIng => dbIng.Name == dtoIng.Name && dbIng.WeightUnit.Type == dtoIng.WeightUnit.Type && dbIng.Quantity == dtoIng.Quantity));
+            //  var existingIngredients = recipe.Ingredients.Where(dtoIng => Ingredients.AsReadOnly().Any(dbIng => dbIng.Name == dtoIng.Name && dbIng.WeightUnit.Type == dtoIng.WeightUnit.Type && dbIng.Quantity == dtoIng.Quantity));
+
+            var existingIngredients = Ingredients.Where(dbIng =>
+    recipe.Ingredients.Any(dtoIng =>
+        dbIng.Name == dtoIng.Name &&
+        dbIng.WeightUnit.Type == dtoIng.WeightUnit.Type &&
+        dbIng.Quantity == dtoIng.Quantity));
 
             // Додати нові інгредієнти в базу даних
             foreach (var newIngredient in newIngredients)
@@ -108,42 +117,54 @@ public class RecipeService : IRecipeService
                 {
                
                     await _unitOfWork.WeightUnitRepository.InsertAsync(_mapper.Map<WeightUnit>(newIngredient.WeightUnit));
-                    await _unitOfWork.SaveChangesAsync();
+                    //await _unitOfWork.SaveChangesAsync();
                 }
                 else
-                newIngredient.WeightUnit.Id = unit.Id;
+                    newIngredient.WeightUnit = unit;
+              await  _unitOfWork.IngredientRepository.InsertAsync(newIngredient);
             }
 
             // Перезаписати Id інгредієнтів, які вже існують в базі даних
-            /*
-                        var existingIngredient = recipe.ingredients.Where(dtoIng => existingIngredients.Any(dbIng => dbIng.Name == dtoIng.Name && dbIng.WeightUnit.Type == dtoIng.WeightUnit.Type && dbIng.Quantity == dtoIng.Quantity))
-                            for(int i=0;i<e)*/
-
-
-
-            foreach (var existingIngredient in recipe.ingredients)
+      
+            foreach (var existingIngredient in existingIngredients)
             {
-                var existingDbIngredient = existingIngredients.FirstOrDefault(dbIng =>
-                    dbIng.Name == existingIngredient.Name &&
-                    dbIng.WeightUnit.Type == existingIngredient.WeightUnit.Type &&
-                    dbIng.Quantity == existingIngredient.Quantity);
+                var recipesIngredient = recipe.Ingredients.FirstOrDefault(p =>
+                    p.Name == existingIngredient.Name &&
+                    p.WeightUnit.Type == existingIngredient.WeightUnit.Type &&
+                    p.Quantity == existingIngredient.Quantity);
 
-                if (existingDbIngredient != null)
+                if (recipesIngredient != null)
                 {
-                    existingIngredient.Id = existingDbIngredient.Id;
+                    // Оновлюємо властивості об'єкта, який вже відстежується контекстом
+                  
+
+                     var unit = _unitOfWork.WeightUnitRepository.GetAsync().Result.FirstOrDefault(p => p.Type == recipesIngredient.WeightUnit.Type);
+                    
+                    if (unit == null)
+                    {
+                        await _unitOfWork.WeightUnitRepository.InsertAsync(_mapper.Map<WeightUnit>(recipesIngredient.WeightUnit));
+                    }
+                    else
+                    {
+                        recipesIngredient.WeightUnit = unit;
+                    }
+
+                    
+                    recipe.Ingredients.Remove(recipesIngredient);
+                    recipe.Ingredients.Add(existingIngredient);
                 }
             }
-            
+
 
             // Вставити рецепт в базу даних
-            await _unitOfWork.RecipeRepository.InsertAsync(_mapper.Map<Recipe>(recipe));
+            await _unitOfWork.RecipeRepository.InsertAsync(recipe);
             await _unitOfWork.SaveChangesAsync();
 
             return BaseResponse<RecipeDto>.CreateBaseResponse<string>("Object inserted!", StatusCode.Ok, resultsCount: 1);
         }
         catch (Exception e)
         {
-            return BaseResponse<RecipeDto>.CreateBaseResponse<string>(e.Message, StatusCode.InternalServerError, recipe.ToString());
+            return BaseResponse<RecipeDto>.CreateBaseResponse<string>(e.Message, StatusCode.InternalServerError, recipereqest.ToString());
         }
     }
     public async Task<IBaseResponse<string>> DeleteById(Guid id)

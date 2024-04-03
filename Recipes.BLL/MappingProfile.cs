@@ -13,9 +13,10 @@ public class MappingProfile : Profile
         CreateMap<Ingredient, IngredientDto>().ReverseMap();
         
         CreateMap<Recipe, RecipeDto>().ReverseMap();
-        CreateMap<Recipe, RecipeDtoWithIngredients>().ReverseMap();
+       
 
-
+        CreateMap<RecipeDtoWithIngredients, Recipe>()
+    .ForMember(dest => dest.Ingredients, opt => opt.MapFrom(src => src.Ingredients)).ReverseMap();
         // CreateMap<RecipeIngredient, RecipeIngredientDto>().ReverseMap();
 
         CreateMap<Respond, RespondDto>().ReverseMap();
