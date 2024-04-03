@@ -20,7 +20,7 @@ namespace Recipes.DAL.Repositories
         public virtual async Task<List<TEntity>> GetAsync()
         {
             logger.LogInformation($"        Getting all {typeof(TEntity).Name} entities");
-            return await _table.ToListAsync();
+            return await _table/*.AsNoTracking()*/.ToListAsync();
         }
 
         public virtual async Task<TEntity> GetByIdAsync(Guid id)
@@ -31,13 +31,13 @@ namespace Recipes.DAL.Repositories
 
         public virtual async Task InsertAsync(TEntity entity)
         {
-            logger.LogInformation($"        Inserting {typeof(TEntity).Name} entity with id {entity.ToString()}");
+            logger.LogInformation($"        Inserting {typeof(TEntity).Name} entity");
             await _table.AddAsync(entity);
         }
 
         public virtual async Task UpdateAsync(TEntity entity)
         {
-            logger.LogInformation($"        Updating {typeof(TEntity).Name} entity with id {entity.ToString()}");
+            logger.LogInformation($"        Updating {typeof(TEntity).Name} entity");
             await Task.Run(() => _databaseContext.Update(entity));
         }
 
