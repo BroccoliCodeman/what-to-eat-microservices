@@ -1,6 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Extensions.Hosting;
 using Recipes.BLL.Interfaces;
 using Recipes.Data.DataTransferObjects;
+using Recipes.Data.Models.HelpersModel;
 using System.Text.Json.Nodes;
 namespace Recipes.API.Controllers;
 
@@ -16,9 +19,10 @@ public class RecipeController : ControllerBase
     }
     
     [HttpGet("Get")]
-    public async Task<ActionResult<IEnumerable<RecipeDto>>> Get()
+    public async Task<ActionResult<IEnumerable<RecipeDto>>> Get([FromQuery] CookingTimeModel? cookingTimeModel = null)
     {
-        return Ok(await _service.Get());
+        var recipes = await _service.Get(cookingTimeModel);
+        return Ok(recipes);
     }
     
     [HttpPost]
@@ -51,17 +55,6 @@ public class RecipeController : ControllerBase
     [HttpPost("GetByIngredients")]
     public async Task<ActionResult<IEnumerable<RecipeDto>>> GetByIngredients( RecipeByIngredientsRequest request)
     {
-     
-
-
-
-
         return Ok(await _service.GetByIngredients(request.Ingredients));
     }
-
-
-
-
-
-
 }

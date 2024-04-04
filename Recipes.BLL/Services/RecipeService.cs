@@ -5,6 +5,7 @@ using Recipes.Data.DataTransferObjects;
 using Recipes.Data.Enums;
 using Recipes.Data.Interfaces;
 using Recipes.Data.Models;
+using Recipes.Data.Models.HelpersModel;
 using Recipes.Data.Responses;
 
 namespace Recipes.BLL.Services;
@@ -39,7 +40,7 @@ public class RecipeService : IRecipeService
         }
     }
 
-    public async Task<IBaseResponse<IEnumerable<RecipeDto>>> Get()
+    public async Task<IBaseResponse<IEnumerable<RecipeDto>>> Get(CookingTimeModel? cookingTime)
     {
         try
         {
@@ -48,6 +49,20 @@ public class RecipeService : IRecipeService
             if (models.Count is 0)
             {
                 return BaseResponse<RecipeDto>.CreateBaseResponse<IEnumerable<RecipeDto>>("0 objects found", StatusCode.NotFound);
+            }
+
+            // Filtering
+            if (cookingTime != null)
+            {
+                models = models.Where(recipe =>
+                    (cookingTime.BiggerThan == 0 || recipe.CookingTime >= cookingTime.BiggerThan) &&
+                    (cookingTime.SmallerThan == 0 || recipe.CookingTime <= cookingTime.SmallerThan)
+                ).ToList();
+            }
+
+            if (models.Count is 0)
+            {
+                return BaseResponse<RecipeDto>.CreateBaseResponse<IEnumerable<RecipeDto>>("0 objects found after filtering", StatusCode.NotFound);
             }
 
             var dtoList = models.Select(model => _mapper.Map<RecipeDto>(model)).ToList();
@@ -95,7 +110,7 @@ public class RecipeService : IRecipeService
             var existingIngredients = await _unitOfWork.IngredientRepository.GetAsync();
 
             // Отримати список інгредієнтів з моделі DTO, які відсутні в базі даних
-            var newIngredients = recipe.ingredients.Where(dtoIng => !existingIngredients.Any(dbIng => dbIng.Name == dtoIng.Name && dbIng.WeightUnit.Type == dtoIng.WeightUnit.Type && dbIng.Quantity == dtoIng.Quantity));
+            var newIngredients = recipe.Ingredients.Where(dtoIng => !existingIngredients.Any(dbIng => dbIng.Name == dtoIng.Name && dbIng.WeightUnit.Type == dtoIng.WeightUnit.Type && dbIng.Quantity == dtoIng.Quantity));
 
             // Додати нові інгредієнти в базу даних
             foreach (var newIngredient in newIngredients)
@@ -111,7 +126,7 @@ public class RecipeService : IRecipeService
             }
 
             // Перезаписати Id інгредієнтів, які вже існують в базі даних
-            foreach (var existingIngredient in recipe.ingredients.Where(dtoIng => existingIngredients.Any(dbIng => dbIng.Name == dtoIng.Name && dbIng.WeightUnit.Type == dtoIng.WeightUnit.Type && dbIng.Quantity == dtoIng.Quantity)))
+            foreach (var existingIngredient in recipe.Ingredients.Where(dtoIng => existingIngredients.Any(dbIng => dbIng.Name == dtoIng.Name && dbIng.WeightUnit.Type == dtoIng.WeightUnit.Type && dbIng.Quantity == dtoIng.Quantity)))
             {
                 var existingDbIngredient = existingIngredients.FirstOrDefault(dbIng => dbIng.Name == existingIngredient.Name && dbIng.WeightUnit.Type == existingIngredient.WeightUnit.Type && dbIng.Quantity == existingIngredient.Quantity);
                 existingIngredient.Id = existingDbIngredient.Id;
