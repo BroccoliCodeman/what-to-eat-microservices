@@ -83,7 +83,7 @@ public class RecipeService : IRecipeService
     }
 
 
-    public async Task<IBaseResponse<string>> InsertWithIngredients(RecipeDtoWithIngredients? recipereqest)
+    public async Task<IBaseResponse<string>> InsertWithIngredients(RecipeDtoWithIngredientsAndSteps? recipereqest)
     {
         try
         {
@@ -95,19 +95,35 @@ public class RecipeService : IRecipeService
 
             recipe.Id = Guid.NewGuid();
 
-            var recipe = _mapper.Map<Recipe>(recipereqest);
             // Отримати всі інгредієнти з бази даних
             var Ingredients = await _unitOfWork.IngredientRepository.GetAsync();
 
             // Отримати список інгредієнтів з моделі DTO, які відсутні в базі даних
             var newIngredients = recipe.Ingredients.Where(dtoIng => !Ingredients.AsReadOnly().Any(dbIng => dbIng.Name == dtoIng.Name && dbIng.WeightUnit.Type == dtoIng.WeightUnit.Type && dbIng.Quantity == dtoIng.Quantity));
-            //  var existingIngredients = recipe.Ingredients.Where(dtoIng => Ingredients.AsReadOnly().Any(dbIng => dbIng.Name == dtoIng.Name && dbIng.WeightUnit.Type == dtoIng.WeightUnit.Type && dbIng.Quantity == dtoIng.Quantity));
 
             var existingIngredients = Ingredients.Where(dbIng =>
-    recipe.Ingredients.Any(dtoIng =>
-        dbIng.Name == dtoIng.Name &&
-        dbIng.WeightUnit.Type == dtoIng.WeightUnit.Type &&
-        dbIng.Quantity == dtoIng.Quantity));
+                recipe.Ingredients.Any(dtoIng =>
+                dbIng.Name == dtoIng.Name &&
+                dbIng.WeightUnit.Type == dtoIng.WeightUnit.Type &&
+                dbIng.Quantity == dtoIng.Quantity));
+
+            var steps = _mapper.Map<ICollection<CookingStepDtoNoId>, ICollection<CookingStep>>(recipereqest.Steps);
+
+            
+            foreach(var step in steps)
+            {
+
+                step.Id = Guid.NewGuid();
+
+                step.RecipeId = recipe.Id;
+                await _unitOfWork.CookingStepRepository.InsertAsync(step);
+
+
+            }
+
+
+
+
 
             // Додати нові інгредієнти в базу даних
             foreach (var newIngredient in newIngredients)

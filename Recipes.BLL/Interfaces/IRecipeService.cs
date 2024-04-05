@@ -11,5 +11,5 @@ public interface IRecipeService
     Task<IBaseResponse<string>> DeleteById(Guid id);
     Task<IBaseResponse<IEnumerable<RecipeDto>>> GetByName(string name);
     Task<IBaseResponse<IEnumerable<RecipeDto>>> GetByIngredients(IEnumerable<string> ingredients);
-    Task<IBaseResponse<string>> InsertWithIngredients(RecipeDtoWithIngredients? modelDto);
+    Task<IBaseResponse<string>> InsertWithIngredients(RecipeDtoWithIngredientsAndSteps? modelDto);
 }
