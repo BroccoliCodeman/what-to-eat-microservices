@@ -95,7 +95,6 @@ public class RecipeService : IRecipeService
 
             recipe.Id = Guid.NewGuid();
 
-            var recipe = _mapper.Map<Recipe>(recipereqest);
             // Отримати всі інгредієнти з бази даних
             var Ingredients = await _unitOfWork.IngredientRepository.GetAsync();
 
