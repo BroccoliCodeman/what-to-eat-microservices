@@ -1,0 +1,902 @@
+[
+  {
+    "title": "Kimchi",
+    "photo": "kimchi.jpg",
+    "description": "Traditional Korean side dish made of fermented vegetables, usually cabbage and radishes, seasoned with various spices.",
+    "calories": 30,
+    "servings": 4,
+    "cookingTime": 60,
+    "creationDate": "2024-05-01T18:26:42.102Z",
+    "ingredients": [
+      {
+        "quantity": 1,
+        "name": "Cabbage",
+        "weightUnit": {
+          "type": "head"
+        }
+      },
+      {
+        "quantity": 4,
+        "name": "Radishes",
+        "weightUnit": {
+          "type": "count"
+        }
+      },
+      {
+        "quantity": 100,
+        "name": "Red pepper flakes",
+        "weightUnit": {
+          "type": "grams"
+        }
+      },
+      {
+        "quantity": 50,
+        "name": "Garlic",
+        "weightUnit": {
+          "type": "grams"
+        }
+      },
+      {
+        "quantity": 30,
+        "name": "Ginger",
+        "weightUnit": {
+          "type": "grams"
+        }
+      },
+      {
+        "quantity": 30,
+        "name": "Fish sauce",
+        "weightUnit": {
+          "type": "milliliters"
+        }
+      }
+    ],
+    "steps": [
+      {
+        "order": 1,
+        "description": "Cut the cabbage into bite-sized pieces."
+      },
+      {
+        "order": 2,
+        "description": "Slice the radishes thinly."
+      },
+      {
+        "order": 3,
+        "description": "Mix cabbage, radishes, red pepper flakes, garlic, ginger, and fish sauce in a bowl."
+      },
+      {
+        "order": 4,
+        "description": "Pack the mixture into a jar, press down until the brine rises. Seal the jar."
+      },
+      {
+        "order": 5,
+        "description": "Let it ferment at room temperature for 1-5 days."
+      },
+      {
+        "order": 6,
+        "description": "Once fermented, store in the refrigerator. It will continue to ferment, but at a much slower rate."
+      }
+    ]
+  },
+  {
+    "title": "Bibimbap",
+    "photo": "bibimbap.jpg",
+    "description": "A mixed rice dish topped with assorted vegetables, meat, and a fried egg, often served with spicy sauce.",
+    "calories": 450,
+    "servings": 2,
+    "cookingTime": 30,
+    "creationDate": "2024-05-01T18:26:42.102Z",
+    "ingredients": [
+      {
+        "quantity": 200,
+        "name": "Cooked rice",
+        "weightUnit": {
+          "type": "grams"
+        }
+      },
+      {
+        "quantity": 100,
+        "name": "Beef (or tofu for vegetarian option)",
+        "weightUnit": {
+          "type": "grams"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "Carrot",
+        "weightUnit": {
+          "type": "count"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "Zucchini",
+        "weightUnit": {
+          "type": "count"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "Spinach",
+        "weightUnit": {
+          "type": "count"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "Egg",
+        "weightUnit": {
+          "type": "count"
+        }
+      },
+      {
+        "quantity": 50,
+        "name": "Soy sauce",
+        "weightUnit": {
+          "type": "milliliters"
+        }
+      },
+      {
+        "quantity": 20,
+        "name": "Sesame oil",
+        "weightUnit": {
+          "type": "milliliters"
+        }
+      }
+    ],
+    "steps": [
+      {
+        "order": 1,
+        "description": "Cook rice according to package instructions."
+      },
+      {
+        "order": 2,
+        "description": "Slice beef thinly and marinate in soy sauce and sesame oil for 10 minutes."
+      },
+      {
+        "order": 3,
+        "description": "Julienne carrot and zucchini. Blanch spinach."
+      },
+      {
+        "order": 4,
+        "description": "Stir-fry each vegetable separately."
+      },
+      {
+        "order": 5,
+        "description": "Fry the egg sunny-side-up."
+      },
+      {
+        "order": 6,
+        "description": "Assemble the bibimbap by placing rice in a bowl, arranging vegetables and beef on top, and adding the fried egg."
+      },
+      {
+        "order": 7,
+        "description": "Serve with spicy gochujang sauce on the side."
+      }
+    ]
+  },
+{
+    "title": "Bulgogi",
+    "photo": "bulgogi.jpg",
+    "description": "Thinly sliced beef marinated in a sweet and savory sauce, grilled or stir-fried.",
+    "calories": 300,
+    "servings": 4,
+    "cookingTime": 45,
+    "creationDate": "2024-05-01T18:26:42.102Z",
+    "ingredients": [
+      {
+        "quantity": 400,
+        "name": "Beef (rib eye or sirloin)",
+        "weightUnit": {
+          "type": "grams"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "Pear",
+        "weightUnit": {
+          "type": "count"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "Onion",
+        "weightUnit": {
+          "type": "count"
+        }
+      },
+      {
+        "quantity": 30,
+        "name": "Soy sauce",
+        "weightUnit": {
+          "type": "milliliters"
+        }
+      },
+      {
+        "quantity": 30,
+        "name": "Sesame oil",
+        "weightUnit": {
+          "type": "milliliters"
+        }
+      },
+      {
+        "quantity": 3,
+        "name": "Garlic cloves",
+        "weightUnit": {
+          "type": "count"
+        }
+      },
+      {
+        "quantity": 30,
+        "name": "Brown sugar",
+        "weightUnit": {
+          "type": "grams"
+        }
+      }
+    ],
+    "steps": [
+      {
+        "order": 1,
+        "description": "Slice beef thinly against the grain."
+      },
+      {
+        "order": 2,
+        "description": "Blend pear, onion, soy sauce, sesame oil, garlic, and brown sugar to make the marinade."
+      },
+      {
+        "order": 3,
+        "description": "Marinate beef in the sauce for at least 2 hours or overnight."
+      },
+      {
+        "order": 4,
+        "description": "Grill or stir-fry beef until cooked through."
+      }
+    ]
+  },
+  {
+    "title": "Japchae",
+    "photo": "japchae.jpg",
+    "description": "Stir-fried glass noodles with assorted vegetables and sometimes beef or mushrooms, seasoned with soy sauce and sesame oil.",
+    "calories": 250,
+    "servings": 4,
+    "cookingTime": 30,
+    "creationDate": "2024-05-01T18:26:42.102Z",
+    "ingredients": [
+      {
+        "quantity": 200,
+        "name": "Sweet potato starch noodles (dangmyeon)",
+        "weightUnit": {
+          "type": "grams"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "Carrot",
+        "weightUnit": {
+          "type": "count"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "Onion",
+        "weightUnit": {
+          "type": "count"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "Spinach",
+        "weightUnit": {
+          "type": "count"
+        }
+      },
+      {
+        "quantity": 100,
+        "name": "Beef (or mushrooms for vegetarian option)",
+        "weightUnit": {
+          "type": "grams"
+        }
+      },
+      {
+        "quantity": 30,
+        "name": "Soy sauce",
+        "weightUnit": {
+          "type": "milliliters"
+        }
+      },
+      {
+        "quantity": 20,
+        "name": "Sesame oil",
+        "weightUnit": {
+          "type": "milliliters"
+        }
+      }
+    ],
+    "steps": [
+      {
+        "order": 1,
+        "description": "Soak sweet potato starch noodles in warm water until softened."
+      },
+      {
+        "order": 2,
+        "description": "Julienne carrot and onion. Blanch spinach."
+      },
+      {
+        "order": 3,
+        "description": "Stir-fry each vegetable separately."
+      },
+      {
+        "order": 4,
+        "description": "Stir-fry beef (or mushrooms) until cooked."
+      },
+      {
+        "order": 5,
+        "description": "Mix all ingredients together with soy sauce and sesame oil."
+      }
+    ]
+  },
+  {
+    "title": "Dak Galbi",
+    "photo": "dak-galbi.jpg",
+    "description": "Spicy stir-fried chicken with vegetables and rice cakes, typically cooked on a large cast-iron pan.",
+    "calories": 350,
+    "servings": 2,
+    "cookingTime": 40,
+    "creationDate": "2024-05-01T18:26:42.102Z",
+    "ingredients": [
+      {
+        "quantity": 300,
+        "name": "Chicken breast (or thigh)",
+        "weightUnit": {
+          "type": "grams"
+        }
+      },
+      {
+        "quantity": 200,
+        "name": "Rice cakes (tteok)",
+        "weightUnit": {
+          "type": "grams"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "Cabbage",
+        "weightUnit": {
+          "type": "count"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "Sweet potato",
+        "weightUnit": {
+          "type": "count"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "Carrot",
+        "weightUnit": {
+          "type": "count"
+        }
+      },
+      {
+        "quantity": 3,
+        "name": "Green onions",
+        "weightUnit": {
+          "type": "count"
+        }
+      },
+      {
+        "quantity": 50,
+        "name": "Gochujang (Korean chili paste)",
+        "weightUnit": {
+          "type": "grams"
+        }
+      }
+    ],
+    "steps": [
+      {
+        "order": 1,
+        "description": "Cut chicken into bite-sized pieces."
+      },
+      {
+        "order": 2,
+        "description": "Cut cabbage, sweet potato, carrot, and green onions into bite-sized pieces."
+      },
+      {
+        "order": 3,
+        "description": "Stir-fry chicken until cooked through."
+      },
+      {
+        "order": 4,
+        "description": "Add vegetables and rice cakes, stir-fry until tender."
+      },
+      {
+        "order": 5,
+        "description": "Mix in gochujang and stir well to coat everything evenly."
+      }
+    ]
+  },
+  {
+    "title": "Samgyeopsal",
+    "photo": "samgyeopsal.jpg",
+    "description": "Grilled pork belly served with lettuce leaves, garlic, ssamjang (fermented bean paste), and assorted condiments.",
+    "calories": 400,
+    "servings": 4,
+    "cookingTime": 30,
+    "creationDate": "2024-05-01T18:26:42.102Z",
+    "ingredients": [
+      {
+        "quantity": 500,
+        "name": "Pork belly slices",
+        "weightUnit": {
+          "type": "grams"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "Lettuce",
+        "weightUnit": {
+          "type": "count"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "Garlic bulb",
+        "weightUnit": {
+          "type": "count"
+        }
+      },
+      {
+        "quantity": 50,
+        "name": "Ssamjang (fermented bean paste)",
+        "weightUnit": {
+          "type": "grams"
+        }
+      },
+      {
+        "quantity": 30,
+        "name": "Soybean oil",
+        "weightUnit": {
+          "type": "milliliters"
+        }
+      }
+    ],
+    "steps": [
+      {
+        "order": 1,
+        "description": "Grill pork belly slices on a hot grill until cooked through and crispy."
+      },
+      {
+        "order": 2,
+        "description": "Wrap pork belly slices in lettuce leaves, along with garlic and ssamjang."
+      },
+      {
+        "order": 3,
+        "description": "Enjoy with assorted condiments."
+      }
+    ]
+  },
+  {
+    "title": "Tteokbokki",
+    "photo": "tteokbokki.jpg",
+    "description": "Spicy stir-fried rice cakes cooked in a sweet and spicy gochujang sauce.",
+    "calories": 250,
+    "servings": 4,
+    "cookingTime": 30,
+    "creationDate": "2024-05-01T18:26:42.102Z",
+    "ingredients": [
+      {
+        "quantity": 300,
+        "name": "Rice cakes (tteok)",
+        "weightUnit": {
+          "type": "grams"
+        }
+      },
+      {
+        "quantity": 100,
+        "name": "Fish cakes",
+        "weightUnit": {
+          "type": "grams"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "Onion",
+        "weightUnit": {
+          "type": "count"
+        }
+      },
+      {
+        "quantity": 3,
+        "name": "Green onions",
+        "weightUnit": {
+          "type": "count"
+        }
+      },
+      {
+        "quantity": 50,
+        "name": "Gochujang (Korean chili paste)",
+        "weightUnit": {
+          "type": "grams"
+        }
+      },
+      {
+        "quantity": 30,
+        "name": "Brown sugar",
+        "weightUnit": {
+          "type": "grams"
+        }
+      },
+      {
+        "quantity": 30,
+        "name": "Soy sauce",
+        "weightUnit": {
+          "type": "milliliters"
+        }
+      }
+    ],
+    "steps": [
+      {
+        "order": 1,
+        "description": "Soak rice cakes in warm water for 20-30 minutes until softened."
+      },
+      {
+        "order": 2,
+        "description": "Cut onion into thin slices. Cut fish cakes into bite-sized pieces. Slice green onions."
+      },
+      {
+        "order": 3,
+        "description": "In a pan, combine gochujang, brown sugar, soy sauce, and 2 cups of water. Bring to a boil."
+      },
+      {
+        "order": 4,
+        "description": "Add rice cakes, fish cakes, onion, and half of the green onions to the boiling sauce."
+      },
+      {
+        "order": 5,
+        "description": "Simmer over medium heat until the sauce thickens and rice cakes are tender, stirring occasionally."
+      },
+      {
+        "order": 6,
+        "description": "Garnish with remaining green onions before serving."
+      }
+    ]
+  },
+  {
+    "title": "Haemul Pajeon",
+    "photo": "haemul-pajeon.jpg",
+    "description": "Savory Korean pancake made with a variety of seafood and scallions, often served as a snack or appetizer.",
+    "calories": 200,
+    "servings": 2,
+    "cookingTime": 25,
+    "creationDate": "2024-05-01T18:26:42.102Z",
+    "ingredients": [
+      {
+        "quantity": 100,
+        "name": "All-purpose flour",
+        "weightUnit": {
+          "type": "grams"
+        }
+      },
+      {
+        "quantity": 100,
+        "name": "Rice flour",
+        "weightUnit": {
+          "type": "grams"
+        }
+      },
+      {
+        "quantity": 200,
+        "name": "Assorted seafood (shrimp, squid, mussels)",
+        "weightUnit": {
+          "type": "grams"
+        }
+      },
+      {
+        "quantity": 3,
+        "name": "Scallions",
+        "weightUnit": {
+          "type": "count"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "Egg",
+        "weightUnit": {
+          "type": "count"
+        }
+      },
+      {
+        "quantity": 100,
+        "name": "Water",
+        "weightUnit": {
+          "type": "milliliters"
+        }
+      }
+    ],
+    "steps": [
+      {
+        "order": 1,
+        "description": "Mix all-purpose flour, rice flour, egg, and water in a bowl to make the batter."
+      },
+      {
+        "order": 2,
+        "description": "Cut seafood into bite-sized pieces and slice scallions."
+      },
+      {
+        "order": 3,
+        "description": "Heat oil in a non-stick skillet over medium heat."
+      },
+      {
+        "order": 4,
+        "description": "Pour a ladleful of batter into the skillet, spread evenly."
+      },
+      {
+        "order": 5,
+        "description": "Arrange seafood and scallions on top of the batter."
+      },
+      {
+        "order": 6,
+        "description": "Cook until the bottom is golden brown, then flip and cook the other side."
+      },
+      {
+        "order": 7,
+        "description": "Serve hot with dipping sauce."
+      }
+    ]
+  },
+  {
+    "title": "Kimbap",
+    "photo": "kimbap.jpg",
+    "description": "Korean seaweed rice rolls filled with a variety of ingredients like vegetables, meat, and eggs, similar to sushi.",
+    "calories": 180,
+    "servings": 4,
+    "cookingTime": 30,
+    "creationDate": "2024-05-01T18:26:42.102Z",
+    "ingredients": [
+      {
+        "quantity": 4,
+        "name": "Nori (seaweed) sheets",
+        "weightUnit": {
+          "type": "count"
+        }
+      },
+      {
+        "quantity": 2,
+        "name": "Rice",
+        "weightUnit": {
+          "type": "cups"
+        }
+      },
+      {
+        "quantity": 100,
+        "name": "Ham (or crab sticks for seafood option)",
+        "weightUnit": {
+          "type": "grams"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "Carrot",
+        "weightUnit": {
+          "type": "count"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "Cucumber",
+        "weightUnit": {
+          "type": "count"
+        }
+      },
+      {
+        "quantity": 2,
+        "name": "Eggs",
+        "weightUnit": {
+          "type": "count"
+        }
+      },
+      {
+        "quantity": 50,
+        "name": "Spinach",
+        "weightUnit": {
+          "type": "grams"
+        }
+      },
+      {
+        "quantity": 2,
+        "name": "Yellow pickled radish (danmuji)",
+        "weightUnit": {
+          "type": "count"
+        }
+      }
+    ],
+    "steps": [
+      {
+        "order": 1,
+        "description": "Cook rice and let it cool slightly."
+      },
+      {
+        "order": 2,
+        "description": "Cut ham, carrot, cucumber, and yellow pickled radish into long strips."
+      },
+      {
+        "order": 3,
+        "description": "Blanch spinach and roll it into a cylinder shape."
+      },
+      {
+        "order": 4,
+        "description": "Cook eggs as thin omelets and slice into strips."
+      },
+      {
+        "order": 5,
+        "description": "Place a nori sheet on a bamboo sushi mat, spread rice evenly on top."
+      },
+      {
+        "order": 6,
+        "description": "Arrange filling ingredients in a line across the center of the rice."
+      },
+      {
+        "order": 7,
+        "description": "Roll the kimbap tightly using the sushi mat, seal the edge with a bit of water."
+      },
+      {
+        "order": 8,
+        "description": "Slice the rolled kimbap into bite-sized pieces."
+      }
+    ]
+  },
+  {
+    "title": "Yukgaejang",
+    "photo": "yukgaejang.jpg",
+    "description": "Spicy beef soup with shredded beef, vegetables, and noodles, typically served as a hearty meal.",
+    "calories": 350,
+    "servings": 4,
+    "cookingTime": 90,
+    "creationDate": "2024-05-01T18:26:42.102Z",
+    "ingredients": [
+      {
+        "quantity": 500,
+        "name": "Beef brisket",
+        "weightUnit": {
+          "type": "grams"
+        }
+      },
+      {
+        "quantity": 100,
+        "name": "Fernbrake (gosari)",
+        "weightUnit": {
+          "type": "grams"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "Onion",
+        "weightUnit": {
+          "type": "count"
+        }
+      },
+      {
+        "quantity": 3,
+        "name": "Green onions",
+        "weightUnit": {
+          "type": "count"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "Egg",
+        "weightUnit": {
+          "type": "count"
+        }
+      },
+      {
+        "quantity": 50,
+        "name": "Gochugaru (Korean red chili flakes)",
+        "weightUnit": {
+          "type": "grams"
+        }
+      },
+      {
+        "quantity": 30,
+        "name": "Soy sauce",
+        "weightUnit": {
+          "type": "milliliters"
+        }
+      }
+    ],
+    "steps": [
+      {
+        "order": 1,
+        "description": "Boil beef brisket in water for 1-1.5 hours until tender. Remove beef and shred into thin strips."
+      },
+      {
+        "order": 2,
+        "description": "Soak fernbrake (gosari) in water until softened."
+      },
+      {
+        "order": 3,
+        "description": "Slice onion thinly and chop green onions."
+      },
+      {
+        "order": 4,
+        "description": "In a pot, combine shredded beef, soaked fernbrake, sliced onion, green onions, gochugaru, and soy sauce. Add 8 cups of water."
+      },
+      {
+        "order": 5,
+        "description": "Bring to a boil, then reduce heat and simmer for 30-40 minutes."
+      },
+      {
+        "order": 6,
+        "description": "Add noodles and cook according to package instructions."
+      },
+      {
+        "order": 7,
+        "description": "Crack an egg into the soup and stir gently until cooked."
+      },
+      {
+        "order": 8,
+        "description": "Serve hot, garnished with additional green onions."
+      }
+    ]
+  },
+  {
+    "title": "Makgeolli",
+    "photo": "makgeolli.jpg",
+    "description": "Traditional Korean rice wine with a milky appearance, slightly sweet and fizzy.",
+    "calories": 120,
+    "servings": 2,
+    "cookingTime": 1440,
+    "creationDate": "2024-05-01T18:26:42.102Z",
+    "ingredients": [
+      {
+        "quantity": 200,
+        "name": "Short-grain rice",
+        "weightUnit": {
+          "type": "grams"
+        }
+      },
+      {
+        "quantity": 100,
+        "name": "Nuruk (fermentation starter)",
+        "weightUnit": {
+          "type": "grams"
+        }
+      },
+      {
+        "quantity": 500,
+        "name": "Water",
+        "weightUnit": {
+          "type": "milliliters"
+        }
+      }
+    ],
+    "steps": [
+      {
+        "order": 1,
+        "description": "Wash rice thoroughly and soak in water for 1-2 hours."
+      },
+      {
+        "order": 2,
+        "description": "Steam rice until cooked, then let it cool to room temperature."
+      },
+      {
+        "order": 3,
+        "description": "In a large bowl, mix cooked rice with nuruk and water."
+      },
+      {
+        "order": 4,
+        "description": "Transfer mixture to a clean container, cover loosely, and ferment at room temperature for 1-2 days."
+      },
+      {
+        "order": 5,
+        "description": "Strain the liquid through a fine mesh sieve to remove solids."
+      },
+      {
+        "order": 6,
+        "description": "Serve chilled or at room temperature."
+      }
+    ]
+  }
+]

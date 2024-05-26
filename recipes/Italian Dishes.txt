@@ -1,0 +1,612 @@
+[
+  
+  {
+  "servings": 4,
+  "cookingTime": 30,
+  "title": "Homemade Pizza",
+  "photo": "https://example.com/pizza.jpg",
+  "description": "Enjoy a classic homemade pizza with your favorite toppings!",
+  "calories": 2500,
+  "creationDate": "2024-05-01T18:26:42.102Z",
+  "ingredients": [
+    {
+      "quantity": 1,
+      "name": "pizza dough",
+      "weightUnit": {
+        "type": "unit"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "cup pizza sauce",
+      "weightUnit": {
+        "type": "cup"
+      }
+    },
+    {
+      "quantity": 2,
+      "name": "cups shredded mozzarella cheese",
+      "weightUnit": {
+        "type": "cup"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "cup toppings (e.g., sliced pepperoni, bell peppers, onions)",
+      "weightUnit": {
+        "type": "cup"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "description": "Preheat your oven to 450°F (230°C).",
+      "order": 1
+    },
+    {
+      "description": "Roll out the pizza dough on a floured surface to your desired thickness.",
+      "order": 2
+    },
+    {
+      "description": "Transfer the rolled-out dough to a lightly greased pizza pan or baking sheet.",
+      "order": 3
+    },
+    {
+      "description": "Spread the pizza sauce evenly over the dough, leaving a small border around the edges.",
+      "order": 4
+    },
+    {
+      "description": "Sprinkle the shredded mozzarella cheese over the sauce.",
+      "order": 5
+    },
+    {
+      "description": "Add your favorite toppings, distributing them evenly over the cheese.",
+      "order": 6
+    },
+    {
+      "description": "Bake in the preheated oven for 12-15 minutes, or until the crust is golden brown and the cheese is bubbly and melted.",
+      "order": 7
+    },
+    {
+      "description": "Remove the pizza from the oven and let it cool for a few minutes before slicing and serving.",
+      "order": 8
+    },
+    {
+      "description": "Enjoy your delicious homemade pizza!",
+      "order": 9
+    }
+  ]
+},
+{
+  "servings": 6,
+  "cookingTime": 60,
+  "title": "Classic Homemade Lasagna",
+  "photo": "https://example.com/lasagna.jpg",
+  "description": "Indulge in layers of pasta, rich meat sauce, and creamy cheese in this classic homemade lasagna recipe.",
+  "calories": 3500,
+  "creationDate": "2024-05-01T18:26:42.102Z",
+  "ingredients": [
+    {
+      "quantity": 9,
+      "name": "lasagna noodles",
+      "weightUnit": {
+        "type": "unit"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "pound ground beef",
+      "weightUnit": {
+        "type": "pound"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "onion, chopped",
+      "weightUnit": {
+        "type": "unit"
+      }
+    },
+    {
+      "quantity": 2,
+      "name": "cloves garlic, minced",
+      "weightUnit": {
+        "type": "unit"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "can (28 oz) crushed tomatoes",
+      "weightUnit": {
+        "type": "can"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "can (6 oz) tomato paste",
+      "weightUnit": {
+        "type": "can"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "cup water",
+      "weightUnit": {
+        "type": "cup"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "tablespoon sugar",
+      "weightUnit": {
+        "type": "tablespoon"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "teaspoon dried basil leaves",
+      "weightUnit": {
+        "type": "teaspoon"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "teaspoon dried oregano leaves",
+      "weightUnit": {
+        "type": "teaspoon"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "teaspoon salt",
+      "weightUnit": {
+        "type": "teaspoon"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "container (15 oz) ricotta cheese",
+      "weightUnit": {
+        "type": "container"
+      }
+    },
+    {
+      "quantity": 2,
+      "name": "cups shredded mozzarella cheese",
+      "weightUnit": {
+        "type": "cup"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "cup grated Parmesan cheese",
+      "weightUnit": {
+        "type": "cup"
+      }
+    },
+    {
+      "quantity": 2,
+      "name": "tablespoons chopped fresh parsley",
+      "weightUnit": {
+        "type": "tablespoon"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "description": "Preheat your oven to 350°F (175°C).",
+      "order": 1
+    },
+    {
+      "description": "In a large skillet, cook ground beef, onion, and garlic over medium heat until meat is no longer pink; drain.",
+      "order": 2
+    },
+    {
+      "description": "Stir in crushed tomatoes, tomato paste, water, sugar, basil, oregano, and salt; bring to a boil. Reduce heat; simmer uncovered for 30 minutes, stirring occasionally.",
+      "order": 3
+    },
+    {
+      "description": "In a mixing bowl, combine ricotta cheese, 1 cup mozzarella cheese, Parmesan cheese, and parsley.",
+      "order": 4
+    },
+    {
+      "description": "Spread 1 cup meat sauce in an ungreased 13x9-inch baking dish. Layer with 3 noodles, 1 cup meat sauce, and a third of the cheese mixture.",
+      "order": 5
+    },
+    {
+      "description": "Repeat layers twice.",
+      "order": 6
+    },
+    {
+      "description": "Top with remaining meat sauce and mozzarella cheese.",
+      "order": 7
+    },
+    {
+      "description": "Cover and bake for 45 minutes.",
+      "order": 8
+    },
+    {
+      "description": "Uncover; bake 10 minutes longer or until bubbly.",
+      "order": 9
+    },
+    {
+      "description": "Let stand for 10 minutes before cutting.",
+      "order": 10
+    },
+    {
+      "description": "Serve and enjoy your delicious homemade lasagna!",
+      "order": 11
+    }
+  ]
+},
+{
+  "servings": 4,
+  "cookingTime": 20,
+  "title": "Spaghetti Carbonara",
+  "photo": "https://example.com/carbonara.jpg",
+  "description": "Indulge in the creamy goodness of Spaghetti Carbonara with crispy pancetta and Parmesan cheese.",
+  "calories": 1500,
+  "creationDate": "2024-05-01T18:26:42.102Z",
+  "ingredients": [
+    {
+      "quantity": 12,
+      "name": "ounces spaghetti",
+      "weightUnit": {
+        "type": "ounce"
+      }
+    },
+    {
+      "quantity": 4,
+      "name": "ounces pancetta or bacon, diced",
+      "weightUnit": {
+        "type": "ounce"
+      }
+    },
+    {
+      "quantity": 3,
+      "name": "large eggs",
+      "weightUnit": {
+        "type": "unit"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "cup grated Parmesan cheese",
+      "weightUnit": {
+        "type": "cup"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "teaspoon freshly ground black pepper",
+      "weightUnit": {
+        "type": "teaspoon"
+      }
+    },
+    {
+      "quantity": 2,
+      "name": "tablespoons chopped fresh parsley (optional)",
+      "weightUnit": {
+        "type": "tablespoon"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "description": "Bring a large pot of salted water to a boil. Cook spaghetti according to package instructions until al dente. Reserve 1 cup of pasta water, then drain spaghetti.",
+      "order": 1
+    },
+    {
+      "description": "While the spaghetti is cooking, heat a large skillet over medium heat. Add diced pancetta or bacon and cook until crispy, about 5-7 minutes. Remove from skillet and set aside on paper towels to drain.",
+      "order": 2
+    },
+    {
+      "description": "In a mixing bowl, whisk together eggs, grated Parmesan cheese, and freshly ground black pepper until well combined.",
+      "order": 3
+    },
+    {
+      "description": "Return the drained spaghetti to the pot. Immediately pour the egg and cheese mixture over the hot spaghetti, tossing quickly to coat. The heat from the spaghetti will cook the eggs and melt the cheese, creating a creamy sauce. If the sauce is too thick, add reserved pasta water, a little at a time, until desired consistency is reached.",
+      "order": 4
+    },
+    {
+      "description": "Add the crispy pancetta or bacon to the spaghetti, tossing to combine.",
+      "order": 5
+    },
+    {
+      "description": "Serve immediately, garnished with chopped fresh parsley if desired. Enjoy your delicious Spaghetti Carbonara!",
+      "order": 6
+    }
+  ]
+},
+{
+  "servings": 4,
+  "cookingTime": 30,
+  "title": "Mushroom Risotto",
+  "photo": "https://example.com/risotto.jpg",
+  "description": "Indulge in the creamy texture and earthy flavors of Mushroom Risotto, a classic Italian dish that's perfect for any occasion.",
+  "calories": 1200,
+  "creationDate": "2024-05-01T18:26:42.102Z",
+  "ingredients": [
+    {
+      "quantity": 4,
+      "name": "cups chicken or vegetable broth",
+      "weightUnit": {
+        "type": "cup"
+      }
+    },
+    {
+      "quantity": 2,
+      "name": "tablespoons olive oil",
+      "weightUnit": {
+        "type": "tablespoon"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "medium onion, finely chopped",
+      "weightUnit": {
+        "type": "unit"
+      }
+    },
+    {
+      "quantity": 2,
+      "name": "cloves garlic, minced",
+      "weightUnit": {
+        "type": "unit"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "cup Arborio rice",
+      "weightUnit": {
+        "type": "cup"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "cup dry white wine",
+      "weightUnit": {
+        "type": "cup"
+      }
+    },
+    {
+      "quantity": 8,
+      "name": "ounces mushrooms (such as cremini or shiitake), sliced",
+      "weightUnit": {
+        "type": "ounce"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "cup grated Parmesan cheese",
+      "weightUnit": {
+        "type": "cup"
+      }
+    },
+    {
+      "quantity": 2,
+      "name": "tablespoons butter",
+      "weightUnit": {
+        "type": "tablespoon"
+      }
+    },
+    {
+      "quantity": 2,
+      "name": "tablespoons chopped fresh parsley",
+      "weightUnit": {
+        "type": "tablespoon"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "teaspoon salt",
+      "weightUnit": {
+        "type": "teaspoon"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "teaspoon freshly ground black pepper",
+      "weightUnit": {
+        "type": "teaspoon"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "description": "In a medium saucepan, heat the chicken or vegetable broth over low heat. Keep warm.",
+      "order": 1
+    },
+    {
+      "description": "In a large skillet or saucepan, heat olive oil over medium heat. Add finely chopped onion and cook until translucent, about 3-4 minutes.",
+      "order": 2
+    },
+    {
+      "description": "Add minced garlic and cook for an additional 1 minute, until fragrant.",
+      "order": 3
+    },
+    {
+      "description": "Add Arborio rice to the skillet and cook, stirring constantly, for 1-2 minutes, until the rice is coated with oil and slightly translucent.",
+      "order": 4
+    },
+    {
+      "description": "Pour in dry white wine and cook, stirring constantly, until the wine is absorbed.",
+      "order": 5
+    },
+    {
+      "description": "Add sliced mushrooms to the skillet and cook, stirring occasionally, until they are tender and browned, about 5-6 minutes.",
+      "order": 6
+    },
+    {
+      "description": "Add a ladleful of warm broth to the skillet and stir until the liquid is absorbed. Continue adding broth, one ladleful at a time, stirring frequently, until the rice is creamy and tender, but still slightly firm to the bite (al dente), about 18-20 minutes.",
+      "order": 7
+    },
+    {
+      "description": "Stir in grated Parmesan cheese, butter, chopped fresh parsley, salt, and black pepper until well combined.",
+      "order": 8
+    },
+    {
+      "description": "Remove from heat and let the risotto rest for a minute or two.",
+      "order": 9
+    },
+    {
+      "description": "Serve immediately, garnished with additional grated Parmesan cheese and fresh parsley if desired. Enjoy your delicious Mushroom Risotto!",
+      "order": 10
+    }
+  ]
+},
+{
+  "servings": 4,
+  "cookingTime": 60,
+  "title": "Spaghetti Bolognese",
+  "photo": "https://example.com/bolognese.jpg",
+  "description": "Savor the rich and savory flavors of Spaghetti Bolognese, a hearty Italian dish that's perfect for a comforting meal.",
+  "calories": 1800,
+  "creationDate": "2024-05-01T18:26:42.102Z",
+  "ingredients": [
+    {
+      "quantity": 8,
+      "name": "ounces spaghetti",
+      "weightUnit": {
+        "type": "ounce"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "tablespoon olive oil",
+      "weightUnit": {
+        "type": "tablespoon"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "onion, finely chopped",
+      "weightUnit": {
+        "type": "unit"
+      }
+    },
+    {
+      "quantity": 2,
+      "name": "cloves garlic, minced",
+      "weightUnit": {
+        "type": "unit"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "carrot, finely chopped",
+      "weightUnit": {
+        "type": "unit"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "celery stalk, finely chopped",
+      "weightUnit": {
+        "type": "unit"
+      }
+    },
+    {
+      "quantity": 8,
+      "name": "ounces ground beef",
+      "weightUnit": {
+        "type": "ounce"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "can (14 oz) crushed tomatoes",
+      "weightUnit": {
+        "type": "can"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "tablespoon tomato paste",
+      "weightUnit": {
+        "type": "tablespoon"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "teaspoon dried oregano",
+      "weightUnit": {
+        "type": "teaspoon"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "teaspoon dried basil",
+      "weightUnit": {
+        "type": "teaspoon"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "teaspoon salt",
+      "weightUnit": {
+        "type": "teaspoon"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "teaspoon freshly ground black pepper",
+      "weightUnit": {
+        "type": "teaspoon"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "cup beef or vegetable broth",
+      "weightUnit": {
+        "type": "cup"
+      }
+    },
+    {
+      "quantity": 2,
+      "name": "tablespoons chopped fresh parsley",
+      "weightUnit": {
+        "type": "tablespoon"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "cup grated Parmesan cheese",
+      "weightUnit": {
+        "type": "cup"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "description": "Cook spaghetti according to package instructions until al dente. Drain and set aside.",
+      "order": 1
+    },
+    {
+      "description": "In a large skillet, heat olive oil over medium heat. Add chopped onion, minced garlic, chopped carrot, and chopped celery. Cook until vegetables are softened, about 5-7 minutes.",
+      "order": 2
+    },
+    {
+      "description": "Add ground beef to the skillet. Cook, breaking up the meat with a spoon, until browned and cooked through, about 5-7 minutes.",
+      "order": 3
+    },
+    {
+      "description": "Stir in crushed tomatoes, tomato paste, dried oregano, dried basil, salt, and black pepper. Pour in beef or vegetable broth. Bring to a simmer and cook for 15-20 minutes, stirring occasionally, until the sauce has thickened.",
+      "order": 4
+    },
+    {
+      "description": "Toss cooked spaghetti with the Bolognese sauce until evenly coated.",
+      "order": 5
+    },
+    {
+      "description": "Serve hot, garnished with chopped fresh parsley and grated Parmesan cheese.",
+      "order": 6
+    },
+    {
+      "description": "Enjoy your delicious Spaghetti Bolognese!",
+      "order": 7
+    }
+  ]
+}
+
+]
