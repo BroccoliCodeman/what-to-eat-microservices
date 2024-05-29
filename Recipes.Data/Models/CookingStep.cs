@@ -2,10 +2,7 @@ namespace Recipes.Data.Models;
 
 public class CookingStep
 {
-    public CookingStep()
-    {
-        Id = Guid.NewGuid();
-    }
+
 
     public Guid Id { get; set; }
     public string Description { get; set; } = string.Empty;

@@ -15,7 +15,7 @@ public class IngredientConfiguration : IEntityTypeConfiguration<Ingredient>
             .IsRequired();
 
         builder
-            .HasOne(i => i.WeightUnit);
+            .HasOne(i => i.WeightUnit).WithMany(p=>p.Ingredients);
 
         builder.HasMany(p => p.Recipes).WithMany(p => p.Ingredients);
          

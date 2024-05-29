@@ -26,12 +26,32 @@ public class RecipeController : ControllerBase
     {
         return Ok(await _service.Insert(modelDto));
     }
-    [HttpPost("PostWithIgredients")]
-    public async Task<ActionResult> InsertWithIngredients([FromBody] RecipeDtoWithIngredients modelDto)
+    [HttpPost("PostWithIngredientsAndCoocingSteps")]
+    public async Task<ActionResult> InsertWithIngredientsAndCoocingSteps([FromBody] RecipeDtoWithIngredientsAndSteps modelDto)
     {
         return Ok(await _service.InsertWithIngredients(modelDto));
     }
+    [HttpPost("PostRangeWithIngredientsAndCoocingSteps")]
+    public async Task<ActionResult> InsertRangeWithIngredients([FromBody]  ICollection<RecipeDtoWithIngredientsAndSteps> modelDtos)
+    {
+        try
+        {
+            foreach(var model in modelDtos)
+            {
+                await _service.InsertWithIngredients(model);
+            }
 
+            return Ok();
+        }
+        catch(Exception ex)
+        {
+            return BadRequest(ex.Message);
+        }    
+          
+            
+            
+     
+    }
     [HttpDelete]
     public async Task<ActionResult> DeleteById(Guid id)
     {
@@ -52,10 +72,6 @@ public class RecipeController : ControllerBase
     public async Task<ActionResult<IEnumerable<RecipeDto>>> GetByIngredients( RecipeByIngredientsRequest request)
     {
      
-
-
-
-
         return Ok(await _service.GetByIngredients(request.Ingredients));
     }
 

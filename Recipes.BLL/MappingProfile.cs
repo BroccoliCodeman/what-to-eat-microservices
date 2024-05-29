@@ -9,14 +9,18 @@ public class MappingProfile : Profile
     public MappingProfile()
     {
         CreateMap<CookingStep, CookingStepDto>().ReverseMap();
-        
+        CreateMap<CookingStep, CookingStepDtoNoId>().ReverseMap();
+
         CreateMap<Ingredient, IngredientDto>().ReverseMap();
         
         CreateMap<Recipe, RecipeDto>().ReverseMap();
-        CreateMap<Recipe, RecipeDtoWithIngredients>().ReverseMap();
+       
 
-
-        // CreateMap<RecipeIngredient, RecipeIngredientDto>().ReverseMap();
+        CreateMap<RecipeDtoWithIngredientsAndSteps, Recipe>()
+        .ForMember(dest => dest.Ingredients, opt => { opt.MapFrom(src => src.Ingredients);opt.AllowNull(); })
+        .ForMember(dest => dest.CookingSteps,opt => { opt.MapFrom(src => src.Steps); opt.AllowNull(); } )
+        .ReverseMap()
+    ;
 
         CreateMap<Respond, RespondDto>().ReverseMap();
         

@@ -2,10 +2,7 @@ namespace Recipes.Data.Models;
 
 public class Recipe
 {
-    public Recipe()
-    {
-        Id = Guid.NewGuid();
-    }
+
 
     public Guid Id { get; set; }
     public int Servings { get; set; }

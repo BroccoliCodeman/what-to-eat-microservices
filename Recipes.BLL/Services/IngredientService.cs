@@ -55,10 +55,11 @@ public class IngredientService : IIngredientService
             if (modelDto is null) 
                 return BaseResponse<IngredientDto>.CreateBaseResponse<string>("Objet can`t be empty...", StatusCode.BadRequest);
             
-            modelDto.Id = Guid.NewGuid();
 
             var ing = _mapper.Map<Ingredient>(modelDto);
 
+            ing.Id = Guid.NewGuid();
+            
             var value = _unitOfWork.WeightUnitRepository.GetAsync().Result.Where(p=>p.Type == modelDto.WeightUnit.Type);
 
             if (value.Count()!=0){

@@ -13,7 +13,6 @@ namespace Recipes.API
         {
             services.AddScoped<ICookingStepRepository, CookingStepRepository>();
             services.AddScoped<IIngredientRepository, IngredientRepository>();
-           // services.AddScoped<IRecipeIngredientRepository, RecipeIngredientRepository>();
             services.AddScoped<IRecipeRepository, RecipeRepository>();
             services.AddScoped<IRespondRepository, RespondRepository>();
             services.AddScoped<ISavedRecipeRepository, SavedRecipeRepository>();
@@ -24,7 +23,6 @@ namespace Recipes.API
         {
             services.AddScoped<ICookingStepService, CookingStepService>();
             services.AddScoped<IIngredientService, IngredientService>();
-         //   services.AddScoped<IRecipeIngredientService, RecipeIngredientService>();
             services.AddScoped<IRecipeService, RecipeService>();
             services.AddScoped<IRespondService, RespondService>();
             services.AddScoped<ISavedRecipeService, SavedRecipeService>();
