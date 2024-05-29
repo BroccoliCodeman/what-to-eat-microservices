@@ -13,7 +13,4 @@ public class RecipeDto
     public int? Calories { get; set; }
     public DateTime CreationDate { get; set; } = DateTime.Now;
 
-
-
-
 }

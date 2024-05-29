@@ -12,4 +12,10 @@
       <Compile Remove="Models\RecipeToIngredient.cs" />
     </ItemGroup>
 
+    <ItemGroup>
+      <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.16" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="7.0.16" />
+      <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    </ItemGroup>
+
 </Project>

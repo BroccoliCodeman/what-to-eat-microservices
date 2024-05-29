@@ -27,6 +27,7 @@ namespace Recipes.API
             services.AddScoped<IRespondService, RespondService>();
             services.AddScoped<ISavedRecipeService, SavedRecipeService>();
             services.AddScoped<IWeightUnitService, WeightUnitService>();
+            services.AddScoped<ITokenService, TokenService>();
         }
     }
 }
