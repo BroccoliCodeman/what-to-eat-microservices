@@ -94,6 +94,8 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
+builder.Services.AddCors();
+
 var app = builder.Build();
 //seeding
 using (var scope = app.Services.CreateScope())
@@ -119,11 +121,24 @@ using (var scope = app.Services.CreateScope())
     }
 }
 
-app.UseSwagger();
-app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Recipes.API v1"));
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Recipes.API v1"));
 
+}
 
+app.UseRouting();
+app.UseCors(options => options
+.WithOrigins(new[] { "http://localhost:4200" })
+.AllowAnyHeader()
+.AllowAnyMethod()
+.AllowCredentials()
+);
+
+app.UseAuthentication();
 app.UseAuthorization();
+
 app.MapControllers();
 
 app.Run();
