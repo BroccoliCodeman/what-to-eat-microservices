@@ -10,6 +10,9 @@ public class RecipeConfiguration : IEntityTypeConfiguration<Recipe>
     {
         builder.HasKey(r => r.Id);
 
+        builder.Property(x => x.Id)
+            .ValueGeneratedOnAdd();
+
         builder
             .Property(r => r.Servings)
             .IsRequired();

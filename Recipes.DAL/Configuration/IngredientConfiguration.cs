@@ -10,6 +10,9 @@ public class IngredientConfiguration : IEntityTypeConfiguration<Ingredient>
     {
         builder.HasKey(i => i.Id);
 
+        builder.Property(x => x.Id)
+            .ValueGeneratedOnAdd();
+
         builder
             .Property(i => i.Quantity)
             .IsRequired();

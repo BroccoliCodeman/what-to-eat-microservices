@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Recipes.BLL.Interfaces;
 using Recipes.Data.DataTransferObjects;
@@ -14,13 +15,15 @@ public class RecipeController : ControllerBase
     {
         _service = service;
     }
-    
+
+    [Authorize(Policy = "OnlyUser")]
     [HttpGet("Get")]
     public async Task<ActionResult<IEnumerable<RecipeDto>>> Get()
     {
         return Ok(await _service.Get());
     }
     
+
     [HttpPost]
     public async Task<ActionResult> Insert([FromBody] RecipeDto modelDto)
     {

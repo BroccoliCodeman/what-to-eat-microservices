@@ -2,8 +2,6 @@ namespace Recipes.Data.Models;
 
 public class Recipe
 {
-
-
     public Guid Id { get; set; }
     public int Servings { get; set; }
     public int CookingTime { get; set; }

@@ -1,5 +1,4 @@
 using AutoMapper;
-using Microsoft.IdentityModel.Abstractions;
 using Recipes.BLL.Interfaces;
 using Recipes.DAL.Interfaces;
 using Recipes.DAL.Repositories;

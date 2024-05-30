@@ -10,6 +10,9 @@ public class RespondConfiguration : IEntityTypeConfiguration<Respond>
     {
         builder.HasKey(x => x.Id);
 
+        builder.Property(x => x.Id)
+            .ValueGeneratedOnAdd();
+
         builder
             .Property(r => r.Text)
             .HasMaxLength(1000)
