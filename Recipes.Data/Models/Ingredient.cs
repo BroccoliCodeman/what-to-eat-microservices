@@ -7,10 +7,6 @@ public class Ingredient
     public float Quantity { get; set; }
     public string Name { get; set; }
     public int? WeightUnitId { get; set; }
-    public WeightUnit WeightUnit { get; set; } = null!; 
-    // треба викорситовувати список можливих одиниць  виміру а не кожну окремо 
-    //public ICollection<WeightUnit> WeightUnits { get; set; } = null!;
-
-
-    public ICollection<Recipe> Recipes { get; set; } = null!;
+    public WeightUnit? WeightUnit { get; set; } = null!; 
+    public ICollection<Recipe>? Recipes { get; set; } = null!;
 }

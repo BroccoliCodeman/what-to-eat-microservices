@@ -1,39 +1,36 @@
 using Recipes.DAL.Infrastructure.Interfaces;
 using Recipes.DAL.Repositories.Interfaces;
 
-namespace Recipes.DAL.Infrastructure;
+namespace Recipes.DAL.Repositories;
 
 public class UnitOfWork : IUnitOfWork
 {
-    private readonly RecipesContext _recipesContext;
+    protected readonly RecipesContext DatabaseContext;
 
     public ICookingStepRepository CookingStepRepository { get; }
     public IIngredientRepository IngredientRepository { get; }
     public IRecipeRepository RecipeRepository { get; }
     public IRespondRepository RespondRepository { get; }
-    public ISavedRecipeRepository SavedRecipeRepository { get; }
     public IWeightUnitRepository WeightUnitRepository { get; }
 
     public UnitOfWork(
-        RecipesContext recipesContext,
+        RecipesContext databaseContext,
         ICookingStepRepository cookingStepRepository,
         IIngredientRepository ingredientRepository,
         IRecipeRepository recipeRepository,
         IRespondRepository respondRepository,
-        ISavedRecipeRepository savedRecipeRepository,
         IWeightUnitRepository weightUnitRepository)
     {
-        _recipesContext = recipesContext;
+        this.DatabaseContext = databaseContext;
         CookingStepRepository = cookingStepRepository;
         IngredientRepository = ingredientRepository;
         RecipeRepository = recipeRepository;
         RespondRepository = respondRepository;
-        SavedRecipeRepository = savedRecipeRepository;
         WeightUnitRepository = weightUnitRepository;
     }
 
     public async Task SaveChangesAsync()
     {
-        await _recipesContext.SaveChangesAsync();
+        await DatabaseContext.SaveChangesAsync();
     }
 }

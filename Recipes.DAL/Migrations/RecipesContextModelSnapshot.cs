@@ -29,7 +29,7 @@ namespace Recipes.DAL.Migrations
 
                     b.HasIndex("RecipesId");
 
-                    b.ToTable("IngredientRecipe", (string)null);
+                    b.ToTable("IngredientRecipe");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
@@ -49,7 +49,7 @@ namespace Recipes.DAL.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("RoleClaims", (string)null);
+                    b.ToTable("RoleClaims");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<System.Guid>", b =>
@@ -69,7 +69,7 @@ namespace Recipes.DAL.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("UserClaims", (string)null);
+                    b.ToTable("UserClaims");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<System.Guid>", b =>
@@ -88,7 +88,7 @@ namespace Recipes.DAL.Migrations
                     b.Property<Guid>("UserId")
                         .HasColumnType("TEXT");
 
-                    b.ToTable("UserLogins", (string)null);
+                    b.ToTable("UserLogins");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<System.Guid>", b =>
@@ -101,7 +101,7 @@ namespace Recipes.DAL.Migrations
 
                     b.HasKey("UserId", "RoleId");
 
-                    b.ToTable("UserRoles", (string)null);
+                    b.ToTable("UserRoles");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<System.Guid>", b =>
@@ -120,7 +120,22 @@ namespace Recipes.DAL.Migrations
                     b.Property<string>("Value")
                         .HasColumnType("TEXT");
 
-                    b.ToTable("UserTokens", (string)null);
+                    b.ToTable("UserTokens");
+                });
+
+            modelBuilder.Entity("RecipeUser", b =>
+                {
+                    b.Property<Guid>("SavedRecipesId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid>("UsersId")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("SavedRecipesId", "UsersId");
+
+                    b.HasIndex("UsersId");
+
+                    b.ToTable("RecipeUser");
                 });
 
             modelBuilder.Entity("Recipes.Data.Models.CookingStep", b =>
@@ -145,7 +160,7 @@ namespace Recipes.DAL.Migrations
 
                     b.HasIndex("RecipeId");
 
-                    b.ToTable("CookingSteps", (string)null);
+                    b.ToTable("CookingSteps");
                 });
 
             modelBuilder.Entity("Recipes.Data.Models.Ingredient", b =>
@@ -162,14 +177,13 @@ namespace Recipes.DAL.Migrations
                         .HasColumnType("REAL");
 
                     b.Property<int?>("WeightUnitId")
-                        .IsRequired()
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
                     b.HasIndex("WeightUnitId");
 
-                    b.ToTable("Ingredients", (string)null);
+                    b.ToTable("Ingredients");
                 });
 
             modelBuilder.Entity("Recipes.Data.Models.Recipe", b =>
@@ -204,9 +218,14 @@ namespace Recipes.DAL.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
+                    b.Property<Guid?>("UserId")
+                        .HasColumnType("TEXT");
+
                     b.HasKey("Id");
 
-                    b.ToTable("Recipes", (string)null);
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Recipes");
                 });
 
             modelBuilder.Entity("Recipes.Data.Models.Respond", b =>
@@ -231,31 +250,7 @@ namespace Recipes.DAL.Migrations
 
                     b.HasIndex("RecipeId");
 
-                    b.ToTable("Responds", (string)null);
-                });
-
-            modelBuilder.Entity("Recipes.Data.Models.SavedRecipe", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
-
-                    b.Property<bool>("IsSaved")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<Guid>("RecipeId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("RecipeId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("SavedRecipes", (string)null);
+                    b.ToTable("Responds");
                 });
 
             modelBuilder.Entity("Recipes.Data.Models.User", b =>
@@ -320,7 +315,7 @@ namespace Recipes.DAL.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users", (string)null);
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("Recipes.Data.Models.UserRole", b =>
@@ -340,7 +335,7 @@ namespace Recipes.DAL.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Roles", (string)null);
+                    b.ToTable("Roles");
                 });
 
             modelBuilder.Entity("Recipes.Data.Models.WeightUnit", b =>
@@ -356,7 +351,7 @@ namespace Recipes.DAL.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("WeightUnits", (string)null);
+                    b.ToTable("WeightUnits");
                 });
 
             modelBuilder.Entity("IngredientRecipe", b =>
@@ -370,6 +365,21 @@ namespace Recipes.DAL.Migrations
                     b.HasOne("Recipes.Data.Models.Recipe", null)
                         .WithMany()
                         .HasForeignKey("RecipesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("RecipeUser", b =>
+                {
+                    b.HasOne("Recipes.Data.Models.Recipe", null)
+                        .WithMany()
+                        .HasForeignKey("SavedRecipesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Recipes.Data.Models.User", null)
+                        .WithMany()
+                        .HasForeignKey("UsersId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -389,11 +399,18 @@ namespace Recipes.DAL.Migrations
                 {
                     b.HasOne("Recipes.Data.Models.WeightUnit", "WeightUnit")
                         .WithMany("Ingredients")
-                        .HasForeignKey("WeightUnitId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("WeightUnitId");
 
                     b.Navigation("WeightUnit");
+                });
+
+            modelBuilder.Entity("Recipes.Data.Models.Recipe", b =>
+                {
+                    b.HasOne("Recipes.Data.Models.User", "User")
+                        .WithMany("CreatedRecipes")
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Recipes.Data.Models.Respond", b =>
@@ -407,35 +424,16 @@ namespace Recipes.DAL.Migrations
                     b.Navigation("Recipe");
                 });
 
-            modelBuilder.Entity("Recipes.Data.Models.SavedRecipe", b =>
-                {
-                    b.HasOne("Recipes.Data.Models.Recipe", "Recipe")
-                        .WithMany("SavedRecipes")
-                        .HasForeignKey("RecipeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Recipes.Data.Models.User", null)
-                        .WithMany("SavedRecipes")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Recipe");
-                });
-
             modelBuilder.Entity("Recipes.Data.Models.Recipe", b =>
                 {
                     b.Navigation("CookingSteps");
 
                     b.Navigation("Responds");
-
-                    b.Navigation("SavedRecipes");
                 });
 
             modelBuilder.Entity("Recipes.Data.Models.User", b =>
                 {
-                    b.Navigation("SavedRecipes");
+                    b.Navigation("CreatedRecipes");
                 });
 
             modelBuilder.Entity("Recipes.Data.Models.WeightUnit", b =>

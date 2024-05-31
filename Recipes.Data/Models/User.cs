@@ -12,6 +12,8 @@ namespace Recipes.Data.Models
         public string FirstName { get; set; } = null!;
         public string LastName { get; set; }=null!;
         public string Avatar {  get; set; } = null!;
-        public ICollection<SavedRecipe> SavedRecipes { get; } = new List<SavedRecipe>();
+        public ICollection<Recipe>? SavedRecipes { get; } = new List<Recipe>();
+        public ICollection<Recipe>? CreatedRecipes { get; } = new List<Recipe>();
+
     }
 }

@@ -9,7 +9,6 @@ public interface IUnitOfWork
     //IRecipeIngredientRepository RecipeIngredientRepository { get; }
     IRecipeRepository RecipeRepository { get; }
     IRespondRepository RespondRepository { get; }
-    ISavedRecipeRepository SavedRecipeRepository { get; }
     IWeightUnitRepository WeightUnitRepository { get; }
     
     Task SaveChangesAsync();

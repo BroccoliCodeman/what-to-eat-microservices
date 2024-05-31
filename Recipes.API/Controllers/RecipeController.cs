@@ -105,35 +105,4 @@ public class RecipeController : ControllerBase
             _ => throw new ArgumentOutOfRangeException()
         };
     }
-    
-    [HttpGet("GetByName")]
-    public async Task<ActionResult<IEnumerable<RecipeDto>>> GetByName(string name)
-    {
-        var response = await _service.GetByName(name);
-        
-        return response.StatusCode switch
-        {
-            Data.Responses.Enums.StatusCode.Ok => Ok(response),
-            Data.Responses.Enums.StatusCode.NotFound => NotFound(response),
-            Data.Responses.Enums.StatusCode.BadRequest => BadRequest(response),
-            Data.Responses.Enums.StatusCode.InternalServerError => StatusCode(500, response),
-            _ => throw new ArgumentOutOfRangeException()
-        };
-    }
-
-
-    [HttpPost("GetByIngredients")]
-    public async Task<ActionResult<IEnumerable<RecipeDto>>> GetByIngredients( RecipeByIngredientsRequest request)
-    {
-        var response = await _service.GetByIngredients(request.Ingredients);
-        
-        return response.StatusCode switch
-        {
-            Data.Responses.Enums.StatusCode.Ok => Ok(response),
-            Data.Responses.Enums.StatusCode.NotFound => NotFound(response),
-            Data.Responses.Enums.StatusCode.BadRequest => BadRequest(response),
-            Data.Responses.Enums.StatusCode.InternalServerError => StatusCode(500, response),
-            _ => throw new ArgumentOutOfRangeException()
-        };
-    }
 }
