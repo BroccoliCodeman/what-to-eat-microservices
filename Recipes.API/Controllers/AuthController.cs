@@ -12,6 +12,7 @@ namespace Recipes.API.Controllers
     [Route("api/[controller]")]
     public class AuthController : ControllerBase
     {
+
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
         private readonly ITokenService _tokenService;

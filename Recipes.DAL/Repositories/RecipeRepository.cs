@@ -4,6 +4,7 @@ using Recipes.DAL.Infrastructure;
 using Recipes.DAL.Repositories.Interfaces;
 using Recipes.Data.Helpers;
 using Recipes.Data.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace Recipes.DAL.Repositories;
 
@@ -34,4 +35,60 @@ public class RecipeRepository : GenericRepository<Recipe>, IRecipeRepository
 
         return recipe!;
     }
+    public async Task SaveRecipe(Guid UserId, Guid RecipeId)
+    {
+        // Завантаження користувача з бази даних, включаючи збережені рецепти
+        var user = await _databaseContext.Users
+           .Include(u => u.SavedRecipes)
+           .FirstOrDefaultAsync(u => u.Id == UserId);
+
+        if (user == null)
+        {
+            throw new Exception("User not found.");
+        }
+
+
+        // Завантаження рецепта з бази даних
+        var recipeToSave = await _databaseContext.Recipes
+            .FirstOrDefaultAsync(r => r.Id == RecipeId);
+
+        if (recipeToSave == null)
+        {
+            throw new Exception("Recipe not found.");
+        }
+
+        // Додавання рецепта до списку збережених рецептів користувача
+        user.SavedRecipes.Add(recipeToSave);
+
+        // Збереження змін у базі даних
+        await _databaseContext.SaveChangesAsync();
+    }
+
+    public async Task RemoveRecipeFromSaved(Guid UserId, Guid RecipeId)
+    {
+    // Завантаження користувача з бази даних, включаючи збережені рецепти
+        var user = await _databaseContext.Users
+            .Include(u => u.SavedRecipes)
+            .FirstOrDefaultAsync(u => u.Id == UserId);
+
+        if (user == null)
+        {
+            throw new Exception("User not found.");
+        }
+
+        // Завантаження рецепта з бази даних
+        var recipeToSave = await _databaseContext.Recipes
+            .FirstOrDefaultAsync(r => r.Id == RecipeId);
+
+        if (recipeToSave == null)
+        {
+            throw new Exception("Recipe not found.");
+        }
+
+        // Додавання рецепта до списку збережених рецептів користувача
+        user.SavedRecipes.Remove(recipeToSave);
+
+        // Збереження змін у базі даних
+        await _databaseContext.SaveChangesAsync();    }
+
 }
