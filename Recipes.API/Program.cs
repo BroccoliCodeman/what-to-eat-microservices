@@ -34,6 +34,7 @@ builder.Services.AddDbContext<RecipesContext>(options => options.UseSqlite(
     }).AddEntityFrameworkStores<RecipesContext>().AddDefaultTokenProviders();
 
 builder.Services.AddTransient<EmailSenderConfiguration>();
+builder.Services.AddTransient<GoogleClientConfiguration>();
 builder.Services.AddTransient<IEmailSender,EmailSender>();
 
 // Configure JWT authentication
@@ -100,7 +101,16 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
-builder.Services.AddCors();
+builder.Services.AddCors(opt =>
+{
+    opt.AddPolicy(name: "GoogleCors", builder =>
+    {
+        builder.WithOrigins("http://localhost:4200")
+        .AllowAnyHeader()
+        .AllowAnyMethod()
+        .AllowCredentials();
+    });
+});
 
 var app = builder.Build();
 //seeding
@@ -135,12 +145,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseRouting();
-app.UseCors(options => options
-.WithOrigins(new[] { "http://localhost:4200" })
-.AllowAnyHeader()
-.AllowAnyMethod()
-.AllowCredentials()
-);
+app.UseCors("GoogleCors");
 
 app.UseAuthentication();
 app.UseAuthorization();
