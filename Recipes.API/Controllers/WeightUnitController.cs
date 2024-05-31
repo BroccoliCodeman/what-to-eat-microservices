@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using Recipes.BLL.Interfaces;
+using Recipes.BLL.Services.Interfaces;
 using Recipes.Data.DataTransferObjects;
 
 namespace Recipes.API.Controllers;
@@ -18,18 +18,30 @@ public class WeightUnitController : ControllerBase
     [HttpGet("Get")]
     public async Task<ActionResult<IEnumerable<WeightUnitDto>>> Get()
     {
-        return Ok(await _service.Get());
+        var response = await _service.Get();
+        
+        return response.StatusCode switch
+        {
+            Data.Responses.Enums.StatusCode.Ok => Ok(response),
+            Data.Responses.Enums.StatusCode.NotFound => NotFound(response),
+            Data.Responses.Enums.StatusCode.BadRequest => BadRequest(response),
+            Data.Responses.Enums.StatusCode.InternalServerError => StatusCode(500, response),
+            _ => throw new ArgumentOutOfRangeException()
+        };
     }
     
     [HttpPost]
     public async Task<ActionResult> Insert([FromBody] WeightUnitDto modelDto)
     {
-        return Ok(await _service.Insert(modelDto));
-    }
-
-    [HttpDelete]
-    public async Task<ActionResult> DeleteById(int id)
-    {
-        return Ok(await _service.DeleteById(id));
+        var response = await _service.Insert(modelDto);
+        
+        return response.StatusCode switch
+        {
+            Data.Responses.Enums.StatusCode.Ok => Ok(response),
+            Data.Responses.Enums.StatusCode.NotFound => NotFound(response),
+            Data.Responses.Enums.StatusCode.BadRequest => BadRequest(response),
+            Data.Responses.Enums.StatusCode.InternalServerError => StatusCode(500, response),
+            _ => throw new ArgumentOutOfRangeException()
+        };
     }
 }

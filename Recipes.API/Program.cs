@@ -5,14 +5,13 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
 using Recipes.API;
-using Recipes.BLL;
-using Recipes.BLL.Interfaces;
-using Recipes.BLL.Services;
 using Recipes.DAL;
 using Recipes.DAL.Seeding;
 using Recipes.Data.DataTransferObjects;
 using Recipes.Data.Models;
 using System.Text;
+using Recipes.BLL.Helpers;
+using Recipes.BLL.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -97,6 +96,7 @@ builder.Services.AddSwaggerGen(c =>
 builder.Services.AddCors();
 
 var app = builder.Build();
+
 //seeding
 using (var scope = app.Services.CreateScope())
 {
@@ -125,7 +125,6 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Recipes.API v1"));
-
 }
 
 app.UseRouting();
