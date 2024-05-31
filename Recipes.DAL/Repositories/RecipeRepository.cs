@@ -15,7 +15,7 @@ public class RecipeRepository : GenericRepository<Recipe>, IRecipeRepository
 
     public async Task<PagedList<Recipe>> GetAsync(PaginationParams? paginationParams)
     {
-        var recipes = await _table.Include(p => p.Ingredients).Include(p=>p.SavedRecipes).ToListAsync();
+        var recipes = await _table.Include(p => p.Ingredients).Include(p=>p.Users).ToListAsync();
 
         var totalCount = recipes.Count;
 
@@ -28,7 +28,7 @@ public class RecipeRepository : GenericRepository<Recipe>, IRecipeRepository
     }
     public override async Task<Recipe> GetByIdAsync(Guid id)
     {
-        var recipes = await _table.Include(p => p.Ingredients).ThenInclude(x=>x.WeightUnit).Include(p => p.SavedRecipes).ToListAsync();
+        var recipes = await _table.Include(p => p.Ingredients).ThenInclude(x=>x.WeightUnit).Include(p => p.Users).ToListAsync();
 
         var recipe = recipes.Where(x => x.Id == id).FirstOrDefault();
 

@@ -1,5 +1,5 @@
-using Recipes.DAL.Interfaces;
-using Recipes.DAL.Interfaces.ModelsRepositories;
+using Recipes.DAL.Infrastructure.Interfaces;
+using Recipes.DAL.Repositories.Interfaces;
 
 namespace Recipes.DAL.Repositories;
 

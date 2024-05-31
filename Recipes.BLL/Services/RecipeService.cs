@@ -1,12 +1,13 @@
 using AutoMapper;
-using Microsoft.EntityFrameworkCore.Query.Internal;
-using Recipes.BLL.Interfaces;
-using Recipes.DAL.Interfaces;
+using Recipes.BLL.Helpers;
+using Recipes.BLL.Services.Interfaces;
+using Recipes.DAL.Infrastructure.Interfaces;
 using Recipes.Data.DataTransferObjects;
-using Recipes.Data.Enums;
-using Recipes.Data.Interfaces;
+using Recipes.Data.Helpers;
 using Recipes.Data.Models;
 using Recipes.Data.Responses;
+using Recipes.Data.Responses.Enums;
+using Recipes.Data.Responses.Interfaces;
 
 namespace Recipes.BLL.Services;
 
@@ -14,11 +15,14 @@ public class RecipeService : IRecipeService
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IMapper _mapper;
+    private readonly ResponseCreator _responseCreator;
 
     public RecipeService(IUnitOfWork unitOfWork, IMapper mapper)
     {
         _unitOfWork = unitOfWork;
         _mapper = mapper;
+        _responseCreator = new ResponseCreator();
+
     }
 
     public async Task<IBaseResponse<RecipeDto>> GetById(Guid id)
@@ -40,24 +44,39 @@ public class RecipeService : IRecipeService
         }
     }
 
-    public async Task<IBaseResponse<IEnumerable<RecipeDto>>> Get()
+    public async Task<IBaseResponse<PagedList<RecipeDto>>> Get(PaginationParams paginationParams, SearchParams? searchParams)
     {
         try
         {
-            var models = await _unitOfWork.RecipeRepository.GetAsync();
+            var models = await _unitOfWork.RecipeRepository.GetAsync(paginationParams);
 
-            if (models.Count is 0)
-            {
-                return BaseResponse<RecipeDto>.CreateBaseResponse<IEnumerable<RecipeDto>>("0 objects found", StatusCode.NotFound);
-            }
+            if (models.Count == 0)
+                return _responseCreator.CreateBaseNotFound<PagedList<RecipeDto>>("No recipes found.");
 
             var dtoList = models.Select(model => _mapper.Map<RecipeDto>(model)).ToList();
 
-            return BaseResponse<RecipeDto>.CreateBaseResponse<IEnumerable<RecipeDto>>("Success!", StatusCode.Ok, dtoList, dtoList.Count);
+            if (searchParams != null)
+            {
+                if (!string.IsNullOrEmpty(searchParams.Title))
+                {
+                    dtoList = dtoList.Where(dto => dto.Title.Contains(searchParams.Title, StringComparison.OrdinalIgnoreCase)).ToList();
+                }
+
+                if (searchParams.Ingredients != null && searchParams.Ingredients.Any())
+                {
+                    dtoList = dtoList.Where(dto => searchParams.Ingredients.All(ingredient =>
+                        dto.Ingredients.Any(dtoIngredient => dtoIngredient.Name.Contains(ingredient, StringComparison.OrdinalIgnoreCase))
+                    )).ToList();
+                }
+            }
+
+            var pagedList = new PagedList<RecipeDto>(dtoList, models.TotalCount, models.CurrentPage, models.PageSize);
+
+            return _responseCreator.CreateBaseOk(pagedList, pagedList.TotalCount);
         }
         catch (Exception e)
         {
-            return BaseResponse<RecipeDto>.CreateBaseResponse<IEnumerable<RecipeDto>>(e.Message, StatusCode.InternalServerError);
+            return _responseCreator.CreateBaseServerError<PagedList<RecipeDto>>(e.Message);
         }
     }
 
@@ -189,172 +208,4 @@ public class RecipeService : IRecipeService
         }
     }
 
-
-
-    public async Task<IBaseResponse<IEnumerable<RecipeDto>>> GetByName(string name)
-    {
-        try
-        {
-            var models = await _unitOfWork.RecipeRepository.GetAsync();
-
-            if (models.Count == 0)
-            {
-                return BaseResponse<RecipeDto>.CreateBaseResponse<IEnumerable<RecipeDto>>("0 objects found", StatusCode.NotFound);
-            }
-
-            var dtoList = models.Select(model => _mapper.Map<RecipeDto>(model)).ToList().Where(x => x.Title.Contains(name)); ;
-
-            return BaseResponse<RecipeDto>.CreateBaseResponse<IEnumerable<RecipeDto>>("Success!", StatusCode.Ok, dtoList, dtoList.ToList().Count);
-        }
-        catch (Exception e)
-        {
-            return BaseResponse<RecipeDto>.CreateBaseResponse<IEnumerable<RecipeDto>>(e.Message, StatusCode.InternalServerError);
-        }
-    }
-
-
-    /*    public async Task<IBaseResponse<IEnumerable<RecipeDto>>> GetByIngredients(IEnumerable<string> ingredients)
-        {
-            try
-            {
-                var models = await _unitOfWork.RecipeRepository.GetAsync();
-
-                if (models.Count == 0)
-                {
-                    return BaseResponse<RecipeDto>.CreateBaseResponse<IEnumerable<RecipeDto>>("0 objects found", StatusCode.NotFound);
-                }
-
-                // Отримання інгредієнтів з бази даних
-                var allIngredients = await _unitOfWork.IngredientRepository.GetAsync();
-
-                // Фільтрація інгредієнтів зі списку ingredients
-                var filteredIngredients = allIngredients.Where(ing => ingredients.Contains(ing.Name)).ToList();
-
-                // Отримання рецептів, які містять хоча б один інгредієнт зі списку ingredients
-                var matchingRecipes = new List<Recipe>();
-
-                foreach (var model in models)
-                {
-                    foreach (var ingredient in model.Ingredients)
-                    {
-                        if (filteredIngredients.Any(ing => ing.Name == ingredient.Name))
-                        {
-                            matchingRecipes.Add(model);
-                            break;
-                        }
-                    }
-                }
-
-                if (matchingRecipes.Count == 0)
-                {
-                    return BaseResponse<RecipeDto>.CreateBaseResponse<IEnumerable<RecipeDto>>("No recipes found with any of the specified ingredients", StatusCode.NotFound);
-                }
-
-                // Мапування знайдених рецептів на DTO
-                var dtoList = matchingRecipes.Select(model => _mapper.Map<RecipeDto>(model)).ToList();
-
-                return BaseResponse<RecipeDto>.CreateBaseResponse<IEnumerable<RecipeDto>>("Success!", StatusCode.Ok, dtoList, matchingRecipes.Count);
-            }
-            catch (Exception e)
-            {
-                return BaseResponse<RecipeDto>.CreateBaseResponse<IEnumerable<RecipeDto>>(e.Message, StatusCode.InternalServerError);
-            }
-        }
-    */
-
-    /*    public async Task<IBaseResponse<IEnumerable<RecipeDto>>> GetByIngredients(IEnumerable<string> ingredients)
-        {
-            try
-            {
-                var models = await _unitOfWork.RecipeRepository.GetAsync();
-
-                if (models.Count == 0)
-                {
-                    return BaseResponse<RecipeDto>.CreateBaseResponse<IEnumerable<RecipeDto>>("0 objects found", StatusCode.NotFound);
-                }
-
-                // Отримання інгредієнтів з бази даних
-                var allIngredients = await _unitOfWork.IngredientRepository.GetAsync();
-
-                // Фільтрація інгредієнтів зі списку ingredients
-                var filteredIngredients = allIngredients.Where(ing => ingredients.Contains(ing.Name)).ToList();
-
-                // Отримання рецептів, які містять усі інгредієнти зі списку ingredients
-                var matchingRecipes = new List<Recipe>();
-
-                foreach (var model in models)
-                {
-                    bool hasAllIngredients = true;
-                    foreach (var ingredientName in ingredients)
-                    {
-                        if (!model.Ingredients.Any(ing => ing.Name == ingredientName))
-                        {
-                            hasAllIngredients = false;
-                            break;
-                        }
-                    }
-                    if (hasAllIngredients)
-                    {
-                        matchingRecipes.Add(model);
-                    }
-                }
-
-                if (matchingRecipes.Count == 0)
-                {
-                    return BaseResponse<RecipeDto>.CreateBaseResponse<IEnumerable<RecipeDto>>("No recipes found with all of the specified ingredients", StatusCode.NotFound);
-                }
-
-                // Мапування знайдених рецептів на DTO
-                var dtoList = matchingRecipes.Select(model => _mapper.Map<RecipeDto>(model)).ToList();
-
-                return BaseResponse<RecipeDto>.CreateBaseResponse<IEnumerable<RecipeDto>>("Success!", StatusCode.Ok, dtoList, matchingRecipes.Count);
-            }
-            catch (Exception e)
-            {
-                return BaseResponse<RecipeDto>.CreateBaseResponse<IEnumerable<RecipeDto>>(e.Message, StatusCode.InternalServerError);
-            }
-        }*/
-    public async Task<IBaseResponse<IEnumerable<RecipeDto>>> GetByIngredients(IEnumerable<string> ingredients)
-    {
-        try
-        {
-            var models = await _unitOfWork.RecipeRepository.GetAsync();
-
-            if (models.Count == 0)
-            {
-                return BaseResponse<RecipeDto>.CreateBaseResponse<IEnumerable<RecipeDto>>("0 objects found", StatusCode.NotFound);
-            }
-
-            // Отримання інгредієнтів з бази даних
-            var allIngredients = await _unitOfWork.IngredientRepository.GetAsync();
-
-            // Фільтрація інгредієнтів зі списку ingredients
-            var filteredIngredients = allIngredients.Where(ing => ingredients.Contains(ing.Name)).ToList();
-
-            // Отримання рецептів, які містять хоча б один інгредієнт зі списку ingredients, але не містять рецептів без інгредієнтів зі списку
-            var matchingRecipes = new List<Recipe>();
-
-            foreach (var model in models)
-            {
-                if (model.Ingredients.Any(ing => ingredients.Contains(ing.Name)) && !model.Ingredients.All(ing => !ingredients.Contains(ing.Name)))
-                {
-                    matchingRecipes.Add(model);
-                }
-            }
-
-            if (matchingRecipes.Count == 0)
-            {
-                return BaseResponse<RecipeDto>.CreateBaseResponse<IEnumerable<RecipeDto>>("No recipes found with any of the specified ingredients", StatusCode.NotFound);
-            }
-
-            // Мапування знайдених рецептів на DTO
-            var dtoList = matchingRecipes.Select(model => _mapper.Map<RecipeDto>(model)).ToList();
-
-            return BaseResponse<RecipeDto>.CreateBaseResponse<IEnumerable<RecipeDto>>("Success!", StatusCode.Ok, dtoList, matchingRecipes.Count);
-        }
-        catch (Exception e)
-        {
-            return BaseResponse<RecipeDto>.CreateBaseResponse<IEnumerable<RecipeDto>>(e.Message, StatusCode.InternalServerError);
-        }
-    }
 }
