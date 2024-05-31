@@ -1,11 +1,10 @@
 using AutoMapper;
-using Recipes.BLL.Interfaces;
-using Recipes.DAL.Interfaces;
+using Recipes.BLL.Helpers;
+using Recipes.BLL.Services.Interfaces;
+using Recipes.DAL.Infrastructure.Interfaces;
 using Recipes.Data.DataTransferObjects;
-using Recipes.Data.Enums;
-using Recipes.Data.Interfaces;
 using Recipes.Data.Models;
-using Recipes.Data.Responses;
+using Recipes.Data.Responses.Interfaces;
 
 namespace Recipes.BLL.Services;
 
@@ -13,11 +12,13 @@ public class RespondService : IRespondService
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IMapper _mapper;
+    private readonly ResponseCreator _responseCreator;
 
     public RespondService(IUnitOfWork unitOfWork, IMapper mapper)
     {
         _unitOfWork = unitOfWork;
         _mapper = mapper;
+        _responseCreator = new ResponseCreator();
     }
 
     public Task<IBaseResponse<RespondDto>> GetById(Guid id)
@@ -25,24 +26,22 @@ public class RespondService : IRespondService
         throw new NotImplementedException();
     }
 
-    public async Task<IBaseResponse<IEnumerable<RespondDto>>> Get()
+    public async Task<IBaseResponse<List<RespondDto>>> Get()
     {
         try
         {
             var models = await _unitOfWork.RespondRepository.GetAsync();
 
             if (models.Count is 0)
-            {
-                return BaseResponse<RespondDto>.CreateBaseResponse<IEnumerable<RespondDto>>("0 objects found", StatusCode.NotFound);
-            }
+                return _responseCreator.CreateBaseNotFound<List<RespondDto>>("No responds found.");
 
             var dtoList = models.Select(model => _mapper.Map<RespondDto>(model)).ToList();
 
-            return BaseResponse<RespondDto>.CreateBaseResponse<IEnumerable<RespondDto>>("Success!", StatusCode.Ok, dtoList, dtoList.Count);
+            return _responseCreator.CreateBaseOk(dtoList, dtoList.Count);
         }
         catch(Exception e) 
         {
-            return BaseResponse<RespondDto>.CreateBaseResponse<IEnumerable<RespondDto>>(e.Message, StatusCode.InternalServerError);
+            return _responseCreator.CreateBaseServerError<List<RespondDto>>(e.Message);
         }
     }
 
@@ -51,17 +50,16 @@ public class RespondService : IRespondService
         try
         {
             if (modelDto is null) 
-                return BaseResponse<RespondDto>.CreateBaseResponse<string>("Objet can`t be empty...", StatusCode.BadRequest);
+                return _responseCreator.CreateBaseBadRequest<string>("Respond is empty.");
             
             await _unitOfWork.RespondRepository.InsertAsync(_mapper.Map<Respond>(modelDto));
             await _unitOfWork.SaveChangesAsync();
 
-            return BaseResponse<RespondDto>.CreateBaseResponse<string>("Object inserted!", StatusCode.Ok, resultsCount: 1);
-
+            return _responseCreator.CreateBaseOk($"Respond added.", 1);
         }
         catch (Exception e)
         {
-            return BaseResponse<RespondDto>.CreateBaseResponse<string>(e.Message, StatusCode.InternalServerError);
+            return _responseCreator.CreateBaseServerError<string>(e.Message);
         }
     }
 
@@ -69,16 +67,17 @@ public class RespondService : IRespondService
     {
         try
         {
+            if (id == Guid.Empty)
+                return _responseCreator.CreateBaseBadRequest<string>("Id is empty.");
+            
             await _unitOfWork.RespondRepository.DeleteAsync(id);
             await _unitOfWork.SaveChangesAsync();
 
-            return BaseResponse<RespondDto>.CreateBaseResponse<string>("Object deleted!", StatusCode.Ok, resultsCount: 1);
+            return _responseCreator.CreateBaseOk("Respond deleted.", 1);
         }
         catch (Exception e)
         {
-            return BaseResponse<RespondDto>.CreateBaseResponse<string>($"{e.Message} or object not found", StatusCode.InternalServerError);
+            return _responseCreator.CreateBaseServerError<string>(e.Message);
         }
     }
-    
-
 }

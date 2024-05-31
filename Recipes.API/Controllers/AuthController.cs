@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Recipes.BLL.Interfaces;
+using Recipes.BLL.Services.Interfaces;
 using Recipes.Data.DataTransferObjects.UserDTOs;
 using Recipes.Data.Models;
 
