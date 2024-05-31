@@ -15,7 +15,6 @@ namespace Recipes.API
             services.AddScoped<IIngredientRepository, IngredientRepository>();
             services.AddScoped<IRecipeRepository, RecipeRepository>();
             services.AddScoped<IRespondRepository, RespondRepository>();
-            services.AddScoped<ISavedRecipeRepository, SavedRecipeRepository>();
             services.AddScoped<IWeightUnitRepository, WeightUnitRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
         }
@@ -25,7 +24,6 @@ namespace Recipes.API
             services.AddScoped<IIngredientService, IngredientService>();
             services.AddScoped<IRecipeService, RecipeService>();
             services.AddScoped<IRespondService, RespondService>();
-            services.AddScoped<ISavedRecipeService, SavedRecipeService>();
             services.AddScoped<IWeightUnitService, WeightUnitService>();
             services.AddScoped<ITokenService, TokenService>();
         }

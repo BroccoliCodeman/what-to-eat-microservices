@@ -71,7 +71,7 @@ public class RecipeController : ControllerBase
     }
 
 
-    [HttpPost("GetByIngredients")]
+    [HttpGet("GetByIngredients")]
     public async Task<ActionResult<IEnumerable<RecipeDto>>> GetByIngredients( RecipeByIngredientsRequest request)
     {
      

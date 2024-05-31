@@ -24,7 +24,7 @@ public class MappingProfile : Profile
 
         CreateMap<Respond, RespondDto>().ReverseMap();
         
-        CreateMap<SavedRecipe, SavedRecipeDto>().ReverseMap();
+       
         
         CreateMap<WeightUnit, WeightUnitDto>().ReverseMap();
     }

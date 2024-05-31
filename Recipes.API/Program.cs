@@ -6,6 +6,7 @@ using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
 using Recipes.API;
 using Recipes.BLL;
+using Recipes.BLL.Configurations;
 using Recipes.BLL.Interfaces;
 using Recipes.BLL.Services;
 using Recipes.DAL;
@@ -29,6 +30,9 @@ builder.Services.AddDbContext<RecipesContext>(options => options.UseSqlite(
         config.Password.RequireLowercase = true;
         config.Password.RequireUppercase = true;
     }).AddEntityFrameworkStores<RecipesContext>().AddDefaultTokenProviders();
+
+builder.Services.AddTransient<EmailSenderConfiguration>();
+builder.Services.AddTransient<IEmailSender,EmailSender>();
 
 // Configure JWT authentication
 var jwtSettings = builder.Configuration.GetSection("Jwt");
@@ -69,7 +73,7 @@ builder.Services.AddBLLServices();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
-    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Cinema API", Version = "v1" });
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "What to Eat API", Version = "v1" });
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         Type = SecuritySchemeType.Http,

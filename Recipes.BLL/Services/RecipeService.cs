@@ -120,31 +120,21 @@ public class RecipeService : IRecipeService
 
 
             }
-
-
-
-
-
-            // Додати нові інгредієнти в базу даних
+         
             foreach (var newIngredient in newIngredients)
             {
                 newIngredient.Id = Guid.NewGuid();
-                //перевіряємо чи є одиниці виміру які зазаначені в запиті є в базі
                 var unit = _unitOfWork.WeightUnitRepository.GetAsync().Result.FirstOrDefault(p => p.Type == newIngredient.WeightUnit.Type);
 
                 if (unit == null)
                 {
                
                     await _unitOfWork.WeightUnitRepository.InsertAsync(_mapper.Map<WeightUnit>(newIngredient.WeightUnit));
-                    //await _unitOfWork.SaveChangesAsync();
                 }
                 else
                     newIngredient.WeightUnit = unit;
               await  _unitOfWork.IngredientRepository.InsertAsync(newIngredient);
             }
-
-            // Перезаписати Id інгредієнтів, які вже існують в базі даних
-      
             foreach (var existingIngredient in existingIngredients)
             {
                 var recipesIngredient = recipe.Ingredients.FirstOrDefault(p =>
@@ -154,8 +144,6 @@ public class RecipeService : IRecipeService
 
                 if (recipesIngredient != null)
                 {
-                    // Оновлюємо властивості об'єкта, який вже відстежується контекстом
-                  
 
                      var unit = _unitOfWork.WeightUnitRepository.GetAsync().Result.FirstOrDefault(p => p.Type == recipesIngredient.WeightUnit.Type);
                     
@@ -369,6 +357,4 @@ public class RecipeService : IRecipeService
             return BaseResponse<RecipeDto>.CreateBaseResponse<IEnumerable<RecipeDto>>(e.Message, StatusCode.InternalServerError);
         }
     }
-
-
 }
