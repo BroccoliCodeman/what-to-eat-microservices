@@ -34,6 +34,7 @@ builder.Services.AddDbContext<RecipesContext>(options => options.UseSqlite(
     }).AddEntityFrameworkStores<RecipesContext>().AddDefaultTokenProviders();
 
 builder.Services.AddTransient<EmailSenderConfiguration>();
+builder.Services.AddTransient<GoogleClientConfiguration>();
 builder.Services.AddTransient<IEmailSender,EmailSender>();
 
 // Configure JWT authentication
@@ -100,18 +101,21 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
-builder.Services.AddCors();
+builder.Services.AddCors(opt =>
+{
+    opt.AddPolicy(name: "GoogleCors", builder =>
+    {
+        builder.WithOrigins("http://localhost:4200")
+        .AllowAnyHeader()
+        .AllowAnyMethod()
+        .AllowCredentials();
+    });
+});
 
 var app = builder.Build();
 //seeding
 using (var scope = app.Services.CreateScope())
 {
-    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<UserRole>>();
-    await RolesUsersSeeding.SeedRolesAsync(roleManager);
-
-    var userManager = scope.ServiceProvider.GetRequiredService<UserManager<User>>();
-    await RolesUsersSeeding.SeedUsersAsync(userManager);
-
     var dbcontext= scope.ServiceProvider.GetRequiredService<RecipesContext>();
     var recipeService=scope.ServiceProvider.GetRequiredService<IRecipeService>();
     if (dbcontext.Recipes.Count() == 0)
@@ -125,6 +129,12 @@ using (var scope = app.Services.CreateScope())
             recipeService.InsertWithIngredients(Recipes[i]);
         }
     }
+    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<UserRole>>();
+    await RolesUsersSeeding.SeedRolesAsync(roleManager);
+
+    var userManager = scope.ServiceProvider.GetRequiredService<UserManager<User>>();
+    await RolesUsersSeeding.SeedUsersAsync(userManager);
+
 }
 
 if (app.Environment.IsDevelopment())
@@ -135,12 +145,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseRouting();
-app.UseCors(options => options
-.WithOrigins(new[] { "http://localhost:4200" })
-.AllowAnyHeader()
-.AllowAnyMethod()
-.AllowCredentials()
-);
+app.UseCors("GoogleCors");
 
 app.UseAuthentication();
 app.UseAuthorization();
