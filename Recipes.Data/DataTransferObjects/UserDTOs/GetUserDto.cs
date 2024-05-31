@@ -7,6 +7,5 @@ namespace Recipes.Data.DataTransferObjects.UserDTOs
         public string FirstName { get; set; } = string.Empty;
         public string LastName { get; set; } = string.Empty;
         public string Avatar { get; set; } = null!;
-        public List<SavedRecipeDto> SavedRecipes { get; } = new List<SavedRecipeDto>();
     }
 }
