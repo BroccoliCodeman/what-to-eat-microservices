@@ -1,3 +1,4 @@
+using Recipes.Data.DataTransferObjects.UserDTOs;
 using Recipes.Data.Models;
 
 namespace Recipes.Data.DataTransferObjects;
@@ -12,5 +13,6 @@ public class RecipeDto
     public string Description { get; set; } = string.Empty;
     public int? Calories { get; set; }
     public DateTime CreationDate { get; set; } = DateTime.Now;
-
+    public List<IngredientDto> Ingredients { get; set; }
+    public int SavedRecipes { get; set; }
 }
