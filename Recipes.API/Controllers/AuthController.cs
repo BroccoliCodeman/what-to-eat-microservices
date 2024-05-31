@@ -1,4 +1,5 @@
 ﻿using Google.Apis.Auth;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -47,8 +48,8 @@ namespace Recipes.API.Controllers
 
             var roleResult = await _userManager.AddToRoleAsync(user, "User");
 
-          /*  if (!roleResult.Succeeded)
-                return BadRequest(roleResult.Errors);*/
+            if (!roleResult.Succeeded)
+                return BadRequest(roleResult.Errors);
 
             if (!result.Succeeded)
                 return BadRequest(result.Errors);
@@ -114,15 +115,28 @@ namespace Recipes.API.Controllers
             return Ok();
         }
 
+        [Authorize]
+        [HttpGet]
+        public async Task<ActionResult<GetUserDto>> GetUserData()
+        {
+            var username = User.FindFirst("email")?.Value;
 
+            var user = await _userManager.FindByNameAsync(username);
 
+            if (user == null)
+                return Unauthorized();
 
+            GetUserDto userDTO = new GetUserDto()
+            {
+                Email = user.Email,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Avatar = user.Avatar,
+                Id = user.Id
+            };
 
-
-
-
-
-
+            return Ok(userDTO);
+        }
 
         [HttpGet("GetAllUsers")]
         public async Task<IActionResult> GetAllUsers()
