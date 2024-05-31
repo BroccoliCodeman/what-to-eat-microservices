@@ -1,12 +1,10 @@
 using AutoMapper;
-using Recipes.BLL.Interfaces;
-using Recipes.DAL.Interfaces;
-using Recipes.DAL.Repositories;
+using Recipes.BLL.Helpers;
+using Recipes.BLL.Services.Interfaces;
+using Recipes.DAL.Infrastructure.Interfaces;
 using Recipes.Data.DataTransferObjects;
-using Recipes.Data.Enums;
-using Recipes.Data.Interfaces;
 using Recipes.Data.Models;
-using Recipes.Data.Responses;
+using Recipes.Data.Responses.Interfaces;
 
 namespace Recipes.BLL.Services;
 
@@ -14,11 +12,13 @@ public class IngredientService : IIngredientService
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IMapper _mapper;
+    private readonly ResponseCreator _responseCreator;
 
     public IngredientService(IUnitOfWork unitOfWork, IMapper mapper)
     {
         _unitOfWork = unitOfWork;
         _mapper = mapper;
+        _responseCreator = new ResponseCreator();
     }
 
     public Task<IBaseResponse<IngredientDto>> GetById(Guid id)
@@ -26,24 +26,22 @@ public class IngredientService : IIngredientService
         throw new NotImplementedException();
     }
 
-    public async Task<IBaseResponse<IEnumerable<IngredientDto>>> Get()
+    public async Task<IBaseResponse<List<IngredientDto>>> Get()
     {
         try
         {
             var models = await _unitOfWork.IngredientRepository.GetAsync();
 
             if (models.Count is 0)
-            {
-                return BaseResponse<IngredientDto>.CreateBaseResponse<IEnumerable<IngredientDto>>("0 objects found", StatusCode.NotFound);
-            }
+                return _responseCreator.CreateBaseNotFound<List<IngredientDto>>("No ingredients found.");
 
             var dtoList = models.Select(model => _mapper.Map<IngredientDto>(model)).ToList();
 
-            return BaseResponse<IngredientDto>.CreateBaseResponse<IEnumerable<IngredientDto>>("Success!", StatusCode.Ok, dtoList, dtoList.Count);
+            return _responseCreator.CreateBaseOk(dtoList, dtoList.Count);
         }
         catch(Exception e) 
         {
-            return BaseResponse<IngredientDto>.CreateBaseResponse<IEnumerable<IngredientDto>>(e.Message, StatusCode.InternalServerError);
+            return _responseCreator.CreateBaseServerError<List<IngredientDto>>(e.Message);
         }
     }
 
@@ -52,30 +50,23 @@ public class IngredientService : IIngredientService
         try
         {
             if (modelDto is null) 
-                return BaseResponse<IngredientDto>.CreateBaseResponse<string>("Objet can`t be empty...", StatusCode.BadRequest);
+                return _responseCreator.CreateBaseBadRequest<string>("Inserted ingredient is empty.");
             
-
             var ing = _mapper.Map<Ingredient>(modelDto);
-
             ing.Id = Guid.NewGuid();
-            
             var value = _unitOfWork.WeightUnitRepository.GetAsync().Result.Where(p=>p.Type == modelDto.WeightUnit.Type);
 
-            if (value.Count()!=0){
-
+            if (value.Count()!=0)
                 await _unitOfWork.WeightUnitRepository.InsertAsync(_mapper.Map<WeightUnit>(modelDto.WeightUnit));
-
-            }
 
             await _unitOfWork.IngredientRepository.InsertAsync(ing);
             await _unitOfWork.SaveChangesAsync();
 
-            return BaseResponse<IngredientDto>.CreateBaseResponse<string>("Object inserted!", StatusCode.Ok, resultsCount: 1);
-
+            return _responseCreator.CreateBaseOk($"Ingredient added.", 1);
         }
         catch (Exception e)
         {
-            return BaseResponse<IngredientDto>.CreateBaseResponse<string>(e.Message, StatusCode.InternalServerError);
+            return _responseCreator.CreateBaseServerError<string>(e.Message);
         }
     }
 
@@ -83,16 +74,17 @@ public class IngredientService : IIngredientService
     {
         try
         {
+            if (id == Guid.Empty)
+                return _responseCreator.CreateBaseBadRequest<string>("Id is empty.");
+            
             await _unitOfWork.IngredientRepository.DeleteAsync(id);
             await _unitOfWork.SaveChangesAsync();
 
-            return BaseResponse<IngredientDto>.CreateBaseResponse<string>("Object deleted!", StatusCode.Ok, resultsCount: 1);
+            return _responseCreator.CreateBaseOk("Ingredient deleted.", 1);
         }
         catch (Exception e)
         {
-            return BaseResponse<IngredientDto>.CreateBaseResponse<string>($"{e.Message} or object not found", StatusCode.InternalServerError);
+            return _responseCreator.CreateBaseServerError<string>(e.Message);
         }
     }
-    
-
 }

@@ -1,5 +1,5 @@
-using Recipes.Data.Enums;
-using Recipes.Data.Interfaces;
+using Recipes.Data.Responses.Enums;
+using Recipes.Data.Responses.Interfaces;
 
 namespace Recipes.Data.Responses;
 

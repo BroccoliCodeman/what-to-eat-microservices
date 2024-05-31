@@ -1,9 +1,9 @@
-﻿using Recipes.BLL.Interfaces;
-using Recipes.BLL.Services;
-using Recipes.DAL.Interfaces;
-using Recipes.DAL.Interfaces.ModelsRepositories;
+﻿using Recipes.BLL.Services;
+using Recipes.BLL.Services.Interfaces;
+using Recipes.DAL.Infrastructure;
+using Recipes.DAL.Infrastructure.Interfaces;
 using Recipes.DAL.Repositories;
-using Recipes.DAL.Repositories.ModelsRepositories;
+using Recipes.DAL.Repositories.Interfaces;
 
 namespace Recipes.API
 {

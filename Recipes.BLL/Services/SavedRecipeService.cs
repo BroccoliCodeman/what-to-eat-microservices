@@ -1,11 +1,10 @@
 using AutoMapper;
-using Recipes.BLL.Interfaces;
-using Recipes.DAL.Interfaces;
+using Recipes.BLL.Helpers;
+using Recipes.BLL.Services.Interfaces;
+using Recipes.DAL.Infrastructure.Interfaces;
 using Recipes.Data.DataTransferObjects;
-using Recipes.Data.Enums;
-using Recipes.Data.Interfaces;
 using Recipes.Data.Models;
-using Recipes.Data.Responses;
+using Recipes.Data.Responses.Interfaces;
 
 namespace Recipes.BLL.Services;
 
@@ -13,11 +12,13 @@ public class SavedRecipeService : ISavedRecipeService
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IMapper _mapper;
+    private readonly ResponseCreator _responseCreator;
 
     public SavedRecipeService(IUnitOfWork unitOfWork, IMapper mapper)
     {
         _unitOfWork = unitOfWork;
         _mapper = mapper;
+        _responseCreator = new ResponseCreator();
     }
 
     public Task<IBaseResponse<SavedRecipeDto>> GetById(Guid id)
@@ -25,24 +26,22 @@ public class SavedRecipeService : ISavedRecipeService
         throw new NotImplementedException();
     }
 
-    public async Task<IBaseResponse<IEnumerable<SavedRecipeDto>>> Get()
+    public async Task<IBaseResponse<List<SavedRecipeDto>>> Get()
     {
         try
         {
             var models = await _unitOfWork.SavedRecipeRepository.GetAsync();
 
             if (models.Count is 0)
-            {
-                return BaseResponse<SavedRecipeDto>.CreateBaseResponse<IEnumerable<SavedRecipeDto>>("0 objects found", StatusCode.NotFound);
-            }
+                return _responseCreator.CreateBaseNotFound<List<SavedRecipeDto>>("No saved recipes found.");
 
             var dtoList = models.Select(model => _mapper.Map<SavedRecipeDto>(model)).ToList();
 
-            return BaseResponse<SavedRecipeDto>.CreateBaseResponse<IEnumerable<SavedRecipeDto>>("Success!", StatusCode.Ok, dtoList, dtoList.Count);
+            return _responseCreator.CreateBaseOk(dtoList, dtoList.Count);
         }
         catch(Exception e) 
         {
-            return BaseResponse<SavedRecipeDto>.CreateBaseResponse<IEnumerable<SavedRecipeDto>>(e.Message, StatusCode.InternalServerError);
+            return _responseCreator.CreateBaseServerError<List<SavedRecipeDto>>(e.Message);
         }
     }
 
@@ -51,17 +50,16 @@ public class SavedRecipeService : ISavedRecipeService
         try
         {
             if (modelDto is null)
-                return BaseResponse<SavedRecipeDto>.CreateBaseResponse<string>("Objet can`t be empty...", StatusCode.BadRequest);
+                return _responseCreator.CreateBaseBadRequest<string>("Inserted saved recipes is empty.");
             
             await _unitOfWork.SavedRecipeRepository.InsertAsync(_mapper.Map<SavedRecipe>(modelDto));
             await _unitOfWork.SaveChangesAsync();
 
-            return BaseResponse<SavedRecipeDto>.CreateBaseResponse<string>("Object inserted!", StatusCode.Ok, resultsCount: 1);
-
+            return _responseCreator.CreateBaseOk($"Saved recipes added.", 1);
         }
         catch (Exception e)
         {
-            return BaseResponse<SavedRecipeDto>.CreateBaseResponse<string>(e.Message, StatusCode.InternalServerError);
+            return _responseCreator.CreateBaseServerError<string>(e.Message);
         }
     }
 
@@ -69,16 +67,17 @@ public class SavedRecipeService : ISavedRecipeService
     {
         try
         {
+            if (id == Guid.Empty)
+                return _responseCreator.CreateBaseBadRequest<string>("Id is empty.");
+            
             await _unitOfWork.SavedRecipeRepository.DeleteAsync(id);
             await _unitOfWork.SaveChangesAsync();
 
-            return BaseResponse<SavedRecipeDto>.CreateBaseResponse<string>("Object deleted!", StatusCode.Ok, resultsCount: 1);
+            return _responseCreator.CreateBaseOk("Saved recipe deleted.", 1);
         }
         catch (Exception e)
         {
-            return BaseResponse<SavedRecipeDto>.CreateBaseResponse<string>($"{e.Message} or object not found", StatusCode.InternalServerError);
+            return _responseCreator.CreateBaseServerError<string>(e.Message);
         }
     }
-    
-
 }

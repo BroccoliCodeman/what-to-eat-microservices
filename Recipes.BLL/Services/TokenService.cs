@@ -1,16 +1,12 @@
 ﻿using Microsoft.Extensions.Configuration;
 using System.Security.Claims;
 using System.Text;
-using System.Threading.Tasks;
-using System;
 using Microsoft.AspNetCore.Identity;
-using System.Linq;
-using System.Collections.Generic;
-using Recipes.BLL.Interfaces;
 using Recipes.Data.Models;
 
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
+using Recipes.BLL.Services.Interfaces;
 
 namespace Recipes.BLL.Services
 {

@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Recipes.BLL.Interfaces;
+using Recipes.BLL.Services.Interfaces;
 using Recipes.Data.DataTransferObjects;
-using System.Text.Json.Nodes;
+
 namespace Recipes.API.Controllers;
 
 [Route("api/[controller]")]
@@ -20,67 +20,91 @@ public class RecipeController : ControllerBase
     [HttpGet("Get")]
     public async Task<ActionResult<IEnumerable<RecipeDto>>> Get()
     {
-        return Ok(await _service.Get());
+        var response = await _service.Get();
+        
+        return response.StatusCode switch
+        {
+            Data.Responses.Enums.StatusCode.Ok => Ok(response),
+            Data.Responses.Enums.StatusCode.NotFound => NotFound(response),
+            Data.Responses.Enums.StatusCode.BadRequest => BadRequest(response),
+            Data.Responses.Enums.StatusCode.InternalServerError => StatusCode(500, response),
+            _ => throw new ArgumentOutOfRangeException()
+        };
     }
-    
 
     [HttpPost]
     public async Task<ActionResult> Insert([FromBody] RecipeDto modelDto)
     {
-        return Ok(await _service.Insert(modelDto));
-    }
-    [HttpPost("PostWithIngredientsAndCoocingSteps")]
-    public async Task<ActionResult> InsertWithIngredientsAndCoocingSteps([FromBody] RecipeDtoWithIngredientsAndSteps modelDto)
-    {
-        return Ok(await _service.InsertWithIngredients(modelDto));
-    }
-    [HttpPost("PostRangeWithIngredientsAndCoocingSteps")]
-    public async Task<ActionResult> InsertRangeWithIngredients([FromBody]  ICollection<RecipeDtoWithIngredientsAndSteps> modelDtos)
-    {
-        try
+        var response = await _service.Insert(modelDto);
+        
+        return response.StatusCode switch
         {
-            foreach(var model in modelDtos)
-            {
-                await _service.InsertWithIngredients(model);
-            }
-
-            return Ok();
-        }
-        catch(Exception ex)
-        {
-            return BadRequest(ex.Message);
-        }    
-          
-            
-            
-     
+            Data.Responses.Enums.StatusCode.Ok => Ok(response),
+            Data.Responses.Enums.StatusCode.NotFound => NotFound(response),
+            Data.Responses.Enums.StatusCode.BadRequest => BadRequest(response),
+            Data.Responses.Enums.StatusCode.InternalServerError => StatusCode(500, response),
+            _ => throw new ArgumentOutOfRangeException()
+        };
     }
+    
+    [HttpPost("PostWithIngredientsAndCookingSteps")]
+    public async Task<ActionResult> InsertWithIngredientsAndCookingSteps([FromBody] RecipeDtoWithIngredientsAndSteps modelDto)
+    {
+        var response = await _service.InsertWithIngredients(modelDto);
+        
+        return response.StatusCode switch
+        {
+            Data.Responses.Enums.StatusCode.Ok => Ok(response),
+            Data.Responses.Enums.StatusCode.NotFound => NotFound(response),
+            Data.Responses.Enums.StatusCode.BadRequest => BadRequest(response),
+            Data.Responses.Enums.StatusCode.InternalServerError => StatusCode(500, response),
+            _ => throw new ArgumentOutOfRangeException()
+        };
+    }
+    
     [HttpDelete]
     public async Task<ActionResult> DeleteById(Guid id)
     {
-
-        return Ok(await _service.DeleteById(id));
-
+        var response = await _service.DeleteById(id);
+        
+        return response.StatusCode switch
+        {
+            Data.Responses.Enums.StatusCode.Ok => Ok(response),
+            Data.Responses.Enums.StatusCode.NotFound => NotFound(response),
+            Data.Responses.Enums.StatusCode.BadRequest => BadRequest(response),
+            Data.Responses.Enums.StatusCode.InternalServerError => StatusCode(500, response),
+            _ => throw new ArgumentOutOfRangeException()
+        };
     }
-
-
+    
     [HttpGet("GetByName")]
     public async Task<ActionResult<IEnumerable<RecipeDto>>> GetByName( string name)
     {
-        return Ok(await _service.GetByName(name));
+        var response = await _service.GetByName(name);
+        
+        return response.StatusCode switch
+        {
+            Data.Responses.Enums.StatusCode.Ok => Ok(response),
+            Data.Responses.Enums.StatusCode.NotFound => NotFound(response),
+            Data.Responses.Enums.StatusCode.BadRequest => BadRequest(response),
+            Data.Responses.Enums.StatusCode.InternalServerError => StatusCode(500, response),
+            _ => throw new ArgumentOutOfRangeException()
+        };
     }
 
 
     [HttpPost("GetByIngredients")]
     public async Task<ActionResult<IEnumerable<RecipeDto>>> GetByIngredients( RecipeByIngredientsRequest request)
     {
-     
-        return Ok(await _service.GetByIngredients(request.Ingredients));
+        var response = await _service.GetByIngredients(request.Ingredients);
+        
+        return response.StatusCode switch
+        {
+            Data.Responses.Enums.StatusCode.Ok => Ok(response),
+            Data.Responses.Enums.StatusCode.NotFound => NotFound(response),
+            Data.Responses.Enums.StatusCode.BadRequest => BadRequest(response),
+            Data.Responses.Enums.StatusCode.InternalServerError => StatusCode(500, response),
+            _ => throw new ArgumentOutOfRangeException()
+        };
     }
-
-
-
-
-
-
 }
