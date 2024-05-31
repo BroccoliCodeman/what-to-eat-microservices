@@ -3,6 +3,7 @@ using Recipes.BLL.Helpers;
 using Recipes.BLL.Services.Interfaces;
 using Recipes.DAL.Infrastructure.Interfaces;
 using Recipes.Data.DataTransferObjects;
+using Recipes.Data.Helpers;
 using Recipes.Data.Models;
 using Recipes.Data.Responses.Interfaces;
 
@@ -20,7 +21,41 @@ public class RecipeService : IRecipeService
         _mapper = mapper;
         _responseCreator = new ResponseCreator();
     }
+    public async Task<IBaseResponse<PagedList<RecipeDto>>> Get(PaginationParams paginationParams, SearchParams? searchParams)
+    {
+        try
+        {
+            var models = await _unitOfWork.RecipeRepository.GetAsync(paginationParams);
 
+            if (models.Count == 0)
+                return _responseCreator.CreateBaseNotFound<PagedList<RecipeDto>>("No recipes found.");
+
+            var dtoList = models.Select(model => _mapper.Map<RecipeDto>(model)).ToList();
+
+            if (searchParams != null)
+            {
+                if (!string.IsNullOrEmpty(searchParams.Title))
+                {
+                    dtoList = dtoList.Where(dto => dto.Title.Contains(searchParams.Title, StringComparison.OrdinalIgnoreCase)).ToList();
+                }
+
+                if (searchParams.Ingredients != null && searchParams.Ingredients.Any())
+                {
+                    dtoList = dtoList.Where(dto => searchParams.Ingredients.All(ingredient =>
+                        dto.Ingredients.Any(dtoIngredient => dtoIngredient.Name.Contains(ingredient, StringComparison.OrdinalIgnoreCase))
+                    )).ToList();
+                }
+            }
+
+            var pagedList = new PagedList<RecipeDto>(dtoList, models.TotalCount, models.CurrentPage, models.PageSize);
+
+            return _responseCreator.CreateBaseOk(pagedList, pagedList.TotalCount);
+        }
+        catch (Exception e)
+        {
+            return _responseCreator.CreateBaseServerError<PagedList<RecipeDto>>(e.Message);
+        }
+    }
     public async Task<IBaseResponse<RecipeDto>> GetById(Guid id)
     {
         try
@@ -40,26 +75,6 @@ public class RecipeService : IRecipeService
             return _responseCreator.CreateBaseServerError<RecipeDto>(ex.Message);
         }
     }
-
-    public async Task<IBaseResponse<List<RecipeDto>>> Get()
-    {
-        try
-        {
-            var models = await _unitOfWork.RecipeRepository.GetAsync();
-
-            if (models.Count is 0)
-                return _responseCreator.CreateBaseNotFound<List<RecipeDto>>("No recipes found.");
-
-            var dtoList = models.Select(model => _mapper.Map<RecipeDto>(model)).ToList();
-
-            return _responseCreator.CreateBaseOk(dtoList, dtoList.Count);
-        }
-        catch (Exception e)
-        {
-            return _responseCreator.CreateBaseServerError<List<RecipeDto>>(e.Message);
-        }
-    }
-
     public async Task<IBaseResponse<string>> Insert(RecipeDto? modelDto)
     {
         try

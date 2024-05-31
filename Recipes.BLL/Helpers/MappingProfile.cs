@@ -1,5 +1,6 @@
 using AutoMapper;
 using Recipes.Data.DataTransferObjects;
+using Recipes.Data.DataTransferObjects.UserDTOs;
 using Recipes.Data.Models;
 
 namespace Recipes.BLL.Helpers;
@@ -12,9 +13,11 @@ public class MappingProfile : Profile
         CreateMap<CookingStep, CookingStepDtoNoId>().ReverseMap();
 
         CreateMap<Ingredient, IngredientDto>().ReverseMap();
-        
-        CreateMap<Recipe, RecipeDto>().ReverseMap();
-       
+
+        CreateMap<Recipe, RecipeDto>()
+             .ForMember(dest => dest.Ingredients, opt => opt.MapFrom(src => src.Ingredients))
+             .ForMember(dest => dest.SavedRecipes, opt => opt.MapFrom(src => src.SavedRecipes.Count))
+             .ReverseMap();
 
         CreateMap<RecipeDtoWithIngredientsAndSteps, Recipe>()
         .ForMember(dest => dest.Ingredients, opt => { opt.MapFrom(src => src.Ingredients);opt.AllowNull(); })
@@ -27,5 +30,7 @@ public class MappingProfile : Profile
         CreateMap<SavedRecipe, SavedRecipeDto>().ReverseMap();
         
         CreateMap<WeightUnit, WeightUnitDto>().ReverseMap();
+
+        CreateMap<User, GetUserDto>().ReverseMap();
     }
 }

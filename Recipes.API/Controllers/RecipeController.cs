@@ -1,7 +1,9 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using Recipes.BLL.Services.Interfaces;
 using Recipes.Data.DataTransferObjects;
+using Recipes.Data.Helpers;
 
 namespace Recipes.API.Controllers;
 
@@ -16,12 +18,23 @@ public class RecipeController : ControllerBase
         _service = service;
     }
 
-    [Authorize(Policy = "OnlyUser")]
-    [HttpGet("Get")]
-    public async Task<ActionResult<IEnumerable<RecipeDto>>> Get()
+    [HttpPost("Get")]
+    public async Task<ActionResult<IEnumerable<RecipeDto>>> Get([FromQuery] PaginationParams? paginationParams = null,
+                                                                [FromBody] SearchParams? searchParams = null)
     {
-        var response = await _service.Get();
-        
+        var response = await _service.Get(paginationParams!, searchParams!);
+        var metadata = new
+        {
+            response.Data.TotalCount,
+            response.Data.PageSize,
+            response.Data.CurrentPage,
+            response.Data.TotalPages,
+            response.Data.HasNext,
+            response.Data.HasPrevious
+        };
+
+        Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(metadata));
+
         return response.StatusCode switch
         {
             Data.Responses.Enums.StatusCode.Ok => Ok(response),
@@ -31,6 +44,22 @@ public class RecipeController : ControllerBase
             _ => throw new ArgumentOutOfRangeException()
         };
     }
+
+    [HttpGet("{id}")]
+    public async Task<ActionResult<RecipeDto>> GetByid(Guid id)
+    {
+        var response = await _service.GetById(id);
+
+        return response.StatusCode switch
+        {
+            Data.Responses.Enums.StatusCode.Ok => Ok(response),
+            Data.Responses.Enums.StatusCode.NotFound => NotFound(response),
+            Data.Responses.Enums.StatusCode.BadRequest => BadRequest(response),
+            Data.Responses.Enums.StatusCode.InternalServerError => StatusCode(500, response),
+            _ => throw new ArgumentOutOfRangeException()
+        };
+    }
+
 
     [HttpPost]
     public async Task<ActionResult> Insert([FromBody] RecipeDto modelDto)
@@ -78,7 +107,7 @@ public class RecipeController : ControllerBase
     }
     
     [HttpGet("GetByName")]
-    public async Task<ActionResult<IEnumerable<RecipeDto>>> GetByName( string name)
+    public async Task<ActionResult<IEnumerable<RecipeDto>>> GetByName(string name)
     {
         var response = await _service.GetByName(name);
         

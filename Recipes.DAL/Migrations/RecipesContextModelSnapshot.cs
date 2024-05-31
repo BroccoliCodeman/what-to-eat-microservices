@@ -29,7 +29,7 @@ namespace Recipes.DAL.Migrations
 
                     b.HasIndex("RecipesId");
 
-                    b.ToTable("IngredientRecipe");
+                    b.ToTable("IngredientRecipe", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
@@ -49,7 +49,7 @@ namespace Recipes.DAL.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("RoleClaims");
+                    b.ToTable("RoleClaims", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<System.Guid>", b =>
@@ -69,7 +69,7 @@ namespace Recipes.DAL.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("UserClaims");
+                    b.ToTable("UserClaims", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<System.Guid>", b =>
@@ -88,7 +88,7 @@ namespace Recipes.DAL.Migrations
                     b.Property<Guid>("UserId")
                         .HasColumnType("TEXT");
 
-                    b.ToTable("UserLogins");
+                    b.ToTable("UserLogins", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<System.Guid>", b =>
@@ -101,7 +101,7 @@ namespace Recipes.DAL.Migrations
 
                     b.HasKey("UserId", "RoleId");
 
-                    b.ToTable("UserRoles");
+                    b.ToTable("UserRoles", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<System.Guid>", b =>
@@ -120,7 +120,7 @@ namespace Recipes.DAL.Migrations
                     b.Property<string>("Value")
                         .HasColumnType("TEXT");
 
-                    b.ToTable("UserTokens");
+                    b.ToTable("UserTokens", (string)null);
                 });
 
             modelBuilder.Entity("Recipes.Data.Models.CookingStep", b =>
@@ -145,7 +145,7 @@ namespace Recipes.DAL.Migrations
 
                     b.HasIndex("RecipeId");
 
-                    b.ToTable("CookingSteps");
+                    b.ToTable("CookingSteps", (string)null);
                 });
 
             modelBuilder.Entity("Recipes.Data.Models.Ingredient", b =>
@@ -169,7 +169,7 @@ namespace Recipes.DAL.Migrations
 
                     b.HasIndex("WeightUnitId");
 
-                    b.ToTable("Ingredients");
+                    b.ToTable("Ingredients", (string)null);
                 });
 
             modelBuilder.Entity("Recipes.Data.Models.Recipe", b =>
@@ -206,7 +206,7 @@ namespace Recipes.DAL.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Recipes");
+                    b.ToTable("Recipes", (string)null);
                 });
 
             modelBuilder.Entity("Recipes.Data.Models.Respond", b =>
@@ -231,7 +231,7 @@ namespace Recipes.DAL.Migrations
 
                     b.HasIndex("RecipeId");
 
-                    b.ToTable("Responds");
+                    b.ToTable("Responds", (string)null);
                 });
 
             modelBuilder.Entity("Recipes.Data.Models.SavedRecipe", b =>
@@ -255,7 +255,7 @@ namespace Recipes.DAL.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("SavedRecipes");
+                    b.ToTable("SavedRecipes", (string)null);
                 });
 
             modelBuilder.Entity("Recipes.Data.Models.User", b =>
@@ -320,7 +320,7 @@ namespace Recipes.DAL.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users");
+                    b.ToTable("Users", (string)null);
                 });
 
             modelBuilder.Entity("Recipes.Data.Models.UserRole", b =>
@@ -340,7 +340,7 @@ namespace Recipes.DAL.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Roles");
+                    b.ToTable("Roles", (string)null);
                 });
 
             modelBuilder.Entity("Recipes.Data.Models.WeightUnit", b =>
@@ -356,7 +356,7 @@ namespace Recipes.DAL.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("WeightUnits");
+                    b.ToTable("WeightUnits", (string)null);
                 });
 
             modelBuilder.Entity("IngredientRecipe", b =>
