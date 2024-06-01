@@ -12,11 +12,7 @@ using Recipes.DAL;
 namespace Recipes.DAL.Migrations
 {
     [DbContext(typeof(RecipesContext))]
-<<<<<<<< HEAD:Recipes.DAL/Migrations/20240601185858_initial.Designer.cs
-    [Migration("20240601185858_initial")]
-========
-    [Migration("20240601180131_initial")]
->>>>>>>> 24364bddbcfe957b8ed4e6a09bdce0f9e08dcbe4:Recipes.DAL/Migrations/20240601180131_initial.Designer.cs
+    [Migration("20240601205126_initial")]
     partial class initial
     {
         /// <inheritdoc />
