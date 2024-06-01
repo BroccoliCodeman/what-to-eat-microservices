@@ -60,6 +60,35 @@ public class RecipeController : ControllerBase
         };
     }
 
+    [HttpPost("SaveRecipe")]
+    public async Task<ActionResult> SaveRecipeAsync([FromQuery]Guid UserId, [FromQuery]Guid RecipeId)
+    {
+        var response = await _service.SaveRecipe(UserId,RecipeId);
+
+        return response.StatusCode switch
+        {
+            Data.Responses.Enums.StatusCode.Ok => Ok(response),
+            Data.Responses.Enums.StatusCode.NotFound => NotFound(response),
+            Data.Responses.Enums.StatusCode.BadRequest => BadRequest(response),
+            Data.Responses.Enums.StatusCode.InternalServerError => StatusCode(500, response),
+            _ => throw new ArgumentOutOfRangeException()
+        };
+    }
+
+    [HttpPost("RemoveRecipeFromSaved")]
+    public async Task<ActionResult> RemoveRecipeFromSavedAsync([FromQuery] Guid UserId, [FromQuery] Guid RecipeId)
+    {
+        var response = await _service.RemoveRecipeFromSaved(UserId, RecipeId);
+
+        return response.StatusCode switch
+        {
+            Data.Responses.Enums.StatusCode.Ok => Ok(response),
+            Data.Responses.Enums.StatusCode.NotFound => NotFound(response),
+            Data.Responses.Enums.StatusCode.BadRequest => BadRequest(response),
+            Data.Responses.Enums.StatusCode.InternalServerError => StatusCode(500, response),
+            _ => throw new ArgumentOutOfRangeException()
+        };
+    }
 
     [HttpPost]
     public async Task<ActionResult> Insert([FromBody] RecipeDto modelDto)

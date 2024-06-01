@@ -1,8 +1,12 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Google.Apis.Auth;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Recipes.BLL.Configurations;
 using Recipes.BLL.Interfaces;
 using Recipes.BLL.Services.Interfaces;
+using Recipes.DAL;
 using Recipes.Data.DataTransferObjects.UserDTOs;
 using Recipes.Data.Models;
 
@@ -12,16 +16,20 @@ namespace Recipes.API.Controllers
     [Route("api/[controller]")]
     public class AuthController : ControllerBase
     {
+        private readonly RecipesContext context;
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
         private readonly ITokenService _tokenService;
         private readonly IEmailSender _emailSender;
-        public AuthController(ITokenService tokenService, UserManager<User> userManager, SignInManager<User> signInManager, IEmailSender emailSender)
+        private readonly GoogleClientConfiguration googleClientConfiguration;
+        public AuthController(ITokenService tokenService, UserManager<User> userManager, SignInManager<User> signInManager, IEmailSender emailSender, GoogleClientConfiguration googleClientConfiguration, RecipesContext context)
         {
             _tokenService = tokenService;
             _userManager = userManager;
             _signInManager = signInManager;
             _emailSender = emailSender;
+            this.googleClientConfiguration = googleClientConfiguration;
+            this.context = context;
         }
 
         [HttpPost("register")]
@@ -40,8 +48,8 @@ namespace Recipes.API.Controllers
 
             var roleResult = await _userManager.AddToRoleAsync(user, "User");
 
-          /*  if (!roleResult.Succeeded)
-                return BadRequest(roleResult.Errors);*/
+            if (!roleResult.Succeeded)
+                return BadRequest(roleResult.Errors);
 
             if (!result.Succeeded)
                 return BadRequest(result.Errors);
@@ -64,6 +72,70 @@ namespace Recipes.API.Controllers
 
             var token = await _tokenService.GenerateTokenAsync(user);
             return Ok(new { Token = token });
+        }
+
+        [HttpPost("loginWithGoogle")]
+        public async Task<IActionResult> LoginWithGoogle([FromBody] string credentials)
+        {
+            var setings = new GoogleJsonWebSignature.ValidationSettings()
+            {
+                Audience = new List<string> { googleClientConfiguration.GoogleClientID }
+            };
+
+            var payload = await GoogleJsonWebSignature.ValidateAsync(credentials,setings);
+
+            var user = await _userManager.FindByEmailAsync(payload.Email);
+
+            if (user == null)
+                return Unauthorized();
+
+            var token = await _tokenService.GenerateTokenAsync(user);
+            return Ok(new { Token = token });
+
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> UpdateUser([FromBody]UserInfo userInfo)
+        {
+
+            var user = await _userManager.FindByIdAsync(userInfo.Id.ToString());
+
+            if (user == null)
+                return Unauthorized();
+
+            if(userInfo.Avatar!=null)
+                user.Avatar = userInfo.Avatar;
+            if(userInfo.FirstName!=null)
+                user.FirstName = userInfo.FirstName;
+            if(userInfo.LastName!=null)
+                user.LastName = userInfo.LastName;
+
+            await context.SaveChangesAsync();
+
+            return Ok();
+        }
+
+        [Authorize]
+        [HttpGet]
+        public async Task<ActionResult<GetUserDto>> GetUserData()
+        {
+            var username = User.FindFirst("email")?.Value;
+
+            var user = await _userManager.FindByNameAsync(username);
+
+            if (user == null)
+                return Unauthorized();
+
+            GetUserDto userDTO = new GetUserDto()
+            {
+                Email = user.Email,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Avatar = user.Avatar,
+                Id = user.Id
+            };
+
+            return Ok(userDTO);
         }
 
         [HttpGet("GetAllUsers")]

@@ -13,4 +13,6 @@ public interface IRecipeService
 /*    Task<IBaseResponse<PagedList<RecipeDto>>> GetByName(string name);
     Task<IBaseResponse<PagedList<RecipeDto>>> GetByIngredients(IEnumerable<string> ingredients);*/
     Task<IBaseResponse<string>> InsertWithIngredients(RecipeDtoWithIngredientsAndSteps? modelDto);
+    Task<IBaseResponse<string>> SaveRecipe(Guid UserId, Guid RecipeId);
+    Task<IBaseResponse<string>> RemoveRecipeFromSaved(Guid UserId, Guid RecipeId);
 }

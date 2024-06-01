@@ -101,6 +101,37 @@ public class RecipeService : IRecipeService
         }
     }
 
+    public async Task<IBaseResponse<string>> SaveRecipe(Guid UserId, Guid RecipeId)
+    {
+        try
+        {
+            await _unitOfWork.RecipeRepository.SaveRecipe(UserId, RecipeId);
+
+ 
+
+            return BaseResponse<RecipeDto>.CreateBaseResponse<string>("Recipe saved!", StatusCode.Ok, resultsCount: 1);
+        }
+        catch (Exception e)
+        {
+            return BaseResponse<RecipeDto>.CreateBaseResponse<string>(e.Message, StatusCode.InternalServerError);
+        }
+    }
+
+    public async Task<IBaseResponse<string>> RemoveRecipeFromSaved(Guid UserId, Guid RecipeId)
+    {
+        try
+        {
+            await _unitOfWork.RecipeRepository.RemoveRecipeFromSaved(UserId, RecipeId);
+
+
+
+            return BaseResponse<RecipeDto>.CreateBaseResponse<string>("Recipe Removed From Saved!", StatusCode.Ok, resultsCount: 1);
+        }
+        catch (Exception e)
+        {
+            return BaseResponse<RecipeDto>.CreateBaseResponse<string>(e.Message, StatusCode.InternalServerError);
+        }
+    }
 
     public async Task<IBaseResponse<string>> InsertWithIngredients(RecipeDtoWithIngredientsAndSteps? recipereqest)
     {

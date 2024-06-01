@@ -12,8 +12,8 @@ public class Recipe
     public Guid? UserId { get; set; }
     public User? User { get; set; } = null!;
     public DateTime CreationDate { get; set; } = DateTime.Now;
-    public ICollection<Ingredient>? Ingredients { get; set; } = null!;
-    public ICollection<CookingStep>? CookingSteps { get; set; } = null!;
-    public ICollection<User>? Users { get; set; } = null!;
-    public ICollection<Respond>? Responds { get; set; } = null!;
+    public ICollection<Ingredient>? Ingredients { get; set; } = new List<Ingredient>();
+    public ICollection<CookingStep>? CookingSteps { get; set; } = new List<CookingStep>();
+    public ICollection<User>? Users { get; set; } = new List<User>();
+    public ICollection<Respond>? Responds { get; set; } = new List<Respond>();
 }
