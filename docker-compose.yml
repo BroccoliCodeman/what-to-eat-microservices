@@ -1,0 +1,36 @@
+version: '3.4'
+networks:
+  ShoNetwork:
+
+services:
+
+ database:
+    container_name: Database
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=Qwerty123
+    networks:
+      - ShoNetwork
+    ports:
+      - 1433:1433
+
+ recipes.api:
+    image: ${DOCKER_REGISTRY-}recipesapi
+    build:
+      context: .
+      dockerfile: Recipes.API/Dockerfile
+    networks:
+      - ShoNetwork
+    ports:
+      - 1488:8080
+    environment:
+      - REDIS=RedisCash
+      - DB_HOST=Database
+      - DB_USER=sa
+      - DB_NAME=ServiceStationParts
+      - DB_SA_PASSWORD=Qwerty123
+      - RBBITMQ_USER= guest
+      - RBBITMQ_PASS= guest
+    depends_on:
+      - database
