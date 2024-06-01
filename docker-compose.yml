@@ -32,5 +32,9 @@ services:
       - DB_SA_PASSWORD=Qwerty123
       - RBBITMQ_USER= guest
       - RBBITMQ_PASS= guest
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+;http://+
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=hecysgsplf
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=Certificates/certificate.pfx 
     depends_on:
       - database

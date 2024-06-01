@@ -23,6 +23,8 @@ public class RecipeController : ControllerBase
                                                                 [FromBody] SearchParams? searchParams = null)
     {
         var response = await _service.Get(paginationParams!, searchParams!);
+        if(response.Data==null)
+            return NotFound();
         var metadata = new
         {
             response.Data.TotalCount,
