@@ -16,6 +16,7 @@ using Recipes.DAL.Seeding;
 using Recipes.Data.DataTransferObjects;
 using Recipes.Data.Models;
 using System.Text;
+using static Org.BouncyCastle.Math.EC.ECCurve;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -116,6 +117,12 @@ var app = builder.Build();
 //seeding
 using (var scope = app.Services.CreateScope())
 {
+    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<UserRole>>();
+    await RolesUsersSeeding.SeedRolesAsync(roleManager);
+
+    var userManager = scope.ServiceProvider.GetRequiredService<UserManager<User>>();
+    await RolesUsersSeeding.SeedUsersAsync(userManager);
+
     var dbcontext= scope.ServiceProvider.GetRequiredService<RecipesContext>();
     var recipeService=scope.ServiceProvider.GetRequiredService<IRecipeService>();
     if (dbcontext.Recipes.Count() == 0)
@@ -129,11 +136,6 @@ using (var scope = app.Services.CreateScope())
             recipeService.InsertWithIngredients(Recipes[i]);
         }
     }
-    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<UserRole>>();
-    await RolesUsersSeeding.SeedRolesAsync(roleManager);
-
-    var userManager = scope.ServiceProvider.GetRequiredService<UserManager<User>>();
-    await RolesUsersSeeding.SeedUsersAsync(userManager);
 
 }
 
