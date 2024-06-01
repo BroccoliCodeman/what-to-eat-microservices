@@ -20,9 +20,11 @@ public class RecipeController : ControllerBase
 
     [HttpPost("Get")]
     public async Task<ActionResult<IEnumerable<RecipeDto>>> Get([FromQuery] PaginationParams? paginationParams = null,
-                                                                [FromBody] SearchParams? searchParams = null)
+                                                                [FromBody] SearchParams? searchParams = null,
+                                                                [FromQuery] int sortType = 0)
     {
-        var response = await _service.Get(paginationParams!, searchParams!);
+        var response = await _service.Get(paginationParams!, searchParams!, sortType);
+        
         var metadata = new
         {
             response.Data.TotalCount,
@@ -34,6 +36,21 @@ public class RecipeController : ControllerBase
         };
 
         Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(metadata));
+
+        return response.StatusCode switch
+        {
+            Data.Responses.Enums.StatusCode.Ok => Ok(response),
+            Data.Responses.Enums.StatusCode.NotFound => NotFound(response),
+            Data.Responses.Enums.StatusCode.BadRequest => BadRequest(response),
+            Data.Responses.Enums.StatusCode.InternalServerError => StatusCode(500, response),
+            _ => throw new ArgumentOutOfRangeException()
+        };
+    }
+    
+    [HttpGet("GetRandom")]
+    public async Task<ActionResult<RecipeDto>> GetRandom()
+    {
+        var response = await _service.GetRandom();
 
         return response.StatusCode switch
         {

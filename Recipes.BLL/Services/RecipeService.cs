@@ -25,6 +25,25 @@ public class RecipeService : IRecipeService
 
     }
 
+    public async Task<IBaseResponse<RecipeDto>> GetRandom()
+    {
+        try
+        {
+            var recipes = await _unitOfWork.RecipeRepository.GetAsync();
+            
+            var recipe = recipes.MinBy(x => Guid.NewGuid());
+            
+            if (recipe == null)
+                return _responseCreator.CreateBaseNotFound<RecipeDto>("No random recipe found.");
+
+            return _responseCreator.CreateBaseOk(_mapper.Map<RecipeDto>(recipe), 1);
+        }
+        catch (Exception ex)
+        {
+            return _responseCreator.CreateBaseServerError<RecipeDto>(ex.Message);
+        }
+    }
+
     public async Task<IBaseResponse<RecipeDto>> GetById(Guid id)
     {
         try
@@ -40,11 +59,10 @@ public class RecipeService : IRecipeService
         catch (Exception ex)
         {
             return BaseResponse<RecipeDto>.CreateBaseResponse<RecipeDto>(ex.Message, StatusCode.InternalServerError);
-
         }
     }
-
-    public async Task<IBaseResponse<PagedList<RecipeDto>>> Get(PaginationParams paginationParams, SearchParams? searchParams)
+    
+    public async Task<IBaseResponse<PagedList<RecipeDto>>> Get(PaginationParams paginationParams, SearchParams? searchParams, int sortType = 0)
     {
         try
         {
@@ -54,6 +72,21 @@ public class RecipeService : IRecipeService
                 return _responseCreator.CreateBaseNotFound<PagedList<RecipeDto>>("No recipes found.");
 
             var dtoList = models.Select(model => _mapper.Map<RecipeDto>(model)).ToList();
+            
+            //sorting
+            switch (sortType)
+            {
+                case 0: break; // 0 - no sorting
+                case 1: dtoList = dtoList.OrderBy(dto => dto.Title).ToList(); break; // 1 - asc by alphabet
+                case 2: dtoList = dtoList.OrderByDescending(dto => dto.Title).ToList(); break; // 2 - desc by alphabet
+                case 3: dtoList = dtoList.OrderBy(dto => dto.SavedRecipes).ToList(); break; // 3 - asc by savings
+                case 4: dtoList = dtoList.OrderByDescending(dto => dto.SavedRecipes).ToList(); break; // 4 - desc by savings
+                case 5: dtoList = dtoList.OrderBy(dto => dto.CreationDate).ToList(); break; // 5 - asc by creation date
+                case 6: dtoList = dtoList.OrderByDescending(dto => dto.CreationDate).ToList(); break; // 6 - desc by creation date
+                case 7: dtoList = dtoList.OrderBy(dto => dto.Calories).ToList(); break; // 7 - asc by calories
+                case 8: dtoList = dtoList.OrderByDescending(dto => dto.Calories).ToList(); break; // 8 - desc by calories
+                default: return _responseCreator.CreateBaseBadRequest<PagedList<RecipeDto>>("Invalid sort type."); break;
+            }
 
             if (searchParams != null)
             {
