@@ -6,8 +6,9 @@ namespace Recipes.BLL.Services.Interfaces;
 
 public interface IRecipeService
 {
+    Task<IBaseResponse<RecipeDto>> GetRandom();
     Task<IBaseResponse<RecipeDto>> GetById(Guid id);
-    Task<IBaseResponse<PagedList<RecipeDto>>> Get(PaginationParams paginationParams, SearchParams? searchParams);
+    Task<IBaseResponse<PagedList<RecipeDto>>> Get(PaginationParams paginationParams, SearchParams? searchParams, int sortType = 0);
     Task<IBaseResponse<string>> Insert(RecipeDto? modelDto);
     Task<IBaseResponse<string>> DeleteById(Guid id);
 /*    Task<IBaseResponse<PagedList<RecipeDto>>> GetByName(string name);
