@@ -31,7 +31,7 @@ namespace Recipes.BLL.Services
                 new Claim(JwtRegisteredClaimNames.Sub, user.UserName),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                 new Claim("userId", user.Id.ToString()),
-                new Claim("email", user.Email.ToString())
+                new Claim("userName", user.Email.ToString())
             };
 
             var roles = await _userManager.GetRolesAsync(user);

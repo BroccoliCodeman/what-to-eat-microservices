@@ -9,6 +9,7 @@ using Recipes.BLL.Services.Interfaces;
 using Recipes.DAL;
 using Recipes.Data.DataTransferObjects.UserDTOs;
 using Recipes.Data.Models;
+using static Org.BouncyCastle.Crypto.Engines.SM2Engine;
 
 namespace Recipes.API.Controllers
 {
@@ -119,7 +120,7 @@ namespace Recipes.API.Controllers
         [HttpGet]
         public async Task<ActionResult<GetUserDto>> GetUserData()
         {
-            var username = User.FindFirst("email")?.Value;
+            var username = User.FindFirst("userName")?.Value;
 
             var user = await _userManager.FindByNameAsync(username);
 
@@ -144,11 +145,14 @@ namespace Recipes.API.Controllers
             var users = await _userManager.Users.ToListAsync();
             return Ok(users);
         }
+
         [HttpPost("ResetPassword")]
-        public async Task<IActionResult> ResetPassword([FromQuery] Guid Id, [FromQuery] string Code, [FromBody] string newpas)
+        public async Task<IActionResult> ResetPassword([FromQuery] Guid Id, [FromQuery] string Code, [FromQuery] string newpas)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState.Values.Select(x => x.Errors.FirstOrDefault().ErrorMessage));
+
+            Code = Code.Replace('&', '/');
             var request = new ResetPasswordRequest() { Id = Id, Code = Code, NewPasword = newpas };
             try
             {
@@ -183,6 +187,8 @@ namespace Recipes.API.Controllers
                     return Unauthorized();
 
                 var code = await _userManager.GeneratePasswordResetTokenAsync(user).ConfigureAwait(false);
+
+                code = code.Replace('/','&');
    
                 var callbackUrl = $"http://localhost:4200/password-reset-form/{user.Id}/{code}";
                 await _emailSender.SendEmailAsync(user.Email, "Reset password", callbackUrl);
