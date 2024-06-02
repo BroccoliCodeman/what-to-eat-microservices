@@ -4,9 +4,9 @@ using Recipes.Data.Models;
 
 namespace Recipes.DAL.Configuration;
 
-public class IngredientTypeConfiguration : IEntityTypeConfiguration<IngredientType>
+public class IngredientTypeConfiguration : IEntityTypeConfiguration<TypeofIngredient>
 {
-    public void Configure(EntityTypeBuilder<IngredientType> builder)
+    public void Configure(EntityTypeBuilder<TypeofIngredient> builder)
     {
         builder.HasKey(i => i.Id);
 

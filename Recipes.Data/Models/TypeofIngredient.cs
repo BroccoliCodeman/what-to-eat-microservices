@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace Recipes.Data.Models
 {
-    public class IngredientType
+    public class TypeofIngredient
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
-
         public List<Ingredient> Ingredients { get; set; }  
     }
 }
