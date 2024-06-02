@@ -20,7 +20,8 @@ public class RecipeController : ControllerBase
 
     [HttpPost("Get")]
     public async Task<ActionResult<IEnumerable<RecipeDto>>> Get([FromQuery] PaginationParams? paginationParams = null,
-                                                                [FromBody] SearchParams? searchParams = null)
+                                                                [FromBody] SearchParams? searchParams = null,
+                                                                [FromQuery] int sortType = 0)
     {
         var response = await _service.Get(paginationParams!, searchParams!, sortType);
 

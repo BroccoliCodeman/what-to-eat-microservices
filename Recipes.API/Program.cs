@@ -157,11 +157,9 @@ using (var scope = app.Services.CreateScope())
             
         }
     }
-    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<UserRole>>();
-    await RolesUsersSeeding.SeedRolesAsync(roleManager);
+    await RolesUsersSeeding.SeedRolesAsync(scope.ServiceProvider);
 
-    var userManager = scope.ServiceProvider.GetRequiredService<UserManager<User>>();
-    await RolesUsersSeeding.SeedUsersAsync(userManager);
+    await RolesUsersSeeding.SeedUsersAsync(scope.ServiceProvider);
 }
 
 
