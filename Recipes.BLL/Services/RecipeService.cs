@@ -25,7 +25,7 @@ public class RecipeService : IRecipeService
 
     }
 
-    public async Task<IBaseResponse<RecipeDto>> GetRandom()
+    public async Task<IBaseResponse<RecipeIntroDto>> GetRandom()
     {
         try
         {
@@ -34,13 +34,13 @@ public class RecipeService : IRecipeService
             var recipe = recipes.MinBy(x => Guid.NewGuid());
             
             if (recipe == null)
-                return _responseCreator.CreateBaseNotFound<RecipeDto>("No random recipe found.");
+                return _responseCreator.CreateBaseNotFound<RecipeIntroDto>("No random recipe found.");
 
-            return _responseCreator.CreateBaseOk(_mapper.Map<RecipeDto>(recipe), 1);
+            return _responseCreator.CreateBaseOk(_mapper.Map<RecipeIntroDto>(recipe), 1);
         }
         catch (Exception ex)
         {
-            return _responseCreator.CreateBaseServerError<RecipeDto>(ex.Message);
+            return _responseCreator.CreateBaseServerError<RecipeIntroDto>(ex.Message);
         }
     }
 
