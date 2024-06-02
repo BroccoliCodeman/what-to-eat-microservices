@@ -6,7 +6,7 @@ namespace Recipes.BLL.Services.Interfaces;
 
 public interface IRecipeService
 {
-    Task<IBaseResponse<RecipeDto>> GetRandom();
+    Task<IBaseResponse<RecipeIntroDto>> GetRandom();
     Task<IBaseResponse<RecipeDto>> GetById(Guid id);
     Task<IBaseResponse<List<RecipeIntroDto>>> GetMostPopularRecipesTitles();
     Task<IBaseResponse<List<RecipeIntroDto>>> GetByTitle(string title);
