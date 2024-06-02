@@ -61,7 +61,29 @@ public class RecipeService : IRecipeService
             return BaseResponse<RecipeDto>.CreateBaseResponse<RecipeDto>(ex.Message, StatusCode.InternalServerError);
         }
     }
-    
+
+    public async Task<IBaseResponse<List<RecipeIntroDto>>> GetByTitle(string title)
+    {
+        try
+        {
+            if (string.IsNullOrEmpty(title))
+                return _responseCreator.CreateBaseBadRequest<List<RecipeIntroDto>>("Name can't be empty.");
+            
+            var recipes = await _unitOfWork.RecipeRepository.GetByTitle(title);
+            
+            if (recipes.Count == 0)
+                return _responseCreator.CreateBaseNotFound<List<RecipeIntroDto>>("No recipes found.");
+
+            var recipeIntroDtos = recipes.Select(recipe => _mapper.Map<RecipeIntroDto>(recipe)).ToList();
+            
+            return _responseCreator.CreateBaseOk(recipeIntroDtos, recipeIntroDtos.Count);
+        }
+        catch (Exception e)
+        {
+            return _responseCreator.CreateBaseServerError<List<RecipeIntroDto>>(e.Message);
+        }
+    }
+
     public async Task<IBaseResponse<PagedList<RecipeDto>>> Get(PaginationParams paginationParams, SearchParams? searchParams, int sortType = 0)
     {
         try

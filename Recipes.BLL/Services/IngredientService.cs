@@ -45,6 +45,28 @@ public class IngredientService : IIngredientService
         }
     }
 
+    public async Task<IBaseResponse<List<IngredientIntroDto>>> GetByName(string name)
+    {
+        try
+        {
+            if (string.IsNullOrEmpty(name))
+                return _responseCreator.CreateBaseBadRequest<List<IngredientIntroDto>>("Name can't be empty.");
+            
+            var ingredients = await _unitOfWork.IngredientRepository.GetByName(name);
+            
+            if (ingredients.Count == 0)
+                return _responseCreator.CreateBaseNotFound<List<IngredientIntroDto>>("No ingredients found.");
+
+            var ingredientIntroDtos = ingredients.Select(recipe => _mapper.Map<IngredientIntroDto>(recipe)).ToList();
+            
+            return _responseCreator.CreateBaseOk(ingredientIntroDtos, ingredientIntroDtos.Count);
+        }
+        catch (Exception e)
+        {
+            return _responseCreator.CreateBaseServerError<List<IngredientIntroDto>>(e.Message);
+        }
+    }
+
     public async Task<IBaseResponse<string>> Insert(IngredientDto? modelDto)
     {
         try

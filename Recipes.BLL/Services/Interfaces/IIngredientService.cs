@@ -7,6 +7,7 @@ public interface IIngredientService
 {
     Task<IBaseResponse<IngredientDto>> GetById(Guid id);
     Task<IBaseResponse<List<IngredientDto>>> Get();
+    Task<IBaseResponse<List<IngredientIntroDto>>> GetByName(string name);
     Task<IBaseResponse<string>> Insert(IngredientDto? modelDto);
     Task<IBaseResponse<string>> DeleteById(Guid id);
 }
