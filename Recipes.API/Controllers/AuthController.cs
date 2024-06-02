@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using Recipes.BLL.Configurations;
 using Recipes.BLL.Interfaces;
 using Recipes.BLL.Services.Interfaces;
@@ -96,7 +97,7 @@ namespace Recipes.API.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> UpdateUser([FromBody]UserInfo userInfo)
+        public async Task<IActionResult> UpdateUser([FromBody]UpdateUserDto userInfo)
         {
 
             var user = await _userManager.FindByIdAsync(userInfo.Id.ToString());
@@ -104,12 +105,14 @@ namespace Recipes.API.Controllers
             if (user == null)
                 return Unauthorized();
 
-            if(userInfo.Avatar!=null)
+            if(!string.IsNullOrEmpty(userInfo.Avatar))
                 user.Avatar = userInfo.Avatar;
-            if(userInfo.FirstName!=null)
+            if(!string.IsNullOrEmpty(userInfo.FirstName))
                 user.FirstName = userInfo.FirstName;
-            if(userInfo.LastName!=null)
+            if(!string.IsNullOrEmpty(userInfo.LastName))
                 user.LastName = userInfo.LastName;
+            if (!string.IsNullOrEmpty(userInfo.Email))
+                user.Email = userInfo.Email;
 
             await context.SaveChangesAsync();
 
@@ -118,7 +121,7 @@ namespace Recipes.API.Controllers
 
         [Authorize]
         [HttpGet]
-        public async Task<ActionResult<GetUserDto>> GetUserData()
+        public async Task<ActionResult<UserInfo>> GetUserData()
         {
             var username = User.FindFirst("userName")?.Value;
 
@@ -127,7 +130,7 @@ namespace Recipes.API.Controllers
             if (user == null)
                 return Unauthorized();
 
-            GetUserDto userDTO = new GetUserDto()
+            UserInfo userDTO = new UserInfo()
             {
                 Email = user.Email,
                 FirstName = user.FirstName,

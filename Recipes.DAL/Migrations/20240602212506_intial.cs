@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Recipes.DAL.Migrations
 {
     /// <inheritdoc />
-    public partial class initital : Migration
+    public partial class intial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -51,18 +51,6 @@ namespace Recipes.DAL.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "TypeofIngredient",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_TypeofIngredient", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -214,18 +202,12 @@ namespace Recipes.DAL.Migrations
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Quantity = table.Column<float>(type: "real", nullable: false),
-                    IngredientTypeId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     WeightUnitId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Ingredients", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Ingredients_TypeofIngredient_IngredientTypeId",
-                        column: x => x.IngredientTypeId,
-                        principalTable: "TypeofIngredient",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Ingredients_WeightUnits_WeightUnitId",
                         column: x => x.WeightUnitId,
@@ -375,11 +357,6 @@ namespace Recipes.DAL.Migrations
                 column: "RecipesId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Ingredients_IngredientTypeId",
-                table: "Ingredients",
-                column: "IngredientTypeId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Ingredients_WeightUnitId",
                 table: "Ingredients",
                 column: "WeightUnitId");
@@ -443,9 +420,6 @@ namespace Recipes.DAL.Migrations
 
             migrationBuilder.DropTable(
                 name: "Recipes");
-
-            migrationBuilder.DropTable(
-                name: "TypeofIngredient");
 
             migrationBuilder.DropTable(
                 name: "WeightUnits");

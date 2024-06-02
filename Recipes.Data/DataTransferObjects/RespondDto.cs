@@ -8,5 +8,5 @@ public class RespondDto
     public int Rate { get; set; }
     public Guid RecipeId { get; set; }
     
-    public GetUserDto? User { get; set; } = null!;
+    public UserInfo? User { get; set; } = null!;
 }

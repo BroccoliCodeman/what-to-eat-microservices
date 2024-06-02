@@ -11,7 +11,7 @@ public class MappingProfile : Profile
     {
         CreateMap<CookingStep, CookingStepDto>().ReverseMap();
         CreateMap<CookingStep, CookingStepDtoNoId>().ReverseMap();
-        CreateMap<User, GetUserDto>().ReverseMap();
+        CreateMap<User, UserInfo>().ReverseMap();
         
         CreateMap<Ingredient, IngredientDto>().ReverseMap();
         CreateMap<Ingredient, IngredientIntroDto>();

@@ -12,8 +12,8 @@ using Recipes.DAL;
 namespace Recipes.DAL.Migrations
 {
     [DbContext(typeof(RecipesContext))]
-    [Migration("20240602145747_initital")]
-    partial class initital
+    [Migration("20240602212506_intial")]
+    partial class intial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -189,8 +189,9 @@ namespace Recipes.DAL.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("IngredientTypeId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<float>("Quantity")
                         .HasColumnType("real");
@@ -199,8 +200,6 @@ namespace Recipes.DAL.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("IngredientTypeId");
 
                     b.HasIndex("WeightUnitId");
 
@@ -277,22 +276,6 @@ namespace Recipes.DAL.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Responds");
-                });
-
-            modelBuilder.Entity("Recipes.Data.Models.TypeofIngredient", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("TypeofIngredient");
                 });
 
             modelBuilder.Entity("Recipes.Data.Models.User", b =>
@@ -511,17 +494,9 @@ namespace Recipes.DAL.Migrations
 
             modelBuilder.Entity("Recipes.Data.Models.Ingredient", b =>
                 {
-                    b.HasOne("Recipes.Data.Models.TypeofIngredient", "IngredientType")
-                        .WithMany("Ingredients")
-                        .HasForeignKey("IngredientTypeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("Recipes.Data.Models.WeightUnit", "WeightUnit")
                         .WithMany("Ingredients")
                         .HasForeignKey("WeightUnitId");
-
-                    b.Navigation("IngredientType");
 
                     b.Navigation("WeightUnit");
                 });
@@ -555,11 +530,6 @@ namespace Recipes.DAL.Migrations
                     b.Navigation("CookingSteps");
 
                     b.Navigation("Responds");
-                });
-
-            modelBuilder.Entity("Recipes.Data.Models.TypeofIngredient", b =>
-                {
-                    b.Navigation("Ingredients");
                 });
 
             modelBuilder.Entity("Recipes.Data.Models.User", b =>

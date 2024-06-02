@@ -20,11 +20,11 @@ public class IngredientRepository : GenericRepository<Ingredient>, IIngredientRe
     public async Task<List<Ingredient>> GetByName(string name)
     {
         var ingredients = await _table
-            .Where(r => r.IngredientType.Name.ToLower().Contains(name.ToLower()))
+            .Where(r => r.Name.ToLower().Contains(name.ToLower()))
             .ToListAsync();
 
         var groupedIngredients = ingredients
-            .GroupBy(r => String.Join(" ", r.IngredientType.Name.ToLower().Split(' ').OrderBy(s => s)))
+            .GroupBy(r => String.Join(" ", r.Name.ToLower().Split(' ').OrderBy(s => s)))
             .Select(g => g.First())
             .Take(3)
             .ToList();

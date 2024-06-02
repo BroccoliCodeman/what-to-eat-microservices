@@ -10,6 +10,7 @@ namespace Recipes.DAL;
 public class RecipesContext : IdentityDbContext<User, UserRole, Guid>
 {
     public RecipesContext(DbContextOptions<RecipesContext> options) : base(options) {
+        Database.EnsureDeleted();
         Database.EnsureCreated();
     }
     
