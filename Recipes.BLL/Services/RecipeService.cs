@@ -49,6 +49,7 @@ public class RecipeService : IRecipeService
         try
         {
             var recipe = await _unitOfWork.RecipeRepository.GetByIdAsync(id);
+            
             if (recipe == null)
             {
                 return BaseResponse<RecipeDto>.CreateBaseResponse<RecipeDto>($"The recipe with id {id} wasn't found", StatusCode.NotFound);
@@ -59,6 +60,34 @@ public class RecipeService : IRecipeService
         catch (Exception ex)
         {
             return BaseResponse<RecipeDto>.CreateBaseResponse<RecipeDto>(ex.Message, StatusCode.InternalServerError);
+        }
+    }
+
+    public async Task<IBaseResponse<List<RecipeIntroDto>>> GetMostPopularRecipesTitles()
+    {
+        try
+        {
+            var recipes = await _unitOfWork.RecipeRepository.GetAsync();
+            
+            if (recipes.Count == 0)
+                return _responseCreator.CreateBaseNotFound<List<RecipeIntroDto>>("No recipes found.");
+            
+            var popularRecipeDtos = recipes
+                .Select(recipe => _mapper.Map<RecipeDto>(recipe))
+                .OrderByDescending(recipe => recipe.SavesCount)
+                .Take(5)
+                .ToList();
+            
+            if (popularRecipeDtos.Count == 0)
+                return _responseCreator.CreateBaseNotFound<List<RecipeIntroDto>>("No popular recipes found.");
+            
+            var recipeIntroDtos = popularRecipeDtos.Select(recipe => _mapper.Map<RecipeIntroDto>(recipe)).ToList();
+            
+            return _responseCreator.CreateBaseOk(recipeIntroDtos, recipeIntroDtos.Count);
+        }
+        catch (Exception e)
+        {
+            return _responseCreator.CreateBaseServerError<List<RecipeIntroDto>>(e.Message);
         }
     }
 
@@ -101,8 +130,8 @@ public class RecipeService : IRecipeService
                 case 0: break; // 0 - no sorting
                 case 1: dtoList = dtoList.OrderBy(dto => dto.Title).ToList(); break; // 1 - asc by alphabet
                 case 2: dtoList = dtoList.OrderByDescending(dto => dto.Title).ToList(); break; // 2 - desc by alphabet
-                case 3: dtoList = dtoList.OrderBy(dto => dto.SavedRecipes).ToList(); break; // 3 - asc by savings
-                case 4: dtoList = dtoList.OrderByDescending(dto => dto.SavedRecipes).ToList(); break; // 4 - desc by savings
+                case 3: dtoList = dtoList.OrderBy(dto => dto.SavesCount).ToList(); break; // 3 - asc by savings
+                case 4: dtoList = dtoList.OrderByDescending(dto => dto.SavesCount).ToList(); break; // 4 - desc by savings
                 case 5: dtoList = dtoList.OrderBy(dto => dto.CreationDate).ToList(); break; // 5 - asc by creation date
                 case 6: dtoList = dtoList.OrderByDescending(dto => dto.CreationDate).ToList(); break; // 6 - desc by creation date
                 case 7: dtoList = dtoList.OrderBy(dto => dto.Calories).ToList(); break; // 7 - asc by calories

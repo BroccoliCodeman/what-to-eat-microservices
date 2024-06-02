@@ -47,6 +47,21 @@ public class RecipeController : ControllerBase
         };
     }
     
+    [HttpGet("GetMostPopularRecipesTitles")]
+    public async Task<ActionResult<IEnumerable<RecipeIntroDto>>> GetMostPopularRecipesTitles()
+    {
+        var response = await _service.GetMostPopularRecipesTitles();
+
+        return response.StatusCode switch
+        {
+            Data.Responses.Enums.StatusCode.Ok => Ok(response),
+            Data.Responses.Enums.StatusCode.NotFound => NotFound(response),
+            Data.Responses.Enums.StatusCode.BadRequest => BadRequest(response),
+            Data.Responses.Enums.StatusCode.InternalServerError => StatusCode(500, response),
+            _ => throw new ArgumentOutOfRangeException()
+        };
+    }
+    
     [HttpGet("GetByTitle/{title}")]
     public async Task<ActionResult<IEnumerable<RecipeIntroDto>>> GetByTitle(string title)
     {

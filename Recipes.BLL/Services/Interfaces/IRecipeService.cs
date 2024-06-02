@@ -8,6 +8,7 @@ public interface IRecipeService
 {
     Task<IBaseResponse<RecipeDto>> GetRandom();
     Task<IBaseResponse<RecipeDto>> GetById(Guid id);
+    Task<IBaseResponse<List<RecipeIntroDto>>> GetMostPopularRecipesTitles();
     Task<IBaseResponse<List<RecipeIntroDto>>> GetByTitle(string title);
     Task<IBaseResponse<PagedList<RecipeDto>>> Get(PaginationParams paginationParams, SearchParams? searchParams, int sortType = 0);
     Task<IBaseResponse<string>> Insert(RecipeDto? modelDto);
