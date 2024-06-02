@@ -13,7 +13,7 @@ namespace Recipes.DAL.Configuration
     {
         public void Configure(EntityTypeBuilder<User> builder)
         {
-
+            
         }
     }
 }

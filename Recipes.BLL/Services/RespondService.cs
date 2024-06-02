@@ -45,7 +45,7 @@ public class RespondService : IRespondService
         }
     }
 
-    public async Task<IBaseResponse<string>> Insert(RespondDto? modelDto)
+    public async Task<IBaseResponse<string>> Insert(AddRespondDto? modelDto)
     {
         try
         {
