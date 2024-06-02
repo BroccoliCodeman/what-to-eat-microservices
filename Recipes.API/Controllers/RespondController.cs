@@ -31,7 +31,7 @@ public class RespondController : ControllerBase
     }
     
     [HttpPost]
-    public async Task<ActionResult> Insert([FromBody] RespondDto modelDto)
+    public async Task<ActionResult> Insert([FromBody] AddRespondDto modelDto)
     {
         var response = await _service.Insert(modelDto);
         

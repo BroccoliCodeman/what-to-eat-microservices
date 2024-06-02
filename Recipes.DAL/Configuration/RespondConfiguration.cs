@@ -27,5 +27,10 @@ public class RespondConfiguration : IEntityTypeConfiguration<Respond>
             .HasOne(r => r.Recipe)
             .WithMany(r => r.Responds)
             .HasForeignKey(r => r.RecipeId);
+        
+        builder
+            .HasOne(r => r.User)
+            .WithMany(u => u.Responds)
+            .HasForeignKey(r => r.UserId);
     }
 }

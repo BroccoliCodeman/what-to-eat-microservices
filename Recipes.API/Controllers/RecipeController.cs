@@ -22,18 +22,23 @@ public class RecipeController : ControllerBase
     public async Task<ActionResult<IEnumerable<RecipeDto>>> Get([FromQuery] PaginationParams? paginationParams = null,
                                                                 [FromBody] SearchParams? searchParams = null)
     {
-        var response = await _service.Get(paginationParams!, searchParams!);
-        if(response.Data==null)
-            return NotFound();
-        var metadata = new
+        var response = await _service.Get(paginationParams!, searchParams!, sortType);
+
+        object metadata = new object();
+
+        if (response.Data != null)
         {
-            response.Data.TotalCount,
-            response.Data.PageSize,
-            response.Data.CurrentPage,
-            response.Data.TotalPages,
-            response.Data.HasNext,
-            response.Data.HasPrevious
-        };
+            metadata = new 
+            {
+                response.Data.TotalCount,
+                response.Data.PageSize,
+                response.Data.CurrentPage,
+                response.Data.TotalPages,
+                response.Data.HasNext,
+                response.Data.HasPrevious
+            };
+        }
+      
 
         Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(metadata));
 

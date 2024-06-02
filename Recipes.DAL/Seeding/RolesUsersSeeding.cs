@@ -1,12 +1,16 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.DependencyInjection;
 using Recipes.Data.Models;
+using static System.Formats.Asn1.AsnWriter;
 
 namespace Recipes.DAL.Seeding
 {
     public class RolesUsersSeeding
     {
-        public static async Task SeedRolesAsync(RoleManager<UserRole> roleManager)
+        public static async Task SeedRolesAsync(IServiceProvider serviceProvider)
         {
+
+            var roleManager = serviceProvider.GetRequiredService<RoleManager<UserRole>>();
             if (!await roleManager.RoleExistsAsync("Admin"))
             {
                 await roleManager.CreateAsync(
@@ -20,8 +24,10 @@ namespace Recipes.DAL.Seeding
             }
         }
 
-        public static async Task SeedUsersAsync(UserManager<User> userManager)
+        public static async Task SeedUsersAsync(IServiceProvider serviceProvider)
         {
+            var userManager = serviceProvider.GetRequiredService<UserManager<User>>();
+
             // Seed Admin User
             var adminUser = new User
             {

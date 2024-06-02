@@ -14,9 +14,24 @@ public class RecipeRepository : GenericRepository<Recipe>, IRecipeRepository
     {
     }
 
-    public async Task<PagedList<Recipe>> GetAsync(PaginationParams? paginationParams)
+    public async Task<PagedList<Recipe>> GetAsync(PaginationParams? paginationParams, SearchParams? searchParams)
     {
         var recipes = await _table.Include(p => p.Ingredients).Include(p => p.Users).Include(p => p.User).ToListAsync();
+       
+        if (searchParams != null)
+        {
+            if (!string.IsNullOrEmpty(searchParams.Title))
+            {
+                recipes = recipes.Where(dto => dto.Title.Contains(searchParams.Title, StringComparison.OrdinalIgnoreCase)).ToList();
+            }
+
+            if (searchParams.Ingredients != null && searchParams.Ingredients.Any())
+            {
+                recipes = recipes.Where(dto => searchParams.Ingredients.All(ingredient =>
+                    dto.Ingredients.Any(dtoIngredient => dtoIngredient.Name.Contains(ingredient, StringComparison.OrdinalIgnoreCase))
+                )).ToList();
+            }
+        }
 
         var totalCount = recipes.Count;
 
@@ -41,9 +56,8 @@ public class RecipeRepository : GenericRepository<Recipe>, IRecipeRepository
         var recipes = await _table.
                         Include(p => p.Ingredients)!
                        .ThenInclude(x=>x.WeightUnit)
-                       .Include(p => p.User)
                        .Include(p => p.CookingSteps)
-                       .Include(p => p.Responds)
+
                        .ToListAsync();
 
         var recipe = recipes.Where(x => x.Id == id).FirstOrDefault();
