@@ -12,6 +12,18 @@ namespace Recipes.DAL.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "IngredientType",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    Name = table.Column<string>(type: "TEXT", maxLength: 50, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_IngredientType", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "RoleClaims",
                 columns: table => new
                 {
@@ -164,12 +176,18 @@ namespace Recipes.DAL.Migrations
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
                     Quantity = table.Column<float>(type: "REAL", nullable: false),
-                    Name = table.Column<string>(type: "TEXT", nullable: false),
+                    IngredientTypeId = table.Column<Guid>(type: "TEXT", nullable: false),
                     WeightUnitId = table.Column<int>(type: "INTEGER", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Ingredients", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Ingredients_IngredientType_IngredientTypeId",
+                        column: x => x.IngredientTypeId,
+                        principalTable: "IngredientType",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Ingredients_WeightUnits_WeightUnitId",
                         column: x => x.WeightUnitId,
@@ -184,7 +202,7 @@ namespace Recipes.DAL.Migrations
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
                     Description = table.Column<string>(type: "TEXT", maxLength: 3000, nullable: false),
                     Order = table.Column<int>(type: "INTEGER", maxLength: 2, nullable: false),
-                    RecipeId = table.Column<Guid>(type: "TEXT", nullable: false)
+                    RecipeId = table.Column<Guid>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -193,8 +211,7 @@ namespace Recipes.DAL.Migrations
                         name: "FK_CookingSteps_Recipes_RecipeId",
                         column: x => x.RecipeId,
                         principalTable: "Recipes",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -228,7 +245,8 @@ namespace Recipes.DAL.Migrations
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
                     Text = table.Column<string>(type: "TEXT", maxLength: 1000, nullable: false),
                     Rate = table.Column<int>(type: "INTEGER", maxLength: 1, nullable: false),
-                    RecipeId = table.Column<Guid>(type: "TEXT", nullable: false)
+                    RecipeId = table.Column<Guid>(type: "TEXT", nullable: true),
+                    UserId = table.Column<Guid>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -237,8 +255,12 @@ namespace Recipes.DAL.Migrations
                         name: "FK_Responds_Recipes_RecipeId",
                         column: x => x.RecipeId,
                         principalTable: "Recipes",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Responds_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -276,6 +298,11 @@ namespace Recipes.DAL.Migrations
                 column: "RecipesId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Ingredients_IngredientTypeId",
+                table: "Ingredients",
+                column: "IngredientTypeId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Ingredients_WeightUnitId",
                 table: "Ingredients",
                 column: "WeightUnitId");
@@ -294,6 +321,11 @@ namespace Recipes.DAL.Migrations
                 name: "IX_Responds_RecipeId",
                 table: "Responds",
                 column: "RecipeId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Responds_UserId",
+                table: "Responds",
+                column: "UserId");
         }
 
         /// <inheritdoc />
@@ -334,6 +366,9 @@ namespace Recipes.DAL.Migrations
 
             migrationBuilder.DropTable(
                 name: "Recipes");
+
+            migrationBuilder.DropTable(
+                name: "IngredientType");
 
             migrationBuilder.DropTable(
                 name: "WeightUnits");

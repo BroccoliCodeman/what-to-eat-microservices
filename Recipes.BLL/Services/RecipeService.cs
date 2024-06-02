@@ -149,7 +149,7 @@ public class RecipeService : IRecipeService
                 if (searchParams.Ingredients != null && searchParams.Ingredients.Any())
                 {
                     dtoList = dtoList.Where(dto => searchParams.Ingredients.All(ingredient =>
-                        dto.Ingredients.Any(dtoIngredient => dtoIngredient.Name.Contains(ingredient, StringComparison.OrdinalIgnoreCase))
+                        dto.Ingredients.Any(dtoIngredient => dtoIngredient.IngredientType.Name.Contains(ingredient, StringComparison.OrdinalIgnoreCase))
                     )).ToList();
                 }
             }
@@ -233,11 +233,11 @@ public class RecipeService : IRecipeService
             var Ingredients = await _unitOfWork.IngredientRepository.GetAsync();
 
             // Отримати список інгредієнтів з моделі DTO, які відсутні в базі даних
-            var newIngredients = recipe.Ingredients.Where(dtoIng => !Ingredients.AsReadOnly().Any(dbIng => dbIng.Name == dtoIng.Name && dbIng.WeightUnit.Type == dtoIng.WeightUnit.Type && dbIng.Quantity == dtoIng.Quantity));
+            var newIngredients = recipe.Ingredients.Where(dtoIng => !Ingredients.AsReadOnly().Any(dbIng => dbIng.IngredientType.Name == dtoIng.IngredientType.Name && dbIng.WeightUnit.Type == dtoIng.WeightUnit.Type && dbIng.Quantity == dtoIng.Quantity));
 
             var existingIngredients = Ingredients.Where(dbIng =>
                 recipe.Ingredients.Any(dtoIng =>
-                dbIng.Name == dtoIng.Name &&
+                dbIng.IngredientType.Name == dtoIng.IngredientType.Name &&
                 dbIng.WeightUnit.Type == dtoIng.WeightUnit.Type &&
                 dbIng.Quantity == dtoIng.Quantity));
 
@@ -272,7 +272,7 @@ public class RecipeService : IRecipeService
             foreach (var existingIngredient in existingIngredients)
             {
                 var recipesIngredient = recipe.Ingredients.FirstOrDefault(p =>
-                    p.Name == existingIngredient.Name &&
+                    p.IngredientType.Name == existingIngredient.IngredientType.Name &&
                     p.WeightUnit.Type == existingIngredient.WeightUnit.Type &&
                     p.Quantity == existingIngredient.Quantity);
 

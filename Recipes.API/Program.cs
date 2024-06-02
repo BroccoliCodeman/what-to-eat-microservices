@@ -116,7 +116,7 @@ var app = builder.Build();
 //seeding
 using (var scope = app.Services.CreateScope())
 {
-    var dbcontext= scope.ServiceProvider.GetRequiredService<RecipesContext>();
+/*    var dbcontext= scope.ServiceProvider.GetRequiredService<RecipesContext>();
     var recipeService=scope.ServiceProvider.GetRequiredService<IRecipeService>();
     if (dbcontext.Recipes.Count() == 0)
     {
@@ -128,7 +128,7 @@ using (var scope = app.Services.CreateScope())
             Recipes[i].Photo = "https://www.cookwithcampbells.ca/wp-content/uploads/sites/24/2016/05/SimmeredChickenDinner.jpg";
             recipeService.InsertWithIngredients(Recipes[i]);
         }
-    }
+    }*/
     var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<UserRole>>();
     await RolesUsersSeeding.SeedRolesAsync(roleManager);
 
