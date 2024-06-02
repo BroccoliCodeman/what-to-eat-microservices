@@ -27,6 +27,15 @@ public class RecipeRepository : GenericRepository<Recipe>, IRecipeRepository
 
         return new PagedList<Recipe>(recipes!, (int)totalCount, paginationParams.PageNumber, paginationParams.PageSize);
     }
+
+    public async Task<List<Recipe>> GetByTitle(string title)
+    {
+        return await _table
+            .Where(r => r.Title.ToLower().Contains(title.ToLower()))
+            .Take(3)
+            .ToListAsync();
+    }
+
     public override async Task<Recipe> GetByIdAsync(Guid id)
     {
         var recipes = await _table.

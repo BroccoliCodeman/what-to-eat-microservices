@@ -8,11 +8,10 @@ public interface IRecipeService
 {
     Task<IBaseResponse<RecipeDto>> GetRandom();
     Task<IBaseResponse<RecipeDto>> GetById(Guid id);
+    Task<IBaseResponse<List<RecipeIntroDto>>> GetByTitle(string title);
     Task<IBaseResponse<PagedList<RecipeDto>>> Get(PaginationParams paginationParams, SearchParams? searchParams, int sortType = 0);
     Task<IBaseResponse<string>> Insert(RecipeDto? modelDto);
     Task<IBaseResponse<string>> DeleteById(Guid id);
-/*    Task<IBaseResponse<PagedList<RecipeDto>>> GetByName(string name);
-    Task<IBaseResponse<PagedList<RecipeDto>>> GetByIngredients(IEnumerable<string> ingredients);*/
     Task<IBaseResponse<string>> InsertWithIngredients(RecipeDtoWithIngredientsAndSteps? modelDto);
     Task<IBaseResponse<string>> SaveRecipe(Guid UserId, Guid RecipeId);
     Task<IBaseResponse<string>> RemoveRecipeFromSaved(Guid UserId, Guid RecipeId);

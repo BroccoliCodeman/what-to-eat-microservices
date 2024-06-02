@@ -47,6 +47,21 @@ public class RecipeController : ControllerBase
         };
     }
     
+    [HttpGet("GetByTitle/{title}")]
+    public async Task<ActionResult<IEnumerable<RecipeIntroDto>>> GetByTitle(string title)
+    {
+        var response = await _service.GetByTitle(title);
+
+        return response.StatusCode switch
+        {
+            Data.Responses.Enums.StatusCode.Ok => Ok(response),
+            Data.Responses.Enums.StatusCode.NotFound => NotFound(response),
+            Data.Responses.Enums.StatusCode.BadRequest => BadRequest(response),
+            Data.Responses.Enums.StatusCode.InternalServerError => StatusCode(500, response),
+            _ => throw new ArgumentOutOfRangeException()
+        };
+    }
+    
     [HttpGet("GetRandom")]
     public async Task<ActionResult<RecipeDto>> GetRandom()
     {
