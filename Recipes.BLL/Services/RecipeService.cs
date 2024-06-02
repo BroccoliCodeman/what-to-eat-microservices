@@ -117,7 +117,7 @@ public class RecipeService : IRecipeService
     {
         try
         {
-            var models = await _unitOfWork.RecipeRepository.GetAsync(paginationParams);
+            var models = await _unitOfWork.RecipeRepository.GetAsync(paginationParams, searchParams);
 
             if (models.Count == 0)
                 return _responseCreator.CreateBaseNotFound<PagedList<RecipeDto>>("No recipes found.");
@@ -137,21 +137,6 @@ public class RecipeService : IRecipeService
                 case 7: dtoList = dtoList.OrderBy(dto => dto.Calories).ToList(); break; // 7 - asc by calories
                 case 8: dtoList = dtoList.OrderByDescending(dto => dto.Calories).ToList(); break; // 8 - desc by calories
                 default: return _responseCreator.CreateBaseBadRequest<PagedList<RecipeDto>>("Invalid sort type."); break;
-            }
-
-            if (searchParams != null)
-            {
-                if (!string.IsNullOrEmpty(searchParams.Title))
-                {
-                    dtoList = dtoList.Where(dto => dto.Title.Contains(searchParams.Title, StringComparison.OrdinalIgnoreCase)).ToList();
-                }
-
-                if (searchParams.Ingredients != null && searchParams.Ingredients.Any())
-                {
-                    dtoList = dtoList.Where(dto => searchParams.Ingredients.All(ingredient =>
-                        dto.Ingredients.Any(dtoIngredient => dtoIngredient.Name.Contains(ingredient, StringComparison.OrdinalIgnoreCase))
-                    )).ToList();
-                }
             }
 
             var pagedList = new PagedList<RecipeDto>(dtoList, models.TotalCount, models.CurrentPage, models.PageSize);

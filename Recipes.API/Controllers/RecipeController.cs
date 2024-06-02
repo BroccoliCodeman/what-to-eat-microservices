@@ -24,16 +24,22 @@ public class RecipeController : ControllerBase
                                                                 [FromQuery] int sortType = 0)
     {
         var response = await _service.Get(paginationParams!, searchParams!, sortType);
-        
-        var metadata = new
+
+        object metadata = new object();
+
+        if (response.Data != null)
         {
-            response.Data.TotalCount,
-            response.Data.PageSize,
-            response.Data.CurrentPage,
-            response.Data.TotalPages,
-            response.Data.HasNext,
-            response.Data.HasPrevious
-        };
+            metadata = new 
+            {
+                response.Data.TotalCount,
+                response.Data.PageSize,
+                response.Data.CurrentPage,
+                response.Data.TotalPages,
+                response.Data.HasNext,
+                response.Data.HasPrevious
+            };
+        }
+      
 
         Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(metadata));
 
