@@ -25,7 +25,7 @@ public class RecipeService : IRecipeService
 
     }
 
-    public async Task<IBaseResponse<RecipeDto>> GetRandom()
+    public async Task<IBaseResponse<RecipeIntroDto>> GetRandom()
     {
         try
         {
@@ -34,13 +34,13 @@ public class RecipeService : IRecipeService
             var recipe = recipes.MinBy(x => Guid.NewGuid());
             
             if (recipe == null)
-                return _responseCreator.CreateBaseNotFound<RecipeDto>("No random recipe found.");
+                return _responseCreator.CreateBaseNotFound<RecipeIntroDto>("No random recipe found.");
 
-            return _responseCreator.CreateBaseOk(_mapper.Map<RecipeDto>(recipe), 1);
+            return _responseCreator.CreateBaseOk(_mapper.Map<RecipeIntroDto>(recipe), 1);
         }
         catch (Exception ex)
         {
-            return _responseCreator.CreateBaseServerError<RecipeDto>(ex.Message);
+            return _responseCreator.CreateBaseServerError<RecipeIntroDto>(ex.Message);
         }
     }
 
@@ -49,6 +49,7 @@ public class RecipeService : IRecipeService
         try
         {
             var recipe = await _unitOfWork.RecipeRepository.GetByIdAsync(id);
+            
             if (recipe == null)
             {
                 return BaseResponse<RecipeDto>.CreateBaseResponse<RecipeDto>($"The recipe with id {id} wasn't found", StatusCode.NotFound);
@@ -61,7 +62,57 @@ public class RecipeService : IRecipeService
             return BaseResponse<RecipeDto>.CreateBaseResponse<RecipeDto>(ex.Message, StatusCode.InternalServerError);
         }
     }
-    
+
+    public async Task<IBaseResponse<List<RecipeIntroDto>>> GetMostPopularRecipesTitles()
+    {
+        try
+        {
+            var recipes = await _unitOfWork.RecipeRepository.GetAsync();
+            
+            if (recipes.Count == 0)
+                return _responseCreator.CreateBaseNotFound<List<RecipeIntroDto>>("No recipes found.");
+            
+            var popularRecipeDtos = recipes
+                .Select(recipe => _mapper.Map<RecipeDto>(recipe))
+                .OrderByDescending(recipe => recipe.SavesCount)
+                .Take(5)
+                .ToList();
+            
+            if (popularRecipeDtos.Count == 0)
+                return _responseCreator.CreateBaseNotFound<List<RecipeIntroDto>>("No popular recipes found.");
+            
+            var recipeIntroDtos = popularRecipeDtos.Select(recipe => _mapper.Map<RecipeIntroDto>(recipe)).ToList();
+            
+            return _responseCreator.CreateBaseOk(recipeIntroDtos, recipeIntroDtos.Count);
+        }
+        catch (Exception e)
+        {
+            return _responseCreator.CreateBaseServerError<List<RecipeIntroDto>>(e.Message);
+        }
+    }
+
+    public async Task<IBaseResponse<List<RecipeIntroDto>>> GetByTitle(string title)
+    {
+        try
+        {
+            if (string.IsNullOrEmpty(title))
+                return _responseCreator.CreateBaseBadRequest<List<RecipeIntroDto>>("Name can't be empty.");
+            
+            var recipes = await _unitOfWork.RecipeRepository.GetByTitle(title);
+            
+            if (recipes.Count == 0)
+                return _responseCreator.CreateBaseNotFound<List<RecipeIntroDto>>("No recipes found.");
+
+            var recipeIntroDtos = recipes.Select(recipe => _mapper.Map<RecipeIntroDto>(recipe)).ToList();
+            
+            return _responseCreator.CreateBaseOk(recipeIntroDtos, recipeIntroDtos.Count);
+        }
+        catch (Exception e)
+        {
+            return _responseCreator.CreateBaseServerError<List<RecipeIntroDto>>(e.Message);
+        }
+    }
+
     public async Task<IBaseResponse<PagedList<RecipeDto>>> Get(PaginationParams paginationParams, SearchParams? searchParams, int sortType = 0)
     {
         try
@@ -79,8 +130,8 @@ public class RecipeService : IRecipeService
                 case 0: break; // 0 - no sorting
                 case 1: dtoList = dtoList.OrderBy(dto => dto.Title).ToList(); break; // 1 - asc by alphabet
                 case 2: dtoList = dtoList.OrderByDescending(dto => dto.Title).ToList(); break; // 2 - desc by alphabet
-                case 3: dtoList = dtoList.OrderBy(dto => dto.SavedRecipes).ToList(); break; // 3 - asc by savings
-                case 4: dtoList = dtoList.OrderByDescending(dto => dto.SavedRecipes).ToList(); break; // 4 - desc by savings
+                case 3: dtoList = dtoList.OrderBy(dto => dto.SavesCount).ToList(); break; // 3 - asc by savings
+                case 4: dtoList = dtoList.OrderByDescending(dto => dto.SavesCount).ToList(); break; // 4 - desc by savings
                 case 5: dtoList = dtoList.OrderBy(dto => dto.CreationDate).ToList(); break; // 5 - asc by creation date
                 case 6: dtoList = dtoList.OrderByDescending(dto => dto.CreationDate).ToList(); break; // 6 - desc by creation date
                 case 7: dtoList = dtoList.OrderBy(dto => dto.Calories).ToList(); break; // 7 - asc by calories
@@ -98,7 +149,7 @@ public class RecipeService : IRecipeService
                 if (searchParams.Ingredients != null && searchParams.Ingredients.Any())
                 {
                     dtoList = dtoList.Where(dto => searchParams.Ingredients.All(ingredient =>
-                        dto.Ingredients.Any(dtoIngredient => dtoIngredient.Name.Contains(ingredient, StringComparison.OrdinalIgnoreCase))
+                        dto.Ingredients.Any(dtoIngredient => dtoIngredient.IngredientType.Name.Contains(ingredient, StringComparison.OrdinalIgnoreCase))
                     )).ToList();
                 }
             }
@@ -182,11 +233,11 @@ public class RecipeService : IRecipeService
             var Ingredients = await _unitOfWork.IngredientRepository.GetAsync();
 
             // Отримати список інгредієнтів з моделі DTO, які відсутні в базі даних
-            var newIngredients = recipe.Ingredients.Where(dtoIng => !Ingredients.AsReadOnly().Any(dbIng => dbIng.Name == dtoIng.Name && dbIng.WeightUnit.Type == dtoIng.WeightUnit.Type && dbIng.Quantity == dtoIng.Quantity));
+            var newIngredients = recipe.Ingredients.Where(dtoIng => !Ingredients.AsReadOnly().Any(dbIng => dbIng.IngredientType.Name == dtoIng.IngredientType.Name && dbIng.WeightUnit.Type == dtoIng.WeightUnit.Type && dbIng.Quantity == dtoIng.Quantity));
 
             var existingIngredients = Ingredients.Where(dbIng =>
                 recipe.Ingredients.Any(dtoIng =>
-                dbIng.Name == dtoIng.Name &&
+                dbIng.IngredientType.Name == dtoIng.IngredientType.Name &&
                 dbIng.WeightUnit.Type == dtoIng.WeightUnit.Type &&
                 dbIng.Quantity == dtoIng.Quantity));
 
@@ -221,7 +272,7 @@ public class RecipeService : IRecipeService
             foreach (var existingIngredient in existingIngredients)
             {
                 var recipesIngredient = recipe.Ingredients.FirstOrDefault(p =>
-                    p.Name == existingIngredient.Name &&
+                    p.IngredientType.Name == existingIngredient.IngredientType.Name &&
                     p.WeightUnit.Type == existingIngredient.WeightUnit.Type &&
                     p.Quantity == existingIngredient.Quantity);
 

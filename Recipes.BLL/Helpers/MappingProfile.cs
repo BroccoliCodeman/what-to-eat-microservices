@@ -12,13 +12,13 @@ public class MappingProfile : Profile
         CreateMap<CookingStep, CookingStepDto>().ReverseMap();
         CreateMap<CookingStep, CookingStepDtoNoId>().ReverseMap();
         CreateMap<User, GetUserDto>().ReverseMap();
-
-
+        
         CreateMap<Ingredient, IngredientDto>().ReverseMap();
+        CreateMap<Ingredient, IngredientIntroDto>();
 
         CreateMap<Recipe, RecipeDto>()
              .ForMember(dest => dest.Ingredients, opt => opt.MapFrom(src => src.Ingredients))
-             .ForMember(dest => dest.SavedRecipes, opt => opt.MapFrom(src => src.Users!.Count))
+             .ForMember(dest => dest.SavesCount, opt => opt.MapFrom(src => src.Users!.Count))
              .ForMember(dest => dest.User, opt => opt.MapFrom(src => src.User))
              .ReverseMap();
 
@@ -27,7 +27,12 @@ public class MappingProfile : Profile
         .ForMember(dest => dest.CookingSteps,opt => { opt.MapFrom(src => src.Steps); opt.AllowNull(); } )
         .ReverseMap();
 
-        CreateMap<Respond, RespondDto>().ReverseMap();
+        CreateMap<Recipe, RecipeIntroDto>();
+        CreateMap<RecipeDto, RecipeIntroDto>();
+
+        CreateMap<Respond, RespondDto>()
+            // .ForMember(dest => dest.User, opt => opt.MapFrom(src => src.User))
+            .ReverseMap();
         
         CreateMap<WeightUnit, WeightUnitDto>().ReverseMap();
     }

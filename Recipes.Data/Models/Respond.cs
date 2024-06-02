@@ -6,5 +6,8 @@ public class Respond
     public string Text { get; set; } = string.Empty;
     public int Rate { get; set; } = 0;
     public Guid? RecipeId { get; set; }
-    public Recipe? Recipe { get; set; } = null!;
+    public Recipe? Recipe { get; set; } = null!; 
+    public Guid? UserId { get; set; }
+    public User? User { get; set; } = null!;
+
 }

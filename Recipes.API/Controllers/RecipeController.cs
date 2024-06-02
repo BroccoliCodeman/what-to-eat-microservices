@@ -46,6 +46,51 @@ public class RecipeController : ControllerBase
             _ => throw new ArgumentOutOfRangeException()
         };
     }
+    
+    [HttpGet("GetMostPopularRecipesTitles")]
+    public async Task<ActionResult<IEnumerable<RecipeIntroDto>>> GetMostPopularRecipesTitles()
+    {
+        var response = await _service.GetMostPopularRecipesTitles();
+
+        return response.StatusCode switch
+        {
+            Data.Responses.Enums.StatusCode.Ok => Ok(response),
+            Data.Responses.Enums.StatusCode.NotFound => NotFound(response),
+            Data.Responses.Enums.StatusCode.BadRequest => BadRequest(response),
+            Data.Responses.Enums.StatusCode.InternalServerError => StatusCode(500, response),
+            _ => throw new ArgumentOutOfRangeException()
+        };
+    }
+    
+    [HttpGet("GetByTitle/{title}")]
+    public async Task<ActionResult<IEnumerable<RecipeIntroDto>>> GetByTitle(string title)
+    {
+        var response = await _service.GetByTitle(title);
+
+        return response.StatusCode switch
+        {
+            Data.Responses.Enums.StatusCode.Ok => Ok(response),
+            Data.Responses.Enums.StatusCode.NotFound => NotFound(response),
+            Data.Responses.Enums.StatusCode.BadRequest => BadRequest(response),
+            Data.Responses.Enums.StatusCode.InternalServerError => StatusCode(500, response),
+            _ => throw new ArgumentOutOfRangeException()
+        };
+    }
+    
+    [HttpGet("GetRandom")]
+    public async Task<ActionResult<RecipeDto>> GetRandom()
+    {
+        var response = await _service.GetRandom();
+
+        return response.StatusCode switch
+        {
+            Data.Responses.Enums.StatusCode.Ok => Ok(response),
+            Data.Responses.Enums.StatusCode.NotFound => NotFound(response),
+            Data.Responses.Enums.StatusCode.BadRequest => BadRequest(response),
+            Data.Responses.Enums.StatusCode.InternalServerError => StatusCode(500, response),
+            _ => throw new ArgumentOutOfRangeException()
+        };
+    }
 
     [HttpGet("{id}")]
     public async Task<ActionResult<RecipeDto>> GetByid(Guid id)

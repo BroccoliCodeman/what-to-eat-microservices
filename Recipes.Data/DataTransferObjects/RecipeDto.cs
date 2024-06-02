@@ -17,5 +17,5 @@ public class RecipeDto
     public List<CookingStepDto>? CookingSteps { get; set; } = null!;
     public ICollection<Respond>? Responds { get; set; } = null!;
     public GetUserDto? User { get; set; } = null!;
-    public int SavedRecipes { get; set; }
+    public int SavesCount { get; set; }
 }
