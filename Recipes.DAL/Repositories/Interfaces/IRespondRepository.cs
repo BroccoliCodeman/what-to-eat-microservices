@@ -5,5 +5,5 @@ namespace Recipes.DAL.Repositories.Interfaces;
 
 public interface IRespondRepository : IGenericRepository<Respond>
 {
-    
+    Task<List<Respond>> GetAsync();
 }
