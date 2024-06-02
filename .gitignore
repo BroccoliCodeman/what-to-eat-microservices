@@ -482,3 +482,6 @@ $RECYCLE.BIN/
 
 # Vim temporary swap files
 *.swp
+Recipes.DAL/Migrations/20240601205126_initial.cs
+Recipes.DAL/Migrations/20240531141144_initial.cs
+Recipes.DAL/Migrations/20240601205126_initial.cs
