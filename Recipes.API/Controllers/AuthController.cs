@@ -48,11 +48,11 @@ namespace Recipes.API.Controllers
 
             var result = await _userManager.CreateAsync(user, registerDto.Password);
 
-            var roleResult = await _userManager.AddToRoleAsync(user, "User");
+         //   var roleResult = await _userManager.AddToRoleAsync(user, "User");
 
-            if (!roleResult.Succeeded)
+      /*      if (!roleResult.Succeeded)
                 return BadRequest(roleResult.Errors);
-
+*/
             if (!result.Succeeded)
                 return BadRequest(result.Errors);
 

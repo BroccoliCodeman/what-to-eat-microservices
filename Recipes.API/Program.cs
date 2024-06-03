@@ -152,7 +152,6 @@ using (var scope = app.Services.CreateScope())
 
         for (int i = 0; i < Recipes.Count(); i++)
         {
-            Recipes[i].Photo = "https://www.cookwithcampbells.ca/wp-content/uploads/sites/24/2016/05/SimmeredChickenDinner.jpg";
             await recipeService.InsertWithIngredients(Recipes[i]);
             
         }
