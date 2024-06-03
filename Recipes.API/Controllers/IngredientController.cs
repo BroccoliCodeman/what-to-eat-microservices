@@ -30,8 +30,8 @@ public class IngredientController : ControllerBase
         };
     }
     
-    [HttpGet("GetByName/{name}")]
-    public async Task<ActionResult<IEnumerable<IngredientIntroDto>>> GetByName(string name)
+    [HttpGet("GetByName")]
+    public async Task<ActionResult<IEnumerable<IngredientIntroDto>>> GetByName([FromQuery]string name)
     {
         var response = await _service.GetByName(name);
         
