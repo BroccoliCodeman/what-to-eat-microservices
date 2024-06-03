@@ -262,11 +262,19 @@ namespace Recipes.DAL.Migrations
                 name: "Responds",
                 columns: table => new
                 {
+<<<<<<<< HEAD:Recipes.DAL/Migrations/20240602212506_intial.cs
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Text = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false),
                     Rate = table.Column<int>(type: "int", maxLength: 1, nullable: false),
                     RecipeId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+========
+                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    Text = table.Column<string>(type: "TEXT", maxLength: 1000, nullable: false),
+                    Rate = table.Column<int>(type: "INTEGER", maxLength: 1, nullable: false),
+                    RecipeId = table.Column<Guid>(type: "TEXT", nullable: true),
+                    UserId = table.Column<Guid>(type: "TEXT", nullable: true)
+>>>>>>>> master:Recipes.DAL/Migrations/20240603102140_initital.cs
                 },
                 constraints: table =>
                 {

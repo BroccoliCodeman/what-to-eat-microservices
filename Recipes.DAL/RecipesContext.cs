@@ -14,9 +14,9 @@ public class RecipesContext : IdentityDbContext<User, UserRole, Guid>
         Database.EnsureCreated();
     }
     
-    public DbSet<Recipe> Recipes { get; set; } = null!;
-    public DbSet<Ingredient> Ingredients { get; set; } = null!;
     public DbSet<CookingStep> CookingSteps { get; set; } = null!;
+    public DbSet<Ingredient> Ingredients { get; set; } = null!;
+    public DbSet<Recipe> Recipes { get; set; } = null!;
     public DbSet<Respond> Responds { get; set; } = null!;
     public DbSet<WeightUnit> WeightUnits { get; set; } = null!;
 
