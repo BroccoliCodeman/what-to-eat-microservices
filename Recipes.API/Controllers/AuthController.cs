@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using Recipes.BLL.Configurations;
 using Recipes.BLL.Interfaces;
 using Recipes.BLL.Services.Interfaces;
@@ -104,12 +105,14 @@ namespace Recipes.API.Controllers
             if (user == null)
                 return Unauthorized();
 
-            if(userInfo.Avatar!=null)
+            if(!string.IsNullOrEmpty(userInfo.Avatar))
                 user.Avatar = userInfo.Avatar;
-            if(userInfo.FirstName!=null)
+            if(!string.IsNullOrEmpty(userInfo.FirstName))
                 user.FirstName = userInfo.FirstName;
-            if(userInfo.LastName!=null)
-                user.LastName = userInfo.LastName;
+            if (!string.IsNullOrEmpty(userInfo.LastName))
+                user.LastName = userInfo.LastName; 
+            if (!string.IsNullOrEmpty(userInfo.Avatar))
+                user.Avatar = userInfo.Avatar;
 
             await context.SaveChangesAsync();
 
