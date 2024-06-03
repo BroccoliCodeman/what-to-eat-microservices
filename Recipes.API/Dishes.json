@@ -3,7 +3,7 @@
     "servings": 4,
     "cookingTime": 45,
     "title": "Мусака",
-    "photo": "musaka.jpg",
+    "photo": "https://klopotenko.com/wp-content/uploads/2019/09/mysaka_sitewebukrnew-1000x600.jpg?v=1630946773",
     "description": "Класична грецька страва, що складається зі шарів картоплі, баклажанів, м'яса та бешамельного соусу, подається після запікання в духовці.",
     "calories": 350,
     "creationDate": "2024-05-01T18:26:42.102Z",
@@ -103,21 +103,21 @@
         "quantity": 1,
         "name": "сіль",
         "weightUnit": {
-          "type": "щепотка"
+          "type": "щіпка"
         }
       },
       {
         "quantity": 1,
         "name": "перець",
         "weightUnit": {
-          "type": "щепотка"
+          "type": "щіпка"
         }
       },
       {
         "quantity": 1,
         "name": "мускатний горіх",
         "weightUnit": {
-          "type": "щепотка"
+          "type": "щіпка"
         }
       }
     ],
@@ -156,7 +156,7 @@
     "servings": 2,
     "cookingTime": 30,
     "title": "Салата з фетою і оливками",
-    "photo": "greek_salad.jpg",
+    "photo": "https://klopotenko.com/wp-content/uploads/2021/04/salat-z-fetou-i-olyvkamy_sitewebukr-1000x600.jpg?v=1618830986",
     "description": "Легкий і смачний салат, який є класичною стравою грецької кухні. Збалансований по смаку та текстурі, він ідеально підходить як основна страва або додаток до основного обіду.",
     "calories": 250,
     "creationDate": "2024-05-01T18:30:00.000Z",
@@ -207,7 +207,7 @@
         "quantity": 1,
         "name": "сіль",
         "weightUnit": {
-          "type": "щепотка"
+          "type": "щіпка"
         }
       },
       {
@@ -241,7 +241,7 @@
     "servings": 4,
     "cookingTime": 40,
     "title": "Сувлакі",
-    "photo": "souvlaki.jpg",
+    "photo": "https://picantecooking.com/media/cache/content_detail_preview/pictures/2015-08/suvlaki-zi-svinini-souvlaki-6404d06616a55843308655.jpg",
     "description": "Сувлакі - це грецькі шашлики, які зазвичай готуються зі шматочків м'яса (частіше всього свинини або курки), запечених на вугільному вогні та подаються зі свіжим хлібом, овочами та соусами.",
     "calories": 300,
     "creationDate": "2024-05-01T18:40:00.000Z",
@@ -327,14 +327,14 @@
         "quantity": 1,
         "name": "сіль",
         "weightUnit": {
-          "type": "щепотка"
+          "type": "щіпка"
         }
       },
       {
         "quantity": 1,
         "name": "перець",
         "weightUnit": {
-          "type": "щепотка"
+          "type": "щіпка"
         }
       }
     ],
@@ -361,7 +361,7 @@
     "servings": 6,
     "cookingTime": 60,
     "title": "Пастіціо",
-    "photo": "pastitsio.jpg",
+    "photo": "https://i.obozrevatel.com/news/2022/1/17/filestoragetemp-2022-01-17t092110-290.jpg?size=972x462",
     "description": "Пастіціо - це грецька версія лазаньї. Ця страва складається з макаронів, м'ясного соусу та бешамельного соусу, запіканих разом в духовці до золотистого кольору.",
     "calories": 400,
     "creationDate": "2024-05-01T18:50:00.000Z",
@@ -440,21 +440,21 @@
         "quantity": 1,
         "name": "сіль",
         "weightUnit": {
-          "type": "щепотка"
+          "type": "щіпка"
         }
       },
       {
         "quantity": 1,
         "name": "перець",
         "weightUnit": {
-          "type": "щепотка"
+          "type": "щіпка"
         }
       },
       {
         "quantity": 1,
         "name": "мускатний горіх",
         "weightUnit": {
-          "type": "щепотка"
+          "type": "щіпка"
         }
       },
       {
@@ -496,7 +496,7 @@
   "servings": 4,
   "cookingTime": 60,
   "title": "Грецькі фісташкові котлети",
-  "photo": "greek_pistachio_meatballs.jpg",
+  "photo": "https://ptv.ua/mediafiles/gallery/x-VoQ.jpg",
   "description": "Ці ароматні та соковиті котлети з фісташками є справжньою вибагливістю для вашого пальця! Вони поєднують унікальний грецький смак з багатством білка та поживних речовин.",
   "calories": 350,
   "creationDate": "2024-05-01T19:10:00.000Z",
@@ -554,14 +554,14 @@
       "quantity": 1,
       "name": "сіль",
       "weightUnit": {
-        "type": "щепотка"
+        "type": "щіпка"
       }
     },
     {
       "quantity": 1,
       "name": "перець",
       "weightUnit": {
-        "type": "щепотка"
+        "type": "щіпка"
       }
     },
     {
@@ -610,7 +610,7 @@
   "servings": 4,
   "cookingTime": 40,
   "title": "Грецькі ліниві пироги з фетою",
-  "photo": "greek_lazy_pies.jpg",
+  "photo": "https://shuba.life/static/content/thumbs/1905x884/a/28/hnuz72---c1905x884x50px50p-up--835afac47c5f94be0fcfb250d9b4928a.jpg",
   "description": "Ці смачні і прості у приготуванні пироги з фетою - ідеальний варіант для лінивих обідів або швидкого перекусу. Вони мають неймовірний грецький смак і можуть бути подані як гарячі, так і холодні.",
   "calories": 300,
   "creationDate": "2024-05-01T19:30:00.000Z",
@@ -661,7 +661,7 @@
       "quantity": 1,
       "name": "сіль",
       "weightUnit": {
-        "type": "щепотка"
+        "type": "щіпка"
       }
     },
     {
@@ -699,7 +699,7 @@
   "servings": 4,
   "cookingTime": 45,
   "title": "Грецькі ліпітоси",
-  "photo": "greek_lamb_pitas.jpg",
+  "photo": "https://tripmydream.cc/travelhub/travel/block_gallery/10/0387/default_100387.jpg?",
   "description": "Грецькі ліпітоси - це смачна та поживна страва, яка складається з ароматного фаршу з яловичини, приправленого грецькими спеціями та подаваного у підігрітому піта-хлібі зі свіжими овочами та соусом.",
   "calories": 450,
   "creationDate": "2024-05-01T20:15:00.000Z",
@@ -792,14 +792,14 @@
       "quantity": 1,
       "name": "сіль",
       "weightUnit": {
-        "type": "щепотка"
+        "type": "щіпка"
       }
     },
     {
       "quantity": 1,
       "name": "перець",
       "weightUnit": {
-        "type": "щепотка"
+        "type": "щіпка"
       }
     }
   ],
@@ -830,7 +830,7 @@
   "servings": 4,
   "cookingTime": 60,
   "title": "Спанакопіта",
-  "photo": "spanakopita.jpg",
+  "photo": "https://agropererobka.com.ua/content/recipes/show/grecheskiy_pirog_so_shpinatom_spanakopita_1702560342.jpg",
   "description": "Спанакопіта - це традиційна грецька страва, що складається з шарів хрусткого філо тіста та начинки зі шпинату, луковиці, спецій і сиру фета. Це смачна і ароматна страва, яка може бути подана як гарячою, так і холодною.",
   "calories": 300,
   "creationDate": "2024-05-01T21:00:00.000Z",
@@ -888,14 +888,14 @@
       "quantity": 1,
       "name": "сіль",
       "weightUnit": {
-        "type": "щепотка"
+        "type": "щіпка"
       }
     },
     {
       "quantity": 1,
       "name": "перець",
       "weightUnit": {
-        "type": "щепотка"
+        "type": "щіпка"
       }
     }
   ],
@@ -934,7 +934,7 @@
   "servings": 4,
   "cookingTime": 60,
   "title": "Лабні з огірками і м'ятою",
-  "photo": "labneh_with_cucumber_and_mint.jpg",
+  "photo": "https://www.gonnawantseconds.com/wp-content/uploads/2012/07/dsc_blog252b0534.jpg",
   "description": "Лабні - це популярна страва в грецькій кухні, яка приготовлюється з відцідженого йогурту, який потім змішується з огірками, м'ятою та іншими приправами. Це освіжаючий і легкий страва, ідеальний для спекотного літнього дня.",
   "calories": 180,
   "creationDate": "2024-05-01T21:30:00.000Z",
@@ -985,14 +985,14 @@
       "quantity": 1,
       "name": "сіль",
       "weightUnit": {
-        "type": "щепотка"
+        "type": "щіпка"
       }
     },
     {
       "quantity": 1,
       "name": "чорний перець (свіжомолотий)",
       "weightUnit": {
-        "type": "щепотка"
+        "type": "щіпка"
       }
     }
   ],
@@ -1023,7 +1023,7 @@
   "servings": 4,
   "cookingTime": 30,
   "title": "Грецькі фасолі в томатному соусі",
-  "photo": "greek_bean_stew.jpg",
+  "photo": "https://kudaka.org.ua/wp-content/uploads/2024/01/2-35.jpg",
   "description": "Грецькі фасолі в томатному соусі - це традиційна страва грецької кухні, яка поєднує ароматні трави, овочі та бобові у смачному томатному соусі. Цей страва надає енергію й задоволення, ідеально підходить для вечері або обіду.",
   "calories": 280,
   "creationDate": "2024-05-01T22:00:00.000Z",
@@ -1074,14 +1074,14 @@
       "quantity": 1,
       "name": "сіль",
       "weightUnit": {
-        "type": "щепотка"
+        "type": "щіпка"
       }
     },
     {
       "quantity": 1,
       "name": "перець",
       "weightUnit": {
-        "type": "щепотка"
+        "type": "щіпка"
       }
     },
     {
@@ -1119,7 +1119,7 @@
   "servings": 4,
   "cookingTime": 45,
   "title": "Грецький салат з кальмарами",
-  "photo": "greek_calamari_salad.jpg",
+  "photo": "https://eatsy.recipes/image/cover/a7f032feb5ed2aaf0fcadca8a3e59a0e.jpg?w=760&h=600&q=90&fit=crop",
   "description": "Грецький салат з кальмарами - це освіжаюча та смачна страва, яка поєднує морських кальмарів зі свіжими овочами та ароматними травами. Цей салат ідеально підходить для літнього часу і прекрасно поєднується зі свіжим багетом або кремовим соусом.",
   "calories": 320,
   "creationDate": "2024-05-01T22:30:00.000Z",
@@ -1198,14 +1198,14 @@
       "quantity": 1,
       "name": "сіль",
       "weightUnit": {
-        "type": "щепотка"
+        "type": "щіпка"
       }
     },
     {
       "quantity": 1,
       "name": "перець",
       "weightUnit": {
-        "type": "щепотка"
+        "type": "щіпка"
       }
     }
   ],
@@ -1236,7 +1236,7 @@
   "servings": 4,
   "cookingTime": 30,
   "title": "Homemade Pizza",
-  "photo": "https://example.com/pizza.jpg",
+  "photo": "https://yummyrecipes.uk/easy-homemade-pizza/easy-homemade-pizza-09.jpg",
   "description": "Enjoy a classic homemade pizza with your favorite toppings!",
   "calories": 2500,
   "creationDate": "2024-05-01T18:26:42.102Z",
@@ -1313,7 +1313,7 @@
   "servings": 6,
   "cookingTime": 60,
   "title": "Classic Homemade Lasagna",
-  "photo": "https://example.com/lasagna.jpg",
+  "photo": "https://simply-delicious-food.com/wp-content/uploads/2020/12/Classic-lasagna-5-500x375.jpg",
   "description": "Indulge in layers of pasta, rich meat sauce, and creamy cheese in this classic homemade lasagna recipe.",
   "calories": 3500,
   "creationDate": "2024-05-01T18:26:42.102Z",
@@ -1475,7 +1475,7 @@
   "servings": 4,
   "cookingTime": 20,
   "title": "Spaghetti Carbonara",
-  "photo": "https://example.com/carbonara.jpg",
+  "photo": "https://img.chefkoch-cdn.de/rezepte/1298241234947062/bilder/1509530/crop-960x540/carbonara-wie-bei-der-mamma-in-rom.jpg",
   "description": "Indulge in the creamy goodness of Spaghetti Carbonara with crispy pancetta and Parmesan cheese.",
   "calories": 1500,
   "creationDate": "2024-05-01T18:26:42.102Z",
@@ -1554,7 +1554,7 @@
   "servings": 4,
   "cookingTime": 30,
   "title": "Mushroom Risotto",
-  "photo": "https://example.com/risotto.jpg",
+  "photo": "https://www.afamilyfeast.com/wp-content/uploads/2012/11/Mushroom-Risotto-3.jpg",
   "description": "Indulge in the creamy texture and earthy flavors of Mushroom Risotto, a classic Italian dish that's perfect for any occasion.",
   "calories": 1200,
   "creationDate": "2024-05-01T18:26:42.102Z",
@@ -1691,7 +1691,7 @@
   "servings": 4,
   "cookingTime": 60,
   "title": "Spaghetti Bolognese",
-  "photo": "https://example.com/bolognese.jpg",
+  "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOW_rMHgSOi4IhmfR8AiWo2bwLV7WdK3uoUA&s",
   "description": "Savor the rich and savory flavors of Spaghetti Bolognese, a hearty Italian dish that's perfect for a comforting meal.",
   "calories": 1800,
   "creationDate": "2024-05-01T18:26:42.102Z",
@@ -1844,7 +1844,7 @@
     "servings": 2,
     "cookingTime": 30,
     "title": "Суші",
-    "photo": "sushi_photo.jpg",
+    "photo": "https://imglife.pravda.com.ua/life/images/doc/7/e/39481/7eeea89-sushi.jpg",
     "description": "Класичний японський рецепт суші з рису та морепродуктів.",
     "calories": 300,
     "creationDate": "2024-05-01T18:26:42.102Z",
@@ -1927,7 +1927,7 @@
     "servings": 4,
     "cookingTime": 20,
     "title": "Місо суп",
-    "photo": "miso_soup_photo.jpg",
+    "photo": "https://eat-me-at.com/sites/default/files/2021-06/1-4.jpg",
     "description": "Традиційний японський суп на основі паста місо, з додаванням твердого тофу та водоростей.",
     "calories": 150,
     "creationDate": "2024-05-01T18:26:42.102Z",
@@ -2014,7 +2014,7 @@
     "servings": 2,
     "cookingTime": 15,
     "title": "Хіяши-чука",
-    "photo": "hiyashi_chuka_photo.jpg",
+    "photo": "https://images.prom.ua/2361545170_salat-chuka-hiyashi.jpg",
     "description": "Свіжий японський салат з маринованим курячим м'ясом, огірком, морквою та соусом на основі соєвого маринаду.",
     "calories": 250,
     "creationDate": "2024-05-01T18:26:42.102Z",
@@ -2112,7 +2112,7 @@
     "servings": 2,
     "cookingTime": 25,
     "title": "Теріякі лосось",
-    "photo": "teriyaki_salmon_photo.jpg",
+    "photo": "https://torchyn.ua/sites/default/files/styles/webp/public/2023-10/%D0%97%D0%B0%D0%BF%D0%B5%D1%87%D0%B5%D0%BD%D0%B8%D0%B9%20%D0%BB%D0%BE%D1%81%D0%BE%D1%81%D1%8C%20%C2%AB%D0%A2%D0%B5%D1%80%D1%96%D1%8F%D0%BA%D1%96%C2%BB.jpg.webp?itok=CyM0zBdP",
     "description": "Смажений лосось в теріякі соусі, подається зі смачним гарніром та свіжою зеленню.",
     "calories": 350,
     "creationDate": "2024-05-01T18:26:42.102Z",
@@ -2213,7 +2213,7 @@
     "servings": 2,
     "cookingTime": 40,
     "title": "Рамен з курячим м'ясом",
-    "photo": "ramen_photo.jpg",
+    "photo": "https://klopotenko.com/wp-content/uploads/2023/12/ramen-z-kurkoyu-img-1000x600.jpg?v=1703666631",
     "description": "Традиційний японський суп рамен з ароматним бульйоном, локшиною, курячим м'ясом та овочами.",
     "calories": 400,
     "creationDate": "2024-05-01T18:26:42.102Z",
@@ -2321,7 +2321,7 @@
     "servings": 4,
     "cookingTime": 30,
     "title": "Торіякі з яловичини",
-    "photo": "teriyaki_beef_photo.jpg",
+    "photo": "https://klopotenko.com/wp-content/uploads/2019/09/kyryca-z-sousom-teriyaki_sitewebukr_new-1000x600.jpg?v=1622753146",
     "description": "Смажена яловичина в торіякі соусі з овочами, приправлена сезамом та подана зі свіжою зеленню.",
     "calories": 450,
     "creationDate": "2024-05-01T18:26:42.102Z",
@@ -2426,7 +2426,7 @@
     "servings": 2,
     "cookingTime": 15,
     "title": "Омлет-яєчня (Омлето-якісоба)",
-    "photo": "omurice_photo.jpg",
+    "photo": "https://images.unian.net/photos/2020_07/thumb_files/800_0_1595448811-9651.jpg?0.6395920808724227",
     "description": "Традиційна японська страва, яка складається з омлету, який накриває начинку з рису з овочами та курячим м'ясом.",
     "calories": 350,
     "creationDate": "2024-05-01T18:26:42.102Z",
@@ -2524,7 +2524,7 @@
     "servings": 4,
     "cookingTime": 45,
     "title": "Гьядзінсай (японське печене м'ясо з овочами)",
-    "photo": "gyudon_photo.jpg",
+    "photo": "https://news24.in.ua/wp-content/uploads/recipe_a81797ec-ef79-4d2a-aa12-7b1bae4060da_w450.jpg",
     "description": "Традиційна японська страва з ніжного печеного яловичого м'яса, яке подається на рисі та приправляється спеціальним соусом.",
     "calories": 380,
     "creationDate": "2024-05-01T18:26:42.102Z",
@@ -2635,7 +2635,7 @@
     "servings": 2,
     "cookingTime": 30,
     "title": "Теріякі куряче рамен",
-    "photo": "teriyaki_ramen_photo.jpg",
+    "photo": "https://i.ytimg.com/vi/WrG1sSI8Mmg/maxresdefault.jpg",
     "description": "Смачний рамен з ніжним курячим м'ясом та ароматним теріякі соусом, приправлений свіжими овочами.",
     "calories": 380,
     "creationDate": "2024-05-01T18:26:42.102Z",
@@ -2761,7 +2761,7 @@
     "servings": 4,
     "cookingTime": 25,
     "title": "Місо суп з товфу",
-    "photo": "miso_soup_photo.jpg",
+    "photo": "https://zprz.city/uploads/news/redactor/f245n1akempz9jrm.png",
     "description": "Ароматний і смачний суп на основі місо пасти з додаванням ніжного товфу та овочів.",
     "calories": 200,
     "creationDate": "2024-05-01T18:26:42.102Z",
@@ -2865,7 +2865,7 @@
     "servings": 2,
     "cookingTime": 30,
     "title": "Кацудон",
-    "photo": "katsudon_photo.jpg",
+    "photo": "https://znaj.ua/crops/c432f4/620x0/1/0/2018/11/15/9wEgCmoXf1YlglsEEGCzk1w0R4o94bpaC6a40M6m.jpeg",
     "description": "Традиційна японська страва, яка складається з паніруваного свинини, поданого на рисі та залитого яєчним соусом.",
     "calories": 450,
     "creationDate": "2024-05-01T18:26:42.102Z",
@@ -2988,7 +2988,7 @@
     "servings": 4,
     "cookingTime": 40,
     "title": "Філадельфія ролл",
-    "photo": "philadelphia_roll_photo.jpg",
+    "photo": "https://images.pizza33.ua/products/product/M3q6Qk8KBHQUsUnzGNscytt2mB9SD4SF.jpg",
     "description": "Класичний японський рол зі свіжого лосося, авокадо та крем-сиру, обгорнутий в кунжутному ковбасці.",
     "calories": 320,
     "creationDate": "2024-05-01T18:26:42.102Z",
@@ -3082,7 +3082,7 @@
   },
 {
     "title": "Kimchi",
-    "photo": "kimchi.jpg",
+    "photo": "https://cdn.apartmenttherapy.info/image/upload/f_auto,q_auto:eco,c_fill,g_auto,w_1500,ar_3:2/k%2FPhoto%2FSeries%2F2023-11-how-to-make-kimchi%2Fhow-to-make-kimchi-259",
     "description": "Traditional Korean side dish made of fermented vegetables, usually cabbage and radishes, seasoned with various spices.",
     "calories": 30,
     "servings": 4,
@@ -3161,7 +3161,7 @@
   },
   {
     "title": "Bibimbap",
-    "photo": "bibimbap.jpg",
+    "photo": "https://www.eggs.ca/assets/RecipeThumbs/EFC-BIBIMBAP-1280x720.jpg",
     "description": "A mixed rice dish topped with assorted vegetables, meat, and a fried egg, often served with spicy sauce.",
     "calories": 450,
     "servings": 2,
@@ -3258,7 +3258,7 @@
   },
 {
     "title": "Bulgogi",
-    "photo": "bulgogi.jpg",
+    "photo": "https://static01.nyt.com/images/2023/11/14/multimedia/JM-Bulgogi-qmfj/JM-Bulgogi-qmfj-square640.jpg",
     "description": "Thinly sliced beef marinated in a sweet and savory sauce, grilled or stir-fried.",
     "calories": 300,
     "servings": 4,
@@ -3336,7 +3336,7 @@
   },
   {
     "title": "Japchae",
-    "photo": "japchae.jpg",
+    "photo": "https://i0.wp.com/seonkyounglongest.com/wp-content/uploads/2019/05/Japchae-2.jpg?fit=1300%2C867&ssl=1",
     "description": "Stir-fried glass noodles with assorted vegetables and sometimes beef or mushrooms, seasoned with soy sauce and sesame oil.",
     "calories": 250,
     "servings": 4,
@@ -3418,7 +3418,7 @@
   },
   {
     "title": "Dak Galbi",
-    "photo": "dak-galbi.jpg",
+    "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3wWwtFIG11pYtO0mEqNG2X0l5n7w6nxI0Xg&s",
     "description": "Spicy stir-fried chicken with vegetables and rice cakes, typically cooked on a large cast-iron pan.",
     "calories": 350,
     "servings": 2,
@@ -3500,7 +3500,7 @@
   },
   {
     "title": "Samgyeopsal",
-    "photo": "samgyeopsal.jpg",
+    "photo": "https://i.ytimg.com/vi/23tRGHUX3qM/maxresdefault.jpg",
     "description": "Grilled pork belly served with lettuce leaves, garlic, ssamjang (fermented bean paste), and assorted condiments.",
     "calories": 400,
     "servings": 4,
@@ -3560,7 +3560,7 @@
   },
   {
     "title": "Tteokbokki",
-    "photo": "tteokbokki.jpg",
+    "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTR5SY875jFBSTSaoRKeZ5gxp0r8WAWsm046w&s",
     "description": "Spicy stir-fried rice cakes cooked in a sweet and spicy gochujang sauce.",
     "calories": 250,
     "servings": 4,
@@ -3646,7 +3646,7 @@
   },
   {
     "title": "Haemul Pajeon",
-    "photo": "haemul-pajeon.jpg",
+    "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_5hmIaMJxHUdmD3lOOlMXZkd2dWL7el7ryA&s",
     "description": "Savory Korean pancake made with a variety of seafood and scallions, often served as a snack or appetizer.",
     "calories": 200,
     "servings": 2,
@@ -3729,7 +3729,7 @@
   },
   {
     "title": "Kimbap",
-    "photo": "kimbap.jpg",
+    "photo": "https://cicili.tv/wp-content/uploads/2023/06/Flower-Kimbap-Small-2.jpg",
     "description": "Korean seaweed rice rolls filled with a variety of ingredients like vegetables, meat, and eggs, similar to sushi.",
     "calories": 180,
     "servings": 4,
@@ -3830,7 +3830,7 @@
   },
   {
     "title": "Yukgaejang",
-    "photo": "yukgaejang.jpg",
+    "photo": "https://i1.wp.com/seonkyounglongest.com/wp-content/uploads/2022/10/840A1522mini.jpg?fit=1000%2C667&ssl=1",
     "description": "Spicy beef soup with shredded beef, vegetables, and noodles, typically served as a hearty meal.",
     "calories": 350,
     "servings": 4,
@@ -3924,7 +3924,7 @@
   },
   {
     "title": "Makgeolli",
-    "photo": "makgeolli.jpg",
+    "photo": "https://www.holidaytourstravel.com/wp-content/uploads/2022/11/makgeolli.jpg",
     "description": "Traditional Korean rice wine with a milky appearance, slightly sweet and fizzy.",
     "calories": 120,
     "servings": 2,
@@ -3981,9 +3981,9 @@
     ]
   },
 {
-    "title": "Креп зупиньйон",
-    "photo": "https://example.com/crepe.jpg",
-    "description": "Креп зупиньйон - це традиційна французька страва, приготована з тоненьких пляцків, які заповнені різноманітними начинками, такими як шоколад, фрукти або сир.",
+    "title": "Креп",
+    "photo": "https://shuba.life/static/content/thumbs/1905x884/6/51/mxecx5---c1905x884x50px50p-up--a0e0c14e898423874abb1a9bcdb2a516.jpg",
+    "description": "Креп - це традиційна французька страва, приготована з тоненьких пляцків, які заповнені різноманітними начинками, такими як шоколад, фрукти або сир.",
     "calories": 250,
     "creationDate": "2024-05-01T18:26:42.102Z",
     "ingredients": [
@@ -4038,7 +4038,7 @@
   ,
   {
     "title": "Бульйон",
-    "photo": "https://example.com/bouillon.jpg",
+    "photo": "https://gotuvaty.com/wp-content/uploads/2023/03/yak-variti-buljon-post.jpg",
     "description": "Бульйон - це відвар з м'яса, птиці або риби, який використовується як основа для різних супів та соусів.",
     "calories": 120,
     "creationDate": "2024-05-01T18:26:42.102Z",
@@ -4094,7 +4094,7 @@
   ,
   {
     "title": "Рататуй",
-    "photo": "https://example.com/ratatouille.jpg",
+    "photo": "https://klopotenko.com/wp-content/uploads/2019/08/Ratatyj_siteWeb.jpg",
     "description": "Рататуй - це традиційна французька страва, яка складається з томатів, баклажанів, кабачків, перців та різних спецій.",
     "calories": 180,
     "creationDate": "2024-05-01T18:26:42.102Z",
@@ -4164,7 +4164,7 @@
   ,
   {
     "title": "Класична булочка",
-    "photo": "https://example.com/croissant.jpg",
+    "photo": "https://faial.h83.xyz/hospodar/images/2e4a597b2ffc.jpg",
     "description": "Класична французька булочка - це легка та повітряна випічка, яка чудово поєднується з кавою або чаєм.",
     "calories": 220,
     "creationDate": "2024-05-01T18:26:42.102Z",
@@ -4226,9 +4226,9 @@
   }
   ,
   {
-    "title": "Бугенвіль",
-    "photo": "https://example.com/bouillabaisse.jpg",
-    "description": "Бугенвіль - це традиційний рибний суп з різних видів морської риби, морепродуктів та різноманітних спецій.",
+    "title": "Буябес",
+    "photo": "https://i.obozrevatel.com/food/recipemain/2021/11/8/6303601489761989-1559-slivocnoe-maslo.jpg?size=636x424",
+    "description": "Буябес - це традиційний рибний суп з різних видів морської риби, морепродуктів та різноманітних спецій.",
     "calories": 300,
     "creationDate": "2024-05-01T18:26:42.102Z",
     "ingredients": [
@@ -4301,7 +4301,7 @@
   ,
   {
     "title": "Класична Салат Нісуаз",
-    "photo": "https://example.com/nicoise_salad.jpg",
+    "photo": "https://cdn.lenta.com.ua/images/maxone/1470/1470-e2c3b0e2db9288b676321d1056a93cf0.jpg",
     "description": "Салат Нісуаз - це класична французька страва, яка включає в себе тунець, оливки, овочі, яйця та картоплю.",
     "calories": 280,
     "creationDate": "2024-05-01T18:26:42.102Z",
@@ -4371,7 +4371,7 @@
   ,
   {
     "title": "Жюльєн з куркою",
-    "photo": "https://example.com/julienne.jpg",
+    "photo": "https://images.unian.net/photos/2020_05/thumb_files/1000_545_1588768597-2468.jpg",
     "description": "Жюльєн з куркою - це витончена французька страва, яка складається зі шматочків курячого м'яса, грибів, вершкового соусу та сиру.",
     "calories": 320,
     "creationDate": "2024-05-01T18:26:42.102Z",
@@ -4445,7 +4445,7 @@
   ,
   {
     "title": "Тарт Фламбе",
-    "photo": "https://example.com/tart_flambe.jpg",
+    "photo": "https://showdream.org/uploads/posts/2023-07/medium/1689848215_elzaskiy-tart-flambe-vognyaniy-pirg-z-bekonom-cibuleyu.jpg",
     "description": "Тарт фламбе - це традиційна альзаська страва, що представляє собою тонке корж з вершкового сиру, бекону та цибулі.",
     "calories": 290,
     "creationDate": "2024-05-01T18:26:42.102Z",
@@ -4512,7 +4512,7 @@
   ,
   {
     "title": "Конфіт де Канард",
-    "photo": "https://example.com/confit_de_canard.jpg",
+    "photo": "https://media.istockphoto.com/id/981750528/es/foto/confit-de-pato-confit-de-pato-con-verduras.jpg?s=612x612&w=0&k=20&c=hHw1nV_xH9Y-llwDfq_KzEsfz9LqkWLf75weS-ov_rQ=",
     "description": "Конфіт де Канард - це класична французька страва, яка складається з качиного стегна, яке підготовлене власним жиром до м'якості.",
     "calories": 380,
     "creationDate": "2024-05-01T18:26:42.102Z",
@@ -4579,7 +4579,7 @@
   ,
   {
     "title": "Конфітюр Фіговий",
-    "photo": "https://example.com/fig_jam.jpg",
+    "photo": "https://i.obozrevatel.com/food/recipemain/2019/2/12/yichakpr.jpg",
     "description": "Конфітюр фіговий - це ароматний та смачний десерт, приготований зі свіжих фіг, цукру та лимонного соку.",
     "calories": 210,
     "creationDate": "2024-05-01T18:26:42.102Z",
@@ -4627,9 +4627,9 @@
   }
   ,
   {
-    "title": "Бургундський говядина",
-    "photo": "https://example.com/beef_bourguignon.jpg",
-    "description": "Бургундський говядина - це традиційна французька страва з м'яса яловичини, яка тушиться в червоному вині разом з овочами і спеціями.",
+    "title": "Бургундська яловичина",
+    "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHJeoEeiJE6PMxQMA41X6YOZUMcpk1oZkOzw&s",
+    "description": "Бургундська яловичина - це традиційна французька страва з м'яса яловичини, яка тушиться в червоному вині разом з овочами і спеціями.",
     "calories": 350,
     "creationDate": "2024-05-01T18:26:42.102Z",
     "ingredients": [
@@ -4709,7 +4709,7 @@
   ,
   {
     "title": "Класична Конфіт де Фуа Гра",
-    "photo": "https://example.com/foie_gras.jpg",
+    "photo": "https://good-news.net.ua/wp-content/uploads/2021/04/52174e0d03d38fe666cae5ba2316958e-quality_75Xresize_1Xallow_enlarge_0Xw_700Xh_700.jpg",
     "description": "Конфіт де Фуа Гра - це елітна французька страва, приготована з печеного жирного печінки гуся або качки.",
     "calories": 450,
     "creationDate": "2024-05-01T18:26:42.102Z",
@@ -4769,7 +4769,7 @@
   ,
   {
     "title": "Класична Крем-Брюле",
-    "photo": "https://example.com/creme_brulee.jpg",
+    "photo": "https://klopotenko.com/wp-content/uploads/2021/05/krem-brule__sitewebukr.jpg",
     "description": "Крем-Брюле - це вишуканий французький десерт з вершкового крему та карамелізованого цукру.",
     "calories": 280,
     "creationDate": "2024-05-01T18:26:42.102Z",
@@ -4839,9 +4839,9 @@
   }
   ,
   {
-    "title": "Бугенвільський соус",
-    "photo": "https://example.com/beurre_blanc.jpg",
-    "description": "Бугенвільський соус - це легкий та ароматний французький соус, який ідеально підходить для рибних страв.",
+    "title": "Бургундський соус",
+    "photo": "https://static.tildacdn.com/tild3738-3634-4764-b139-386432353366/image.png",
+    "description": "Бургундський соус - це легкий та ароматний французький соус, який ідеально підходить для рибних страв.",
     "calories": 120,
     "creationDate": "2024-05-01T18:26:42.102Z",
     "ingredients": [
@@ -4907,7 +4907,7 @@
   ,
   {
     "title": "Бріош",
-    "photo": "https://example.com/brioche.jpg",
+    "photo": "https://images.prom.ua/2500316326_w600_h600_2500316326.jpg",
     "description": "Бріош - це пухка, ніжна та солодка французька випічка, яка ідеально підходить для сніданку або перекусу.",
     "calories": 280,
     "creationDate": "2024-05-01T18:26:42.102Z",

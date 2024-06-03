@@ -1,0 +1,4985 @@
+[
+  {
+    "servings": 4,
+    "cookingTime": 45,
+    "title": "Мусака",
+    "photo": "https://klopotenko.com/wp-content/uploads/2019/09/mysaka_sitewebukrnew-1000x600.jpg?v=1630946773",
+    "description": "Класична грецька страва, що складається зі шарів картоплі, баклажанів, м'яса та бешамельного соусу, подається після запікання в духовці.",
+    "calories": 350,
+    "creationDate": "2024-05-01T18:26:42.102Z",
+    "ingredients": [
+      {
+        "quantity": 800,
+        "name": "фарш (яловичий або бараний)",
+        "weightUnit": {
+          "type": "г"
+        }
+      },
+      {
+        "quantity": 4,
+        "name": "баклажани",
+        "weightUnit": {
+          "type": "шт"
+        }
+      },
+      {
+        "quantity": 6,
+        "name": "картопля",
+        "weightUnit": {
+          "type": "шт"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "цибуля",
+        "weightUnit": {
+          "type": "шт"
+        }
+      },
+      {
+        "quantity": 2,
+        "name": "яйця",
+        "weightUnit": {
+          "type": "шт"
+        }
+      },
+      {
+        "quantity": 500,
+        "name": "молоко",
+        "weightUnit": {
+          "type": "мл"
+        }
+      },
+      {
+        "quantity": 50,
+        "name": "борошно",
+        "weightUnit": {
+          "type": "г"
+        }
+      },
+      {
+        "quantity": 50,
+        "name": "олія (для смаження)",
+        "weightUnit": {
+          "type": "мл"
+        }
+      },
+      {
+        "quantity": 100,
+        "name": "пармезан (або інший сир)",
+        "weightUnit": {
+          "type": "г"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "свіжий помідор",
+        "weightUnit": {
+          "type": "шт"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "часник",
+        "weightUnit": {
+          "type": "зубчик"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "кріп",
+        "weightUnit": {
+          "type": "пучок"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "масло",
+        "weightUnit": {
+          "type": "ст.л."
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "сіль",
+        "weightUnit": {
+          "type": "щіпка"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "перець",
+        "weightUnit": {
+          "type": "щіпка"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "мускатний горіх",
+        "weightUnit": {
+          "type": "щіпка"
+        }
+      }
+    ],
+    "steps": [
+      {
+        "description": "Нарізати баклажани кружечками, посолити, залишити на 30 хвилин, потім вимити під холодною водою, обсушити і злегка підсмажити в олії.",
+        "order": 1
+      },
+      {
+        "description": "Нарізати картоплю кружечками, підсмажити в олії до золотистого кольору.",
+        "order": 2
+      },
+      {
+        "description": "Приготувати бешамельний соус: розтопити масло, додати борошно, постійно помішуючи, долити молоко, довести до закипання, після чого додати тертий сир, сіль, перець та мускатний горіх.",
+        "order": 3
+      },
+      {
+        "description": "Приготувати начинку: обсмажити на дрібній цибулі фарш, додати нарізаний помідор, часник, кріп, сіль і перець, готувати до готовності.",
+        "order": 4
+      },
+      {
+        "description": "У велику форму для запікання влаштувати шари: картопля, баклажани, фарш, повторити, зверху залити бешамельним соусом.",
+        "order": 5
+      },
+      {
+        "description": "Запікати у попередньо розігрітій до 180°C духовці протягом 30 хвилин.",
+        "order": 6
+      },
+      {
+        "description": "Після приготування дати страві трошки постояти, щоб затверділа, і подавати гарячою.",
+        "order": 7
+      }
+    ]
+  },
+  {
+    "servings": 2,
+    "cookingTime": 30,
+    "title": "Салата з фетою і оливками",
+    "photo": "https://klopotenko.com/wp-content/uploads/2021/04/salat-z-fetou-i-olyvkamy_sitewebukr-1000x600.jpg?v=1618830986",
+    "description": "Легкий і смачний салат, який є класичною стравою грецької кухні. Збалансований по смаку та текстурі, він ідеально підходить як основна страва або додаток до основного обіду.",
+    "calories": 250,
+    "creationDate": "2024-05-01T18:30:00.000Z",
+    "ingredients": [
+      {
+        "quantity": 2,
+        "name": "помідори",
+        "weightUnit": {
+          "type": "шт"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "огірок",
+        "weightUnit": {
+          "type": "шт"
+        }
+      },
+      {
+        "quantity": 100,
+        "name": "фета",
+        "weightUnit": {
+          "type": "г"
+        }
+      },
+      {
+        "quantity": 50,
+        "name": "оливки",
+        "weightUnit": {
+          "type": "г"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "олія оливкова",
+        "weightUnit": {
+          "type": "ст.л."
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "сік лимона",
+        "weightUnit": {
+          "type": "ст.л."
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "сіль",
+        "weightUnit": {
+          "type": "щіпка"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "свіжий орегано",
+        "weightUnit": {
+          "type": "пучок"
+        }
+      }
+    ],
+    "steps": [
+      {
+        "description": "Нарізати помідори та огірок кубиками, розтерти фету на дрібні кусочки.",
+        "order": 1
+      },
+      {
+        "description": "Змішати помідори, огірок, фету та оливки великій мисці.",
+        "order": 2
+      },
+      {
+        "description": "Полити оливковою олією та соком лимона, додати сіль за смаком.",
+        "order": 3
+      },
+      {
+        "description": "Перед подачею посипати салат свіжим орегано.",
+        "order": 4
+      }
+    ]
+  },
+  {
+    "servings": 4,
+    "cookingTime": 40,
+    "title": "Сувлакі",
+    "photo": "https://picantecooking.com/media/cache/content_detail_preview/pictures/2015-08/suvlaki-zi-svinini-souvlaki-6404d06616a55843308655.jpg",
+    "description": "Сувлакі - це грецькі шашлики, які зазвичай готуються зі шматочків м'яса (частіше всього свинини або курки), запечених на вугільному вогні та подаються зі свіжим хлібом, овочами та соусами.",
+    "calories": 300,
+    "creationDate": "2024-05-01T18:40:00.000Z",
+    "ingredients": [
+      {
+        "quantity": 500,
+        "name": "свинина (або курка)",
+        "weightUnit": {
+          "type": "г"
+        }
+      },
+      {
+        "quantity": 4,
+        "name": "піта",
+        "weightUnit": {
+          "type": "шт"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "помідор",
+        "weightUnit": {
+          "type": "шт"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "огірок",
+        "weightUnit": {
+          "type": "шт"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "цибуля",
+        "weightUnit": {
+          "type": "шт"
+        }
+      },
+      {
+        "quantity": 100,
+        "name": "грецький йогурт",
+        "weightUnit": {
+          "type": "г"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "сік лимона",
+        "weightUnit": {
+          "type": "ст.л."
+        }
+      },
+      {
+        "quantity": 2,
+        "name": "часник",
+        "weightUnit": {
+          "type": "зубчик"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "олія оливкова",
+        "weightUnit": {
+          "type": "ст.л."
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "оливкова олія (для маринування)",
+        "weightUnit": {
+          "type": "ст.л."
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "паприка",
+        "weightUnit": {
+          "type": "ч.л."
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "сіль",
+        "weightUnit": {
+          "type": "щіпка"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "перець",
+        "weightUnit": {
+          "type": "щіпка"
+        }
+      }
+    ],
+    "steps": [
+      {
+        "description": "Нарізати м'ясо на невеликі шматочки, змішати з олією оливковою, соком лимона, сіллю, перцем, паприкою та нарізаним часником і залишити маринуватися протягом 30 хвилин - 1 години.",
+        "order": 1
+      },
+      {
+        "description": "Нарізати помідори, огірки та цибулю на кружечки.",
+        "order": 2
+      },
+      {
+        "description": "Пронизати м'ясо на шпажки та смажити на вугільному вогні або на грилі до готовності, приблизно 10-15 хвилин.",
+        "order": 3
+      },
+      {
+        "description": "Розірвати піта, розкласти по тарілках, покласти на них шматочки м'яса, овочі, полити йогуртом і полити оливковою олією.",
+        "order": 4
+      }
+    ]
+  },
+  {
+    "servings": 6,
+    "cookingTime": 60,
+    "title": "Пастіціо",
+    "photo": "https://i.obozrevatel.com/news/2022/1/17/filestoragetemp-2022-01-17t092110-290.jpg?size=972x462",
+    "description": "Пастіціо - це грецька версія лазаньї. Ця страва складається з макаронів, м'ясного соусу та бешамельного соусу, запіканих разом в духовці до золотистого кольору.",
+    "calories": 400,
+    "creationDate": "2024-05-01T18:50:00.000Z",
+    "ingredients": [
+      {
+        "quantity": 500,
+        "name": "макарони (трубочки або макарони з локшиною)",
+        "weightUnit": {
+          "type": "г"
+        }
+      },
+      {
+        "quantity": 500,
+        "name": "фарш (яловичий або бараний)",
+        "weightUnit": {
+          "type": "г"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "цибуля",
+        "weightUnit": {
+          "type": "шт"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "помідор",
+        "weightUnit": {
+          "type": "шт"
+        }
+      },
+      {
+        "quantity": 500,
+        "name": "помідорний соус",
+        "weightUnit": {
+          "type": "г"
+        }
+      },
+      {
+        "quantity": 100,
+        "name": "пармезан (або інший сир)",
+        "weightUnit": {
+          "type": "г"
+        }
+      },
+      {
+        "quantity": 500,
+        "name": "молоко",
+        "weightUnit": {
+          "type": "мл"
+        }
+      },
+      {
+        "quantity": 50,
+        "name": "борошно",
+        "weightUnit": {
+          "type": "г"
+        }
+      },
+      {
+        "quantity": 50,
+        "name": "масло",
+        "weightUnit": {
+          "type": "г"
+        }
+      },
+      {
+        "quantity": 2,
+        "name": "яйця",
+        "weightUnit": {
+          "type": "шт"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "сіль",
+        "weightUnit": {
+          "type": "щіпка"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "перець",
+        "weightUnit": {
+          "type": "щіпка"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "мускатний горіх",
+        "weightUnit": {
+          "type": "щіпка"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "олія оливкова",
+        "weightUnit": {
+          "type": "ст.л."
+        }
+      }
+    ],
+    "steps": [
+      {
+        "description": "Приготувати макарони в киплячій підсоленій воді до напівготовності. Одразу ж після цього процідити і промити холодною водою.",
+        "order": 1
+      },
+      {
+        "description": "На розігрітій сковороді обсмажити дрібно нарізану цибулю до золотистого кольору, додати фарш і смажити до готовності. Додати нарізаний помідор і помідорний соус, довести до кипіння, посолити, поперчити.",
+        "order": 2
+      },
+      {
+        "description": "Приготувати бешамельний соус: розтопити масло, додати борошно, постійно помішуючи, долити молоко, довести до закипання, після чого додати тертий сир, сіль, перець та мускатний горіх.",
+        "order": 3
+      },
+      {
+        "description": "Політи дно форми для запікання трохи олією, розкласти на ньому половину макаронів, зверху рівномірно розподілити м'ясний соус, потім залити все бешамельним соусом. Повторити шари ще раз.",
+        "order": 4
+      },
+      {
+        "description": "Запікати у попередньо розігрітій до 180°C духовці протягом 30-40 хвилин до золотистого кольору.",
+        "order": 5
+      },
+      {
+        "description": "Після приготування дати страві трошки постояти, щоб затверділа, і подавати гарячою.",
+        "order": 6
+      }
+    ]
+  },
+{
+  "servings": 4,
+  "cookingTime": 60,
+  "title": "Грецькі фісташкові котлети",
+  "photo": "https://ptv.ua/mediafiles/gallery/x-VoQ.jpg",
+  "description": "Ці ароматні та соковиті котлети з фісташками є справжньою вибагливістю для вашого пальця! Вони поєднують унікальний грецький смак з багатством білка та поживних речовин.",
+  "calories": 350,
+  "creationDate": "2024-05-01T19:10:00.000Z",
+  "ingredients": [
+    {
+      "quantity": 500,
+      "name": "фарш (яловичий або курячий)",
+      "weightUnit": {
+        "type": "г"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "яйце",
+      "weightUnit": {
+        "type": "шт"
+      }
+    },
+    {
+      "quantity": 50,
+      "name": "фісташки",
+      "weightUnit": {
+        "type": "г"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "цибуля",
+      "weightUnit": {
+        "type": "шт"
+      }
+    },
+    {
+      "quantity": 2,
+      "name": "часник",
+      "weightUnit": {
+        "type": "зубчик"
+      }
+    },
+    {
+      "quantity": 30,
+      "name": "персик (або абрикос) консервований",
+      "weightUnit": {
+        "type": "г"
+      }
+    },
+    {
+      "quantity": 2,
+      "name": "оливкова олія",
+      "weightUnit": {
+        "type": "ст.л."
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "сіль",
+      "weightUnit": {
+        "type": "щіпка"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "перець",
+      "weightUnit": {
+        "type": "щіпка"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "петрушка",
+      "weightUnit": {
+        "type": "пучок"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "м'ята",
+      "weightUnit": {
+        "type": "пучок"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "description": "Помелешкати фісташки в блендері або дрібно нарізати.",
+      "order": 1
+    },
+    {
+      "description": "На дрібно нарізаній цибулі і часнику обсмажити фарш до золотистого кольору.",
+      "order": 2
+    },
+    {
+      "description": "Великій мисці змішати фарш, нарізані фісташки, яйце, нарізаний персик, сіль, перець, нарізану петрушку та м'яту.",
+      "order": 3
+    },
+    {
+      "description": "З формувати котлети з отриманої суміші.",
+      "order": 4
+    },
+    {
+      "description": "На сковороді розігріти олію та обсмажити котлети до золотистого кольору з обох боків.",
+      "order": 5
+    },
+    {
+      "description": "Після приготування дати страві трошки постояти, щоб затверділа, і подавати гарячою.",
+      "order": 6
+    }
+  ]
+},
+ {
+  "servings": 4,
+  "cookingTime": 40,
+  "title": "Грецькі ліниві пироги з фетою",
+  "photo": "https://shuba.life/static/content/thumbs/1905x884/a/28/hnuz72---c1905x884x50px50p-up--835afac47c5f94be0fcfb250d9b4928a.jpg",
+  "description": "Ці смачні і прості у приготуванні пироги з фетою - ідеальний варіант для лінивих обідів або швидкого перекусу. Вони мають неймовірний грецький смак і можуть бути подані як гарячі, так і холодні.",
+  "calories": 300,
+  "creationDate": "2024-05-01T19:30:00.000Z",
+  "ingredients": [
+    {
+      "quantity": 200,
+      "name": "фета",
+      "weightUnit": {
+        "type": "г"
+      }
+    },
+    {
+      "quantity": 200,
+      "name": "йогурт (грецький або звичайний)",
+      "weightUnit": {
+        "type": "г"
+      }
+    },
+    {
+      "quantity": 2,
+      "name": "яйця",
+      "weightUnit": {
+        "type": "шт"
+      }
+    },
+    {
+      "quantity": 100,
+      "name": "м'яка пшенична мука",
+      "weightUnit": {
+        "type": "г"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "олія оливкова",
+      "weightUnit": {
+        "type": "ст.л."
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "пряний перець (паприка)",
+      "weightUnit": {
+        "type": "ч.л."
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "сіль",
+      "weightUnit": {
+        "type": "щіпка"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "сода",
+      "weightUnit": {
+        "type": "щіпка"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "description": "У великій мисці розтерти фету, додати йогурт і розбиті яйця. Посолити, поперчити, додати пряний перець і соду, добре змішати.",
+      "order": 1
+    },
+    {
+      "description": "Поступово додавати муку, помішуючи, до отримання консистенції, що не липне до рук, але добре утримується разом.",
+      "order": 2
+    },
+    {
+      "description": "З отриманої суміші утворювати невеликі котлети або шарики.",
+      "order": 3
+    },
+    {
+      "description": "Розігріти олію на сковороді та смажити котлети до золотистого кольору з обох боків.",
+      "order": 4
+    },
+    {
+      "description": "Після смаження котлети готові до подачі. Подаються гарячими або холодними, з грецьким йогуртом або соусом за смаком.",
+      "order": 5
+    }
+  ]
+},
+{
+  "servings": 4,
+  "cookingTime": 45,
+  "title": "Грецькі ліпітоси",
+  "photo": "https://tripmydream.cc/travelhub/travel/block_gallery/10/0387/default_100387.jpg?",
+  "description": "Грецькі ліпітоси - це смачна та поживна страва, яка складається з ароматного фаршу з яловичини, приправленого грецькими спеціями та подаваного у підігрітому піта-хлібі зі свіжими овочами та соусом.",
+  "calories": 450,
+  "creationDate": "2024-05-01T20:15:00.000Z",
+  "ingredients": [
+    {
+      "quantity": 400,
+      "name": "фарш яловичини",
+      "weightUnit": {
+        "type": "г"
+      }
+    },
+    {
+      "quantity": 4,
+      "name": "піта-хліб",
+      "weightUnit": {
+        "type": "шт"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "помідор",
+      "weightUnit": {
+        "type": "шт"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "огірок",
+      "weightUnit": {
+        "type": "шт"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "цибуля",
+      "weightUnit": {
+        "type": "шт"
+      }
+    },
+    {
+      "quantity": 100,
+      "name": "сир фета",
+      "weightUnit": {
+        "type": "г"
+      }
+    },
+    {
+      "quantity": 50,
+      "name": "оливки",
+      "weightUnit": {
+        "type": "г"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "оливкова олія",
+      "weightUnit": {
+        "type": "ст.л."
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "лимон (сік)",
+      "weightUnit": {
+        "type": "шт"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "часник",
+      "weightUnit": {
+        "type": "зубчик"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "петрушка",
+      "weightUnit": {
+        "type": "пучок"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "м'ята",
+      "weightUnit": {
+        "type": "пучок"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "сіль",
+      "weightUnit": {
+        "type": "щіпка"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "перець",
+      "weightUnit": {
+        "type": "щіпка"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "description": "Нарізати помідор, огірок та цибулю на дрібні кубики. Подрібнити петрушку та м'яту. Подрібнити часник.",
+      "order": 1
+    },
+    {
+      "description": "У великій сковороді розігріти олію. Додати фарш і обсмажити до золотистого кольору. Додати часник, сіль та перець.",
+      "order": 2
+    },
+    {
+      "description": "Підсмажений фарш розділити на чотири порції. У піта-хліб розрізати відкрити кишені.",
+      "order": 3
+    },
+    {
+      "description": "В кожну кишеню піта-хліба додати порцію фаршу, помідори, огірок, цибулю, сир фета, оливки, петрушку та м'яту. Полити сіком лимона.",
+      "order": 4
+    },
+    {
+      "description": "Подати ліпітоси гарячими. Це можна приправити гострим соусом за смаком.",
+      "order": 5
+    }
+  ]
+},
+{
+  "servings": 4,
+  "cookingTime": 60,
+  "title": "Спанакопіта",
+  "photo": "https://agropererobka.com.ua/content/recipes/show/grecheskiy_pirog_so_shpinatom_spanakopita_1702560342.jpg",
+  "description": "Спанакопіта - це традиційна грецька страва, що складається з шарів хрусткого філо тіста та начинки зі шпинату, луковиці, спецій і сиру фета. Це смачна і ароматна страва, яка може бути подана як гарячою, так і холодною.",
+  "calories": 300,
+  "creationDate": "2024-05-01T21:00:00.000Z",
+  "ingredients": [
+    {
+      "quantity": 500,
+      "name": "філо тісто",
+      "weightUnit": {
+        "type": "г"
+      }
+    },
+    {
+      "quantity": 500,
+      "name": "шпинат (свіжий або заморожений)",
+      "weightUnit": {
+        "type": "г"
+      }
+    },
+    {
+      "quantity": 200,
+      "name": "луковиця",
+      "weightUnit": {
+        "type": "г"
+      }
+    },
+    {
+      "quantity": 200,
+      "name": "сир фета",
+      "weightUnit": {
+        "type": "г"
+      }
+    },
+    {
+      "quantity": 3,
+      "name": "яйця",
+      "weightUnit": {
+        "type": "шт"
+      }
+    },
+    {
+      "quantity": 100,
+      "name": "оливкова олія",
+      "weightUnit": {
+        "type": "мл"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "часник (дрібно нарізаний)",
+      "weightUnit": {
+        "type": "зубчик"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "сіль",
+      "weightUnit": {
+        "type": "щіпка"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "перець",
+      "weightUnit": {
+        "type": "щіпка"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "description": "Розморозити філо тісто за інструкціями на упаковці, якщо воно заморожене. Розігріти духовку до 180°C.",
+      "order": 1
+    },
+    {
+      "description": "На сковороді розігріти олію. Додати дрібно нарізаний лук та часник і смажити до м'якості.",
+      "order": 2
+    },
+    {
+      "description": "Додати шпинат і смажити, поки він не опуститься. Додати сіль та перець за смаком.",
+      "order": 3
+    },
+    {
+      "description": "У великій мисці зламати яйця, додати сир фета і збити. Додати до маси шпинату.",
+      "order": 4
+    },
+    {
+      "description": "Розгорнути аркуші філо тіста. На кожен аркуш покласти шар начинки. Згорнути аркуші у форму рулетів або трикутників, змащуючи кінці олією.",
+      "order": 5
+    },
+    {
+      "description": "Покласти рулети або трикутники на противень, вирівняти. Запікати у попередньо розігрітій духовці приблизно 30 хвилин або до золотистого кольору.",
+      "order": 6
+    },
+    {
+      "description": "Готові спанакопіти можна подавати як гарячі, так і холодними. Приємного апетиту!",
+      "order": 7
+    }
+  ]
+},
+{
+  "servings": 4,
+  "cookingTime": 60,
+  "title": "Лабні з огірками і м'ятою",
+  "photo": "https://www.gonnawantseconds.com/wp-content/uploads/2012/07/dsc_blog252b0534.jpg",
+  "description": "Лабні - це популярна страва в грецькій кухні, яка приготовлюється з відцідженого йогурту, який потім змішується з огірками, м'ятою та іншими приправами. Це освіжаючий і легкий страва, ідеальний для спекотного літнього дня.",
+  "calories": 180,
+  "creationDate": "2024-05-01T21:30:00.000Z",
+  "ingredients": [
+    {
+      "quantity": 500,
+      "name": "грецький йогурт",
+      "weightUnit": {
+        "type": "г"
+      }
+    },
+    {
+      "quantity": 2,
+      "name": "огірки (середні)",
+      "weightUnit": {
+        "type": "шт"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "лайм (сік)",
+      "weightUnit": {
+        "type": "шт"
+      }
+    },
+    {
+      "quantity": 2,
+      "name": "зубчики часнику (дрібно нарізані)",
+      "weightUnit": {
+        "type": "шт"
+      }
+    },
+    {
+      "quantity": 2,
+      "name": "ст. ложки свіжої м'яти (нарізаної)",
+      "weightUnit": {
+        "type": "шт"
+      }
+    },
+    {
+      "quantity": 2,
+      "name": "ст. ложки оливкової олії",
+      "weightUnit": {
+        "type": "шт"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "сіль",
+      "weightUnit": {
+        "type": "щіпка"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "чорний перець (свіжомолотий)",
+      "weightUnit": {
+        "type": "щіпка"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "description": "Висолити грецький йогурт, щоб відділити сироватку. Для цього покладіть йогурт у відціджуюче дуршляг або марлю, покладіть його над глибокою мискою та залиште в холодильнику протягом 4-6 годин або на ніч.",
+      "order": 1
+    },
+    {
+      "description": "Після відцідження йогурту перелійте його у миску. Додайте сіль, перець та нарізаний часник. Добре перемішайте.",
+      "order": 2
+    },
+    {
+      "description": "Наріжте огірки на дрібні кубики та додайте їх до йогурту.",
+      "order": 3
+    },
+    {
+      "description": "Додайте нарізану м'яту, сік лайма та оливкову олію. Перемішайте, щоб всі інгредієнти добре поєдналися.",
+      "order": 4
+    },
+    {
+      "description": "Подається лабні за бажанням з хлібом піта або як додаток до страв гарячої або холодної кухні.",
+      "order": 5
+    }
+  ]
+},
+{
+  "servings": 4,
+  "cookingTime": 30,
+  "title": "Грецькі фасолі в томатному соусі",
+  "photo": "https://kudaka.org.ua/wp-content/uploads/2024/01/2-35.jpg",
+  "description": "Грецькі фасолі в томатному соусі - це традиційна страва грецької кухні, яка поєднує ароматні трави, овочі та бобові у смачному томатному соусі. Цей страва надає енергію й задоволення, ідеально підходить для вечері або обіду.",
+  "calories": 280,
+  "creationDate": "2024-05-01T22:00:00.000Z",
+  "ingredients": [
+    {
+      "quantity": 400,
+      "name": "фасоля (варена або консервована)",
+      "weightUnit": {
+        "type": "г"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "цибуля",
+      "weightUnit": {
+        "type": "шт"
+      }
+    },
+    {
+      "quantity": 2,
+      "name": "помідори (нарізані)",
+      "weightUnit": {
+        "type": "шт"
+      }
+    },
+    {
+      "quantity": 2,
+      "name": "часник (дрібно нарізаний)",
+      "weightUnit": {
+        "type": "зубчик"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "оливкова олія",
+      "weightUnit": {
+        "type": "ст.л."
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "томатна паста",
+      "weightUnit": {
+        "type": "ст.л."
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "сіль",
+      "weightUnit": {
+        "type": "щіпка"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "перець",
+      "weightUnit": {
+        "type": "щіпка"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "петрушка (нарізана)",
+      "weightUnit": {
+        "type": "ст.л."
+      }
+    }
+  ],
+  "steps": [
+    {
+      "description": "Розігріти олію в казанку на середньому вогні. Додати дрібно нарізану цибулю та смажити до м'якості, приблизно 5 хвилин.",
+      "order": 1
+    },
+    {
+      "description": "Додати дрібно нарізаний часник та томатну пасту. Готувати, помішуючи, ще 2 хвилини.",
+      "order": 2
+    },
+    {
+      "description": "Додати нарізані помідори, сіль та перець. Зменшити вогонь і готувати, помішуючи, до того часу, поки помідори не стануть м'якими, приблизно 10 хвилин.",
+      "order": 3
+    },
+    {
+      "description": "Додати фасолю та замішати. Готувати, помішуючи, ще 5 хвилин, або доки фасоля не нагріється.",
+      "order": 4
+    },
+    {
+      "description": "Подається грецькі фасолі в томатному соусі, прикрасивши їх нарізаною петрушкою. Можна подавати гарячими або прохолодними.",
+      "order": 5
+    }
+  ]
+},
+{
+  "servings": 4,
+  "cookingTime": 45,
+  "title": "Грецький салат з кальмарами",
+  "photo": "https://eatsy.recipes/image/cover/a7f032feb5ed2aaf0fcadca8a3e59a0e.jpg?w=760&h=600&q=90&fit=crop",
+  "description": "Грецький салат з кальмарами - це освіжаюча та смачна страва, яка поєднує морських кальмарів зі свіжими овочами та ароматними травами. Цей салат ідеально підходить для літнього часу і прекрасно поєднується зі свіжим багетом або кремовим соусом.",
+  "calories": 320,
+  "creationDate": "2024-05-01T22:30:00.000Z",
+  "ingredients": [
+    {
+      "quantity": 500,
+      "name": "кальмари (очищені та порізані)",
+      "weightUnit": {
+        "type": "г"
+      }
+    },
+    {
+      "quantity": 2,
+      "name": "помідори (нарізані)",
+      "weightUnit": {
+        "type": "шт"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "огірок (нарізаний)",
+      "weightUnit": {
+        "type": "шт"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "цибуля (нарізана)",
+      "weightUnit": {
+        "type": "шт"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "оливки (видалені кісточки)",
+      "weightUnit": {
+        "type": "г"
+      }
+    },
+    {
+      "quantity": 100,
+      "name": "фета (нарізана кубиками)",
+      "weightUnit": {
+        "type": "г"
+      }
+    },
+    {
+      "quantity": 2,
+      "name": "лимон (сік)",
+      "weightUnit": {
+        "type": "шт"
+      }
+    },
+    {
+      "quantity": 2,
+      "name": "оливкова олія",
+      "weightUnit": {
+        "type": "ст.л."
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "часник (пропущений через прес-часник)",
+      "weightUnit": {
+        "type": "зубчик"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "орегано (сушене)",
+      "weightUnit": {
+        "type": "ч.л."
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "сіль",
+      "weightUnit": {
+        "type": "щіпка"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "перець",
+      "weightUnit": {
+        "type": "щіпка"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "description": "Розігрійте сковороду з олією на середньому вогні. Додайте порізані кальмари і обсмажте їх до золотистого кольору, приблизно 4-5 хвилин.",
+      "order": 1
+    },
+    {
+      "description": "Велику миску, злегка змащену оливковою олією, заповніть нарізаними помідорами, огірком, цибулею, оливками та кубиками фети.",
+      "order": 2
+    },
+    {
+      "description": "Додайте обсмажені кальмари до миски з овочами.",
+      "order": 3
+    },
+    {
+      "description": "Для заправки змішайте оливкову олію, сік лимона, пресований часник, орегано, сіль та перець. Полийте салат отриманою заправкою та добре перемішайте.",
+      "order": 4
+    },
+    {
+      "description": "Подається грецький салат з кальмарами гарячим або холодним, за бажанням можна прикрасити свіжою м'ятою або петрушкою.",
+      "order": 5
+    }
+  ]
+},
+  {
+  "servings": 4,
+  "cookingTime": 30,
+  "title": "Homemade Pizza",
+  "photo": "https://yummyrecipes.uk/easy-homemade-pizza/easy-homemade-pizza-09.jpg",
+  "description": "Enjoy a classic homemade pizza with your favorite toppings!",
+  "calories": 2500,
+  "creationDate": "2024-05-01T18:26:42.102Z",
+  "ingredients": [
+    {
+      "quantity": 1,
+      "name": "pizza dough",
+      "weightUnit": {
+        "type": "unit"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "cup pizza sauce",
+      "weightUnit": {
+        "type": "cup"
+      }
+    },
+    {
+      "quantity": 2,
+      "name": "cups shredded mozzarella cheese",
+      "weightUnit": {
+        "type": "cup"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "cup toppings (e.g., sliced pepperoni, bell peppers, onions)",
+      "weightUnit": {
+        "type": "cup"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "description": "Preheat your oven to 450°F (230°C).",
+      "order": 1
+    },
+    {
+      "description": "Roll out the pizza dough on a floured surface to your desired thickness.",
+      "order": 2
+    },
+    {
+      "description": "Transfer the rolled-out dough to a lightly greased pizza pan or baking sheet.",
+      "order": 3
+    },
+    {
+      "description": "Spread the pizza sauce evenly over the dough, leaving a small border around the edges.",
+      "order": 4
+    },
+    {
+      "description": "Sprinkle the shredded mozzarella cheese over the sauce.",
+      "order": 5
+    },
+    {
+      "description": "Add your favorite toppings, distributing them evenly over the cheese.",
+      "order": 6
+    },
+    {
+      "description": "Bake in the preheated oven for 12-15 minutes, or until the crust is golden brown and the cheese is bubbly and melted.",
+      "order": 7
+    },
+    {
+      "description": "Remove the pizza from the oven and let it cool for a few minutes before slicing and serving.",
+      "order": 8
+    },
+    {
+      "description": "Enjoy your delicious homemade pizza!",
+      "order": 9
+    }
+  ]
+},
+{
+  "servings": 6,
+  "cookingTime": 60,
+  "title": "Classic Homemade Lasagna",
+  "photo": "https://simply-delicious-food.com/wp-content/uploads/2020/12/Classic-lasagna-5-500x375.jpg",
+  "description": "Indulge in layers of pasta, rich meat sauce, and creamy cheese in this classic homemade lasagna recipe.",
+  "calories": 3500,
+  "creationDate": "2024-05-01T18:26:42.102Z",
+  "ingredients": [
+    {
+      "quantity": 9,
+      "name": "lasagna noodles",
+      "weightUnit": {
+        "type": "unit"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "pound ground beef",
+      "weightUnit": {
+        "type": "pound"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "onion, chopped",
+      "weightUnit": {
+        "type": "unit"
+      }
+    },
+    {
+      "quantity": 2,
+      "name": "cloves garlic, minced",
+      "weightUnit": {
+        "type": "unit"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "can (28 oz) crushed tomatoes",
+      "weightUnit": {
+        "type": "can"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "can (6 oz) tomato paste",
+      "weightUnit": {
+        "type": "can"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "cup water",
+      "weightUnit": {
+        "type": "cup"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "tablespoon sugar",
+      "weightUnit": {
+        "type": "tablespoon"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "teaspoon dried basil leaves",
+      "weightUnit": {
+        "type": "teaspoon"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "teaspoon dried oregano leaves",
+      "weightUnit": {
+        "type": "teaspoon"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "teaspoon salt",
+      "weightUnit": {
+        "type": "teaspoon"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "container (15 oz) ricotta cheese",
+      "weightUnit": {
+        "type": "container"
+      }
+    },
+    {
+      "quantity": 2,
+      "name": "cups shredded mozzarella cheese",
+      "weightUnit": {
+        "type": "cup"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "cup grated Parmesan cheese",
+      "weightUnit": {
+        "type": "cup"
+      }
+    },
+    {
+      "quantity": 2,
+      "name": "tablespoons chopped fresh parsley",
+      "weightUnit": {
+        "type": "tablespoon"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "description": "Preheat your oven to 350°F (175°C).",
+      "order": 1
+    },
+    {
+      "description": "In a large skillet, cook ground beef, onion, and garlic over medium heat until meat is no longer pink; drain.",
+      "order": 2
+    },
+    {
+      "description": "Stir in crushed tomatoes, tomato paste, water, sugar, basil, oregano, and salt; bring to a boil. Reduce heat; simmer uncovered for 30 minutes, stirring occasionally.",
+      "order": 3
+    },
+    {
+      "description": "In a mixing bowl, combine ricotta cheese, 1 cup mozzarella cheese, Parmesan cheese, and parsley.",
+      "order": 4
+    },
+    {
+      "description": "Spread 1 cup meat sauce in an ungreased 13x9-inch baking dish. Layer with 3 noodles, 1 cup meat sauce, and a third of the cheese mixture.",
+      "order": 5
+    },
+    {
+      "description": "Repeat layers twice.",
+      "order": 6
+    },
+    {
+      "description": "Top with remaining meat sauce and mozzarella cheese.",
+      "order": 7
+    },
+    {
+      "description": "Cover and bake for 45 minutes.",
+      "order": 8
+    },
+    {
+      "description": "Uncover; bake 10 minutes longer or until bubbly.",
+      "order": 9
+    },
+    {
+      "description": "Let stand for 10 minutes before cutting.",
+      "order": 10
+    },
+    {
+      "description": "Serve and enjoy your delicious homemade lasagna!",
+      "order": 11
+    }
+  ]
+},
+{
+  "servings": 4,
+  "cookingTime": 20,
+  "title": "Spaghetti Carbonara",
+  "photo": "https://img.chefkoch-cdn.de/rezepte/1298241234947062/bilder/1509530/crop-960x540/carbonara-wie-bei-der-mamma-in-rom.jpg",
+  "description": "Indulge in the creamy goodness of Spaghetti Carbonara with crispy pancetta and Parmesan cheese.",
+  "calories": 1500,
+  "creationDate": "2024-05-01T18:26:42.102Z",
+  "ingredients": [
+    {
+      "quantity": 12,
+      "name": "ounces spaghetti",
+      "weightUnit": {
+        "type": "ounce"
+      }
+    },
+    {
+      "quantity": 4,
+      "name": "ounces pancetta or bacon, diced",
+      "weightUnit": {
+        "type": "ounce"
+      }
+    },
+    {
+      "quantity": 3,
+      "name": "large eggs",
+      "weightUnit": {
+        "type": "unit"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "cup grated Parmesan cheese",
+      "weightUnit": {
+        "type": "cup"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "teaspoon freshly ground black pepper",
+      "weightUnit": {
+        "type": "teaspoon"
+      }
+    },
+    {
+      "quantity": 2,
+      "name": "tablespoons chopped fresh parsley (optional)",
+      "weightUnit": {
+        "type": "tablespoon"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "description": "Bring a large pot of salted water to a boil. Cook spaghetti according to package instructions until al dente. Reserve 1 cup of pasta water, then drain spaghetti.",
+      "order": 1
+    },
+    {
+      "description": "While the spaghetti is cooking, heat a large skillet over medium heat. Add diced pancetta or bacon and cook until crispy, about 5-7 minutes. Remove from skillet and set aside on paper towels to drain.",
+      "order": 2
+    },
+    {
+      "description": "In a mixing bowl, whisk together eggs, grated Parmesan cheese, and freshly ground black pepper until well combined.",
+      "order": 3
+    },
+    {
+      "description": "Return the drained spaghetti to the pot. Immediately pour the egg and cheese mixture over the hot spaghetti, tossing quickly to coat. The heat from the spaghetti will cook the eggs and melt the cheese, creating a creamy sauce. If the sauce is too thick, add reserved pasta water, a little at a time, until desired consistency is reached.",
+      "order": 4
+    },
+    {
+      "description": "Add the crispy pancetta or bacon to the spaghetti, tossing to combine.",
+      "order": 5
+    },
+    {
+      "description": "Serve immediately, garnished with chopped fresh parsley if desired. Enjoy your delicious Spaghetti Carbonara!",
+      "order": 6
+    }
+  ]
+},
+{
+  "servings": 4,
+  "cookingTime": 30,
+  "title": "Mushroom Risotto",
+  "photo": "https://www.afamilyfeast.com/wp-content/uploads/2012/11/Mushroom-Risotto-3.jpg",
+  "description": "Indulge in the creamy texture and earthy flavors of Mushroom Risotto, a classic Italian dish that's perfect for any occasion.",
+  "calories": 1200,
+  "creationDate": "2024-05-01T18:26:42.102Z",
+  "ingredients": [
+    {
+      "quantity": 4,
+      "name": "cups chicken or vegetable broth",
+      "weightUnit": {
+        "type": "cup"
+      }
+    },
+    {
+      "quantity": 2,
+      "name": "tablespoons olive oil",
+      "weightUnit": {
+        "type": "tablespoon"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "medium onion, finely chopped",
+      "weightUnit": {
+        "type": "unit"
+      }
+    },
+    {
+      "quantity": 2,
+      "name": "cloves garlic, minced",
+      "weightUnit": {
+        "type": "unit"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "cup Arborio rice",
+      "weightUnit": {
+        "type": "cup"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "cup dry white wine",
+      "weightUnit": {
+        "type": "cup"
+      }
+    },
+    {
+      "quantity": 8,
+      "name": "ounces mushrooms (such as cremini or shiitake), sliced",
+      "weightUnit": {
+        "type": "ounce"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "cup grated Parmesan cheese",
+      "weightUnit": {
+        "type": "cup"
+      }
+    },
+    {
+      "quantity": 2,
+      "name": "tablespoons butter",
+      "weightUnit": {
+        "type": "tablespoon"
+      }
+    },
+    {
+      "quantity": 2,
+      "name": "tablespoons chopped fresh parsley",
+      "weightUnit": {
+        "type": "tablespoon"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "teaspoon salt",
+      "weightUnit": {
+        "type": "teaspoon"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "teaspoon freshly ground black pepper",
+      "weightUnit": {
+        "type": "teaspoon"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "description": "In a medium saucepan, heat the chicken or vegetable broth over low heat. Keep warm.",
+      "order": 1
+    },
+    {
+      "description": "In a large skillet or saucepan, heat olive oil over medium heat. Add finely chopped onion and cook until translucent, about 3-4 minutes.",
+      "order": 2
+    },
+    {
+      "description": "Add minced garlic and cook for an additional 1 minute, until fragrant.",
+      "order": 3
+    },
+    {
+      "description": "Add Arborio rice to the skillet and cook, stirring constantly, for 1-2 minutes, until the rice is coated with oil and slightly translucent.",
+      "order": 4
+    },
+    {
+      "description": "Pour in dry white wine and cook, stirring constantly, until the wine is absorbed.",
+      "order": 5
+    },
+    {
+      "description": "Add sliced mushrooms to the skillet and cook, stirring occasionally, until they are tender and browned, about 5-6 minutes.",
+      "order": 6
+    },
+    {
+      "description": "Add a ladleful of warm broth to the skillet and stir until the liquid is absorbed. Continue adding broth, one ladleful at a time, stirring frequently, until the rice is creamy and tender, but still slightly firm to the bite (al dente), about 18-20 minutes.",
+      "order": 7
+    },
+    {
+      "description": "Stir in grated Parmesan cheese, butter, chopped fresh parsley, salt, and black pepper until well combined.",
+      "order": 8
+    },
+    {
+      "description": "Remove from heat and let the risotto rest for a minute or two.",
+      "order": 9
+    },
+    {
+      "description": "Serve immediately, garnished with additional grated Parmesan cheese and fresh parsley if desired. Enjoy your delicious Mushroom Risotto!",
+      "order": 10
+    }
+  ]
+},
+{
+  "servings": 4,
+  "cookingTime": 60,
+  "title": "Spaghetti Bolognese",
+  "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOW_rMHgSOi4IhmfR8AiWo2bwLV7WdK3uoUA&s",
+  "description": "Savor the rich and savory flavors of Spaghetti Bolognese, a hearty Italian dish that's perfect for a comforting meal.",
+  "calories": 1800,
+  "creationDate": "2024-05-01T18:26:42.102Z",
+  "ingredients": [
+    {
+      "quantity": 8,
+      "name": "ounces spaghetti",
+      "weightUnit": {
+        "type": "ounce"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "tablespoon olive oil",
+      "weightUnit": {
+        "type": "tablespoon"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "onion, finely chopped",
+      "weightUnit": {
+        "type": "unit"
+      }
+    },
+    {
+      "quantity": 2,
+      "name": "cloves garlic, minced",
+      "weightUnit": {
+        "type": "unit"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "carrot, finely chopped",
+      "weightUnit": {
+        "type": "unit"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "celery stalk, finely chopped",
+      "weightUnit": {
+        "type": "unit"
+      }
+    },
+    {
+      "quantity": 8,
+      "name": "ounces ground beef",
+      "weightUnit": {
+        "type": "ounce"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "can (14 oz) crushed tomatoes",
+      "weightUnit": {
+        "type": "can"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "tablespoon tomato paste",
+      "weightUnit": {
+        "type": "tablespoon"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "teaspoon dried oregano",
+      "weightUnit": {
+        "type": "teaspoon"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "teaspoon dried basil",
+      "weightUnit": {
+        "type": "teaspoon"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "teaspoon salt",
+      "weightUnit": {
+        "type": "teaspoon"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "teaspoon freshly ground black pepper",
+      "weightUnit": {
+        "type": "teaspoon"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "cup beef or vegetable broth",
+      "weightUnit": {
+        "type": "cup"
+      }
+    },
+    {
+      "quantity": 2,
+      "name": "tablespoons chopped fresh parsley",
+      "weightUnit": {
+        "type": "tablespoon"
+      }
+    },
+    {
+      "quantity": 1,
+      "name": "cup grated Parmesan cheese",
+      "weightUnit": {
+        "type": "cup"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "description": "Cook spaghetti according to package instructions until al dente. Drain and set aside.",
+      "order": 1
+    },
+    {
+      "description": "In a large skillet, heat olive oil over medium heat. Add chopped onion, minced garlic, chopped carrot, and chopped celery. Cook until vegetables are softened, about 5-7 minutes.",
+      "order": 2
+    },
+    {
+      "description": "Add ground beef to the skillet. Cook, breaking up the meat with a spoon, until browned and cooked through, about 5-7 minutes.",
+      "order": 3
+    },
+    {
+      "description": "Stir in crushed tomatoes, tomato paste, dried oregano, dried basil, salt, and black pepper. Pour in beef or vegetable broth. Bring to a simmer and cook for 15-20 minutes, stirring occasionally, until the sauce has thickened.",
+      "order": 4
+    },
+    {
+      "description": "Toss cooked spaghetti with the Bolognese sauce until evenly coated.",
+      "order": 5
+    },
+    {
+      "description": "Serve hot, garnished with chopped fresh parsley and grated Parmesan cheese.",
+      "order": 6
+    },
+    {
+      "description": "Enjoy your delicious Spaghetti Bolognese!",
+      "order": 7
+    }
+  ]
+},
+{
+    "servings": 2,
+    "cookingTime": 30,
+    "title": "Суші",
+    "photo": "https://imglife.pravda.com.ua/life/images/doc/7/e/39481/7eeea89-sushi.jpg",
+    "description": "Класичний японський рецепт суші з рису та морепродуктів.",
+    "calories": 300,
+    "creationDate": "2024-05-01T18:26:42.102Z",
+    "ingredients": [
+      {
+        "quantity": 2,
+        "name": "кубик рису",
+        "weightUnit": {
+          "type": "г"
+        }
+      },
+      {
+        "quantity": 200,
+        "name": "сир васабі",
+        "weightUnit": {
+          "type": "г"
+        }
+      },
+      {
+        "quantity": 150,
+        "name": "свіжа огірок",
+        "weightUnit": {
+          "type": "г"
+        }
+      },
+      {
+        "quantity": 100,
+        "name": "сир тофу",
+        "weightUnit": {
+          "type": "г"
+        }
+      },
+      {
+        "quantity": 100,
+        "name": "морський гребінець",
+        "weightUnit": {
+          "type": "г"
+        }
+      },
+      {
+        "quantity": 50,
+        "name": "соєвий соус",
+        "weightUnit": {
+          "type": "мл"
+        }
+      },
+      {
+        "quantity": 5,
+        "name": "рисовий оцет",
+        "weightUnit": {
+          "type": "мл"
+        }
+      }
+    ],
+    "steps": [
+      {
+        "description": "1. Приготуйте рис, варивши його до м'якості.",
+        "order": 1
+      },
+      {
+        "description": "2. Розгорніть лист водорості на бамбуковий килимок. Покладіть шар рису на верхню сторону водорості.",
+        "order": 2
+      },
+      {
+        "description": "3. Додайте сир васабі, свіжий огірок, сир тофу та морський гребінець на середину рису.",
+        "order": 3
+      },
+      {
+        "description": "4. Згорніть водорість з начинкою у рулон. Підсушіть рулон ножем, щоб отримати красиві шматочки.",
+        "order": 4
+      },
+      {
+        "description": "5. Подавайте суші з соєвим соусом і рисовим оцтом.",
+        "order": 5
+      }
+    ]
+  },
+
+  {
+    "servings": 4,
+    "cookingTime": 20,
+    "title": "Місо суп",
+    "photo": "https://eat-me-at.com/sites/default/files/2021-06/1-4.jpg",
+    "description": "Традиційний японський суп на основі паста місо, з додаванням твердого тофу та водоростей.",
+    "calories": 150,
+    "creationDate": "2024-05-01T18:26:42.102Z",
+    "ingredients": [
+      {
+        "quantity": 4,
+        "name": "ложки паста місо",
+        "weightUnit": {
+          "type": "г"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "блок твердого тофу",
+        "weightUnit": {
+          "type": "г"
+        }
+      },
+      {
+        "quantity": 4,
+        "name": "стебла зеленого лука",
+        "weightUnit": {
+          "type": "г"
+        }
+      },
+      {
+        "quantity": 50,
+        "name": "водорості норі",
+        "weightUnit": {
+          "type": "г"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "чайна ложка мірін",
+        "weightUnit": {
+          "type": "мл"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "чайна ложка соусу соєвого",
+        "weightUnit": {
+          "type": "мл"
+        }
+      },
+      {
+        "quantity": 800,
+        "name": "вода",
+        "weightUnit": {
+          "type": "мл"
+        }
+      }
+    ],
+    "steps": [
+      {
+        "description": "1. Наріжте тофу на кубики. Накрійте зелений лук на тонкі кружечки.",
+        "order": 1
+      },
+      {
+        "description": "2. Велику каструлю розігрійте на середньому вогні. Додайте воду і доведіть до кипіння.",
+        "order": 2
+      },
+      {
+        "description": "3. Додайте пасту місо до киплячої води і ретельно розчиніть.",
+        "order": 3
+      },
+      {
+        "description": "4. Додайте нарізаний тофу, зелений лук і водорості до супу. Зменште вогонь і готуйте протягом 5 хвилин.",
+        "order": 4
+      },
+      {
+        "description": "5. Додайте мірін і соус соєвий за смаком. Приберіть з вогню.",
+        "order": 5
+      },
+      {
+        "description": "6. Подавайте гарячий місо суп у глибоких мисках. Прикрасьте зеленим луком і нарізаним товфу.",
+        "order": 6
+      }
+    ]
+  },
+
+  {
+    "servings": 2,
+    "cookingTime": 15,
+    "title": "Хіяши-чука",
+    "photo": "https://images.prom.ua/2361545170_salat-chuka-hiyashi.jpg",
+    "description": "Свіжий японський салат з маринованим курячим м'ясом, огірком, морквою та соусом на основі соєвого маринаду.",
+    "calories": 250,
+    "creationDate": "2024-05-01T18:26:42.102Z",
+    "ingredients": [
+      {
+        "quantity": 200,
+        "name": "вермишель чука",
+        "weightUnit": {
+          "type": "г"
+        }
+      },
+      {
+        "quantity": 200,
+        "name": "куряче філе",
+        "weightUnit": {
+          "type": "г"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "середній огірок",
+        "weightUnit": {
+          "type": "шт"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "середня морква",
+        "weightUnit": {
+          "type": "шт"
+        }
+      },
+      {
+        "quantity": 2,
+        "name": "яйця",
+        "weightUnit": {
+          "type": "шт"
+        }
+      },
+      {
+        "quantity": 50,
+        "name": "соус соєвий",
+        "weightUnit": {
+          "type": "мл"
+        }
+      },
+      {
+        "quantity": 30,
+        "name": "рисовий оцет",
+        "weightUnit": {
+          "type": "мл"
+        }
+      },
+      {
+        "quantity": 20,
+        "name": "цукор",
+        "weightUnit": {
+          "type": "г"
+        }
+      }
+    ],
+    "steps": [
+      {
+        "description": "1. Сваріть вермишель чука в окропі, дотримуючись інструкцій на упаковці. Промийте холодною водою та процідіть.",
+        "order": 1
+      },
+      {
+        "description": "2. Варіть яйця вкруття, охолодіть, оболоніть та наріжте на смужки.",
+        "order": 2
+      },
+      {
+        "description": "3. Обсмажте куряче філе на сковороді до готовності, наріжте на тонкі смужки.",
+        "order": 3
+      },
+      {
+        "description": "4. Наріжте огірок та моркву на тонкі смужки або кружечки.",
+        "order": 4
+      },
+      {
+        "description": "5. У мисці змішайте соус соєвий, рисовий оцет та цукор до розчинення цукру.",
+        "order": 5
+      },
+      {
+        "description": "6. У глибокій тарілці розкладіть вермишель чука, а зверху розмістіть куряче філе, огірок, моркву та яйця.",
+        "order": 6
+      },
+      {
+        "description": "7. Полийте салат соусом та подавайте хіяши-чука охолодженим.",
+        "order": 7
+      }
+    ]
+  },
+
+  {
+    "servings": 2,
+    "cookingTime": 25,
+    "title": "Теріякі лосось",
+    "photo": "https://torchyn.ua/sites/default/files/styles/webp/public/2023-10/%D0%97%D0%B0%D0%BF%D0%B5%D1%87%D0%B5%D0%BD%D0%B8%D0%B9%20%D0%BB%D0%BE%D1%81%D0%BE%D1%81%D1%8C%20%C2%AB%D0%A2%D0%B5%D1%80%D1%96%D1%8F%D0%BA%D1%96%C2%BB.jpg.webp?itok=CyM0zBdP",
+    "description": "Смажений лосось в теріякі соусі, подається зі смачним гарніром та свіжою зеленню.",
+    "calories": 350,
+    "creationDate": "2024-05-01T18:26:42.102Z",
+    "ingredients": [
+      {
+        "quantity": 2,
+        "name": "філе лосося",
+        "weightUnit": {
+          "type": "г"
+        }
+      },
+      {
+        "quantity": 4,
+        "name": "столові ложки соусу теріякі",
+        "weightUnit": {
+          "type": "мл"
+        }
+      },
+      {
+        "quantity": 2,
+        "name": "столові ложки соусу соєвого",
+        "weightUnit": {
+          "type": "мл"
+        }
+      },
+      {
+        "quantity": 2,
+        "name": "столові ложки меду",
+        "weightUnit": {
+          "type": "мл"
+        }
+      },
+      {
+        "quantity": 2,
+        "name": "часники, дрібно нарізані",
+        "weightUnit": {
+          "type": "шт"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "чайна ложка свіжої тертого імбирю",
+        "weightUnit": {
+          "type": "г"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "чайна ложка крохмалу",
+        "weightUnit": {
+          "type": "г"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "столова ложка олії для смаження",
+        "weightUnit": {
+          "type": "мл"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "столова ложка кунжуту",
+        "weightUnit": {
+          "type": "г"
+        }
+      }
+    ],
+    "steps": [
+      {
+        "description": "1. Приготуйте маринад, змішавши соус теріякі, соус соєвий, мед, часник і імбир.",
+        "order": 1
+      },
+      {
+        "description": "2. Маринуйте лосось у підготовленому маринаді протягом 15-20 хвилин у холодильнику.",
+        "order": 2
+      },
+      {
+        "description": "3. Розігрійте олію на сковороді на середньому вогні.",
+        "order": 3
+      },
+      {
+        "description": "4. Вийміть лосось з маринаду та підсипте крохмаль. Обсмажте лосось на гарячій сковороді з обох сторін до золотисто-коричневого кольору.",
+        "order": 4
+      },
+      {
+        "description": "5. Під час смаження періодично поливайте лосось залишками маринаду.",
+        "order": 5
+      },
+      {
+        "description": "6. Подавайте теріякі лосось, посипаний кунжутом, з рисом та свіжою зеленню.",
+        "order": 6
+      }
+    ]
+  },
+
+  {
+    "servings": 2,
+    "cookingTime": 40,
+    "title": "Рамен з курячим м'ясом",
+    "photo": "https://klopotenko.com/wp-content/uploads/2023/12/ramen-z-kurkoyu-img-1000x600.jpg?v=1703666631",
+    "description": "Традиційний японський суп рамен з ароматним бульйоном, локшиною, курячим м'ясом та овочами.",
+    "calories": 400,
+    "creationDate": "2024-05-01T18:26:42.102Z",
+    "ingredients": [
+      {
+        "quantity": 2,
+        "name": "курячі грудки",
+        "weightUnit": {
+          "type": "г"
+        }
+      },
+      {
+        "quantity": 200,
+        "name": "локшина рамен",
+        "weightUnit": {
+          "type": "г"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "морква, нарізана на тонкі пластинки",
+        "weightUnit": {
+          "type": "шт"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "цибуля-порей, нарізана тонкими колечками",
+        "weightUnit": {
+          "type": "шт"
+        }
+      },
+      {
+        "quantity": 2,
+        "name": "яйця, варені напівжорстко",
+        "weightUnit": {
+          "type": "шт"
+        }
+      },
+      {
+        "quantity": 4,
+        "name": "часнички, дрібно нарізані",
+        "weightUnit": {
+          "type": "шт"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "чайна ложка свіжої тертої імбирю",
+        "weightUnit": {
+          "type": "г"
+        }
+      },
+      {
+        "quantity": 50,
+        "name": "соус соєвий",
+        "weightUnit": {
+          "type": "мл"
+        }
+      },
+      {
+        "quantity": 2,
+        "name": "столові ложки міріну",
+        "weightUnit": {
+          "type": "мл"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "літр курячого бульйону",
+        "weightUnit": {
+          "type": "мл"
+        }
+      }
+    ],
+    "steps": [
+      {
+        "description": "1. Приготуйте курячий бульйон, злущуючи курячі грудки у воді протягом 20 хвилин. Видаліть курячі грудки, витягніть м'ясо, наріжте його на шматочки і відложіть.",
+        "order": 1
+      },
+      {
+        "description": "2. Розігрійте соус соєвий та мірін на сковороді, додайте часничок і імбир, обсмажте до пахучості.",
+        "order": 2
+      },
+      {
+        "description": "3. Додайте курячий бульйон у сковороду та доведіть до кипіння.",
+        "order": 3
+      },
+      {
+        "description": "4. Додайте моркву, цибулю-порей та відварені яйця у бульйон. Варіть 5 хвилин.",
+        "order": 4
+      },
+      {
+        "description": "5. Разом з тим, готуйте локшину рамен в окропі за інструкцією на упаковці, процідіть і додайте у сковороду.",
+        "order": 5
+      },
+      {
+        "description": "6. Подавайте гарячий рамен з курячим м'ясом, поливши бульйоном, і прикрасьте зеленню.",
+        "order": 6
+      }
+    ]
+  },
+
+  {
+    "servings": 4,
+    "cookingTime": 30,
+    "title": "Торіякі з яловичини",
+    "photo": "https://klopotenko.com/wp-content/uploads/2019/09/kyryca-z-sousom-teriyaki_sitewebukr_new-1000x600.jpg?v=1622753146",
+    "description": "Смажена яловичина в торіякі соусі з овочами, приправлена сезамом та подана зі свіжою зеленню.",
+    "calories": 450,
+    "creationDate": "2024-05-01T18:26:42.102Z",
+    "ingredients": [
+      {
+        "quantity": 500,
+        "name": "філе яловичини",
+        "weightUnit": {
+          "type": "г"
+        }
+      },
+      {
+        "quantity": 4,
+        "name": "столові ложки соусу теріякі",
+        "weightUnit": {
+          "type": "мл"
+        }
+      },
+      {
+        "quantity": 2,
+        "name": "столові ложки соусу соєвого",
+        "weightUnit": {
+          "type": "мл"
+        }
+      },
+      {
+        "quantity": 2,
+        "name": "столові ложки меду",
+        "weightUnit": {
+          "type": "мл"
+        }
+      },
+      {
+        "quantity": 2,
+        "name": "часнички, дрібно нарізані",
+        "weightUnit": {
+          "type": "шт"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "чайна ложка свіжої тертого імбирю",
+        "weightUnit": {
+          "type": "г"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "чайна ложка крохмалу",
+        "weightUnit": {
+          "type": "г"
+        }
+      },
+      {
+        "quantity": 2,
+        "name": "столові ложки олії для смаження",
+        "weightUnit": {
+          "type": "мл"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "столова ложка кунжуту",
+        "weightUnit": {
+          "type": "г"
+        }
+      }
+    ],
+    "steps": [
+      {
+        "description": "1. Наріжте філе яловичини на тонкі смужки або шматочки.",
+        "order": 1
+      },
+      {
+        "description": "2. Приготуйте маринад, змішавши соус теріякі, соус соєвий, мед, часничок і імбир.",
+        "order": 2
+      },
+      {
+        "description": "3. Залийте яловичину маринадом і залиште на 15-20 хвилин для насичення смаку.",
+        "order": 3
+      },
+      {
+        "description": "4. Розігрійте олію на сковороді на середньому вогні.",
+        "order": 4
+      },
+      {
+        "description": "5. Обсмажте яловичину з обох сторін до готовності та золотистого кольору.",
+        "order": 5
+      },
+      {
+        "description": "6. Під час смаження періодично поливайте яловичину залишками маринаду.",
+        "order": 6
+      },
+      {
+        "description": "7. Подавайте торіякі з яловичини, посипавши кунжутом, зі свіжою зеленню та прикрасьте сезамом.",
+        "order": 7
+      }
+    ]
+  },
+
+  {
+    "servings": 2,
+    "cookingTime": 15,
+    "title": "Омлет-яєчня (Омлето-якісоба)",
+    "photo": "https://images.unian.net/photos/2020_07/thumb_files/800_0_1595448811-9651.jpg?0.6395920808724227",
+    "description": "Традиційна японська страва, яка складається з омлету, який накриває начинку з рису з овочами та курячим м'ясом.",
+    "calories": 350,
+    "creationDate": "2024-05-01T18:26:42.102Z",
+    "ingredients": [
+      {
+        "quantity": 2,
+        "name": "яйця",
+        "weightUnit": {
+          "type": "шт"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "крупна цибуля, нарізана",
+        "weightUnit": {
+          "type": "шт"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "морква, нарізана на кубики",
+        "weightUnit": {
+          "type": "шт"
+        }
+      },
+      {
+        "quantity": 100,
+        "name": "відварений рис",
+        "weightUnit": {
+          "type": "г"
+        }
+      },
+      {
+        "quantity": 100,
+        "name": "куряче м'ясо, нарізане на кубики",
+        "weightUnit": {
+          "type": "г"
+        }
+      },
+      {
+        "quantity": 2,
+        "name": "столові ложки томатного соусу",
+        "weightUnit": {
+          "type": "мл"
+        }
+      },
+      {
+        "quantity": 2,
+        "name": "столові ложки соусу соєвого",
+        "weightUnit": {
+          "type": "мл"
+        }
+      },
+      {
+        "quantity": 2,
+        "name": "столові ложки олії для смаження",
+        "weightUnit": {
+          "type": "мл"
+        }
+      }
+    ],
+    "steps": [
+      {
+        "description": "1. Розігрійте олію на сковороді на середньому вогні. Додайте цибулю та моркву і смажте до м'якості.",
+        "order": 1
+      },
+      {
+        "description": "2. Додайте куряче м'ясо та обсмажте до готовності.",
+        "order": 2
+      },
+      {
+        "description": "3. Додайте відварений рис, томатний соус та соус соєвий до сковороди. Перемішайте і готуйте, поки все добре прогріється.",
+        "order": 3
+      },
+      {
+        "description": "4. У іншій сковороді розігрійте трохи олії на середньому вогні. Розбийте яйця в миску та ретельно взбийте їх.",
+        "order": 4
+      },
+      {
+        "description": "5. Перелейте взбиті яйця на сковороду та розподіліть рівномірно по всій поверхні. Після цього обережно підніміть краї омлету, щоб відстояти начинку.",
+        "order": 5
+      },
+      {
+        "description": "6. Після того як низька сторона омлету зігріється, покладіть начинку по центру. Злегка нахиліть сковороду та складіть омлет над начинкою, утворюючи рівний буфер.",
+        "order": 6
+      },
+      {
+        "description": "7. Подавайте омлет-яєчню на тарілки, обрізаючи її на половинки, та прикрасьте за смаком.",
+        "order": 7
+      }
+    ]
+  },
+
+  {
+    "servings": 4,
+    "cookingTime": 45,
+    "title": "Гьядзінсай (японське печене м'ясо з овочами)",
+    "photo": "https://news24.in.ua/wp-content/uploads/recipe_a81797ec-ef79-4d2a-aa12-7b1bae4060da_w450.jpg",
+    "description": "Традиційна японська страва з ніжного печеного яловичого м'яса, яке подається на рисі та приправляється спеціальним соусом.",
+    "calories": 380,
+    "creationDate": "2024-05-01T18:26:42.102Z",
+    "ingredients": [
+      {
+        "quantity": 500,
+        "name": "яловичина (нарізана на тонкі смужки)",
+        "weightUnit": {
+          "type": "г"
+        }
+      },
+      {
+        "quantity": 2,
+        "name": "цебуля (нарізана тонкими кружечками)",
+        "weightUnit": {
+          "type": "шт"
+        }
+      },
+      {
+        "quantity": 2,
+        "name": "морква (нарізана на тонкі солом'яні пластинки)",
+        "weightUnit": {
+          "type": "шт"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "імбир (дрібно нарізаний)",
+        "weightUnit": {
+          "type": "шт"
+        }
+      },
+      {
+        "quantity": 4,
+        "name": "часничок (пресований)",
+        "weightUnit": {
+          "type": "шт"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "столова ложка олії для смаження",
+        "weightUnit": {
+          "type": "мл"
+        }
+      },
+      {
+        "quantity": 4,
+        "name": "столові ложки соусу мірін",
+        "weightUnit": {
+          "type": "мл"
+        }
+      },
+      {
+        "quantity": 4,
+        "name": "столові ложки соусу соєвого",
+        "weightUnit": {
+          "type": "мл"
+        }
+      },
+      {
+        "quantity": 4,
+        "name": "столові ложки даші",
+        "weightUnit": {
+          "type": "мл"
+        }
+      },
+      {
+        "quantity": 2,
+        "name": "столові ложки цукру",
+        "weightUnit": {
+          "type": "г"
+        }
+      },
+      {
+        "quantity": 2,
+        "name": "столові ложки міцуба (японська зелень)",
+        "weightUnit": {
+          "type": "г"
+        }
+      }
+    ],
+    "steps": [
+      {
+        "description": "1. Розігрійте олію на середньому вогні в глибокій сковороді. Додайте цебулю та часничок, обсмажте до м'якості.",
+        "order": 1
+      },
+      {
+        "description": "2. Додайте яловичину та обсмажте, поки вона не стане золотисто-коричневою.",
+        "order": 2
+      },
+      {
+        "description": "3. Додайте моркву та імбир, готуйте ще 2-3 хвилини.",
+        "order": 3
+      },
+      {
+        "description": "4. Додайте соус мірін, соус соєвий, даші та цукор. Потушіть 5 хвилин.",
+        "order": 4
+      },
+      {
+        "description": "5. Розподіліть готову масу на рис у тарілках. Подавайте з міцуба на вершині як прикраса.",
+        "order": 5
+      }
+    ]
+  },
+
+  {
+    "servings": 2,
+    "cookingTime": 30,
+    "title": "Теріякі куряче рамен",
+    "photo": "https://i.ytimg.com/vi/WrG1sSI8Mmg/maxresdefault.jpg",
+    "description": "Смачний рамен з ніжним курячим м'ясом та ароматним теріякі соусом, приправлений свіжими овочами.",
+    "calories": 380,
+    "creationDate": "2024-05-01T18:26:42.102Z",
+    "ingredients": [
+      {
+        "quantity": 2,
+        "name": "порції рамену",
+        "weightUnit": {
+          "type": "шт"
+        }
+      },
+      {
+        "quantity": 300,
+        "name": "філе курячого м'яса, нарізане на смужки",
+        "weightUnit": {
+          "type": "г"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "морква, нарізана на тонкі солом'яні смужки",
+        "weightUnit": {
+          "type": "шт"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "цебуля, нарізана тонкими кружечками",
+        "weightUnit": {
+          "type": "шт"
+        }
+      },
+      {
+        "quantity": 2,
+        "name": "часнички, дрібно нарізані",
+        "weightUnit": {
+          "type": "шт"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "чайна ложка тертого імбиру",
+        "weightUnit": {
+          "type": "г"
+        }
+      },
+      {
+        "quantity": 2,
+        "name": "столові ложки соусу теріякі",
+        "weightUnit": {
+          "type": "мл"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "столова ложка соусу соєвого",
+        "weightUnit": {
+          "type": "мл"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "столова ложка меду",
+        "weightUnit": {
+          "type": "мл"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "столова ложка олії для смаження",
+        "weightUnit": {
+          "type": "мл"
+        }
+      },
+      {
+        "quantity": 2,
+        "name": "яйця",
+        "weightUnit": {
+          "type": "шт"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "літр курячого бульйону",
+        "weightUnit": {
+          "type": "мл"
+        }
+      }
+    ],
+    "steps": [
+      {
+        "description": "1. Приготуйте рамен згідно інструкцій на упаковці, процідіть і відложіть.",
+        "order": 1
+      },
+      {
+        "description": "2. У глибокій сковороді розігрійте олію на середньому вогні. Додайте куряче м'ясо та смажте його до золотистого кольору.",
+        "order": 2
+      },
+      {
+        "description": "3. Додайте цебулю, моркву та часничок. Готуйте до м'якості.",
+        "order": 3
+      },
+      {
+        "description": "4. У іншій каструлі принесіть курячий бульйон до кипіння. Додайте соус теріякі, соус соєвий, мед та імбир. Знижте вогонь і готуйте під кришкою протягом 5-7 хвилин.",
+        "order": 4
+      },
+      {
+        "description": "5. У сковороді розігрійте олію і розбийте яйця. Зробіть м'яку яєчню, помішуючи.",
+        "order": 5
+      },
+      {
+        "description": "6. Розподіліть рамен у глибокі тарілки. Додайте куряче м'ясо з овочами. Залейте гарячим курячим бульйоном.",
+        "order": 6
+      },
+      {
+        "description": "7. Додайте яєчню сверху. Прикрасьте за бажанням зеленню або кунжутом.",
+        "order": 7
+      }
+    ]
+  },
+
+  {
+    "servings": 4,
+    "cookingTime": 25,
+    "title": "Місо суп з товфу",
+    "photo": "https://zprz.city/uploads/news/redactor/f245n1akempz9jrm.png",
+    "description": "Ароматний і смачний суп на основі місо пасти з додаванням ніжного товфу та овочів.",
+    "calories": 200,
+    "creationDate": "2024-05-01T18:26:42.102Z",
+    "ingredients": [
+      {
+        "quantity": 4,
+        "name": "чайні ложки місо пасти",
+        "weightUnit": {
+          "type": "г"
+        }
+      },
+      {
+        "quantity": 4,
+        "name": "чашки курячого бульйону",
+        "weightUnit": {
+          "type": "мл"
+        }
+      },
+      {
+        "quantity": 200,
+        "name": "товфу, нарізаний на кубики",
+        "weightUnit": {
+          "type": "г"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "морква, нарізана тонкими колечками",
+        "weightUnit": {
+          "type": "шт"
+        }
+      },
+      {
+        "quantity": 2,
+        "name": "цебуля-порей, нарізаний на тонкі колечка",
+        "weightUnit": {
+          "type": "шт"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "шматочок імбиру (розтертий)",
+        "weightUnit": {
+          "type": "г"
+        }
+      },
+      {
+        "quantity": 2,
+        "name": "часнички (дрібно нарізані)",
+        "weightUnit": {
+          "type": "шт"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "столова ложка соусу соєвого",
+        "weightUnit": {
+          "type": "мл"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "столова ложка рисового оцту",
+        "weightUnit": {
+          "type": "мл"
+        }
+      },
+      {
+        "quantity": 2,
+        "name": "столові ложки зеленого луку (нарізаного)",
+        "weightUnit": {
+          "type": "г"
+        }
+      }
+    ],
+    "steps": [
+      {
+        "description": "1. У середньому каструлі зігрійте курячий бульйон на середньому вогні до кипіння.",
+        "order": 1
+      },
+      {
+        "description": "2. Додайте місо пасту та розтертий імбир у каструлю. Змішайте до розчинення пасти.",
+        "order": 2
+      },
+      {
+        "description": "3. Додайте моркву, цебулю-порей та часничок. Готуйте на помірному вогні протягом 5 хвилин.",
+        "order": 3
+      },
+      {
+        "description": "4. Додайте товфу, соус соєвий та рисовий оцет. Варіть ще 3 хвилини.",
+        "order": 4
+      },
+      {
+        "description": "5. Перелійте суп у тарілки. Прикрасьте зеленим луком перед подачею.",
+        "order": 5
+      }
+    ]
+  },
+
+  {
+    "servings": 2,
+    "cookingTime": 30,
+    "title": "Кацудон",
+    "photo": "https://znaj.ua/crops/c432f4/620x0/1/0/2018/11/15/9wEgCmoXf1YlglsEEGCzk1w0R4o94bpaC6a40M6m.jpeg",
+    "description": "Традиційна японська страва, яка складається з паніруваного свинини, поданого на рисі та залитого яєчним соусом.",
+    "calories": 450,
+    "creationDate": "2024-05-01T18:26:42.102Z",
+    "ingredients": [
+      {
+        "quantity": 2,
+        "name": "свинина (свинячі котлети)",
+        "weightUnit": {
+          "type": "шт"
+        }
+      },
+      {
+        "quantity": 2,
+        "name": "яйця",
+        "weightUnit": {
+          "type": "шт"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "ліжка соусу соєвого",
+        "weightUnit": {
+          "type": "мл"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "ліжка міріну (японський солодкий рисовий виноград)",
+        "weightUnit": {
+          "type": "мл"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "ліжка цукру",
+        "weightUnit": {
+          "type": "г"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "чашка курячого бульйону",
+        "weightUnit": {
+          "type": "мл"
+        }
+      },
+      {
+        "quantity": 2,
+        "name": "цибуля (нарізана тонкими півкільцями)",
+        "weightUnit": {
+          "type": "шт"
+        }
+      },
+      {
+        "quantity": 4,
+        "name": "столові ложки олії для смаження",
+        "weightUnit": {
+          "type": "мл"
+        }
+      },
+      {
+        "quantity": 2,
+        "name": "чашки приготованого рису",
+        "weightUnit": {
+          "type": "г"
+        }
+      },
+      {
+        "quantity": 2,
+        "name": "столові ложки кунжуту (для прикраси)",
+        "weightUnit": {
+          "type": "г"
+        }
+      },
+      {
+        "quantity": 2,
+        "name": "столові ложки зеленого луку (нарізаного, для прикраси)",
+        "weightUnit": {
+          "type": "г"
+        }
+      }
+    ],
+    "steps": [
+      {
+        "description": "1. Приготуйте рис згідно інструкцій на упаковці.",
+        "order": 1
+      },
+      {
+        "description": "2. Розбийте яйця в миску, додайте соус соєвий, мірін та цукор. Ретельно змішайте і поставте огірок.",
+        "order": 2
+      },
+      {
+        "description": "3. Розігрійте олію на середньому вогні у глибокій сковороді. Паніруйте свинячі котлети у панірувальний крохмал, занурюйте у яйцеву суміш, потім обсипте кунжутом.",
+        "order": 3
+      },
+      {
+        "description": "4. Смажте котлети з обох сторін до золотистого кольору. Виложіть їх на паперову рушник, щоб забрати надмірну олію.",
+        "order": 4
+      },
+      {
+        "description": "5. У середній каструлі зігрійте курячий бульйон разом із солодким соусом соєвим до кипіння.",
+        "order": 5
+      },
+      {
+        "description": "6. Розлійте курячий бульйон з соусом на готовий рис у миски.",
+        "order": 6
+      },
+      {
+        "description": "7. Покладіть паніровану свинину на рис.",
+        "order": 7
+      },
+      {
+        "description": "8. Подайте кацудон у тарілки, прикрашаючи кунжутом та зеленим луком.",
+        "order": 8
+      }
+    ]
+  },
+
+  {
+    "servings": 4,
+    "cookingTime": 40,
+    "title": "Філадельфія ролл",
+    "photo": "https://images.pizza33.ua/products/product/M3q6Qk8KBHQUsUnzGNscytt2mB9SD4SF.jpg",
+    "description": "Класичний японський рол зі свіжого лосося, авокадо та крем-сиру, обгорнутий в кунжутному ковбасці.",
+    "calories": 320,
+    "creationDate": "2024-05-01T18:26:42.102Z",
+    "ingredients": [
+      {
+        "quantity": 2,
+        "name": "ароматний рис (сушений, для ролів)",
+        "weightUnit": {
+          "type": "чашка"
+        }
+      },
+      {
+        "quantity": 200,
+        "name": "свіжий лосось (нарізаний на смужки)",
+        "weightUnit": {
+          "type": "г"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "авокадо (нарізане тонкими смужками)",
+        "weightUnit": {
+          "type": "шт"
+        }
+      },
+      {
+        "quantity": 100,
+        "name": "крем-сир (наприклад, філадельфія)",
+        "weightUnit": {
+          "type": "г"
+        }
+      },
+      {
+        "quantity": 4,
+        "name": "норі (морська водорість, сушена)",
+        "weightUnit": {
+          "type": "шт"
+        }
+      },
+      {
+        "quantity": 4,
+        "name": "столові ложки кунжуту",
+        "weightUnit": {
+          "type": "г"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "соєвий соус",
+        "weightUnit": {
+          "type": "мл"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "імбир (свіжий, нарізаний)",
+        "weightUnit": {
+          "type": "г"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "васабі (японська гостра приправа)",
+        "weightUnit": {
+          "type": "г"
+        }
+      }
+    ],
+    "steps": [
+      {
+        "description": "1. Приготуйте рис за інструкцією на упаковці. Розподіліть його на норі, залишаючи місце на краю.",
+        "order": 1
+      },
+      {
+        "description": "2. Покладіть на рис смужки лосося, тонкі смужки авокадо та крем-сир.",
+        "order": 2
+      },
+      {
+        "description": "3. Розкрутіть роли, використовуючи бамбуковий килимок, щоб утворити рулон. Покладіть кунжут на рівну поверхню та розігрійте його на сковороді без олії до покращення аромату.",
+        "order": 3
+      },
+      {
+        "description": "4. Покрийте роли кунжутом та обережно розріжте на невеликі шматочки за допомогою гострого ножа.",
+        "order": 4
+      },
+      {
+        "description": "5. Подавайте з соєвим соусом, імбиром та васабі.",
+        "order": 5
+      }
+    ]
+  },
+{
+    "title": "Kimchi",
+    "photo": "https://cdn.apartmenttherapy.info/image/upload/f_auto,q_auto:eco,c_fill,g_auto,w_1500,ar_3:2/k%2FPhoto%2FSeries%2F2023-11-how-to-make-kimchi%2Fhow-to-make-kimchi-259",
+    "description": "Traditional Korean side dish made of fermented vegetables, usually cabbage and radishes, seasoned with various spices.",
+    "calories": 30,
+    "servings": 4,
+    "cookingTime": 60,
+    "creationDate": "2024-05-01T18:26:42.102Z",
+    "ingredients": [
+      {
+        "quantity": 1,
+        "name": "Cabbage",
+        "weightUnit": {
+          "type": "head"
+        }
+      },
+      {
+        "quantity": 4,
+        "name": "Radishes",
+        "weightUnit": {
+          "type": "count"
+        }
+      },
+      {
+        "quantity": 100,
+        "name": "Red pepper flakes",
+        "weightUnit": {
+          "type": "grams"
+        }
+      },
+      {
+        "quantity": 50,
+        "name": "Garlic",
+        "weightUnit": {
+          "type": "grams"
+        }
+      },
+      {
+        "quantity": 30,
+        "name": "Ginger",
+        "weightUnit": {
+          "type": "grams"
+        }
+      },
+      {
+        "quantity": 30,
+        "name": "Fish sauce",
+        "weightUnit": {
+          "type": "milliliters"
+        }
+      }
+    ],
+    "steps": [
+      {
+        "order": 1,
+        "description": "Cut the cabbage into bite-sized pieces."
+      },
+      {
+        "order": 2,
+        "description": "Slice the radishes thinly."
+      },
+      {
+        "order": 3,
+        "description": "Mix cabbage, radishes, red pepper flakes, garlic, ginger, and fish sauce in a bowl."
+      },
+      {
+        "order": 4,
+        "description": "Pack the mixture into a jar, press down until the brine rises. Seal the jar."
+      },
+      {
+        "order": 5,
+        "description": "Let it ferment at room temperature for 1-5 days."
+      },
+      {
+        "order": 6,
+        "description": "Once fermented, store in the refrigerator. It will continue to ferment, but at a much slower rate."
+      }
+    ]
+  },
+  {
+    "title": "Bibimbap",
+    "photo": "https://www.eggs.ca/assets/RecipeThumbs/EFC-BIBIMBAP-1280x720.jpg",
+    "description": "A mixed rice dish topped with assorted vegetables, meat, and a fried egg, often served with spicy sauce.",
+    "calories": 450,
+    "servings": 2,
+    "cookingTime": 30,
+    "creationDate": "2024-05-01T18:26:42.102Z",
+    "ingredients": [
+      {
+        "quantity": 200,
+        "name": "Cooked rice",
+        "weightUnit": {
+          "type": "grams"
+        }
+      },
+      {
+        "quantity": 100,
+        "name": "Beef (or tofu for vegetarian option)",
+        "weightUnit": {
+          "type": "grams"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "Carrot",
+        "weightUnit": {
+          "type": "count"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "Zucchini",
+        "weightUnit": {
+          "type": "count"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "Spinach",
+        "weightUnit": {
+          "type": "count"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "Egg",
+        "weightUnit": {
+          "type": "count"
+        }
+      },
+      {
+        "quantity": 50,
+        "name": "Soy sauce",
+        "weightUnit": {
+          "type": "milliliters"
+        }
+      },
+      {
+        "quantity": 20,
+        "name": "Sesame oil",
+        "weightUnit": {
+          "type": "milliliters"
+        }
+      }
+    ],
+    "steps": [
+      {
+        "order": 1,
+        "description": "Cook rice according to package instructions."
+      },
+      {
+        "order": 2,
+        "description": "Slice beef thinly and marinate in soy sauce and sesame oil for 10 minutes."
+      },
+      {
+        "order": 3,
+        "description": "Julienne carrot and zucchini. Blanch spinach."
+      },
+      {
+        "order": 4,
+        "description": "Stir-fry each vegetable separately."
+      },
+      {
+        "order": 5,
+        "description": "Fry the egg sunny-side-up."
+      },
+      {
+        "order": 6,
+        "description": "Assemble the bibimbap by placing rice in a bowl, arranging vegetables and beef on top, and adding the fried egg."
+      },
+      {
+        "order": 7,
+        "description": "Serve with spicy gochujang sauce on the side."
+      }
+    ]
+  },
+{
+    "title": "Bulgogi",
+    "photo": "https://static01.nyt.com/images/2023/11/14/multimedia/JM-Bulgogi-qmfj/JM-Bulgogi-qmfj-square640.jpg",
+    "description": "Thinly sliced beef marinated in a sweet and savory sauce, grilled or stir-fried.",
+    "calories": 300,
+    "servings": 4,
+    "cookingTime": 45,
+    "creationDate": "2024-05-01T18:26:42.102Z",
+    "ingredients": [
+      {
+        "quantity": 400,
+        "name": "Beef (rib eye or sirloin)",
+        "weightUnit": {
+          "type": "grams"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "Pear",
+        "weightUnit": {
+          "type": "count"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "Onion",
+        "weightUnit": {
+          "type": "count"
+        }
+      },
+      {
+        "quantity": 30,
+        "name": "Soy sauce",
+        "weightUnit": {
+          "type": "milliliters"
+        }
+      },
+      {
+        "quantity": 30,
+        "name": "Sesame oil",
+        "weightUnit": {
+          "type": "milliliters"
+        }
+      },
+      {
+        "quantity": 3,
+        "name": "Garlic cloves",
+        "weightUnit": {
+          "type": "count"
+        }
+      },
+      {
+        "quantity": 30,
+        "name": "Brown sugar",
+        "weightUnit": {
+          "type": "grams"
+        }
+      }
+    ],
+    "steps": [
+      {
+        "order": 1,
+        "description": "Slice beef thinly against the grain."
+      },
+      {
+        "order": 2,
+        "description": "Blend pear, onion, soy sauce, sesame oil, garlic, and brown sugar to make the marinade."
+      },
+      {
+        "order": 3,
+        "description": "Marinate beef in the sauce for at least 2 hours or overnight."
+      },
+      {
+        "order": 4,
+        "description": "Grill or stir-fry beef until cooked through."
+      }
+    ]
+  },
+  {
+    "title": "Japchae",
+    "photo": "https://i0.wp.com/seonkyounglongest.com/wp-content/uploads/2019/05/Japchae-2.jpg?fit=1300%2C867&ssl=1",
+    "description": "Stir-fried glass noodles with assorted vegetables and sometimes beef or mushrooms, seasoned with soy sauce and sesame oil.",
+    "calories": 250,
+    "servings": 4,
+    "cookingTime": 30,
+    "creationDate": "2024-05-01T18:26:42.102Z",
+    "ingredients": [
+      {
+        "quantity": 200,
+        "name": "Sweet potato starch noodles (dangmyeon)",
+        "weightUnit": {
+          "type": "grams"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "Carrot",
+        "weightUnit": {
+          "type": "count"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "Onion",
+        "weightUnit": {
+          "type": "count"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "Spinach",
+        "weightUnit": {
+          "type": "count"
+        }
+      },
+      {
+        "quantity": 100,
+        "name": "Beef (or mushrooms for vegetarian option)",
+        "weightUnit": {
+          "type": "grams"
+        }
+      },
+      {
+        "quantity": 30,
+        "name": "Soy sauce",
+        "weightUnit": {
+          "type": "milliliters"
+        }
+      },
+      {
+        "quantity": 20,
+        "name": "Sesame oil",
+        "weightUnit": {
+          "type": "milliliters"
+        }
+      }
+    ],
+    "steps": [
+      {
+        "order": 1,
+        "description": "Soak sweet potato starch noodles in warm water until softened."
+      },
+      {
+        "order": 2,
+        "description": "Julienne carrot and onion. Blanch spinach."
+      },
+      {
+        "order": 3,
+        "description": "Stir-fry each vegetable separately."
+      },
+      {
+        "order": 4,
+        "description": "Stir-fry beef (or mushrooms) until cooked."
+      },
+      {
+        "order": 5,
+        "description": "Mix all ingredients together with soy sauce and sesame oil."
+      }
+    ]
+  },
+  {
+    "title": "Dak Galbi",
+    "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3wWwtFIG11pYtO0mEqNG2X0l5n7w6nxI0Xg&s",
+    "description": "Spicy stir-fried chicken with vegetables and rice cakes, typically cooked on a large cast-iron pan.",
+    "calories": 350,
+    "servings": 2,
+    "cookingTime": 40,
+    "creationDate": "2024-05-01T18:26:42.102Z",
+    "ingredients": [
+      {
+        "quantity": 300,
+        "name": "Chicken breast (or thigh)",
+        "weightUnit": {
+          "type": "grams"
+        }
+      },
+      {
+        "quantity": 200,
+        "name": "Rice cakes (tteok)",
+        "weightUnit": {
+          "type": "grams"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "Cabbage",
+        "weightUnit": {
+          "type": "count"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "Sweet potato",
+        "weightUnit": {
+          "type": "count"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "Carrot",
+        "weightUnit": {
+          "type": "count"
+        }
+      },
+      {
+        "quantity": 3,
+        "name": "Green onions",
+        "weightUnit": {
+          "type": "count"
+        }
+      },
+      {
+        "quantity": 50,
+        "name": "Gochujang (Korean chili paste)",
+        "weightUnit": {
+          "type": "grams"
+        }
+      }
+    ],
+    "steps": [
+      {
+        "order": 1,
+        "description": "Cut chicken into bite-sized pieces."
+      },
+      {
+        "order": 2,
+        "description": "Cut cabbage, sweet potato, carrot, and green onions into bite-sized pieces."
+      },
+      {
+        "order": 3,
+        "description": "Stir-fry chicken until cooked through."
+      },
+      {
+        "order": 4,
+        "description": "Add vegetables and rice cakes, stir-fry until tender."
+      },
+      {
+        "order": 5,
+        "description": "Mix in gochujang and stir well to coat everything evenly."
+      }
+    ]
+  },
+  {
+    "title": "Samgyeopsal",
+    "photo": "https://i.ytimg.com/vi/23tRGHUX3qM/maxresdefault.jpg",
+    "description": "Grilled pork belly served with lettuce leaves, garlic, ssamjang (fermented bean paste), and assorted condiments.",
+    "calories": 400,
+    "servings": 4,
+    "cookingTime": 30,
+    "creationDate": "2024-05-01T18:26:42.102Z",
+    "ingredients": [
+      {
+        "quantity": 500,
+        "name": "Pork belly slices",
+        "weightUnit": {
+          "type": "grams"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "Lettuce",
+        "weightUnit": {
+          "type": "count"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "Garlic bulb",
+        "weightUnit": {
+          "type": "count"
+        }
+      },
+      {
+        "quantity": 50,
+        "name": "Ssamjang (fermented bean paste)",
+        "weightUnit": {
+          "type": "grams"
+        }
+      },
+      {
+        "quantity": 30,
+        "name": "Soybean oil",
+        "weightUnit": {
+          "type": "milliliters"
+        }
+      }
+    ],
+    "steps": [
+      {
+        "order": 1,
+        "description": "Grill pork belly slices on a hot grill until cooked through and crispy."
+      },
+      {
+        "order": 2,
+        "description": "Wrap pork belly slices in lettuce leaves, along with garlic and ssamjang."
+      },
+      {
+        "order": 3,
+        "description": "Enjoy with assorted condiments."
+      }
+    ]
+  },
+  {
+    "title": "Tteokbokki",
+    "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTR5SY875jFBSTSaoRKeZ5gxp0r8WAWsm046w&s",
+    "description": "Spicy stir-fried rice cakes cooked in a sweet and spicy gochujang sauce.",
+    "calories": 250,
+    "servings": 4,
+    "cookingTime": 30,
+    "creationDate": "2024-05-01T18:26:42.102Z",
+    "ingredients": [
+      {
+        "quantity": 300,
+        "name": "Rice cakes (tteok)",
+        "weightUnit": {
+          "type": "grams"
+        }
+      },
+      {
+        "quantity": 100,
+        "name": "Fish cakes",
+        "weightUnit": {
+          "type": "grams"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "Onion",
+        "weightUnit": {
+          "type": "count"
+        }
+      },
+      {
+        "quantity": 3,
+        "name": "Green onions",
+        "weightUnit": {
+          "type": "count"
+        }
+      },
+      {
+        "quantity": 50,
+        "name": "Gochujang (Korean chili paste)",
+        "weightUnit": {
+          "type": "grams"
+        }
+      },
+      {
+        "quantity": 30,
+        "name": "Brown sugar",
+        "weightUnit": {
+          "type": "grams"
+        }
+      },
+      {
+        "quantity": 30,
+        "name": "Soy sauce",
+        "weightUnit": {
+          "type": "milliliters"
+        }
+      }
+    ],
+    "steps": [
+      {
+        "order": 1,
+        "description": "Soak rice cakes in warm water for 20-30 minutes until softened."
+      },
+      {
+        "order": 2,
+        "description": "Cut onion into thin slices. Cut fish cakes into bite-sized pieces. Slice green onions."
+      },
+      {
+        "order": 3,
+        "description": "In a pan, combine gochujang, brown sugar, soy sauce, and 2 cups of water. Bring to a boil."
+      },
+      {
+        "order": 4,
+        "description": "Add rice cakes, fish cakes, onion, and half of the green onions to the boiling sauce."
+      },
+      {
+        "order": 5,
+        "description": "Simmer over medium heat until the sauce thickens and rice cakes are tender, stirring occasionally."
+      },
+      {
+        "order": 6,
+        "description": "Garnish with remaining green onions before serving."
+      }
+    ]
+  },
+  {
+    "title": "Haemul Pajeon",
+    "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_5hmIaMJxHUdmD3lOOlMXZkd2dWL7el7ryA&s",
+    "description": "Savory Korean pancake made with a variety of seafood and scallions, often served as a snack or appetizer.",
+    "calories": 200,
+    "servings": 2,
+    "cookingTime": 25,
+    "creationDate": "2024-05-01T18:26:42.102Z",
+    "ingredients": [
+      {
+        "quantity": 100,
+        "name": "All-purpose flour",
+        "weightUnit": {
+          "type": "grams"
+        }
+      },
+      {
+        "quantity": 100,
+        "name": "Rice flour",
+        "weightUnit": {
+          "type": "grams"
+        }
+      },
+      {
+        "quantity": 200,
+        "name": "Assorted seafood (shrimp, squid, mussels)",
+        "weightUnit": {
+          "type": "grams"
+        }
+      },
+      {
+        "quantity": 3,
+        "name": "Scallions",
+        "weightUnit": {
+          "type": "count"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "Egg",
+        "weightUnit": {
+          "type": "count"
+        }
+      },
+      {
+        "quantity": 100,
+        "name": "Water",
+        "weightUnit": {
+          "type": "milliliters"
+        }
+      }
+    ],
+    "steps": [
+      {
+        "order": 1,
+        "description": "Mix all-purpose flour, rice flour, egg, and water in a bowl to make the batter."
+      },
+      {
+        "order": 2,
+        "description": "Cut seafood into bite-sized pieces and slice scallions."
+      },
+      {
+        "order": 3,
+        "description": "Heat oil in a non-stick skillet over medium heat."
+      },
+      {
+        "order": 4,
+        "description": "Pour a ladleful of batter into the skillet, spread evenly."
+      },
+      {
+        "order": 5,
+        "description": "Arrange seafood and scallions on top of the batter."
+      },
+      {
+        "order": 6,
+        "description": "Cook until the bottom is golden brown, then flip and cook the other side."
+      },
+      {
+        "order": 7,
+        "description": "Serve hot with dipping sauce."
+      }
+    ]
+  },
+  {
+    "title": "Kimbap",
+    "photo": "https://cicili.tv/wp-content/uploads/2023/06/Flower-Kimbap-Small-2.jpg",
+    "description": "Korean seaweed rice rolls filled with a variety of ingredients like vegetables, meat, and eggs, similar to sushi.",
+    "calories": 180,
+    "servings": 4,
+    "cookingTime": 30,
+    "creationDate": "2024-05-01T18:26:42.102Z",
+    "ingredients": [
+      {
+        "quantity": 4,
+        "name": "Nori (seaweed) sheets",
+        "weightUnit": {
+          "type": "count"
+        }
+      },
+      {
+        "quantity": 2,
+        "name": "Rice",
+        "weightUnit": {
+          "type": "cups"
+        }
+      },
+      {
+        "quantity": 100,
+        "name": "Ham (or crab sticks for seafood option)",
+        "weightUnit": {
+          "type": "grams"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "Carrot",
+        "weightUnit": {
+          "type": "count"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "Cucumber",
+        "weightUnit": {
+          "type": "count"
+        }
+      },
+      {
+        "quantity": 2,
+        "name": "Eggs",
+        "weightUnit": {
+          "type": "count"
+        }
+      },
+      {
+        "quantity": 50,
+        "name": "Spinach",
+        "weightUnit": {
+          "type": "grams"
+        }
+      },
+      {
+        "quantity": 2,
+        "name": "Yellow pickled radish (danmuji)",
+        "weightUnit": {
+          "type": "count"
+        }
+      }
+    ],
+    "steps": [
+      {
+        "order": 1,
+        "description": "Cook rice and let it cool slightly."
+      },
+      {
+        "order": 2,
+        "description": "Cut ham, carrot, cucumber, and yellow pickled radish into long strips."
+      },
+      {
+        "order": 3,
+        "description": "Blanch spinach and roll it into a cylinder shape."
+      },
+      {
+        "order": 4,
+        "description": "Cook eggs as thin omelets and slice into strips."
+      },
+      {
+        "order": 5,
+        "description": "Place a nori sheet on a bamboo sushi mat, spread rice evenly on top."
+      },
+      {
+        "order": 6,
+        "description": "Arrange filling ingredients in a line across the center of the rice."
+      },
+      {
+        "order": 7,
+        "description": "Roll the kimbap tightly using the sushi mat, seal the edge with a bit of water."
+      },
+      {
+        "order": 8,
+        "description": "Slice the rolled kimbap into bite-sized pieces."
+      }
+    ]
+  },
+  {
+    "title": "Yukgaejang",
+    "photo": "https://i1.wp.com/seonkyounglongest.com/wp-content/uploads/2022/10/840A1522mini.jpg?fit=1000%2C667&ssl=1",
+    "description": "Spicy beef soup with shredded beef, vegetables, and noodles, typically served as a hearty meal.",
+    "calories": 350,
+    "servings": 4,
+    "cookingTime": 90,
+    "creationDate": "2024-05-01T18:26:42.102Z",
+    "ingredients": [
+      {
+        "quantity": 500,
+        "name": "Beef brisket",
+        "weightUnit": {
+          "type": "grams"
+        }
+      },
+      {
+        "quantity": 100,
+        "name": "Fernbrake (gosari)",
+        "weightUnit": {
+          "type": "grams"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "Onion",
+        "weightUnit": {
+          "type": "count"
+        }
+      },
+      {
+        "quantity": 3,
+        "name": "Green onions",
+        "weightUnit": {
+          "type": "count"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "Egg",
+        "weightUnit": {
+          "type": "count"
+        }
+      },
+      {
+        "quantity": 50,
+        "name": "Gochugaru (Korean red chili flakes)",
+        "weightUnit": {
+          "type": "grams"
+        }
+      },
+      {
+        "quantity": 30,
+        "name": "Soy sauce",
+        "weightUnit": {
+          "type": "milliliters"
+        }
+      }
+    ],
+    "steps": [
+      {
+        "order": 1,
+        "description": "Boil beef brisket in water for 1-1.5 hours until tender. Remove beef and shred into thin strips."
+      },
+      {
+        "order": 2,
+        "description": "Soak fernbrake (gosari) in water until softened."
+      },
+      {
+        "order": 3,
+        "description": "Slice onion thinly and chop green onions."
+      },
+      {
+        "order": 4,
+        "description": "In a pot, combine shredded beef, soaked fernbrake, sliced onion, green onions, gochugaru, and soy sauce. Add 8 cups of water."
+      },
+      {
+        "order": 5,
+        "description": "Bring to a boil, then reduce heat and simmer for 30-40 minutes."
+      },
+      {
+        "order": 6,
+        "description": "Add noodles and cook according to package instructions."
+      },
+      {
+        "order": 7,
+        "description": "Crack an egg into the soup and stir gently until cooked."
+      },
+      {
+        "order": 8,
+        "description": "Serve hot, garnished with additional green onions."
+      }
+    ]
+  },
+  {
+    "title": "Makgeolli",
+    "photo": "https://www.holidaytourstravel.com/wp-content/uploads/2022/11/makgeolli.jpg",
+    "description": "Traditional Korean rice wine with a milky appearance, slightly sweet and fizzy.",
+    "calories": 120,
+    "servings": 2,
+    "cookingTime": 1440,
+    "creationDate": "2024-05-01T18:26:42.102Z",
+    "ingredients": [
+      {
+        "quantity": 200,
+        "name": "Short-grain rice",
+        "weightUnit": {
+          "type": "grams"
+        }
+      },
+      {
+        "quantity": 100,
+        "name": "Nuruk (fermentation starter)",
+        "weightUnit": {
+          "type": "grams"
+        }
+      },
+      {
+        "quantity": 500,
+        "name": "Water",
+        "weightUnit": {
+          "type": "milliliters"
+        }
+      }
+    ],
+    "steps": [
+      {
+        "order": 1,
+        "description": "Wash rice thoroughly and soak in water for 1-2 hours."
+      },
+      {
+        "order": 2,
+        "description": "Steam rice until cooked, then let it cool to room temperature."
+      },
+      {
+        "order": 3,
+        "description": "In a large bowl, mix cooked rice with nuruk and water."
+      },
+      {
+        "order": 4,
+        "description": "Transfer mixture to a clean container, cover loosely, and ferment at room temperature for 1-2 days."
+      },
+      {
+        "order": 5,
+        "description": "Strain the liquid through a fine mesh sieve to remove solids."
+      },
+      {
+        "order": 6,
+        "description": "Serve chilled or at room temperature."
+      }
+    ]
+  },
+{
+    "title": "Креп",
+    "photo": "https://shuba.life/static/content/thumbs/1905x884/6/51/mxecx5---c1905x884x50px50p-up--a0e0c14e898423874abb1a9bcdb2a516.jpg",
+    "description": "Креп - це традиційна французька страва, приготована з тоненьких пляцків, які заповнені різноманітними начинками, такими як шоколад, фрукти або сир.",
+    "calories": 250,
+    "creationDate": "2024-05-01T18:26:42.102Z",
+    "ingredients": [
+      {
+        "quantity": 2,
+        "name": "яйця",
+        "weightUnit": {
+          "type": "штуки"
+        }
+      },
+      {
+        "quantity": 100,
+        "name": "молоко",
+        "weightUnit": {
+          "type": "мл"
+        }
+      },
+      {
+        "quantity": 50,
+        "name": "мука",
+        "weightUnit": {
+          "type": "г"
+        }
+      },
+      {
+        "quantity": 20,
+        "name": "цукор",
+        "weightUnit": {
+          "type": "г"
+        }
+      }
+    ],
+    "steps": [
+      {
+        "description": "Збити яйця з цукром.",
+        "order": 1
+      },
+      {
+        "description": "Поступово додавати молоко та муку, збиваючи до однорідності.",
+        "order": 2
+      },
+      {
+        "description": "Запікати пляцки на розігрітій сковороді до золотисто-коричневого кольору.",
+        "order": 3
+      },
+      {
+        "description": "Начиняти пляцки за бажанням та складати у рулети.",
+        "order": 4
+      }
+    ]
+  }
+  ,
+  {
+    "title": "Бульйон",
+    "photo": "https://gotuvaty.com/wp-content/uploads/2023/03/yak-variti-buljon-post.jpg",
+    "description": "Бульйон - це відвар з м'яса, птиці або риби, який використовується як основа для різних супів та соусів.",
+    "calories": 120,
+    "creationDate": "2024-05-01T18:26:42.102Z",
+    "ingredients": [
+      {
+        "quantity": 500,
+        "name": "кістки м'яса",
+        "weightUnit": {
+          "type": "г"
+        }
+      },
+      {
+        "quantity": 2,
+        "name": "цибулі",
+        "weightUnit": {
+          "type": "штуки"
+        }
+      },
+      {
+        "quantity": 2,
+        "name": "моркви",
+        "weightUnit": {
+          "type": "штуки"
+        }
+      },
+      {
+        "quantity": 2,
+        "name": "стеблини селери",
+        "weightUnit": {
+          "type": "штуки"
+        }
+      }
+    ],
+    "steps": [
+      {
+        "description": "Покласти кістки м'яса у каструлю та залити водою.",
+        "order": 1
+      },
+      {
+        "description": "Додати нарізану цибулю, моркву та селеру.",
+        "order": 2
+      },
+      {
+        "description": "Готувати на повільному вогні протягом 2-3 годин, знімаючи піну, що утворюється на поверхні.",
+        "order": 3
+      },
+      {
+        "description": "Процідити бульйон через сито та використовувати за призначенням.",
+        "order": 4
+      }
+    ]
+  }
+  ,
+  {
+    "title": "Рататуй",
+    "photo": "https://klopotenko.com/wp-content/uploads/2019/08/Ratatyj_siteWeb.jpg",
+    "description": "Рататуй - це традиційна французька страва, яка складається з томатів, баклажанів, кабачків, перців та різних спецій.",
+    "calories": 180,
+    "creationDate": "2024-05-01T18:26:42.102Z",
+    "ingredients": [
+      {
+        "quantity": 3,
+        "name": "баклажани",
+        "weightUnit": {
+          "type": "штуки"
+        }
+      },
+      {
+        "quantity": 2,
+        "name": "кабачки",
+        "weightUnit": {
+          "type": "штуки"
+        }
+      },
+      {
+        "quantity": 4,
+        "name": "помідори",
+        "weightUnit": {
+          "type": "штуки"
+        }
+      },
+      {
+        "quantity": 2,
+        "name": "перці",
+        "weightUnit": {
+          "type": "штуки"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "цибуля",
+        "weightUnit": {
+          "type": "штуки"
+        }
+      },
+      {
+        "quantity": 3,
+        "name": "зубчики часнику",
+        "weightUnit": {
+          "type": "штуки"
+        }
+      }
+    ],
+    "steps": [
+      {
+        "description": "Нарізати всі овочі дрібно.",
+        "order": 1
+      },
+      {
+        "description": "Посмажити цибулю та часник на розігрітій сковороді.",
+        "order": 2
+      },
+      {
+        "description": "Додати всі інші овочі та тушкувати протягом 15-20 хвилин.",
+        "order": 3
+      },
+      {
+        "description": "Приправити за смаком та подавати.",
+        "order": 4
+      }
+    ]
+  }
+  ,
+  {
+    "title": "Класична булочка",
+    "photo": "https://faial.h83.xyz/hospodar/images/2e4a597b2ffc.jpg",
+    "description": "Класична французька булочка - це легка та повітряна випічка, яка чудово поєднується з кавою або чаєм.",
+    "calories": 220,
+    "creationDate": "2024-05-01T18:26:42.102Z",
+    "ingredients": [
+      {
+        "quantity": 250,
+        "name": "мука",
+        "weightUnit": {
+          "type": "г"
+        }
+      },
+      {
+        "quantity": 25,
+        "name": "цукор",
+        "weightUnit": {
+          "type": "г"
+        }
+      },
+      {
+        "quantity": 5,
+        "name": "дріжджі",
+        "weightUnit": {
+          "type": "г"
+        }
+      },
+      {
+        "quantity": 100,
+        "name": "молоко",
+        "weightUnit": {
+          "type": "мл"
+        }
+      },
+      {
+        "quantity": 100,
+        "name": "вершкове масло",
+        "weightUnit": {
+          "type": "г"
+        }
+      }
+    ],
+    "steps": [
+      {
+        "description": "Розчинити дріжджі в теплому молоці з цукром.",
+        "order": 1
+      },
+      {
+        "description": "Додати муку та м'яке масло, замішати тісто.",
+        "order": 2
+      },
+      {
+        "description": "Випікати в духовці при температурі 180°С протягом 15-20 хвилин.",
+        "order": 3
+      },
+      {
+        "description": "Підавати гарячим.",
+        "order": 4
+      }
+    ]
+  }
+  ,
+  {
+    "title": "Буябес",
+    "photo": "https://i.obozrevatel.com/food/recipemain/2021/11/8/6303601489761989-1559-slivocnoe-maslo.jpg?size=636x424",
+    "description": "Буябес - це традиційний рибний суп з різних видів морської риби, морепродуктів та різноманітних спецій.",
+    "calories": 300,
+    "creationDate": "2024-05-01T18:26:42.102Z",
+    "ingredients": [
+      {
+        "quantity": 500,
+        "name": "різні види морської риби (лосось, тунець, морський окунь тощо)",
+        "weightUnit": {
+          "type": "г"
+        }
+      },
+      {
+        "quantity": 300,
+        "name": "мідії",
+        "weightUnit": {
+          "type": "г"
+        }
+      },
+      {
+        "quantity": 200,
+        "name": "креветки",
+        "weightUnit": {
+          "type": "г"
+        }
+      },
+      {
+        "quantity": 4,
+        "name": "помідори",
+        "weightUnit": {
+          "type": "штуки"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "цибуля",
+        "weightUnit": {
+          "type": "штуки"
+        }
+      },
+      {
+        "quantity": 2,
+        "name": "зубчики часнику",
+        "weightUnit": {
+          "type": "штуки"
+        }
+      }
+    ],
+    "steps": [
+      {
+        "description": "У великій каструлі обсмажити нарізану цибулю та часник.",
+        "order": 1
+      },
+      {
+        "description": "Додати нарізані помідори та тушити до утворення соусу.",
+        "order": 2
+      },
+      {
+        "description": "Поступово додавати нарізану рибу, мідії та креветки.",
+        "order": 3
+      },
+      {
+        "description": "Готувати на повільному вогні протягом 30-40 хвилин.",
+        "order": 4
+      },
+      {
+        "description": "Подавати гарячим з гарніром за бажанням.",
+        "order": 5
+      }
+    ]
+  }
+  ,
+  {
+    "title": "Класична Салат Нісуаз",
+    "photo": "https://cdn.lenta.com.ua/images/maxone/1470/1470-e2c3b0e2db9288b676321d1056a93cf0.jpg",
+    "description": "Салат Нісуаз - це класична французька страва, яка включає в себе тунець, оливки, овочі, яйця та картоплю.",
+    "calories": 280,
+    "creationDate": "2024-05-01T18:26:42.102Z",
+    "ingredients": [
+      {
+        "quantity": 200,
+        "name": "тушкований тунець",
+        "weightUnit": {
+          "type": "г"
+        }
+      },
+      {
+        "quantity": 100,
+        "name": "оливки",
+        "weightUnit": {
+          "type": "г"
+        }
+      },
+      {
+        "quantity": 2,
+        "name": "помідори",
+        "weightUnit": {
+          "type": "штуки"
+        }
+      },
+      {
+        "quantity": 2,
+        "name": "яйця",
+        "weightUnit": {
+          "type": "штуки"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "цибуля",
+        "weightUnit": {
+          "type": "штуки"
+        }
+      },
+      {
+        "quantity": 150,
+        "name": "картопля",
+        "weightUnit": {
+          "type": "г"
+        }
+      }
+    ],
+    "steps": [
+      {
+        "description": "Сварити яйця та картоплю до готовності, нарізати на кубики.",
+        "order": 1
+      },
+      {
+        "description": "Розкласти на тарілці тунець, оливки, нарізані помідори, картоплю та яйця.",
+        "order": 2
+      },
+      {
+        "description": "Посипати нарізаною цибулею та приправити за смаком.",
+        "order": 3
+      },
+      {
+        "description": "Полити оливковою олією перед подачею.",
+        "order": 4
+      }
+    ]
+  }
+  ,
+  {
+    "title": "Жюльєн з куркою",
+    "photo": "https://images.unian.net/photos/2020_05/thumb_files/1000_545_1588768597-2468.jpg",
+    "description": "Жюльєн з куркою - це витончена французька страва, яка складається зі шматочків курячого м'яса, грибів, вершкового соусу та сиру.",
+    "calories": 320,
+    "creationDate": "2024-05-01T18:26:42.102Z",
+    "ingredients": [
+      {
+        "quantity": 300,
+        "name": "куряче філе",
+        "weightUnit": {
+          "type": "г"
+        }
+      },
+      {
+        "quantity": 200,
+        "name": "шампіньйони",
+        "weightUnit": {
+          "type": "г"
+        }
+      },
+      {
+        "quantity": 100,
+        "name": "вершки",
+        "weightUnit": {
+          "type": "мл"
+        }
+      },
+      {
+        "quantity": 50,
+        "name": "твердий сир",
+        "weightUnit": {
+          "type": "г"
+        }
+      },
+      {
+        "quantity": 30,
+        "name": "масло",
+        "weightUnit": {
+          "type": "г"
+        }
+      },
+      {
+        "quantity": 2,
+        "name": "часничок",
+        "weightUnit": {
+          "type": "штуки"
+        }
+      }
+    ],
+    "steps": [
+      {
+        "description": "Подрібніть куряче філе на смужки, гриби - на пластинки, часник - дрібно.",
+        "order": 1
+      },
+      {
+        "description": "На розігрітій сковороді розігрійте масло та обсмажте куряче філе з часником.",
+        "order": 2
+      },
+      {
+        "description": "Додайте гриби і пасуйте до готовності.",
+        "order": 3
+      },
+      {
+        "description": "Додайте вершки, посоліть, поперчіть і прокип'ятіть.",
+        "order": 4
+      },
+      {
+        "description": "Посипте тертим сиром і подавайте гарячим.",
+        "order": 5
+      }
+    ]
+  }
+  ,
+  {
+    "title": "Тарт Фламбе",
+    "photo": "https://showdream.org/uploads/posts/2023-07/medium/1689848215_elzaskiy-tart-flambe-vognyaniy-pirg-z-bekonom-cibuleyu.jpg",
+    "description": "Тарт фламбе - це традиційна альзаська страва, що представляє собою тонке корж з вершкового сиру, бекону та цибулі.",
+    "calories": 290,
+    "creationDate": "2024-05-01T18:26:42.102Z",
+    "ingredients": [
+      {
+        "quantity": 200,
+        "name": "тісто для піци",
+        "weightUnit": {
+          "type": "г"
+        }
+      },
+      {
+        "quantity": 150,
+        "name": "вершковий сир",
+        "weightUnit": {
+          "type": "г"
+        }
+      },
+      {
+        "quantity": 100,
+        "name": "бекон",
+        "weightUnit": {
+          "type": "г"
+        }
+      },
+      {
+        "quantity": 2,
+        "name": "цибуля",
+        "weightUnit": {
+          "type": "штуки"
+        }
+      },
+      {
+        "quantity": 50,
+        "name": "масло",
+        "weightUnit": {
+          "type": "г"
+        }
+      }
+    ],
+    "steps": [
+      {
+        "description": "Прогрійте духовку до 250°C.",
+        "order": 1
+      },
+      {
+        "description": "Розкатайте тісто на тонку пластину і перекладіть на пекарський папір.",
+        "order": 2
+      },
+      {
+        "description": "Намажте вершковим сиром.",
+        "order": 3
+      },
+      {
+        "description": "Розріжте бекон і цибулю на тонкі кола і розкладіть на тісті.",
+        "order": 4
+      },
+      {
+        "description": "Посипте оливковою олією і пекти 10-15 хвилин.",
+        "order": 5
+      }
+    ]
+  }
+  ,
+  {
+    "title": "Конфіт де Канард",
+    "photo": "https://media.istockphoto.com/id/981750528/es/foto/confit-de-pato-confit-de-pato-con-verduras.jpg?s=612x612&w=0&k=20&c=hHw1nV_xH9Y-llwDfq_KzEsfz9LqkWLf75weS-ov_rQ=",
+    "description": "Конфіт де Канард - це класична французька страва, яка складається з качиного стегна, яке підготовлене власним жиром до м'якості.",
+    "calories": 380,
+    "creationDate": "2024-05-01T18:26:42.102Z",
+    "ingredients": [
+      {
+        "quantity": 2,
+        "name": "конфіт качиних стегон",
+        "weightUnit": {
+          "type": "штуки"
+        }
+      },
+      {
+        "quantity": 500,
+        "name": "картопля",
+        "weightUnit": {
+          "type": "г"
+        }
+      },
+      {
+        "quantity": 4,
+        "name": "часничок",
+        "weightUnit": {
+          "type": "штуки"
+        }
+      },
+      {
+        "quantity": 50,
+        "name": "вершкове масло",
+        "weightUnit": {
+          "type": "г"
+        }
+      },
+      {
+        "quantity": 2,
+        "name": "гілочки розмарину",
+        "weightUnit": {
+          "type": "штуки"
+        }
+      }
+    ],
+    "steps": [
+      {
+        "description": "Розігрійте духовку до 180°C.",
+        "order": 1
+      },
+      {
+        "description": "Підготуйте качині стегна, приберіть вони з надлишкового жиру.",
+        "order": 2
+      },
+      {
+        "description": "Розтопіть вершкове масло в сковороді та обсмажте часник до золотистого кольору.",
+        "order": 3
+      },
+      {
+        "description": "Додайте качині стегна та розмарин, обсмажте до золотистого кольору.",
+        "order": 4
+      },
+      {
+        "description": "Переложіть у форму для запікання, додайте нарізану картоплю та покладіть у духовку на 1 годину.",
+        "order": 5
+      }
+    ]
+  }
+  ,
+  {
+    "title": "Конфітюр Фіговий",
+    "photo": "https://i.obozrevatel.com/food/recipemain/2019/2/12/yichakpr.jpg",
+    "description": "Конфітюр фіговий - це ароматний та смачний десерт, приготований зі свіжих фіг, цукру та лимонного соку.",
+    "calories": 210,
+    "creationDate": "2024-05-01T18:26:42.102Z",
+    "ingredients": [
+      {
+        "quantity": 500,
+        "name": "фіги",
+        "weightUnit": {
+          "type": "г"
+        }
+      },
+      {
+        "quantity": 200,
+        "name": "цукор",
+        "weightUnit": {
+          "type": "г"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "лимон",
+        "weightUnit": {
+          "type": "штуки"
+        }
+      }
+    ],
+    "steps": [
+      {
+        "description": "Нарізати фіги на дрібні шматочки.",
+        "order": 1
+      },
+      {
+        "description": "Переложіть фіги у каструлю, додайте цукор та лимонний сік.",
+        "order": 2
+      },
+      {
+        "description": "Варіть на помірному вогні протягом 30-40 хвилин до густої консистенції.",
+        "order": 3
+      },
+      {
+        "description": "Розлійте у стерилізовані банки та застудіть.",
+        "order": 4
+      }
+    ]
+  }
+  ,
+  {
+    "title": "Бургундська яловичина",
+    "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHJeoEeiJE6PMxQMA41X6YOZUMcpk1oZkOzw&s",
+    "description": "Бургундська яловичина - це традиційна французька страва з м'яса яловичини, яка тушиться в червоному вині разом з овочами і спеціями.",
+    "calories": 350,
+    "creationDate": "2024-05-01T18:26:42.102Z",
+    "ingredients": [
+      {
+        "quantity": 800,
+        "name": "говядина (найкраще від задньої частини телятини)",
+        "weightUnit": {
+          "type": "г"
+        }
+      },
+      {
+        "quantity": 200,
+        "name": "шпик",
+        "weightUnit": {
+          "type": "г"
+        }
+      },
+      {
+        "quantity": 200,
+        "name": "шампіньйони",
+        "weightUnit": {
+          "type": "г"
+        }
+      },
+      {
+        "quantity": 3,
+        "name": "морква",
+        "weightUnit": {
+          "type": "штуки"
+        }
+      },
+      {
+        "quantity": 2,
+        "name": "цибуля",
+        "weightUnit": {
+          "type": "штуки"
+        }
+      },
+      {
+        "quantity": 3,
+        "name": "зубчики часнику",
+        "weightUnit": {
+          "type": "штуки"
+        }
+      },
+      {
+        "quantity": 750,
+        "name": "червоне вино",
+        "weightUnit": {
+          "type": "мл"
+        }
+      }
+    ],
+    "steps": [
+      {
+        "description": "Нарізати говядина на кубики, шпик - на тонкі пластинки, овочі - на кружечки.",
+        "order": 1
+      },
+      {
+        "description": "Обсмажити говядина та шпик у великій каструлі до золотистого кольору.",
+        "order": 2
+      },
+      {
+        "description": "Додати нарізані овочі та тушити до м'якості.",
+        "order": 3
+      },
+      {
+        "description": "Додати червоне вино, довести до кипіння, після чого зменшити вогонь і тушити протягом 2-3 годин, доки м'ясо не стане м'яким і соковитим.",
+        "order": 4
+      },
+      {
+        "description": "Подавати гарячим, прикрашений свіжими травами.",
+        "order": 5
+      }
+    ]
+  }
+  ,
+  {
+    "title": "Класична Конфіт де Фуа Гра",
+    "photo": "https://good-news.net.ua/wp-content/uploads/2021/04/52174e0d03d38fe666cae5ba2316958e-quality_75Xresize_1Xallow_enlarge_0Xw_700Xh_700.jpg",
+    "description": "Конфіт де Фуа Гра - це елітна французька страва, приготована з печеного жирного печінки гуся або качки.",
+    "calories": 450,
+    "creationDate": "2024-05-01T18:26:42.102Z",
+    "ingredients": [
+      {
+        "quantity": 500,
+        "name": "печінка гуся або качки",
+        "weightUnit": {
+          "type": "г"
+        }
+      },
+      {
+        "quantity": 50,
+        "name": "ароматичний лікер (наприклад, коньяк або арманьяк)",
+        "weightUnit": {
+          "type": "мл"
+        }
+      },
+      {
+        "quantity": 20,
+        "name": "морська сіль",
+        "weightUnit": {
+          "type": "г"
+        }
+      },
+      {
+        "quantity": 10,
+        "name": "білий перець",
+        "weightUnit": {
+          "type": "г"
+        }
+      }
+    ],
+    "steps": [
+      {
+        "description": "Видаліть венозні води і обробіть печінку, а потім наріжте її на кусочки.",
+        "order": 1
+      },
+      {
+        "description": "Посипте морською сіллю і білим перцем, залийте ароматичним лікером і залиште на кілька годин (або навіть ночі) в холодильнику.",
+        "order": 2
+      },
+      {
+        "description": "Підготуйте гуся або качку за вашим вибором, вибирайте звірів, забрані з нього печінки.",
+        "order": 3
+      },
+      {
+        "description": "Підготуйте печінку на невеликому вогні, не допускаючи варіння, до золотистого кольору та хрусткості.",
+        "order": 4
+      },
+      {
+        "description": "Подавайте гарячим або застудіть і подавайте на хліб.",
+        "order": 5
+      }
+    ]
+  }
+  ,
+  {
+    "title": "Класична Крем-Брюле",
+    "photo": "https://klopotenko.com/wp-content/uploads/2021/05/krem-brule__sitewebukr.jpg",
+    "description": "Крем-Брюле - це вишуканий французький десерт з вершкового крему та карамелізованого цукру.",
+    "calories": 280,
+    "creationDate": "2024-05-01T18:26:42.102Z",
+    "ingredients": [
+      {
+        "quantity": 6,
+        "name": "жовтки",
+        "weightUnit": {
+          "type": "штуки"
+        }
+      },
+      {
+        "quantity": 500,
+        "name": "вершки (35% жирності)",
+        "weightUnit": {
+          "type": "мл"
+        }
+      },
+      {
+        "quantity": 100,
+        "name": "цукор",
+        "weightUnit": {
+          "type": "г"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "ванільна стручка",
+        "weightUnit": {
+          "type": "штуки"
+        }
+      },
+      {
+        "quantity": 4,
+        "name": "столові ложки коричневого цукру",
+        "weightUnit": {
+          "type": "штуки"
+        }
+      }
+    ],
+    "steps": [
+      {
+        "description": "Розігріти вершки разом із ваніллю на середньому вогні.",
+        "order": 1
+      },
+      {
+        "description": "У іншій мисці збити жовтки з цукром до однорідності.",
+        "order": 2
+      },
+      {
+        "description": "Поступово додавати гарячі вершки до суміші з жовтками, постійно помішуючи.",
+        "order": 3
+      },
+      {
+        "description": "Після цього підігріти суміш на водяній бані, постійно помішуючи, до товстої консистенції.",
+        "order": 4
+      },
+      {
+        "description": "Розподілити суміш у порційні форми і залишити в холодильнику на 2-3 години.",
+        "order": 5
+      },
+      {
+        "description": "Перед подачею посипати верх крему коричневим цукром і підсмажити під гарячим грилем або за допомогою кулінарного горелки до утворення карамелізованої корочки.",
+        "order": 6
+      }
+    ]
+  }
+  ,
+  {
+    "title": "Бургундський соус",
+    "photo": "https://static.tildacdn.com/tild3738-3634-4764-b139-386432353366/image.png",
+    "description": "Бургундський соус - це легкий та ароматний французький соус, який ідеально підходить для рибних страв.",
+    "calories": 120,
+    "creationDate": "2024-05-01T18:26:42.102Z",
+    "ingredients": [
+      {
+        "quantity": 100,
+        "name": "біле вино",
+        "weightUnit": {
+          "type": "мл"
+        }
+      },
+      {
+        "quantity": 50,
+        "name": "білий винний оцет",
+        "weightUnit": {
+          "type": "мл"
+        }
+      },
+      {
+        "quantity": 100,
+        "name": "холодне вершкове масло",
+        "weightUnit": {
+          "type": "г"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "шалотка",
+        "weightUnit": {
+          "type": "штуки"
+        }
+      },
+      {
+        "quantity": 1,
+        "name": "ломтик лимона",
+        "weightUnit": {
+          "type": "штуки"
+        }
+      }
+    ],
+    "steps": [
+      {
+        "description": "У каструлю додайте біле вино, білий винний оцет, нарізану шалотку та ломтик лимона.",
+        "order": 1
+      },
+      {
+        "description": "Варіть на помірному вогні до того моменту, поки рідини не залишиться приблизно на 1/4 від початкового обсягу.",
+        "order": 2
+      },
+      {
+        "description": "Зменшіть вогонь і додайте холодне вершкове масло, збиваючи міксером до утворення гладкого соусу.",
+        "order": 3
+      },
+      {
+        "description": "Сіль і перець за смаком, а потім процідіть, щоб видалити тверді частинки.",
+        "order": 4
+      },
+      {
+        "description": "Подається гарячим на рибні страви.",
+        "order": 5
+      }
+    ]
+  }
+  ,
+  {
+    "title": "Бріош",
+    "photo": "https://images.prom.ua/2500316326_w600_h600_2500316326.jpg",
+    "description": "Бріош - це пухка, ніжна та солодка французька випічка, яка ідеально підходить для сніданку або перекусу.",
+    "calories": 280,
+    "creationDate": "2024-05-01T18:26:42.102Z",
+    "ingredients": [
+      {
+        "quantity": 500,
+        "name": "пшенична борошно",
+        "weightUnit": {
+          "type": "г"
+        }
+      },
+      {
+        "quantity": 100,
+        "name": "цукор",
+        "weightUnit": {
+          "type": "г"
+        }
+      },
+      {
+        "quantity": 200,
+        "name": "вершкове масло",
+        "weightUnit": {
+          "type": "г"
+        }
+      },
+      {
+        "quantity": 10,
+        "name": "дріжджі",
+        "weightUnit": {
+          "type": "г"
+        }
+      },
+      {
+        "quantity": 4,
+        "name": "яйця",
+        "weightUnit": {
+          "type": "штуки"
+        }
+      },
+      {
+        "quantity": 50,
+        "name": "молоко",
+        "weightUnit": {
+          "type": "мл"
+        }
+      }
+    ],
+    "steps": [
+      {
+        "description": "У теплому молоці розчиніть дріжджі та залиште на 5-10 хвилин для активації.",
+        "order": 1
+      },
+      {
+        "description": "У мисці змішайте борошно з цукром, додайте розтоплене вершкове масло та яйця.",
+        "order": 2
+      },
+      {
+        "description": "Додайте активовані дріжджі та молоко, перемішайте до утворення тіста.",
+        "order": 3
+      },
+      {
+        "description": "Закрийте миску рушником і залиште тісто підйматися на протязі 1-2 годин при кімнатній температурі.",
+        "order": 4
+      },
+      {
+        "description": "Розкладіть тісто у форми для бріошів, залиште на ще 30-40 хвилин для підйому.",
+        "order": 5
+      },
+      {
+        "description": "Пекти випічку в розігрітій духовці до золотистого кольору при температурі 180°C.",
+        "order": 6
+      }
+    ]
+  }
+]

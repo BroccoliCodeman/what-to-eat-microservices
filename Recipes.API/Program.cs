@@ -125,13 +125,12 @@ using (var scope = app.Services.CreateScope())
     var recipeService=scope.ServiceProvider.GetRequiredService<IRecipeService>();
     if (dbcontext.Recipes.Count() == 0)
     {
-        string json = File.ReadAllText(@"../recipes/dishes.txt");
+        string json = File.ReadAllText(@"Dishes.json");
         var Recipes = JsonConvert.DeserializeObject<List<RecipeDtoWithIngredientsAndSteps>>(json);
 
         for (int i = 0; i < Recipes.Count(); i++)
         {
-            Recipes[i].Photo = "https://www.cookwithcampbells.ca/wp-content/uploads/sites/24/2016/05/SimmeredChickenDinner.jpg";
-            recipeService.InsertWithIngredients(Recipes[i]);
+           await recipeService.InsertWithIngredients(Recipes[i]);
         }
     }
 }
