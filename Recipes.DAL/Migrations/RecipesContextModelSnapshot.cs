@@ -254,9 +254,14 @@ namespace Recipes.DAL.Migrations
                         .HasMaxLength(1000)
                         .HasColumnType("TEXT");
 
+                    b.Property<Guid?>("UserId")
+                        .HasColumnType("TEXT");
+
                     b.HasKey("Id");
 
                     b.HasIndex("RecipeId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Responds");
                 });
@@ -495,7 +500,13 @@ namespace Recipes.DAL.Migrations
                         .WithMany("Responds")
                         .HasForeignKey("RecipeId");
 
+                    b.HasOne("Recipes.Data.Models.User", "User")
+                        .WithMany("Responds")
+                        .HasForeignKey("UserId");
+
                     b.Navigation("Recipe");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Recipes.Data.Models.Recipe", b =>
@@ -508,6 +519,8 @@ namespace Recipes.DAL.Migrations
             modelBuilder.Entity("Recipes.Data.Models.User", b =>
                 {
                     b.Navigation("CreatedRecipes");
+
+                    b.Navigation("Responds");
                 });
 
             modelBuilder.Entity("Recipes.Data.Models.WeightUnit", b =>

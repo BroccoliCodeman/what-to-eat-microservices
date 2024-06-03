@@ -265,11 +265,17 @@ namespace Recipes.DAL.Migrations
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
                     Text = table.Column<string>(type: "TEXT", maxLength: 1000, nullable: false),
                     Rate = table.Column<int>(type: "INTEGER", maxLength: 1, nullable: false),
-                    RecipeId = table.Column<Guid>(type: "TEXT", nullable: true)
+                    RecipeId = table.Column<Guid>(type: "TEXT", nullable: true),
+                    UserId = table.Column<Guid>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Responds", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Responds_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Responds_Recipes_RecipeId",
                         column: x => x.RecipeId,
@@ -367,6 +373,11 @@ namespace Recipes.DAL.Migrations
                 name: "IX_Responds_RecipeId",
                 table: "Responds",
                 column: "RecipeId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Responds_UserId",
+                table: "Responds",
+                column: "UserId");
         }
 
         /// <inheritdoc />

@@ -25,9 +25,5 @@ public class CookingStepConfiguration : IEntityTypeConfiguration<CookingStep>
             .HasMaxLength(2)
             .IsRequired();
         
-        builder
-            .HasOne(cs => cs.Recipe)
-            .WithMany(r => r.CookingSteps)
-            .HasForeignKey(cs => cs.RecipeId);
     }
 }

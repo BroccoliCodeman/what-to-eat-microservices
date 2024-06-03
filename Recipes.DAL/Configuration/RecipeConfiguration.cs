@@ -45,6 +45,7 @@ public class RecipeConfiguration : IEntityTypeConfiguration<Recipe>
         builder.HasMany(p => p.Ingredients).WithMany(p => p.Recipes);
         builder.HasMany(p => p.Users).WithMany(p => p.SavedRecipes);
         builder.HasOne(p => p.User).WithMany(p => p.CreatedRecipes).IsRequired(false);
+        builder.HasMany(p => p.CookingSteps).WithOne(p => p.Recipe);
         
     }
 }
