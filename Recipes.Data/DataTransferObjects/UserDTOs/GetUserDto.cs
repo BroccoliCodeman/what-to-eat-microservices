@@ -1,3 +1,5 @@
+using Recipes.Data.Models;
+
 namespace Recipes.Data.DataTransferObjects.UserDTOs
 {
     public class GetUserDto
@@ -7,5 +9,7 @@ namespace Recipes.Data.DataTransferObjects.UserDTOs
         public string FirstName { get; set; } = string.Empty;
         public string LastName { get; set; } = string.Empty;
         public string Avatar { get; set; } = null!;
+
+        public int SavedRecipes { get; set; } 
     }
 }

@@ -125,7 +125,7 @@ namespace Recipes.API.Controllers
         {
             var username = User.FindFirst("userName")?.Value;
 
-            var user = await _userManager.FindByNameAsync(username);
+            var user = await context.Users.Where(x => x.UserName == username).Include(x=>x.SavedRecipes).FirstOrDefaultAsync();
 
             if (user == null)
                 return Unauthorized();
@@ -136,7 +136,8 @@ namespace Recipes.API.Controllers
                 FirstName = user.FirstName,
                 LastName = user.LastName,
                 Avatar = user.Avatar,
-                Id = user.Id
+                Id = user.Id,
+                SavedRecipes = user.SavedRecipes.Count
             };
 
             return Ok(userDTO);
