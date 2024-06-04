@@ -308,4 +308,26 @@ public class RecipeService : IRecipeService
         }
     }
 
+    public async Task<IBaseResponse<List<RecipeIntroDto>>> GetByUserId(Guid UserId)
+    {
+        try
+        {
+            if (UserId == Guid.Empty)
+                return _responseCreator.CreateBaseBadRequest<List<RecipeIntroDto>>("UserId can't be empty.");
+
+            var recipes = await _unitOfWork.RecipeRepository.GetAsync();
+
+            recipes = recipes.Where(x => x.Users.Any(p=>p.Id == UserId)).ToList();
+            if (recipes.Count == 0)
+                return _responseCreator.CreateBaseNotFound<List<RecipeIntroDto>>("No recipes found.");
+
+            var recipeIntroDtos = recipes.Select(recipe => _mapper.Map<RecipeIntroDto>(recipe)).ToList();
+
+            return _responseCreator.CreateBaseOk(recipeIntroDtos, recipeIntroDtos.Count);
+        }
+        catch (Exception e)
+        {
+            return _responseCreator.CreateBaseServerError<List<RecipeIntroDto>>(e.Message);
+        }
+    }
 }

@@ -16,4 +16,6 @@ public interface IRecipeService
     Task<IBaseResponse<string>> InsertWithIngredients(RecipeDtoWithIngredientsAndSteps? modelDto);
     Task<IBaseResponse<string>> SaveRecipe(Guid UserId, Guid RecipeId);
     Task<IBaseResponse<string>> RemoveRecipeFromSaved(Guid UserId, Guid RecipeId);
+    Task<IBaseResponse<List<RecipeIntroDto>>> GetByUserId(Guid UserId);
+
 }
