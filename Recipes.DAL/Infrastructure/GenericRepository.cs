@@ -20,7 +20,7 @@ namespace Recipes.DAL.Infrastructure
         public virtual async Task<List<TEntity>> GetAsync()
         {
             logger.LogInformation($"        Getting all {typeof(TEntity).Name} entities");
-            return await _table/*.AsNoTracking()*/.ToListAsync();
+            return await _table.ToListAsync();
         }
 
         public virtual async Task<TEntity> GetByIdAsync(Guid id)

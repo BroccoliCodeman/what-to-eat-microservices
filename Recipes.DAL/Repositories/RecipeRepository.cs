@@ -14,6 +14,12 @@ public class RecipeRepository : GenericRepository<Recipe>, IRecipeRepository
     {
     }
 
+    public async override Task<List<Recipe>> GetAsync()
+    {
+        return await _table.Include(p => p.Ingredients).Include(p => p.Responds).Include(p => p.CookingSteps).Include(p => p.Users).Include(p => p.User).ToListAsync();
+    }
+
+
     public async Task<PagedList<Recipe>> GetAsync(PaginationParams? paginationParams, SearchParams? searchParams)
     {
         var recipes = await _table.Include(p => p.Ingredients).Include(p => p.Users).Include(p => p.User).ToListAsync();
