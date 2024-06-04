@@ -4,7 +4,7 @@ namespace Recipes.Data.DataTransferObjects;
 
 public class RecipeDtoWithIngredientsAndSteps
 {
- //   public Guid? Id { get; set; } = null;
+    public Guid? UserId { get; set; } = null;
     public int? Servings { get; set; }
     public int? CookingTime { get; set; }
     public string Title { get; set; } = string.Empty;

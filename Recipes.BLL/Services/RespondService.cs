@@ -80,4 +80,23 @@ public class RespondService : IRespondService
             return _responseCreator.CreateBaseServerError<string>(e.Message);
         }
     }
+
+    public async Task<IBaseResponse<List<RespondDto>>> GetByRecipeId(Guid RecipeId)
+    {
+        try
+        {
+            var models = (await _unitOfWork.RespondRepository.GetAsync()).Where(p=>p.RecipeId == RecipeId).ToList();
+
+            if (models.Count is 0)
+                return _responseCreator.CreateBaseNotFound<List<RespondDto>>("No responds found.");
+
+            var dtoList = models.Select(model => _mapper.Map<RespondDto>(model)).ToList();
+
+            return _responseCreator.CreateBaseOk(dtoList, dtoList.Count);
+        }
+        catch (Exception e)
+        {
+            return _responseCreator.CreateBaseServerError<List<RespondDto>>(e.Message);
+        }
+    }
 }

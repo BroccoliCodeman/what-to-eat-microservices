@@ -1,6 +1,8 @@
 using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using Recipes.BLL.Helpers;
 using Recipes.BLL.Services.Interfaces;
+using Recipes.DAL;
 using Recipes.DAL.Infrastructure.Interfaces;
 using Recipes.Data.DataTransferObjects;
 using Recipes.Data.Helpers;
@@ -16,13 +18,14 @@ public class RecipeService : IRecipeService
     private readonly IUnitOfWork _unitOfWork;
     private readonly IMapper _mapper;
     private readonly ResponseCreator _responseCreator;
+    public readonly RecipesContext recipesContext;
 
-    public RecipeService(IUnitOfWork unitOfWork, IMapper mapper)
+    public RecipeService(IUnitOfWork unitOfWork, IMapper mapper, RecipesContext recipesContext)
     {
         _unitOfWork = unitOfWork;
         _mapper = mapper;
         _responseCreator = new ResponseCreator();
-
+        this.recipesContext = recipesContext;
     }
 
     public async Task<IBaseResponse<RecipeIntroDto>> GetRandom()
@@ -113,16 +116,16 @@ public class RecipeService : IRecipeService
         }
     }
 
-    public async Task<IBaseResponse<PagedList<RecipeDto>>> Get(PaginationParams paginationParams, SearchParams? searchParams, int sortType = 0)
+    public async Task<IBaseResponse<PagedList<RecipeIntroDto>>> Get(PaginationParams paginationParams, SearchParams? searchParams, int sortType = 0)
     {
         try
         {
             var models = await _unitOfWork.RecipeRepository.GetAsync(paginationParams, searchParams);
 
             if (models.Count == 0)
-                return _responseCreator.CreateBaseNotFound<PagedList<RecipeDto>>("No recipes found.");
+                return _responseCreator.CreateBaseNotFound<PagedList<RecipeIntroDto>>("No recipes found.");
 
-            var dtoList = models.Select(model => _mapper.Map<RecipeDto>(model)).ToList();
+            var dtoList = models.Select(model => _mapper.Map<RecipeIntroDto>(model)).ToList();
             
             //sorting
             switch (sortType)
@@ -136,16 +139,16 @@ public class RecipeService : IRecipeService
                 case 6: dtoList = dtoList.OrderByDescending(dto => dto.CreationDate).ToList(); break; // 6 - desc by creation date
                 case 7: dtoList = dtoList.OrderBy(dto => dto.Calories).ToList(); break; // 7 - asc by calories
                 case 8: dtoList = dtoList.OrderByDescending(dto => dto.Calories).ToList(); break; // 8 - desc by calories
-                default: return _responseCreator.CreateBaseBadRequest<PagedList<RecipeDto>>("Invalid sort type."); break;
+                default: return _responseCreator.CreateBaseBadRequest<PagedList<RecipeIntroDto>>("Invalid sort type."); break;
             }
 
-            var pagedList = new PagedList<RecipeDto>(dtoList, models.TotalCount, models.CurrentPage, models.PageSize);
+            var pagedList = new PagedList<RecipeIntroDto>(dtoList, models.TotalCount, models.CurrentPage, models.PageSize);
 
             return _responseCreator.CreateBaseOk(pagedList, pagedList.TotalCount);
         }
         catch (Exception e)
         {
-            return _responseCreator.CreateBaseServerError<PagedList<RecipeDto>>(e.Message);
+            return _responseCreator.CreateBaseServerError<PagedList<RecipeIntroDto>>(e.Message);
         }
     }
 
@@ -202,15 +205,15 @@ public class RecipeService : IRecipeService
         }
     }
 
-    public async Task<IBaseResponse<string>> InsertWithIngredients(RecipeDtoWithIngredientsAndSteps? recipereqest)
+    public async Task<IBaseResponse<string>> InsertWithIngredients(RecipeDtoWithIngredientsAndSteps? RecipeReqest)
     {
         try
         {
-            if (recipereqest is null)
+            if (RecipeReqest is null)
                 return BaseResponse<RecipeDto>.CreateBaseResponse<string>("Object can't be empty...", StatusCode.BadRequest);
 
 
-            var recipe = _mapper.Map<Recipe>(recipereqest);
+            var recipe = _mapper.Map<Recipe>(RecipeReqest);
 
             recipe.Id = Guid.NewGuid();
 
@@ -226,7 +229,7 @@ public class RecipeService : IRecipeService
                 dbIng.WeightUnit.Type == dtoIng.WeightUnit.Type &&
                 dbIng.Quantity == dtoIng.Quantity));
 
-            var steps = _mapper.Map<ICollection<CookingStepDtoNoId>, ICollection<CookingStep>>(recipereqest.Steps);
+            var steps = _mapper.Map<ICollection<CookingStepDtoNoId>, ICollection<CookingStep>>(RecipeReqest.Steps);
 
             
             foreach(var step in steps)
@@ -280,7 +283,9 @@ public class RecipeService : IRecipeService
                     recipe.Ingredients.Add(existingIngredient);
                 }
             }
-
+            var user = await recipesContext.Users.FirstOrDefaultAsync(p=>p.Id == RecipeReqest.UserId);
+             
+            recipe.User = user;
 
             // Вставити рецепт в базу даних
             await _unitOfWork.RecipeRepository.InsertAsync(recipe);
@@ -290,7 +295,7 @@ public class RecipeService : IRecipeService
         }
         catch (Exception e)
         {
-            return BaseResponse<RecipeDto>.CreateBaseResponse<string>(e.Message, StatusCode.InternalServerError, recipereqest.ToString());
+            return BaseResponse<RecipeDto>.CreateBaseResponse<string>(e.Message, StatusCode.InternalServerError, RecipeReqest.ToString());
         }
     }
     public async Task<IBaseResponse<string>> DeleteById(Guid id)

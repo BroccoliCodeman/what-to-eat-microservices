@@ -29,7 +29,21 @@ public class RespondController : ControllerBase
             _ => throw new ArgumentOutOfRangeException()
         };
     }
-    
+    [HttpGet("GetByRecipeId/{UserId}")]
+    public async Task<ActionResult<IEnumerable<RespondDto>>> GetByRecipeId(Guid RecipeId)
+    {
+        var response = await _service.GetByRecipeId(RecipeId);
+
+        return response.StatusCode switch
+        {
+            Data.Responses.Enums.StatusCode.Ok => Ok(response),
+            Data.Responses.Enums.StatusCode.NotFound => NotFound(response),
+            Data.Responses.Enums.StatusCode.BadRequest => BadRequest(response),
+            Data.Responses.Enums.StatusCode.InternalServerError => StatusCode(500, response),
+            _ => throw new ArgumentOutOfRangeException()
+        };
+    }
+
     [HttpPost]
     public async Task<ActionResult> Insert([FromBody] AddRespondDto modelDto)
     {

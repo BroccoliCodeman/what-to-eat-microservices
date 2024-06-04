@@ -19,7 +19,7 @@ public class RecipeController : ControllerBase
     }
 
     [HttpPost("Get")]
-    public async Task<ActionResult<IEnumerable<RecipeDto>>> Get([FromQuery] PaginationParams? paginationParams = null,
+    public async Task<ActionResult<IEnumerable<RecipeIntroDto>>> Get([FromQuery] PaginationParams? paginationParams = null,
                                                                 [FromBody] SearchParams? searchParams = null,
                                                                 [FromQuery] int sortType = 0)
     {

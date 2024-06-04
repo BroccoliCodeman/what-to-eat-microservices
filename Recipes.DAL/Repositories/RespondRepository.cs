@@ -12,8 +12,8 @@ public class RespondRepository : GenericRepository<Respond>, IRespondRepository
     {
     }
 
-    public override Task<List<Respond>> GetAsync()
+    public async override Task<List<Respond>> GetAsync()
     {
-        return _table.Include(p => p.User).ToListAsync();
+        return await _table.Include(p => p.User).Include(p=>p.Recipe).ToListAsync();
     }
 }

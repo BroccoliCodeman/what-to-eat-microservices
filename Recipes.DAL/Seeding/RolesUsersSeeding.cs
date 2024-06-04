@@ -35,8 +35,8 @@ namespace Recipes.DAL.Seeding
                 UserName = "adminUser@example.com",
                 Email = "adminUser@example.com",
                 NormalizedUserName = "ADMINUSER",
-                FirstName="Popka",
-                LastName="Negr",
+                FirstName="Admin",
+                LastName= "Сhief",
                 Avatar= "https://images.unsplash.com/photo-1587064712555-6e206484699b?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fGJsYWNrJTIwbWFufGVufDB8fDB8fHww"
             };
 
@@ -57,8 +57,8 @@ namespace Recipes.DAL.Seeding
                 UserName = "user@example.com",
                 Email = "user@example.com",
                 NormalizedUserName = "USER",
-                FirstName = "Black",
-                LastName = "Nicker",
+                FirstName = "User",
+                LastName = "Hungry",
                 Avatar = "https://images.unsplash.com/photo-1587064712555-6e206484699b?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fGJsYWNrJTIwbWFufGVufDB8fDB8fHww"
             };
 

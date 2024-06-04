@@ -16,6 +16,6 @@ public class RecipeDto
     public List<IngredientDto> Ingredients { get; set; }
     public List<CookingStepDto>? CookingSteps { get; set; } = null!;
     public ICollection<Respond>? Responds { get; set; } = null!;
-    public GetUserDto? User { get; set; } = null!;
+    public UserInfo? User { get; set; } = null!;
     public int SavesCount { get; set; }
 }

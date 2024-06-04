@@ -14,7 +14,7 @@ public class IngredientRepository : GenericRepository<Ingredient>, IIngredientRe
 
 
     public override async Task<List<Ingredient>> GetAsync() =>
-    await _table.Include(p=>p.WeightUnit).ToListAsync();
+    await _table.Include(p=>p.WeightUnit).Include(p=>p.Recipes).ToListAsync();
 
     // duplicate ingredients fixing support
     public async Task<List<Ingredient>> GetByName(string name)

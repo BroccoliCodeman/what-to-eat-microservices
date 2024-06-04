@@ -6,7 +6,8 @@ namespace Recipes.BLL.Services.Interfaces;
 public interface IRespondService
 {
     Task<IBaseResponse<RespondDto>> GetById(Guid id);
-    Task<IBaseResponse<List<RespondDto>>> Get();
+    Task<IBaseResponse<List<RespondDto>>> Get(); 
+    Task<IBaseResponse<List<RespondDto>>> GetByRecipeId(Guid RecipeId);
     Task<IBaseResponse<string>> Insert(AddRespondDto? modelDto);
     Task<IBaseResponse<string>> DeleteById(Guid id);
 }
