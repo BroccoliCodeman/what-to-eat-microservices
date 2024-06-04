@@ -68,8 +68,8 @@ public class RecipeController : ControllerBase
         };
     }
     
-    [HttpGet("GetByTitle/{title}")]
-    public async Task<ActionResult<IEnumerable<RecipeIntroDto>>> GetByTitle(string title)
+    [HttpGet("GetByTitle")]
+    public async Task<ActionResult<IEnumerable<RecipeIntroDto>>> GetByTitle([FromQuery] string title)
     {
         var response = await _service.GetByTitle(title);
 
