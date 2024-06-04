@@ -29,7 +29,7 @@ public class RecipeController : ControllerBase
 
         if (response.Data != null)
         {
-            metadata = new 
+            metadata = new
             {
                 response.Data.TotalCount,
                 response.Data.PageSize,
@@ -39,7 +39,7 @@ public class RecipeController : ControllerBase
                 response.Data.HasPrevious
             };
         }
-      
+
 
         Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(metadata));
 
@@ -52,7 +52,7 @@ public class RecipeController : ControllerBase
             _ => throw new ArgumentOutOfRangeException()
         };
     }
-    
+
     [HttpGet("GetMostPopularRecipesTitles")]
     public async Task<ActionResult<IEnumerable<RecipeIntroDto>>> GetMostPopularRecipesTitles()
     {
@@ -67,7 +67,7 @@ public class RecipeController : ControllerBase
             _ => throw new ArgumentOutOfRangeException()
         };
     }
-    
+
     [HttpGet("GetByTitle")]
     public async Task<ActionResult<IEnumerable<RecipeIntroDto>>> GetByTitle([FromQuery] string title)
     {
@@ -82,7 +82,7 @@ public class RecipeController : ControllerBase
             _ => throw new ArgumentOutOfRangeException()
         };
     }
-    
+
     [HttpGet("GetRandom")]
     public async Task<ActionResult<RecipeDto>> GetRandom()
     {
@@ -112,6 +112,28 @@ public class RecipeController : ControllerBase
             _ => throw new ArgumentOutOfRangeException()
         };
     }
+
+
+    [HttpGet("GetRecipesByUserId/{UserId}")]
+    public async Task<ActionResult<IEnumerable<RecipeDto>>> GetByUserIdAsync(Guid UserId)
+        {
+
+        var response = await _service.GetByUserId(UserId);
+
+        return response.StatusCode switch
+        {
+            Data.Responses.Enums.StatusCode.Ok => Ok(response),
+            Data.Responses.Enums.StatusCode.NotFound => NotFound(response),
+            Data.Responses.Enums.StatusCode.BadRequest => BadRequest(response),
+            Data.Responses.Enums.StatusCode.InternalServerError => StatusCode(500, response),
+            _ => throw new ArgumentOutOfRangeException()
+        };
+
+
+    }
+
+
+
 
     [HttpPost("SaveRecipe")]
     public async Task<ActionResult> SaveRecipeAsync([FromQuery]Guid UserId, [FromQuery]Guid RecipeId)
