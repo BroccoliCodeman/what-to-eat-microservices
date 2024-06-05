@@ -1,4 +1,5 @@
-﻿using Google.Apis.Auth;
+﻿using AutoMapper;
+using Google.Apis.Auth;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -24,7 +25,9 @@ namespace Recipes.API.Controllers
         private readonly ITokenService _tokenService;
         private readonly IEmailSender _emailSender;
         private readonly GoogleClientConfiguration googleClientConfiguration;
-        public AuthController(ITokenService tokenService, UserManager<User> userManager, SignInManager<User> signInManager, IEmailSender emailSender, GoogleClientConfiguration googleClientConfiguration, RecipesContext context)
+        private readonly IMapper _mapper;
+
+        public AuthController(ITokenService tokenService, UserManager<User> userManager, SignInManager<User> signInManager, IEmailSender emailSender, GoogleClientConfiguration googleClientConfiguration, RecipesContext context, IMapper mapper)
         {
             _tokenService = tokenService;
             _userManager = userManager;
@@ -32,6 +35,7 @@ namespace Recipes.API.Controllers
             _emailSender = emailSender;
             this.googleClientConfiguration = googleClientConfiguration;
             this.context = context;
+            _mapper = mapper;
         }
 
         [HttpPost("register")]
@@ -101,7 +105,7 @@ namespace Recipes.API.Controllers
         {
 
             var user = await _userManager.FindByIdAsync(userInfo.Id.ToString());
-
+            
             if (user == null)
                 return Unauthorized();
 
@@ -125,28 +129,23 @@ namespace Recipes.API.Controllers
         {
             var username = User.FindFirst("userName")?.Value;
 
-            var user = await context.Users.Where(x => x.UserName == username).Include(x=>x.SavedRecipes).FirstOrDefaultAsync();
+            var user = await context.Users.Where(x => x.UserName == username).Include(x => x.SavedRecipes).FirstOrDefaultAsync();
 
             if (user == null)
                 return Unauthorized();
 
-            GetUserDto userDTO = new GetUserDto()
-            {
-                Email = user.Email,
-                FirstName = user.FirstName,
-                LastName = user.LastName,
-                Avatar = user.Avatar,
-                Id = user.Id,
-                SavedRecipes = user.SavedRecipes.Count
-            };
+            var userDto = _mapper.Map<GetUserDto>(user);
 
-            return Ok(userDTO);
+            return Ok(userDto);
         }
 
         [HttpGet("GetAllUsers")]
         public async Task<IActionResult> GetAllUsers()
         {
-            var users = await _userManager.Users.ToListAsync();
+            var getUsers = await _userManager.Users.ToListAsync();
+
+            var users = _mapper.Map<List<GetUserDto>>(getUsers);
+
             return Ok(users);
         }
 

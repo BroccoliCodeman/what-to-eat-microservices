@@ -32,14 +32,14 @@ public class RespondService : IRespondService
         {
             var models = await _unitOfWork.RespondRepository.GetAsync();
 
-            if (models.Count is 0)
+            if (models.Count == 0)
                 return _responseCreator.CreateBaseNotFound<List<RespondDto>>("No responds found.");
 
             var dtoList = models.Select(model => _mapper.Map<RespondDto>(model)).ToList();
 
             return _responseCreator.CreateBaseOk(dtoList, dtoList.Count);
         }
-        catch(Exception e) 
+        catch (Exception e)
         {
             return _responseCreator.CreateBaseServerError<List<RespondDto>>(e.Message);
         }

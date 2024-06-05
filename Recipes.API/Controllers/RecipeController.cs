@@ -115,7 +115,7 @@ public class RecipeController : ControllerBase
 
 
     [HttpGet("GetRecipesByUserId/{UserId}")]
-    public async Task<ActionResult<IEnumerable<RecipeDto>>> GetByUserIdAsync(Guid UserId)
+    public async Task<ActionResult<IEnumerable<RecipeIntroDto>>> GetByUserIdAsync(Guid UserId)
         {
 
         var response = await _service.GetByUserId(UserId);
@@ -128,12 +128,7 @@ public class RecipeController : ControllerBase
             Data.Responses.Enums.StatusCode.InternalServerError => StatusCode(500, response),
             _ => throw new ArgumentOutOfRangeException()
         };
-
-
     }
-
-
-
 
     [HttpPost("SaveRecipe")]
     public async Task<ActionResult> SaveRecipeAsync([FromQuery]Guid UserId, [FromQuery]Guid RecipeId)

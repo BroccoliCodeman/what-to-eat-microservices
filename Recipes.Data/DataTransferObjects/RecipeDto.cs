@@ -15,7 +15,7 @@ public class RecipeDto
     public DateTime CreationDate { get; set; } = DateTime.Now;
     public List<IngredientDto> Ingredients { get; set; }
     public List<CookingStepDto>? CookingSteps { get; set; } = null!;
-    public ICollection<Respond>? Responds { get; set; } = null!;
-    public GetUserDto? User { get; set; } = null!;
+    public ICollection<RespondDto>? Responds { get; set; } = null!;
+    public GetUserForRecipeDto? User { get; set; } = null!;
     public int SavesCount { get; set; }
 }

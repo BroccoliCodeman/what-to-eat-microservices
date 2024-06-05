@@ -19,7 +19,6 @@ public class RecipeRepository : GenericRepository<Recipe>, IRecipeRepository
         return await _table.Include(p => p.Ingredients).Include(p => p.Responds).Include(p => p.CookingSteps).Include(p => p.Users).Include(p => p.User).ToListAsync();
     }
 
-
     public async Task<PagedList<Recipe>> GetAsync(PaginationParams? paginationParams, SearchParams? searchParams)
     {
         var recipes = await _table.Include(p => p.Ingredients).Include(p => p.Users).Include(p => p.User).ToListAsync();
@@ -63,7 +62,7 @@ public class RecipeRepository : GenericRepository<Recipe>, IRecipeRepository
                         Include(p => p.Ingredients)!
                        .ThenInclude(x=>x.WeightUnit)
                        .Include(p => p.CookingSteps)
-
+                       .Include(p => p.Responds).ThenInclude(x=>x.User)
                        .ToListAsync();
 
         var recipe = recipes.Where(x => x.Id == id).FirstOrDefault();

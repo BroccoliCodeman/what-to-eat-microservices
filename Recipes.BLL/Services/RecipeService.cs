@@ -49,13 +49,16 @@ public class RecipeService : IRecipeService
         try
         {
             var recipe = await _unitOfWork.RecipeRepository.GetByIdAsync(id);
-            
+
             if (recipe == null)
             {
                 return BaseResponse<RecipeDto>.CreateBaseResponse<RecipeDto>($"The recipe with id {id} wasn't found", StatusCode.NotFound);
             }
 
-            return BaseResponse<RecipeDto>.CreateBaseResponse<RecipeDto>("Sucess!", StatusCode.Ok, _mapper.Map<RecipeDto>(recipe));
+            var recipeDto = _mapper.Map<RecipeDto>(recipe);
+            recipeDto.CookingSteps = recipeDto.CookingSteps?.DistinctBy(step => step.Description).ToList();
+
+            return BaseResponse<RecipeDto>.CreateBaseResponse("Success!", StatusCode.Ok, recipeDto);
         }
         catch (Exception ex)
         {
@@ -123,7 +126,7 @@ public class RecipeService : IRecipeService
                 return _responseCreator.CreateBaseNotFound<PagedList<RecipeDto>>("No recipes found.");
 
             var dtoList = models.Select(model => _mapper.Map<RecipeDto>(model)).ToList();
-            
+
             //sorting
             switch (sortType)
             {

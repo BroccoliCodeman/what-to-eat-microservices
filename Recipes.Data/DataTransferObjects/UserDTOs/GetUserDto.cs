@@ -1,15 +1,14 @@
-using Recipes.Data.Models;
+    using Recipes.Data.Models;
 
-namespace Recipes.Data.DataTransferObjects.UserDTOs
-{
-    public class GetUserDto
+    namespace Recipes.Data.DataTransferObjects.UserDTOs
     {
-        public Guid Id { get; set; }
-        public string Email { get; set; } = string.Empty;
-        public string FirstName { get; set; } = string.Empty;
-        public string LastName { get; set; } = string.Empty;
-        public string Avatar { get; set; } = null!;
-
-        public int SavedRecipes { get; set; } 
+        public class GetUserDto
+        {
+            public Guid Id { get; set; }
+            public string Email { get; set; } = string.Empty;
+            public string FirstName { get; set; } = string.Empty;
+            public string LastName { get; set; } = string.Empty;
+            public string Avatar { get; set; } = null!;
+            public List<RecipeDto> SavedRecipes { get; set; } 
+        }
     }
-}
