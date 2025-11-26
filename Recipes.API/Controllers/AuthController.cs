@@ -143,7 +143,7 @@ namespace Recipes.API.Controllers
                 Id = user.Id
             };
 
-            return Ok(userDto);
+            return Ok(userDTO);
         }
 
         [HttpGet("GetAllUsers")]

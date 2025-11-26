@@ -485,3 +485,7 @@ $RECYCLE.BIN/
 Recipes.DAL/Migrations/20240601205126_initial.cs
 Recipes.DAL/Migrations/20240531141144_initial.cs
 Recipes.DAL/Migrations/20240601205126_initial.cs
+FastAPIProject/best_model.pth
+FastAPIProject/yolov8n.pt
+FastAPIProject/test_main.http
+/FastAPIProject/data

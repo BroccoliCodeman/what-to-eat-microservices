@@ -71,7 +71,7 @@ public class RecipeRepository : GenericRepository<Recipe>, IRecipeRepository
     }
     public async Task SaveRecipe(Guid UserId, Guid RecipeId)
     {
-        // Завантаження користувача з бази даних, включаючи збережені рецепти
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         var user = await _databaseContext.Users
            .Include(u => u.SavedRecipes)
            .FirstOrDefaultAsync(u => u.Id == UserId);
@@ -82,7 +82,7 @@ public class RecipeRepository : GenericRepository<Recipe>, IRecipeRepository
         }
 
 
-        // Завантаження рецепта з бази даних
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
         var recipeToSave = await _databaseContext.Recipes
             .FirstOrDefaultAsync(r => r.Id == RecipeId);
 
@@ -91,16 +91,16 @@ public class RecipeRepository : GenericRepository<Recipe>, IRecipeRepository
             throw new Exception("Recipe not found.");
         }
 
-        // Додавання рецепта до списку збережених рецептів користувача
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         user.SavedRecipes.Add(recipeToSave);
 
-        // Збереження змін у базі даних
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
         await _databaseContext.SaveChangesAsync();
     }
 
     public async Task RemoveRecipeFromSaved(Guid UserId, Guid RecipeId)
     {
-    // Завантаження користувача з бази даних, включаючи збережені рецепти
+    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         var user = await _databaseContext.Users
             .Include(u => u.SavedRecipes)
             .FirstOrDefaultAsync(u => u.Id == UserId);
@@ -110,7 +110,7 @@ public class RecipeRepository : GenericRepository<Recipe>, IRecipeRepository
             throw new Exception("User not found.");
         }
 
-        // Завантаження рецепта з бази даних
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
         var recipeToSave = await _databaseContext.Recipes
             .FirstOrDefaultAsync(r => r.Id == RecipeId);
 
@@ -119,10 +119,10 @@ public class RecipeRepository : GenericRepository<Recipe>, IRecipeRepository
             throw new Exception("Recipe not found.");
         }
 
-        // Додавання рецепта до списку збережених рецептів користувача
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         user.SavedRecipes.Remove(recipeToSave);
 
-        // Збереження змін у базі даних
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
         await _databaseContext.SaveChangesAsync();    }
 
 }

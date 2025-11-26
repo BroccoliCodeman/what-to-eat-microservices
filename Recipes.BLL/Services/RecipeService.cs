@@ -217,10 +217,10 @@ public class RecipeService : IRecipeService
 
             recipe.Id = Guid.NewGuid();
 
-            // Отримати всі інгредієнти з бази даних
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅдієпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
             var Ingredients = await _unitOfWork.IngredientRepository.GetAsync();
 
-            // Отримати список інгредієнтів з моделі DTO, які відсутні в базі даних
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅдієпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ DTO, пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
             var newIngredients = recipe.Ingredients.Where(dtoIng => !Ingredients.AsReadOnly().Any(dbIng => dbIng.Name == dtoIng.Name && dbIng.WeightUnit.Type == dtoIng.WeightUnit.Type && dbIng.Quantity == dtoIng.Quantity));
 
             var existingIngredients = Ingredients.Where(dbIng =>
@@ -285,7 +285,7 @@ public class RecipeService : IRecipeService
             }
 
 
-            // Вставити рецепт в базу даних
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
             await _unitOfWork.RecipeRepository.InsertAsync(recipe);
             await _unitOfWork.SaveChangesAsync();
 
