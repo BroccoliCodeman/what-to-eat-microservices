@@ -45,6 +45,25 @@ public class IngredientService : IIngredientService
         }
     }
 
+    public async Task<IBaseResponse<List<IngredientIntroDto>>> GetMultipleBySimilarNames(IEnumerable<string> modelNames)
+    {
+        try
+        {
+            var models = await _unitOfWork.IngredientRepository.MapMultiple(modelNames);
+
+            if (models.Count is 0)
+                return _responseCreator.CreateBaseNotFound<List<IngredientIntroDto>>("No ingredients found.");
+
+            var dtoList = models.Select(model => _mapper.Map<IngredientIntroDto>(model)).ToList();
+
+            return _responseCreator.CreateBaseOk(dtoList, dtoList.Count);
+        }
+        catch (Exception e)
+        {
+            return _responseCreator.CreateBaseServerError<List<IngredientIntroDto>>(e.Message);
+        }
+    }
+
     public async Task<IBaseResponse<List<IngredientIntroDto>>> GetByName(string name)
     {
         try

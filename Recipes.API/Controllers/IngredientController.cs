@@ -44,7 +44,22 @@ public class IngredientController : ControllerBase
             _ => throw new ArgumentOutOfRangeException()
         };
     }
-    
+
+    [HttpGet("GetMultipleByName")]
+    public async Task<ActionResult<IEnumerable<IngredientIntroDto>>> GetMultipleByName([FromQuery] IEnumerable<string> name)
+    {
+        var response = await _service.GetMultipleBySimilarNames(name);
+
+        return response.StatusCode switch
+        {
+            Data.Responses.Enums.StatusCode.Ok => Ok(response),
+            Data.Responses.Enums.StatusCode.NotFound => NotFound(response),
+            Data.Responses.Enums.StatusCode.BadRequest => BadRequest(response),
+            Data.Responses.Enums.StatusCode.InternalServerError => StatusCode(500, response),
+            _ => throw new ArgumentOutOfRangeException()
+        };
+    }
+
     [HttpPost]
     public async Task<ActionResult> Insert([FromBody] IngredientDto modelDto)
     {
