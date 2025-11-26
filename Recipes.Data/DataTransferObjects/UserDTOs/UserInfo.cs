@@ -21,5 +21,8 @@ namespace Recipes.Data.DataTransferObjects.UserDTOs
 
         [Url(ErrorMessage = "Invalid URL for Avatar.")]
         public string? Avatar { get; set; } = string.Empty;
+
+        [EmailAddress]
+        public string Email { get; set; } = string.Empty;
     }
 }

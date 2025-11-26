@@ -14,6 +14,6 @@ namespace Recipes.Data.Models
         public string Avatar {  get; set; } = null!;
         public ICollection<Recipe>? SavedRecipes { get; } = new List<Recipe>();
         public ICollection<Recipe>? CreatedRecipes { get; } = new List<Recipe>();
-        public ICollection<Respond>? Responds { get; } = new List<Respond>();
-    }
+        public ICollection<Respond>? Responds {  get; } = new List<Respond>();
+    } 
 }

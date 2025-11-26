@@ -2,6 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Recipes.Data.DataTransferObjects.UserDTOs
 {
+
     public class RegisterDto
     {
         [Required(ErrorMessage = "First name is required.")]

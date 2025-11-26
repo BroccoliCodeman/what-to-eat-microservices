@@ -2,7 +2,6 @@ namespace Recipes.Data.Models;
 
 public class Ingredient
 {
-
     public Guid Id { get; set; }
     public float Quantity { get; set; }
     public string Name { get; set; }

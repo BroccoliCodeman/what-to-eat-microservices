@@ -52,11 +52,11 @@ namespace Recipes.API.Controllers
 
             var result = await _userManager.CreateAsync(user, registerDto.Password);
 
-            var roleResult = await _userManager.AddToRoleAsync(user, "User");
+         //   var roleResult = await _userManager.AddToRoleAsync(user, "User");
 
-            if (!roleResult.Succeeded)
+      /*      if (!roleResult.Succeeded)
                 return BadRequest(roleResult.Errors);
-
+*/
             if (!result.Succeeded)
                 return BadRequest(result.Errors);
 
@@ -101,7 +101,7 @@ namespace Recipes.API.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> UpdateUser([FromBody]UserInfo userInfo)
+        public async Task<IActionResult> UpdateUser([FromBody]UpdateUserDto userInfo)
         {
 
             var user = await _userManager.FindByIdAsync(userInfo.Id.ToString());
@@ -113,10 +113,10 @@ namespace Recipes.API.Controllers
                 user.Avatar = userInfo.Avatar;
             if(!string.IsNullOrEmpty(userInfo.FirstName))
                 user.FirstName = userInfo.FirstName;
-            if (!string.IsNullOrEmpty(userInfo.LastName))
-                user.LastName = userInfo.LastName; 
-            if (!string.IsNullOrEmpty(userInfo.Avatar))
-                user.Avatar = userInfo.Avatar;
+            if(!string.IsNullOrEmpty(userInfo.LastName))
+                user.LastName = userInfo.LastName;
+            if (!string.IsNullOrEmpty(userInfo.Email))
+                user.Email = userInfo.Email;
 
             await context.SaveChangesAsync();
 
@@ -125,7 +125,7 @@ namespace Recipes.API.Controllers
 
         [Authorize]
         [HttpGet]
-        public async Task<ActionResult<GetUserDto>> GetUserData()
+        public async Task<ActionResult<UserInfo>> GetUserData()
         {
             var username = User.FindFirst("userName")?.Value;
 
@@ -134,7 +134,14 @@ namespace Recipes.API.Controllers
             if (user == null)
                 return Unauthorized();
 
-            var userDto = _mapper.Map<GetUserDto>(user);
+            UserInfo userDTO = new UserInfo()
+            {
+                Email = user.Email,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Avatar = user.Avatar,
+                Id = user.Id
+            };
 
             return Ok(userDto);
         }

@@ -5,7 +5,6 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
 using Recipes.API;
-using Recipes.BLL;
 using Recipes.BLL.Configurations;
 using Recipes.BLL.Helpers;
 using Recipes.BLL.Interfaces;
@@ -22,20 +21,46 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 
 // context configuration and database connection
-builder.Services.AddDbContext<RecipesContext>(options => options.UseSqlite(
-    builder.Configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly("Recipes.DAL")))
-    .AddIdentity<User, UserRole>(config =>
+builder.Services.AddDbContext<RecipesContext>(options =>
+{
+    string connectionString;
+    if (Environment.GetEnvironmentVariable("DOTNET_RUNNING_IN_CONTAINER") == "true")
     {
-        config.Password.RequireNonAlphanumeric = false;
-        config.Password.RequireDigit = true;
-        config.Password.RequiredLength = 8;
-        config.Password.RequireLowercase = true;
-        config.Password.RequireUppercase = true;
-    }).AddEntityFrameworkStores<RecipesContext>().AddDefaultTokenProviders();
+        var dbhost = Environment.GetEnvironmentVariable("DB_HOST");
+        var dbname = Environment.GetEnvironmentVariable("DB_NAME");
+        var dbuser = Environment.GetEnvironmentVariable("DB_USER");
+        var dbpass = Environment.GetEnvironmentVariable("DB_SA_PASSWORD");
+        connectionString = $"Data Source={dbhost};User ID={dbuser};Password={dbpass};Initial Catalog={dbname};Encrypt=True;Trust Server Certificate=True;";
+    }
+    else
+    {
+        connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+    }
+    options.UseSqlServer(connectionString);
+});
+
+builder.Services.AddIdentityCore<User>(options =>
+{
+    options.Password.RequireNonAlphanumeric = false;
+    options.Password.RequireDigit = true;
+    options.Password.RequiredLength = 8;
+    options.Password.RequireLowercase = true;
+    options.Password.RequireUppercase = true;
+    options.User.RequireUniqueEmail = true;
+    options.User.AllowedUserNameCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzÀÁÂÃ¥ÄÅªÆÇÈ²¯ÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÜÞßàáâã´äåºæçè³¿éêëìíîïðñòóôõö÷øùüþÿ0123456789!@.,/ ";
+})
+    .AddRoles<UserRole>()
+    .AddUserManager<UserManager<User>>()
+    .AddSignInManager<SignInManager<User>>()
+    .AddRoleManager<RoleManager<UserRole>>()
+    .AddDefaultTokenProviders()
+    .AddEntityFrameworkStores<RecipesContext>();
+
+
 
 builder.Services.AddTransient<EmailSenderConfiguration>();
 builder.Services.AddTransient<GoogleClientConfiguration>();
-builder.Services.AddTransient<IEmailSender,EmailSender>();
+builder.Services.AddTransient<IEmailSender, EmailSender>();
 
 // Configure JWT authentication
 var jwtSettings = builder.Configuration.GetSection("Jwt");
@@ -117,12 +142,9 @@ var app = builder.Build();
 //seeding
 using (var scope = app.Services.CreateScope())
 {
-    await RolesUsersSeeding.SeedRolesAsync(scope.ServiceProvider);
 
-    await RolesUsersSeeding.SeedUsersAsync(scope.ServiceProvider);
-
-    var dbcontext= scope.ServiceProvider.GetRequiredService<RecipesContext>();
-    var recipeService=scope.ServiceProvider.GetRequiredService<IRecipeService>();
+    var dbcontext = scope.ServiceProvider.GetRequiredService<RecipesContext>();
+    var recipeService = scope.ServiceProvider.GetRequiredService<IRecipeService>();
     if (dbcontext.Recipes.Count() == 0)
     {
         string json = File.ReadAllText(@"Dishes.json");
@@ -130,10 +152,16 @@ using (var scope = app.Services.CreateScope())
 
         for (int i = 0; i < Recipes.Count(); i++)
         {
-           await recipeService.InsertWithIngredients(Recipes[i]);
+            await recipeService.InsertWithIngredients(Recipes[i]);
+            
         }
     }
+    await RolesUsersSeeding.SeedRolesAsync(scope.ServiceProvider);
+
+    await RolesUsersSeeding.SeedUsersAsync(scope.ServiceProvider);
 }
+
+
 
 if (app.Environment.IsDevelopment())
 {
