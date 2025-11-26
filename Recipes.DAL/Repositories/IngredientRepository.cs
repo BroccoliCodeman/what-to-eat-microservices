@@ -3,6 +3,7 @@ using Microsoft.Extensions.Logging;
 using Recipes.DAL.Infrastructure;
 using Recipes.DAL.Repositories.Interfaces;
 using Recipes.Data.Models;
+using FuzzySharp;
 
 namespace Recipes.DAL.Repositories;
 
@@ -30,5 +31,46 @@ public class IngredientRepository : GenericRepository<Ingredient>, IIngredientRe
             .ToList();
 
         return groupedIngredients;
+    }
+
+    private List<Ingredient> _dbIngredients;
+
+    // Load all ingredients once (optional caching)
+    public async Task LoadIngredientsAsync()
+    {
+        _dbIngredients = await _databaseContext.Ingredients.ToListAsync();
+    }
+
+    public Ingredient? MapIngredient(string modelName)
+    {
+        if (_dbIngredients == null || !_dbIngredients.Any())
+            return null;
+
+        var bestMatch = Process.ExtractOne(
+            modelName,
+            _dbIngredients.Select(i => i.Name)
+        );
+
+        // Similarity threshold (tweak if needed)
+        if (bestMatch.Score < 60)
+            return null;
+
+        return _dbIngredients.FirstOrDefault(i => i.Name == bestMatch.Value);
+    }
+
+    public async Task<List<Ingredient>> MapMultiple(IEnumerable<string> modelNames)
+    {
+        await LoadIngredientsAsync();
+
+        var result = new List<Ingredient>();
+
+        foreach (var name in modelNames)
+        {
+            var match = MapIngredient(name);
+            if (match != null)
+                result.Add(match);
+        }
+
+        return result;
     }
 }
