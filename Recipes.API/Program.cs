@@ -47,7 +47,7 @@ builder.Services.AddIdentityCore<User>(options =>
     options.Password.RequireLowercase = true;
     options.Password.RequireUppercase = true;
     options.User.RequireUniqueEmail = true;
-    options.User.AllowedUserNameCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzÀÁÂÃ¥ÄÅªÆÇÈ²¯ÉÊËÌÍÎÏĞÑÒÓÔÕÖ×ØÙÜŞßàáâã´äåºæçè³¿éêëìíîïğñòóôõö÷øùüşÿ0123456789!@.,/ ";
+    options.User.AllowedUserNameCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@.,/ ";
 })
     .AddRoles<UserRole>()
     .AddUserManager<UserManager<User>>()
