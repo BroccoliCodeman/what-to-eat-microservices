@@ -144,30 +144,34 @@ namespace Recipes.DAL.Seeding
             var json = await File.ReadAllTextAsync("SeedData/WeightUnits.json");
             var units = JsonConvert.DeserializeObject<List<WeightUnitDto>>(json);
 
-            if (units == null) return;
+            if (units == null || units.Count == 0) return;
 
-            // Увімкнути IDENTITY_INSERT один раз
-            await context.Database.ExecuteSqlRawAsync("SET IDENTITY_INSERT WeightUnits ON");
+            // Перевіряємо чи є що додавати
+            var existingIds = await context.WeightUnits.Select(w => w.Id).ToListAsync();
+            var newUnits = units.Where(u => !existingIds.Contains(u.Id)).ToList();
 
+            if (newUnits.Count == 0) return;
+
+            // Використовуємо транзакцію та пряме SQL
+            using var transaction = await context.Database.BeginTransactionAsync();
             try
             {
-                foreach (var unitDto in units)
+                await context.Database.ExecuteSqlRawAsync("SET IDENTITY_INSERT WeightUnits ON");
+
+                foreach (var unit in newUnits)
                 {
-                    if (!await context.WeightUnits.AnyAsync(w => w.Id == unitDto.Id))
-                    {
-                        context.WeightUnits.Add(new WeightUnit
-                        {
-                            Id = unitDto.Id,
-                            Type = unitDto.Type
-                        });
-                    }
+                    await context.Database.ExecuteSqlRawAsync(
+                        "INSERT INTO WeightUnits (Id, Type) VALUES ({0}, {1})",
+                        unit.Id, unit.Type);
                 }
-                await context.SaveChangesAsync();
-            }
-            finally
-            {
-                // Вимкнути IDENTITY_INSERT
+
                 await context.Database.ExecuteSqlRawAsync("SET IDENTITY_INSERT WeightUnits OFF");
+                await transaction.CommitAsync();
+            }
+            catch
+            {
+                await transaction.RollbackAsync();
+                throw;
             }
         }
 
@@ -176,32 +180,23 @@ namespace Recipes.DAL.Seeding
             var json = await File.ReadAllTextAsync("SeedData/Ingredients.json");
             var ingredients = JsonConvert.DeserializeObject<List<IngredientDto>>(json);
 
-            if (ingredients == null) return;
+            if (ingredients == null || ingredients.Count == 0) return;
 
-            // Увімкнути IDENTITY_INSERT один раз
-            await context.Database.ExecuteSqlRawAsync("SET IDENTITY_INSERT Ingredients ON");
-
-            try
+            // Ingredients використовують Guid, тому просто додаємо через EF
+            foreach (var ingDto in ingredients)
             {
-                foreach (var ingDto in ingredients)
+                if (!await context.Ingredients.AnyAsync(i => i.Id == ingDto.Id))
                 {
-                    if (!await context.Ingredients.AnyAsync(i => i.Id == ingDto.Id))
+                    context.Ingredients.Add(new Ingredient
                     {
-                        context.Ingredients.Add(new Ingredient
-                        {
-                            Id = ingDto.Id,
-                            Quantity = ingDto.Quantity,
-                            Name = ingDto.Name,
-                            WeightUnitId = ingDto.WeightUnitId
-                        });
-                    }
+                        Id = ingDto.Id,
+                        Quantity = ingDto.Quantity,
+                        Name = ingDto.Name,
+                        WeightUnitId = ingDto.WeightUnitId
+                    });
                 }
-                await context.SaveChangesAsync();
             }
-            finally
-            {
-                await context.Database.ExecuteSqlRawAsync("SET IDENTITY_INSERT Ingredients OFF");
-            }
+            await context.SaveChangesAsync();
         }
 
         private static async Task SeedRecipes(RecipesContext context)
@@ -209,37 +204,28 @@ namespace Recipes.DAL.Seeding
             var json = await File.ReadAllTextAsync("SeedData/Recipes.json");
             var recipes = JsonConvert.DeserializeObject<List<RecipeDto>>(json);
 
-            if (recipes == null) return;
+            if (recipes == null || recipes.Count == 0) return;
 
-            // Увімкнути IDENTITY_INSERT один раз
-            await context.Database.ExecuteSqlRawAsync("SET IDENTITY_INSERT Recipes ON");
-
-            try
+            // Recipes використовують Guid, тому просто додаємо через EF
+            foreach (var recipeDto in recipes)
             {
-                foreach (var recipeDto in recipes)
+                if (!await context.Recipes.AnyAsync(r => r.Id == recipeDto.Id))
                 {
-                    if (!await context.Recipes.AnyAsync(r => r.Id == recipeDto.Id))
+                    context.Recipes.Add(new Recipe
                     {
-                        context.Recipes.Add(new Recipe
-                        {
-                            Id = recipeDto.Id,
-                            Servings = recipeDto.Servings,
-                            CookingTime = recipeDto.CookingTime,
-                            Title = recipeDto.Title,
-                            Photo = recipeDto.Photo,
-                            Description = recipeDto.Description,
-                            Calories = recipeDto.Calories,
-                            UserId = recipeDto.UserId,
-                            CreationDate = recipeDto.CreationDate
-                        });
-                    }
+                        Id = recipeDto.Id,
+                        Servings = recipeDto.Servings,
+                        CookingTime = recipeDto.CookingTime,
+                        Title = recipeDto.Title,
+                        Photo = recipeDto.Photo,
+                        Description = recipeDto.Description,
+                        Calories = recipeDto.Calories,
+                        UserId = recipeDto.UserId,
+                        CreationDate = recipeDto.CreationDate
+                    });
                 }
-                await context.SaveChangesAsync();
             }
-            finally
-            {
-                await context.Database.ExecuteSqlRawAsync("SET IDENTITY_INSERT Recipes OFF");
-            }
+            await context.SaveChangesAsync();
         }
 
         private static async Task SeedCookingSteps(RecipesContext context)
@@ -247,32 +233,23 @@ namespace Recipes.DAL.Seeding
             var json = await File.ReadAllTextAsync("SeedData/CookingSteps.json");
             var steps = JsonConvert.DeserializeObject<List<CookingStepDto>>(json);
 
-            if (steps == null) return;
+            if (steps == null || steps.Count == 0) return;
 
-            // Увімкнути IDENTITY_INSERT один раз
-            await context.Database.ExecuteSqlRawAsync("SET IDENTITY_INSERT CookingSteps ON");
-
-            try
+            // CookingSteps використовують Guid, тому просто додаємо через EF
+            foreach (var stepDto in steps)
             {
-                foreach (var stepDto in steps)
+                if (!await context.CookingSteps.AnyAsync(s => s.Id == stepDto.Id))
                 {
-                    if (!await context.CookingSteps.AnyAsync(s => s.Id == stepDto.Id))
+                    context.CookingSteps.Add(new CookingStep
                     {
-                        context.CookingSteps.Add(new CookingStep
-                        {
-                            Id = stepDto.Id,
-                            Description = stepDto.Description,
-                            Order = stepDto.Order,
-                            RecipeId = stepDto.RecipeId
-                        });
-                    }
+                        Id = stepDto.Id,
+                        Description = stepDto.Description,
+                        Order = stepDto.Order,
+                        RecipeId = stepDto.RecipeId
+                    });
                 }
-                await context.SaveChangesAsync();
             }
-            finally
-            {
-                await context.Database.ExecuteSqlRawAsync("SET IDENTITY_INSERT CookingSteps OFF");
-            }
+            await context.SaveChangesAsync();
         }
 
         private static async Task SeedIngredientRecipe(RecipesContext context)
@@ -333,37 +310,28 @@ namespace Recipes.DAL.Seeding
             var json = await File.ReadAllTextAsync("SeedData/Responds.json");
             var responds = JsonConvert.DeserializeObject<List<RespondDto>>(json);
 
-            if (responds == null) return;
+            if (responds == null || responds.Count == 0) return;
 
-            // Увімкнути IDENTITY_INSERT один раз
-            await context.Database.ExecuteSqlRawAsync("SET IDENTITY_INSERT Responds ON");
-
-            try
+            // Responds використовують Guid, тому просто додаємо через EF
+            foreach (var respondDto in responds)
             {
-                foreach (var respondDto in responds)
+                if (!await context.Responds.AnyAsync(r => r.Id == respondDto.Id))
                 {
-                    if (!await context.Responds.AnyAsync(r => r.Id == respondDto.Id))
+                    context.Responds.Add(new Respond
                     {
-                        context.Responds.Add(new Respond
-                        {
-                            Id = respondDto.Id,
-                            Text = respondDto.Text,
-                            Rate = respondDto.Rate,
-                            RecipeId = respondDto.RecipeId,
-                            UserId = respondDto.UserId
-                        });
-                    }
+                        Id = respondDto.Id,
+                        Text = respondDto.Text,
+                        Rate = respondDto.Rate,
+                        RecipeId = respondDto.RecipeId,
+                        UserId = respondDto.UserId
+                    });
                 }
-                await context.SaveChangesAsync();
             }
-            finally
-            {
-                await context.Database.ExecuteSqlRawAsync("SET IDENTITY_INSERT Responds OFF");
-            }
+            await context.SaveChangesAsync();
         }
     }
 
-    // DTOs для десеріалізації JSON
+    // DTOs залишаються без змін
     public class AspNetRoleDto
     {
         public Guid Id { get; set; }

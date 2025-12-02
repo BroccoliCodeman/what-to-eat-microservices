@@ -133,7 +133,7 @@ builder.Services.AddCors(opt =>
         builder.AllowAnyOrigin()
         .AllowAnyHeader()
         .AllowAnyMethod()
-        .AllowCredentials()
+        //.AllowCredentials()
         .WithExposedHeaders("X-Pagination");
     });
 });
