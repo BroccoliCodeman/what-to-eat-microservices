@@ -9,7 +9,7 @@ services:
     image: mcr.microsoft.com/mssql/server:2022-latest
     environment:
       - ACCEPT_EULA=Y
-      - MSSQL_SA_PASSWORD=Qwerty123
+      - MSSQL_SA_PASSWORD=Qwerty123!
     networks:
       - ShoNetwork
     ports:
@@ -28,7 +28,7 @@ services:
       - DB_HOST=Database
       - DB_USER=sa
       - DB_NAME=ShoDatabase1.0
-      - DB_SA_PASSWORD=Qwerty123
+      - DB_SA_PASSWORD=Qwerty123!
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=https://+;http://+
       - ASPNETCORE_Kestrel__Certificates__Default__Password=hecysgsplf

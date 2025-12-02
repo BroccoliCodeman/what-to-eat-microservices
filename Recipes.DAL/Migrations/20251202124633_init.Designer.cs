@@ -12,8 +12,8 @@ using Recipes.DAL;
 namespace Recipes.DAL.Migrations
 {
     [DbContext(typeof(RecipesContext))]
-    [Migration("20240603181353_initial")]
-    partial class initial
+    [Migration("20251202124633_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

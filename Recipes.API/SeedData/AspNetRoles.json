@@ -1,0 +1,14 @@
+[
+  {
+    "Id": "01CE4083-FB04-4600-A403-93FB2AB86919",
+    "Name": "Administrator",
+    "NormalizedName": "ADMINISTRATOR",
+    "ConcurrencyStamp": null
+  },
+  {
+    "Id": "59278613-159A-45C7-884A-5128E15772D4",
+    "Name": "User",
+    "NormalizedName": "USER",
+    "ConcurrencyStamp": null
+  }
+]

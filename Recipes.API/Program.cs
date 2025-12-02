@@ -88,8 +88,8 @@ builder.Services.AddAuthentication(options =>
 // Authorization
 builder.Services.AddAuthorization(option =>
 {
-    option.AddPolicy("OnlyAdmin", policyBuilder => policyBuilder.RequireClaim("UserRole", "Administrator"));
-    option.AddPolicy("OnlyUser", policyBuilder => policyBuilder.RequireClaim("UserRole", "User"));
+    //option.AddPolicy("OnlyAdmin", policyBuilder => policyBuilder.RequireClaim("UserRole", "Administrator"));
+    //option.AddPolicy("OnlyUser", policyBuilder => policyBuilder.RequireClaim("UserRole", "User"));
 });
 
 // AutoMapper 
@@ -130,7 +130,7 @@ builder.Services.AddCors(opt =>
 {
     opt.AddPolicy(name: "GoogleCors", builder =>
     {
-        builder.WithOrigins("http://localhost:4200")
+        builder.AllowAnyOrigin()
         .AllowAnyHeader()
         .AllowAnyMethod()
         .AllowCredentials()
@@ -140,27 +140,30 @@ builder.Services.AddCors(opt =>
 
 var app = builder.Build();
 //seeding
+//using (var scope = app.Services.CreateScope())
+//{
+
+//    var dbcontext = scope.ServiceProvider.GetRequiredService<RecipesContext>();
+//    var recipeService = scope.ServiceProvider.GetRequiredService<IRecipeService>();
+//    if (dbcontext.Recipes.Count() == 0)
+//    {
+//        string json = File.ReadAllText(@"Dishes.json");
+//        var Recipes = JsonConvert.DeserializeObject<List<RecipeDtoWithIngredientsAndSteps>>(json);
+
+//        for (int i = 0; i < Recipes.Count(); i++)
+//        {
+//            await recipeService.InsertWithIngredients(Recipes[i]);
+            
+//        }
+//    }
+//    await RolesUsersSeeding.SeedRolesAsync(scope.ServiceProvider);
+
+//    await RolesUsersSeeding.SeedUsersAsync(scope.ServiceProvider);
+//}
 using (var scope = app.Services.CreateScope())
 {
-
-    var dbcontext = scope.ServiceProvider.GetRequiredService<RecipesContext>();
-    var recipeService = scope.ServiceProvider.GetRequiredService<IRecipeService>();
-    if (dbcontext.Recipes.Count() == 0)
-    {
-        string json = File.ReadAllText(@"Dishes.json");
-        var Recipes = JsonConvert.DeserializeObject<List<RecipeDtoWithIngredientsAndSteps>>(json);
-
-        for (int i = 0; i < Recipes.Count(); i++)
-        {
-            await recipeService.InsertWithIngredients(Recipes[i]);
-            
-        }
-    }
-    await RolesUsersSeeding.SeedRolesAsync(scope.ServiceProvider);
-
-    await RolesUsersSeeding.SeedUsersAsync(scope.ServiceProvider);
+    await DatabaseSeeding.SeedDatabase(scope.ServiceProvider);
 }
-
 
 
 if (app.Environment.IsDevelopment())

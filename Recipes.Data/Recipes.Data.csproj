@@ -9,7 +9,6 @@
     <ItemGroup>
       <Compile Remove="Class1.cs" />
       <Compile Remove="Models\BaseModel.cs" />
-      <Compile Remove="Models\RecipeToIngredient.cs" />
     </ItemGroup>
 
     <ItemGroup>

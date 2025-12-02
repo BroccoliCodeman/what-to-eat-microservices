@@ -19,6 +19,7 @@ public class RecipesContext : IdentityDbContext<User, UserRole, Guid>
     public DbSet<Respond> Responds { get; set; } = null!;
     public DbSet<WeightUnit> WeightUnits { get; set; } = null!;
 
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);

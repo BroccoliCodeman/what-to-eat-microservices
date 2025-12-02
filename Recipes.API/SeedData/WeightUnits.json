@@ -1,0 +1,166 @@
+[
+  {
+    "Id": 1,
+    "Type": "г"
+  },
+  {
+    "Id": 2,
+    "Type": "шт"
+  },
+  {
+    "Id": 3,
+    "Type": "шт"
+  },
+  {
+    "Id": 4,
+    "Type": "шт"
+  },
+  {
+    "Id": 5,
+    "Type": "шт"
+  },
+  {
+    "Id": 6,
+    "Type": "мл"
+  },
+  {
+    "Id": 7,
+    "Type": "г"
+  },
+  {
+    "Id": 8,
+    "Type": "мл"
+  },
+  {
+    "Id": 9,
+    "Type": "г"
+  },
+  {
+    "Id": 10,
+    "Type": "шт"
+  },
+  {
+    "Id": 11,
+    "Type": "зубчик"
+  },
+  {
+    "Id": 12,
+    "Type": "пучок"
+  },
+  {
+    "Id": 13,
+    "Type": "ст.л."
+  },
+  {
+    "Id": 14,
+    "Type": "щіпка"
+  },
+  {
+    "Id": 15,
+    "Type": "щіпка"
+  },
+  {
+    "Id": 16,
+    "Type": "щіпка"
+  },
+  {
+    "Id": 17,
+    "Type": "ч.л."
+  },
+  {
+    "Id": 18,
+    "Type": "unit"
+  },
+  {
+    "Id": 19,
+    "Type": "cup"
+  },
+  {
+    "Id": 20,
+    "Type": "cup"
+  },
+  {
+    "Id": 21,
+    "Type": "cup"
+  },
+  {
+    "Id": 22,
+    "Type": "pound"
+  },
+  {
+    "Id": 23,
+    "Type": "can"
+  },
+  {
+    "Id": 24,
+    "Type": "can"
+  },
+  {
+    "Id": 25,
+    "Type": "tablespoon"
+  },
+  {
+    "Id": 26,
+    "Type": "teaspoon"
+  },
+  {
+    "Id": 27,
+    "Type": "teaspoon"
+  },
+  {
+    "Id": 28,
+    "Type": "teaspoon"
+  },
+  {
+    "Id": 29,
+    "Type": "container"
+  },
+  {
+    "Id": 30,
+    "Type": "tablespoon"
+  },
+  {
+    "Id": 31,
+    "Type": "ounce"
+  },
+  {
+    "Id": 32,
+    "Type": "ounce"
+  },
+  {
+    "Id": 33,
+    "Type": "чашка"
+  },
+  {
+    "Id": 34,
+    "Type": "head"
+  },
+  {
+    "Id": 35,
+    "Type": "count"
+  },
+  {
+    "Id": 36,
+    "Type": "grams"
+  },
+  {
+    "Id": 37,
+    "Type": "grams"
+  },
+  {
+    "Id": 38,
+    "Type": "grams"
+  },
+  {
+    "Id": 39,
+    "Type": "milliliters"
+  },
+  {
+    "Id": 40,
+    "Type": "cups"
+  },
+  {
+    "Id": 41,
+    "Type": "штуки"
+  }
+]
