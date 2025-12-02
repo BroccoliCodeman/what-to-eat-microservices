@@ -10,5 +10,5 @@ public interface IIngredientService
     Task<IBaseResponse<List<IngredientIntroDto>>> GetByName(string name);
     Task<IBaseResponse<string>> Insert(IngredientDto? modelDto);
     Task<IBaseResponse<string>> DeleteById(Guid id);
-    Task<IBaseResponse<List<IngredientIntroDto>>> GetMultipleBySimilarNames(IEnumerable<string> modelNames)
+    Task<IBaseResponse<List<IngredientIntroDto>>> GetMultipleBySimilarNames(IEnumerable<string> modelNames);
 }
