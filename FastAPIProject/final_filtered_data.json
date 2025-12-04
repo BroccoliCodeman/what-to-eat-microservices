@@ -1,0 +1,927 @@
+{
+  "dataset_info": {
+    "num_categories": 153,
+    "total_images": 87766,
+    "filter": "products_only"
+  },
+  "categories": {
+    "0": {
+      "id": 0,
+      "name": "Additives",
+      "num_images": 92,
+      "original_id": 0
+    },
+    "1": {
+      "id": 1,
+      "name": "Alcohol",
+      "num_images": 2000,
+      "original_id": 1
+    },
+    "2": {
+      "id": 2,
+      "name": "Apple",
+      "num_images": 221,
+      "original_id": 2
+    },
+    "3": {
+      "id": 3,
+      "name": "Bacon",
+      "num_images": 34,
+      "original_id": 3
+    },
+    "4": {
+      "id": 4,
+      "name": "Banana",
+      "num_images": 250,
+      "original_id": 4
+    },
+    "5": {
+      "id": 5,
+      "name": "Bay Leaf",
+      "num_images": 150,
+      "original_id": 5
+    },
+    "6": {
+      "id": 6,
+      "name": "Beef",
+      "num_images": 686,
+      "original_id": 6
+    },
+    "7": {
+      "id": 7,
+      "name": "Bread",
+      "num_images": 2000,
+      "original_id": 7
+    },
+    "8": {
+      "id": 8,
+      "name": "Broccoli",
+      "num_images": 205,
+      "original_id": 8
+    },
+    "9": {
+      "id": 9,
+      "name": "Butter",
+      "num_images": 844,
+      "original_id": 9
+    },
+    "10": {
+      "id": 10,
+      "name": "Cabbage",
+      "num_images": 155,
+      "original_id": 10
+    },
+    "11": {
+      "id": 11,
+      "name": "Canned Food",
+      "num_images": 2000,
+      "original_id": 11
+    },
+    "12": {
+      "id": 12,
+      "name": "Carrot",
+      "num_images": 215,
+      "original_id": 12
+    },
+    "13": {
+      "id": 13,
+      "name": "Cauliflower",
+      "num_images": 157,
+      "original_id": 13
+    },
+    "14": {
+      "id": 14,
+      "name": "Celery",
+      "num_images": 180,
+      "original_id": 14
+    },
+    "15": {
+      "id": 15,
+      "name": "Cereals",
+      "num_images": 2000,
+      "original_id": 15
+    },
+    "16": {
+      "id": 16,
+      "name": "Chai",
+      "num_images": 344,
+      "original_id": 16
+    },
+    "17": {
+      "id": 17,
+      "name": "Chayote",
+      "num_images": 158,
+      "original_id": 17
+    },
+    "18": {
+      "id": 18,
+      "name": "Cheese",
+      "num_images": 2000,
+      "original_id": 18
+    },
+    "19": {
+      "id": 19,
+      "name": "Chicken",
+      "num_images": 2000,
+      "original_id": 19
+    },
+    "20": {
+      "id": 20,
+      "name": "Chicken Egg",
+      "num_images": 150,
+      "original_id": 20
+    },
+    "21": {
+      "id": 21,
+      "name": "Chili Pepper",
+      "num_images": 67,
+      "original_id": 21
+    },
+    "22": {
+      "id": 22,
+      "name": "Chocolate",
+      "num_images": 2000,
+      "original_id": 22
+    },
+    "23": {
+      "id": 23,
+      "name": "Cocoa",
+      "num_images": 21,
+      "original_id": 23
+    },
+    "24": {
+      "id": 24,
+      "name": "Coconut Milk Powder",
+      "num_images": 74,
+      "original_id": 24
+    },
+    "25": {
+      "id": 25,
+      "name": "Coffee",
+      "num_images": 2000,
+      "original_id": 25
+    },
+    "26": {
+      "id": 26,
+      "name": "Cold Cuts",
+      "num_images": 625,
+      "original_id": 26
+    },
+    "27": {
+      "id": 27,
+      "name": "Condiments",
+      "num_images": 1971,
+      "original_id": 27
+    },
+    "28": {
+      "id": 28,
+      "name": "Coriander Seeds",
+      "num_images": 73,
+      "original_id": 28
+    },
+    "29": {
+      "id": 29,
+      "name": "Corn",
+      "num_images": 282,
+      "original_id": 29
+    },
+    "30": {
+      "id": 30,
+      "name": "Cow Trotters",
+      "num_images": 153,
+      "original_id": 30
+    },
+    "31": {
+      "id": 31,
+      "name": "Cucumber",
+      "num_images": 228,
+      "original_id": 31
+    },
+    "32": {
+      "id": 32,
+      "name": "Cumin Seed",
+      "num_images": 89,
+      "original_id": 32
+    },
+    "33": {
+      "id": 33,
+      "name": "Dates",
+      "num_images": 200,
+      "original_id": 33
+    },
+    "34": {
+      "id": 34,
+      "name": "Dried fruits",
+      "num_images": 214,
+      "original_id": 34
+    },
+    "35": {
+      "id": 35,
+      "name": "Duck Egg",
+      "num_images": 150,
+      "original_id": 35
+    },
+    "36": {
+      "id": 36,
+      "name": "Edamame",
+      "num_images": 1000,
+      "original_id": 36
+    },
+    "37": {
+      "id": 37,
+      "name": "Egg",
+      "num_images": 82,
+      "original_id": 37
+    },
+    "38": {
+      "id": 38,
+      "name": "Eggplant",
+      "num_images": 148,
+      "original_id": 38
+    },
+    "39": {
+      "id": 39,
+      "name": "Eggs",
+      "num_images": 594,
+      "original_id": 39
+    },
+    "40": {
+      "id": 40,
+      "name": "Filet Mignon",
+      "num_images": 1000,
+      "original_id": 40
+    },
+    "41": {
+      "id": 41,
+      "name": "Fish",
+      "num_images": 2000,
+      "original_id": 41
+    },
+    "42": {
+      "id": 42,
+      "name": "Foie Gras",
+      "num_images": 1000,
+      "original_id": 42
+    },
+    "43": {
+      "id": 43,
+      "name": "Fruit",
+      "num_images": 2000,
+      "original_id": 43
+    },
+    "44": {
+      "id": 44,
+      "name": "Galangal",
+      "num_images": 158,
+      "original_id": 44
+    },
+    "45": {
+      "id": 45,
+      "name": "Garlic",
+      "num_images": 273,
+      "original_id": 45
+    },
+    "46": {
+      "id": 46,
+      "name": "Ginger",
+      "num_images": 238,
+      "original_id": 46
+    },
+    "47": {
+      "id": 47,
+      "name": "Gnocchi",
+      "num_images": 1000,
+      "original_id": 47
+    },
+    "48": {
+      "id": 48,
+      "name": "Grains",
+      "num_images": 793,
+      "original_id": 48
+    },
+    "49": {
+      "id": 49,
+      "name": "Grated Coconut",
+      "num_images": 67,
+      "original_id": 49
+    },
+    "50": {
+      "id": 50,
+      "name": "Green Chilli",
+      "num_images": 160,
+      "original_id": 50
+    },
+    "51": {
+      "id": 51,
+      "name": "Green Paprika",
+      "num_images": 59,
+      "original_id": 51
+    },
+    "52": {
+      "id": 52,
+      "name": "Guava",
+      "num_images": 204,
+      "original_id": 52
+    },
+    "53": {
+      "id": 53,
+      "name": "Ham",
+      "num_images": 543,
+      "original_id": 53
+    },
+    "54": {
+      "id": 54,
+      "name": "Honey",
+      "num_images": 371,
+      "original_id": 54
+    },
+    "55": {
+      "id": 55,
+      "name": "Intestines",
+      "num_images": 150,
+      "original_id": 55
+    },
+    "56": {
+      "id": 56,
+      "name": "Jackfruit",
+      "num_images": 207,
+      "original_id": 56
+    },
+    "57": {
+      "id": 57,
+      "name": "Jam",
+      "num_images": 762,
+      "original_id": 57
+    },
+    "58": {
+      "id": 58,
+      "name": "Juice",
+      "num_images": 2000,
+      "original_id": 58
+    },
+    "59": {
+      "id": 59,
+      "name": "Legumes",
+      "num_images": 940,
+      "original_id": 59
+    },
+    "60": {
+      "id": 60,
+      "name": "Legumes & Grains",
+      "num_images": 69,
+      "original_id": 60
+    },
+    "61": {
+      "id": 61,
+      "name": "Lemongrass",
+      "num_images": 155,
+      "original_id": 61
+    },
+    "62": {
+      "id": 62,
+      "name": "Lesser Galangal",
+      "num_images": 150,
+      "original_id": 62
+    },
+    "63": {
+      "id": 63,
+      "name": "Lettuce",
+      "num_images": 134,
+      "original_id": 63
+    },
+    "64": {
+      "id": 64,
+      "name": "Lobster",
+      "num_images": 150,
+      "original_id": 64
+    },
+    "65": {
+      "id": 65,
+      "name": "Long Beans",
+      "num_images": 97,
+      "original_id": 65
+    },
+    "66": {
+      "id": 66,
+      "name": "Lychee",
+      "num_images": 36,
+      "original_id": 66
+    },
+    "67": {
+      "id": 67,
+      "name": "Mango",
+      "num_images": 34,
+      "original_id": 67
+    },
+    "68": {
+      "id": 68,
+      "name": "Mangosteen",
+      "num_images": 200,
+      "original_id": 68
+    },
+    "69": {
+      "id": 69,
+      "name": "Meat",
+      "num_images": 2000,
+      "original_id": 69
+    },
+    "70": {
+      "id": 70,
+      "name": "Melon",
+      "num_images": 200,
+      "original_id": 70
+    },
+    "71": {
+      "id": 71,
+      "name": "Milk",
+      "num_images": 2000,
+      "original_id": 71
+    },
+    "72": {
+      "id": 72,
+      "name": "Milk Alternative",
+      "num_images": 88,
+      "original_id": 72
+    },
+    "73": {
+      "id": 73,
+      "name": "Mung beans",
+      "num_images": 231,
+      "original_id": 73
+    },
+    "74": {
+      "id": 74,
+      "name": "Mushroom",
+      "num_images": 113,
+      "original_id": 74
+    },
+    "75": {
+      "id": 75,
+      "name": "Mussels",
+      "num_images": 1000,
+      "original_id": 75
+    },
+    "76": {
+      "id": 76,
+      "name": "Mustard Greens",
+      "num_images": 164,
+      "original_id": 76
+    },
+    "77": {
+      "id": 77,
+      "name": "Mustard leaf",
+      "num_images": 80,
+      "original_id": 77
+    },
+    "78": {
+      "id": 78,
+      "name": "Noodles",
+      "num_images": 229,
+      "original_id": 78
+    },
+    "79": {
+      "id": 79,
+      "name": "Nuts",
+      "num_images": 2000,
+      "original_id": 79
+    },
+    "80": {
+      "id": 80,
+      "name": "Nuts & dried fruit",
+      "num_images": 341,
+      "original_id": 80
+    },
+    "81": {
+      "id": 81,
+      "name": "Oatmeal",
+      "num_images": 183,
+      "original_id": 81
+    },
+    "82": {
+      "id": 82,
+      "name": "Octopus",
+      "num_images": 147,
+      "original_id": 82
+    },
+    "83": {
+      "id": 83,
+      "name": "Offal",
+      "num_images": 149,
+      "original_id": 83
+    },
+    "84": {
+      "id": 84,
+      "name": "Oil",
+      "num_images": 2000,
+      "original_id": 84
+    },
+    "85": {
+      "id": 85,
+      "name": "Oils & Dressings",
+      "num_images": 89,
+      "original_id": 85
+    },
+    "86": {
+      "id": 86,
+      "name": "Olive Oil",
+      "num_images": 45,
+      "original_id": 86
+    },
+    "87": {
+      "id": 87,
+      "name": "Onion",
+      "num_images": 155,
+      "original_id": 87
+    },
+    "88": {
+      "id": 88,
+      "name": "Orange",
+      "num_images": 273,
+      "original_id": 88
+    },
+    "89": {
+      "id": 89,
+      "name": "Oysters",
+      "num_images": 1000,
+      "original_id": 89
+    },
+    "90": {
+      "id": 90,
+      "name": "Papaya",
+      "num_images": 200,
+      "original_id": 90
+    },
+    "91": {
+      "id": 91,
+      "name": "Paprika",
+      "num_images": 204,
+      "original_id": 91
+    },
+    "92": {
+      "id": 92,
+      "name": "Pasta",
+      "num_images": 2000,
+      "original_id": 92
+    },
+    "93": {
+      "id": 93,
+      "name": "Peanut Butter",
+      "num_images": 33,
+      "original_id": 93
+    },
+    "94": {
+      "id": 94,
+      "name": "Peanuts",
+      "num_images": 162,
+      "original_id": 94
+    },
+    "95": {
+      "id": 95,
+      "name": "Pear",
+      "num_images": 215,
+      "original_id": 95
+    },
+    "96": {
+      "id": 96,
+      "name": "Pepper",
+      "num_images": 147,
+      "original_id": 96
+    },
+    "97": {
+      "id": 97,
+      "name": "Pepper Powder",
+      "num_images": 64,
+      "original_id": 97
+    },
+    "98": {
+      "id": 98,
+      "name": "Pickles",
+      "num_images": 502,
+      "original_id": 98
+    },
+    "99": {
+      "id": 99,
+      "name": "Pineapple",
+      "num_images": 291,
+      "original_id": 99
+    },
+    "100": {
+      "id": 100,
+      "name": "Pork Chop",
+      "num_images": 1000,
+      "original_id": 100
+    },
+    "101": {
+      "id": 101,
+      "name": "Potato",
+      "num_images": 255,
+      "original_id": 101
+    },
+    "102": {
+      "id": 102,
+      "name": "Poultry",
+      "num_images": 853,
+      "original_id": 102
+    },
+    "103": {
+      "id": 103,
+      "name": "Prime Rib",
+      "num_images": 1000,
+      "original_id": 103
+    },
+    "104": {
+      "id": 104,
+      "name": "Raw Beef",
+      "num_images": 53,
+      "original_id": 104
+    },
+    "105": {
+      "id": 105,
+      "name": "Raw Chicken",
+      "num_images": 87,
+      "original_id": 105
+    },
+    "106": {
+      "id": 106,
+      "name": "Raw Fish",
+      "num_images": 50,
+      "original_id": 106
+    },
+    "107": {
+      "id": 107,
+      "name": "Raw Goat Meat",
+      "num_images": 44,
+      "original_id": 107
+    },
+    "108": {
+      "id": 108,
+      "name": "Raw Squid",
+      "num_images": 58,
+      "original_id": 108
+    },
+    "109": {
+      "id": 109,
+      "name": "Raw Tempeh",
+      "num_images": 70,
+      "original_id": 109
+    },
+    "110": {
+      "id": 110,
+      "name": "Red Chilli",
+      "num_images": 162,
+      "original_id": 110
+    },
+    "111": {
+      "id": 111,
+      "name": "Red Onion",
+      "num_images": 174,
+      "original_id": 111
+    },
+    "112": {
+      "id": 112,
+      "name": "Red Paprika",
+      "num_images": 61,
+      "original_id": 112
+    },
+    "113": {
+      "id": 113,
+      "name": "Red beans",
+      "num_images": 240,
+      "original_id": 113
+    },
+    "114": {
+      "id": 114,
+      "name": "Rice",
+      "num_images": 2000,
+      "original_id": 114
+    },
+    "115": {
+      "id": 115,
+      "name": "Rice Flour",
+      "num_images": 73,
+      "original_id": 115
+    },
+    "116": {
+      "id": 116,
+      "name": "Salt",
+      "num_images": 564,
+      "original_id": 116
+    },
+    "117": {
+      "id": 117,
+      "name": "Sapodilla",
+      "num_images": 206,
+      "original_id": 117
+    },
+    "118": {
+      "id": 118,
+      "name": "Sauces",
+      "num_images": 2000,
+      "original_id": 118
+    },
+    "119": {
+      "id": 119,
+      "name": "Sausages",
+      "num_images": 1794,
+      "original_id": 119
+    },
+    "120": {
+      "id": 120,
+      "name": "Scallops",
+      "num_images": 1000,
+      "original_id": 120
+    },
+    "121": {
+      "id": 121,
+      "name": "Seafood",
+      "num_images": 1327,
+      "original_id": 121
+    },
+    "122": {
+      "id": 122,
+      "name": "Shrimp",
+      "num_images": 80,
+      "original_id": 122
+    },
+    "123": {
+      "id": 123,
+      "name": "Snake Fruit",
+      "num_images": 200,
+      "original_id": 123
+    },
+    "124": {
+      "id": 124,
+      "name": "Soursop",
+      "num_images": 203,
+      "original_id": 124
+    },
+    "125": {
+      "id": 125,
+      "name": "Soybeans raw",
+      "num_images": 77,
+      "original_id": 125
+    },
+    "126": {
+      "id": 126,
+      "name": "Spaghetti",
+      "num_images": 35,
+      "original_id": 126
+    },
+    "127": {
+      "id": 127,
+      "name": "Spices",
+      "num_images": 2000,
+      "original_id": 127
+    },
+    "128": {
+      "id": 128,
+      "name": "Spinach",
+      "num_images": 81,
+      "original_id": 128
+    },
+    "129": {
+      "id": 129,
+      "name": "Spreads",
+      "num_images": 417,
+      "original_id": 129
+    },
+    "130": {
+      "id": 130,
+      "name": "Squid",
+      "num_images": 58,
+      "original_id": 130
+    },
+    "131": {
+      "id": 131,
+      "name": "Star Fruit",
+      "num_images": 193,
+      "original_id": 131
+    },
+    "132": {
+      "id": 132,
+      "name": "Steak",
+      "num_images": 1000,
+      "original_id": 132
+    },
+    "133": {
+      "id": 133,
+      "name": "Stink Beans",
+      "num_images": 155,
+      "original_id": 133
+    },
+    "134": {
+      "id": 134,
+      "name": "Strawberry",
+      "num_images": 200,
+      "original_id": 134
+    },
+    "135": {
+      "id": 135,
+      "name": "Sugar",
+      "num_images": 980,
+      "original_id": 135
+    },
+    "136": {
+      "id": 136,
+      "name": "Sweet Corn",
+      "num_images": 89,
+      "original_id": 136
+    },
+    "137": {
+      "id": 137,
+      "name": "Sweet potato",
+      "num_images": 279,
+      "original_id": 137
+    },
+    "138": {
+      "id": 138,
+      "name": "Syrup",
+      "num_images": 110,
+      "original_id": 138
+    },
+    "139": {
+      "id": 139,
+      "name": "Tapioca Flour",
+      "num_images": 80,
+      "original_id": 139
+    },
+    "140": {
+      "id": 140,
+      "name": "Tea",
+      "num_images": 1901,
+      "original_id": 140
+    },
+    "141": {
+      "id": 141,
+      "name": "Tempeh",
+      "num_images": 70,
+      "original_id": 141
+    },
+    "142": {
+      "id": 142,
+      "name": "Tofu",
+      "num_images": 47,
+      "original_id": 142
+    },
+    "143": {
+      "id": 143,
+      "name": "Tomato",
+      "num_images": 314,
+      "original_id": 143
+    },
+    "144": {
+      "id": 144,
+      "name": "Turmeric",
+      "num_images": 104,
+      "original_id": 144
+    },
+    "145": {
+      "id": 145,
+      "name": "Vegetables",
+      "num_images": 2000,
+      "original_id": 145
+    },
+    "146": {
+      "id": 146,
+      "name": "Vinegar",
+      "num_images": 527,
+      "original_id": 146
+    },
+    "147": {
+      "id": 147,
+      "name": "Water",
+      "num_images": 2000,
+      "original_id": 147
+    },
+    "148": {
+      "id": 148,
+      "name": "Watermelon",
+      "num_images": 200,
+      "original_id": 148
+    },
+    "149": {
+      "id": 149,
+      "name": "Wheat",
+      "num_images": 82,
+      "original_id": 149
+    },
+    "150": {
+      "id": 150,
+      "name": "Wheat Flour",
+      "num_images": 146,
+      "original_id": 150
+    },
+    "151": {
+      "id": 151,
+      "name": "Wine",
+      "num_images": 2000,
+      "original_id": 151
+    },
+    "152": {
+      "id": 152,
+      "name": "Yogurt",
+      "num_images": 2000,
+      "original_id": 152
+    }
+  }
+}

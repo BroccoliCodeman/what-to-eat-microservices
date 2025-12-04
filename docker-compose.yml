@@ -4,6 +4,24 @@ networks:
 
 services:
 
+ rediscash:
+    container_name: RedisCash
+    image: redis:7-alpine
+    networks:
+      - ShoNetwork
+    ports:
+      - "6379:6379"
+    command: redis-server --appendonly yes
+    volumes:
+      - redis_data:/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+
  database:
     container_name: Database
     image: mcr.microsoft.com/mssql/server:2022-latest
@@ -14,7 +32,9 @@ services:
       - ShoNetwork
     ports:
       - 1433:1433
-
+    volumes:
+      - sho_db_data:/var/opt/mssql
+    restart: unless-stopped
  recipes.api:
     image: ${DOCKER_REGISTRY-}recipesapi
     build:
@@ -35,3 +55,29 @@ services:
       - ASPNETCORE_Kestrel__Certificates__Default__Path=Certificates/certificate.pfx 
     depends_on:
       - database
+
+ Ml.api:
+   container_name: ShoModel
+   image: ${DOCKER_REGISTRY-}shomodel:latest
+   networks:
+     - ShoNetwork
+   ports:
+     - "1489:8000"
+   environment:
+     - REDIS_HOST=rediscash
+     - REDIS_PORT=6379
+     - REDIS_DB=1
+     - MODEL_PATH=/app/model_best.pth
+     - LOG_LEVEL=INFO
+   depends_on:
+     rediscash:
+       condition: service_healthy
+   restart: unless-stopped
+
+volumes:
+  sho_db_data:
+    driver: local
+  redis_data:
+    driver: local  
+
+

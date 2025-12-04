@@ -5,8 +5,8 @@ from torchvision import models
 class FoodClassifier(nn.Module):
     def __init__(self, num_classes):
         super().__init__()
-        # Використовуємо ту саму архітектуру, що була при тренуванні
-        self.backbone = models.efficientnet_b2(weights=None) # weights=None бо ми завантажимо свої
+        # Ваги=None, тому що ми завантажуємо свої custom weights
+        self.backbone = models.efficientnet_b2(weights=None)
         in_features = self.backbone.classifier[1].in_features
         self.backbone.classifier = nn.Sequential(
             nn.Dropout(p=0.3, inplace=True),

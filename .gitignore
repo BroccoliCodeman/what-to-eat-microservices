@@ -489,3 +489,4 @@ FastAPIProject/best_model.pth
 FastAPIProject/yolov8n.pt
 FastAPIProject/test_main.http
 /FastAPIProject/data
+/FastAPIProject/yolov8s-world.pt
