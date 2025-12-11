@@ -1,4 +1,4 @@
-# Використовуємо slim версію
+# Використовуємо slim версію                         docker build -t shomodel:latest .
 FROM python:3.10-slim
 
 WORKDIR /app
