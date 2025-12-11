@@ -1,32 +1,77 @@
 import uuid
 import cv2
 import numpy as np
+import os
+import structlog
+from typing import List
+from contextlib import asynccontextmanager
+
 from fastapi import FastAPI, File, UploadFile, HTTPException, Depends
-from PydanticModels import PredictionResponse, FeedbackRequest, FeedbackResponse
-from ModelService import ModelService
-from ActiveLearningService import ActiveLearningService
+from fastapi.staticfiles import StaticFiles
+
+# --- Імпорти наших модулів ---
 from CONFIG import Config
+from dependencies import container
+from middleware import RequestLoggingMiddleware
+from logger_config import setup_logging
+from PydanticModels import (
+    PredictionResponse,
+    FeedbackRequest,
+    FeedbackResponse,
+    PoolResponse,
+    PoolItem,
+    RetrainResponse
+)
+
+# 1. Налаштовуємо глобальний логер ПЕРЕД стартом додатку
+logger = setup_logging()
 
 
-# --- Dependency Container ---
-class Container:
-    def __init__(self):
-        self.model_service = ModelService()
-        self.al_service = ActiveLearningService()
+# --- Lifespan (Керування запуском/зупинкою) ---
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    logger.info("system_startup", status="initializing_services")
+
+    # Ініціалізація сервісів (Redis connection, Model loading)
+    await container.initialize()
+
+    yield
+
+    # Очистка ресурсів при зупинці
+    if container.redis_client:
+        await container.redis_client.close()
+
+    logger.info("system_shutdown", status="completed")
 
 
-container = Container()
+# Створення додатку
+app = FastAPI(title="Food Recognition AI", version="3.3.0", lifespan=lifespan)
 
-app = FastAPI(title="Food Recognition Microservice", version="2.0.0")
+# 2. Підключаємо Middleware для логування кожного запиту
+# Це автоматично логує: method, path, status_code, duration, client_ip, та JSON body
+app.add_middleware(RequestLoggingMiddleware)
+
+# 3. Налаштування статики (для доступу до картинок по URL)
+# Створюємо папку, якщо її немає, щоб уникнути помилки при старті
+os.makedirs(Config.UNCERTAIN_DIR, exist_ok=True)
+os.makedirs(Config.LABELED_DIR, exist_ok=True)
+
+# Монтуємо папку data. Тепер файли доступні за адресою /data/...
+app.mount("/data", StaticFiles(directory="data"), name="data")
 
 
-# --- Dependencies ---
-def get_model_service():
-    return container.model_service
-
-
+# --- Dependencies (Inversion of Control) ---
 def get_al_service():
+    if not container.al_service:
+        # 503 Service Unavailable, якщо Redis лежить або ініціалізація не пройшла
+        raise HTTPException(503, "Active Learning Service not initialized")
     return container.al_service
+
+
+def get_model_service():
+    if not container.model_service:
+        raise HTTPException(503, "Model Service not initialized")
+    return container.model_service
 
 
 # --- Endpoints ---
@@ -34,27 +79,52 @@ def get_al_service():
 @app.post("/predict", response_model=PredictionResponse, tags=["Inference"])
 async def predict(
         file: UploadFile = File(...),
-        model_service: ModelService = Depends(get_model_service),
-        al_service: ActiveLearningService = Depends(get_al_service)
+        model_service=Depends(get_model_service),
+        al_service=Depends(get_al_service)
 ):
-    # 1. Read Image
-    contents = await file.read()
-    nparr = np.frombuffer(contents, np.uint8)
-    image = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
+    # Логер контексту (для бізнес-логіки всередині ендпоінту)
+    log = structlog.get_logger()
+
+    # 1. Читання та декодування зображення
+    try:
+        contents = await file.read()
+        nparr = np.frombuffer(contents, np.uint8)
+        image = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
+
+        if image is None:
+            raise ValueError("Decoded image is None")
+
+    except Exception as e:
+        log.warning("image_decode_failed", filename=file.filename, error=str(e))
+        raise HTTPException(400, "Invalid image file provided")
+
+    # 2. Генерація ID запиту
     request_id = str(uuid.uuid4())
 
-    # 2. Get Predictions (Raw)
+    # 3. Інференс (ModelService)
+    # Повертає список словників з детекціями
     raw_results = model_service.predict_pipeline(image)
 
-    # 3. Process Active Learning (Check confidence)
     processed_results = []
     al_triggered = False
 
+    # 4. Обробка Active Learning
     for res in raw_results:
+        # process_uncertainty робить наступне:
+        # - Генерує глобальний 'id' (наприклад "reqUUID_0.jpg")
+        # - Перевіряє confidence
+        # - Якщо low confidence -> зберігає кроп на диск
         processed = al_service.process_uncertainty(request_id, res)
+
         if processed['status'] == 'uncertain':
             al_triggered = True
+
         processed_results.append(processed)
+
+    # Логуємо бізнес-метрику (не технічну)
+    log.info("prediction_completed",
+             total_objects=len(processed_results),
+             al_triggered=al_triggered)
 
     return {
         "request_id": request_id,
@@ -64,21 +134,112 @@ async def predict(
     }
 
 
-@app.post("/feedback", response_model=FeedbackResponse, tags=["Active Learning"])
-async def feedback(
-        request: FeedbackRequest,
-        al_service: ActiveLearningService = Depends(get_al_service)
+@app.get("/active-learning/pool", response_model=PoolResponse, tags=["Active Learning"])
+async def get_uncertain_pool(
+        limit: int = 20,
+        al_service=Depends(get_al_service)
 ):
+    """
+    Повертає список "невпевнених" зображень для адмін-панелі.
+    """
+    # Отримуємо список імен файлів
+    files = al_service.get_uncertain_samples(limit)
+
+    pool_items = []
+    for filename in files:
+        # Формуємо об'єкти для відповіді
+        pool_items.append(PoolItem(
+            id=filename,  # ID - це ім'я файлу
+            url=f"/data/active_learning/uncertain/{filename}"  # URL для відображення
+        ))
+
+    return {
+        "count": len(pool_items),
+        "items": pool_items
+    }
+
+
+@app.post("/feedback", response_model=FeedbackResponse, tags=["Active Learning"])
+async def submit_feedback(
+        request: FeedbackRequest,
+        al_service=Depends(get_al_service)
+):
+    """
+    Приймає фідбек від користувача (виправлення класу).
+    Якщо накопичиться достатньо даних -> тригерить ретрейнінг.
+    """
     try:
-        al_service.handle_feedback(request.image_id, request.correct_label)
-        return {"status": "success", "message": "Model retrained (simulated) & data moved."}
+        # al_service.handle_feedback повертає словник (dict)
+        result = await al_service.handle_feedback(request.image_id, request.correct_label)
+
+        # Формуємо зрозуміле повідомлення для клієнта на основі результату
+        action = result.get('action', 'unknown')
+        q_size = result.get('queue_size', 0)
+        q_needed = result.get('samples_needed', '?')
+
+        msg = f"Success. Action: {action}. Queue: {q_size}/{q_needed}"
+
+        return {
+            "status": "success",
+            "message": msg
+        }
+
     except FileNotFoundError:
-        raise HTTPException(status_code=404, detail="Image not found in uncertainty pool")
+        raise HTTPException(404, "Image not found (maybe already labeled)")
+    except ValueError as e:
+        raise HTTPException(400, str(e))  # Наприклад, неправильна назва класу
     except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+        # Middleware залогує повний трейсбек, тут просто віддаємо 500
+        raise HTTPException(500, "Internal processing error")
+
+
+@app.post("/retrain/trigger", response_model=RetrainResponse, tags=["Active Learning"])
+async def trigger_retrain(
+        al_service=Depends(get_al_service)
+):
+    """
+    Мануально запускає процес донавчання на накопичених даних.
+    Ігнорує поріг MIN_RETRAIN_SAMPLES.
+    """
+    try:
+        result = await al_service.force_retraining()
+
+        return {
+            "status": result["status"],
+            "message": result["message"],
+            "samples_count": result.get("samples_count", 0)
+        }
+
+    except Exception as e:
+        # Логер middleware перехопить деталі, тут віддаємо помилку клієнту
+        raise HTTPException(500, f"Failed to trigger retraining: {str(e)}")
+
+@app.get("/classes", tags=["Info"])
+async def get_classes():
+    """Повертає список всіх відомих класів продуктів"""
+    return {"classes": Config.CLASS_NAMES}
+
+
+@app.get("/health", tags=["System"])
+async def health():
+    """Healthcheck для Kubernetes/Docker"""
+    model_ok = container.model_service is not None
+    redis_ok = container.redis_client is not None
+
+    status = "healthy" if model_ok and redis_ok else "degraded"
+
+    return {
+        "status": status,
+        "components": {
+            "model": "up" if model_ok else "down",
+            "redis": "up" if redis_ok else "down"
+        },
+        "model_version": getattr(container.model_service, "model_version", 0) if model_ok else 0
+    }
 
 
 if __name__ == "__main__":
     import uvicorn
 
+    # Запуск сервера
     uvicorn.run(app, host="0.0.0.0", port=8000)

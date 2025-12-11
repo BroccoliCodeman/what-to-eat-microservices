@@ -1,13 +1,26 @@
-fastapi
-uvicorn
-python-multipart
-ultralytics
-albumentations
-opencv-python-headless
-torch
-torchvision
-numpy
-pillow
-matplotlib
-requests
-scipy
+# --- Web Framework & Server ---
+fastapi>=0.109.0
+uvicorn[standard]>=0.27.0   # [standard] встановлює uvloop для кращої продуктивності
+python-multipart>=0.0.9     # Потрібно для завантаження файлів (UploadFile)
+
+# --- Machine Learning & Computer Vision ---
+torch>=2.2.0                # Основний ML фреймворк
+torchvision>=0.17.0         # Моделі та трансформації зображень
+ultralytics>=8.1.0          # YOLOv8 для детекції об'єктів
+albumentations>=1.4.0       # Просунута аугментація зображень
+opencv-python-headless>=4.9.0.80 # OpenCV без GUI модулів (ідеально для Docker/Server)
+
+# --- Data Processing & Math ---
+numpy>=1.26.0
+pillow>=10.2.0              # Робота з зображеннями (PIL)
+scipy>=1.11.0               # Залежність для albumentations та математичних операцій
+
+# --- Infrastructure & Database ---
+redis>=5.0.1                # Клієнт для Redis (включає asyncio підтримку)
+pydantic>=2.6.0             # Валідація даних (v2)
+python-dotenv>=1.0.1        # Завантаження змінних середовища з .env
+
+# --- Logging & Observability ---
+structlog>=24.1.0           # Структуроване логування (JSON формат)
+rich>=13.0.0      # (Опціонально) Для ще кращого форматування помилок
+colorama>=0.4.6             # Кольоровий вивід логів при локальній розробці
