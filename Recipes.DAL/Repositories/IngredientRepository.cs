@@ -71,6 +71,8 @@ public class IngredientRepository : GenericRepository<Ingredient>, IIngredientRe
                 result.Add(match);
         }
 
+        result = result.Distinct().ToList();
+
         return result;
     }
 }
