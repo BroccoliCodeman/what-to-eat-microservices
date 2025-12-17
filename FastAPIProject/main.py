@@ -13,6 +13,7 @@ from fastapi.staticfiles import StaticFiles
 from CONFIG import Config
 from dependencies import container
 from middleware import RequestLoggingMiddleware
+from fastapi.middleware.cors import CORSMiddleware
 from logger_config import setup_logging
 from PydanticModels import (
     PredictionResponse,
@@ -46,6 +47,16 @@ async def lifespan(app: FastAPI):
 
 # Створення додатку
 app = FastAPI(title="Food Recognition AI", version="3.3.0", lifespan=lifespan)
+
+
+# Налаштування CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # 2. Підключаємо Middleware для логування кожного запиту
 # Це автоматично логує: method, path, status_code, duration, client_ip, та JSON body
