@@ -1,7 +1,7 @@
 using Recipes.DAL.Infrastructure.Interfaces;
 using Recipes.DAL.Repositories.Interfaces;
 
-namespace Recipes.DAL.Repositories;
+namespace Recipes.DAL.Infrastructure;
 
 public class UnitOfWork : IUnitOfWork
 {
@@ -21,7 +21,7 @@ public class UnitOfWork : IUnitOfWork
         IRespondRepository respondRepository,
         IWeightUnitRepository weightUnitRepository)
     {
-        this.DatabaseContext = databaseContext;
+        DatabaseContext = databaseContext;
         CookingStepRepository = cookingStepRepository;
         IngredientRepository = ingredientRepository;
         RecipeRepository = recipeRepository;

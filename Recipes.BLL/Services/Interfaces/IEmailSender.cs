@@ -1,4 +1,4 @@
-﻿namespace Recipes.BLL.Interfaces
+﻿namespace Recipes.BLL.Services.Interfaces
 {
     public interface IEmailSender
     {

@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Recipes.API", "Recipes.API\
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{D6AF51AE-E500-4F03-BFF0-29FFC36D7CE9}"
 EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "PythonModelApi", "FastAPIProject\PythonModelApi.pyproj", "{9EDDF846-7150-477E-9333-52303C9C0F33}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +43,8 @@ Global
 		{D6AF51AE-E500-4F03-BFF0-29FFC36D7CE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D6AF51AE-E500-4F03-BFF0-29FFC36D7CE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D6AF51AE-E500-4F03-BFF0-29FFC36D7CE9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9EDDF846-7150-477E-9333-52303C9C0F33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9EDDF846-7150-477E-9333-52303C9C0F33}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -50,6 +54,7 @@ Global
 		{16AB81AB-BFAB-4683-9F33-8E538CE8EFF0} = {9BC82F7C-DA17-444D-AC36-66C6106A896F}
 		{59DD9240-F99D-49F7-A4D4-F6374F5BDA24} = {9BC82F7C-DA17-444D-AC36-66C6106A896F}
 		{67529B1A-69A6-42D5-BCDC-25D296FD80B4} = {9BC82F7C-DA17-444D-AC36-66C6106A896F}
+		{9EDDF846-7150-477E-9333-52303C9C0F33} = {9BC82F7C-DA17-444D-AC36-66C6106A896F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0A4C6DE9-B0E7-4BAC-A4E6-E5162A47ADC4}

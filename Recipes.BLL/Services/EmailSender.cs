@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Logging;
 using MimeKit;
 using Recipes.BLL.Configurations;
-using Recipes.BLL.Interfaces;
+using Recipes.BLL.Services.Interfaces;
 using System.Text;
 
 namespace Recipes.BLL.Services

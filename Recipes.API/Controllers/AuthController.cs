@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Recipes.BLL.Configurations;
-using Recipes.BLL.Interfaces;
 using Recipes.BLL.Services.Interfaces;
 using Recipes.DAL;
 using Recipes.Data.DataTransferObjects.UserDTOs;

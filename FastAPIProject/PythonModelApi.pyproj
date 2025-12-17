@@ -1,0 +1,164 @@
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>9eddf846-7150-477e-9333-52303c9c0f33</ProjectGuid>
+    <ProjectHome>.</ProjectHome>
+    <StartupFile>
+    </StartupFile>
+    <SearchPath>
+    </SearchPath>
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <Name>PythonModelApi</Name>
+    <RootNamespace>PythonModelApi</RootNamespace>
+    <InterpreterId>MSBuild|.venv|$(MSBuildProjectFullPath)</InterpreterId>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="ActiveLearningService.py" />
+    <Compile Include="CONFIG.py" />
+    <Compile Include="dependencies.py" />
+    <Compile Include="FoodClassifier.py" />
+    <Compile Include="logger_config.py" />
+    <Compile Include="main.py" />
+    <Compile Include="middleware.py" />
+    <Compile Include="ModelService.py" />
+    <Compile Include="PydanticModels.py" />
+    <Compile Include="RetrainService.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Interpreter Include=".venv\">
+      <Id>.venv</Id>
+      <Version>3.10</Version>
+      <Description>.venv (Python 3.10 (64-bit))</Description>
+      <InterpreterPath>Scripts\python.exe</InterpreterPath>
+      <WindowsInterpreterPath>Scripts\pythonw.exe</WindowsInterpreterPath>
+      <PathEnvironmentVariable>PYTHONPATH</PathEnvironmentVariable>
+      <Architecture>X64</Architecture>
+    </Interpreter>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="data\" />
+    <Folder Include="data\active_learning\" />
+    <Folder Include="data\active_learning\labeled\" />
+    <Folder Include="data\active_learning\uncertain\" />
+    <Folder Include="data\backups\" />
+    <Folder Include="data\uploads\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="data\active_learning\labeled\Broccoli_23af7084.jpg" />
+    <Content Include="data\active_learning\labeled\Honey_4575b936.jpg" />
+    <Content Include="data\active_learning\uncertain\24ea6368-e205-4b27-9c42-2f6f8029969b_obj_0.jpg" />
+    <Content Include="data\active_learning\uncertain\24ea6368-e205-4b27-9c42-2f6f8029969b_obj_1.jpg" />
+    <Content Include="data\active_learning\uncertain\24ea6368-e205-4b27-9c42-2f6f8029969b_obj_4.jpg" />
+    <Content Include="data\active_learning\uncertain\24ea6368-e205-4b27-9c42-2f6f8029969b_obj_5.jpg" />
+    <Content Include="data\active_learning\uncertain\24ea6368-e205-4b27-9c42-2f6f8029969b_obj_7.jpg" />
+    <Content Include="data\active_learning\uncertain\5b13447d-7bf3-4e2c-9e53-189c83e9d581_11.jpg" />
+    <Content Include="data\active_learning\uncertain\5b13447d-7bf3-4e2c-9e53-189c83e9d581_12.jpg" />
+    <Content Include="data\active_learning\uncertain\5b13447d-7bf3-4e2c-9e53-189c83e9d581_13.jpg" />
+    <Content Include="data\active_learning\uncertain\5b13447d-7bf3-4e2c-9e53-189c83e9d581_14.jpg" />
+    <Content Include="data\active_learning\uncertain\5b13447d-7bf3-4e2c-9e53-189c83e9d581_15.jpg" />
+    <Content Include="data\active_learning\uncertain\5b13447d-7bf3-4e2c-9e53-189c83e9d581_17.jpg" />
+    <Content Include="data\active_learning\uncertain\5b13447d-7bf3-4e2c-9e53-189c83e9d581_18.jpg" />
+    <Content Include="data\active_learning\uncertain\5b13447d-7bf3-4e2c-9e53-189c83e9d581_19.jpg" />
+    <Content Include="data\active_learning\uncertain\5b13447d-7bf3-4e2c-9e53-189c83e9d581_2.jpg" />
+    <Content Include="data\active_learning\uncertain\5b13447d-7bf3-4e2c-9e53-189c83e9d581_3.jpg" />
+    <Content Include="data\active_learning\uncertain\5b13447d-7bf3-4e2c-9e53-189c83e9d581_5.jpg" />
+    <Content Include="data\active_learning\uncertain\5b13447d-7bf3-4e2c-9e53-189c83e9d581_6.jpg" />
+    <Content Include="data\active_learning\uncertain\5b13447d-7bf3-4e2c-9e53-189c83e9d581_7.jpg" />
+    <Content Include="data\active_learning\uncertain\5b13447d-7bf3-4e2c-9e53-189c83e9d581_8.jpg" />
+    <Content Include="data\active_learning\uncertain\6c54161b-ded5-485c-9365-2399260d87a9_1.jpg" />
+    <Content Include="data\active_learning\uncertain\6c54161b-ded5-485c-9365-2399260d87a9_11.jpg" />
+    <Content Include="data\active_learning\uncertain\6c54161b-ded5-485c-9365-2399260d87a9_12.jpg" />
+    <Content Include="data\active_learning\uncertain\6c54161b-ded5-485c-9365-2399260d87a9_13.jpg" />
+    <Content Include="data\active_learning\uncertain\6c54161b-ded5-485c-9365-2399260d87a9_15.jpg" />
+    <Content Include="data\active_learning\uncertain\6c54161b-ded5-485c-9365-2399260d87a9_17.jpg" />
+    <Content Include="data\active_learning\uncertain\6c54161b-ded5-485c-9365-2399260d87a9_18.jpg" />
+    <Content Include="data\active_learning\uncertain\6c54161b-ded5-485c-9365-2399260d87a9_19.jpg" />
+    <Content Include="data\active_learning\uncertain\6c54161b-ded5-485c-9365-2399260d87a9_2.jpg" />
+    <Content Include="data\active_learning\uncertain\6c54161b-ded5-485c-9365-2399260d87a9_3.jpg" />
+    <Content Include="data\active_learning\uncertain\6c54161b-ded5-485c-9365-2399260d87a9_5.jpg" />
+    <Content Include="data\active_learning\uncertain\6c54161b-ded5-485c-9365-2399260d87a9_6.jpg" />
+    <Content Include="data\active_learning\uncertain\6c54161b-ded5-485c-9365-2399260d87a9_7.jpg" />
+    <Content Include="data\active_learning\uncertain\6c54161b-ded5-485c-9365-2399260d87a9_8.jpg" />
+    <Content Include="data\active_learning\uncertain\7539664e-409b-4138-b269-2bfe90f4acc2_1.jpg" />
+    <Content Include="data\active_learning\uncertain\7539664e-409b-4138-b269-2bfe90f4acc2_11.jpg" />
+    <Content Include="data\active_learning\uncertain\7539664e-409b-4138-b269-2bfe90f4acc2_12.jpg" />
+    <Content Include="data\active_learning\uncertain\7539664e-409b-4138-b269-2bfe90f4acc2_13.jpg" />
+    <Content Include="data\active_learning\uncertain\7539664e-409b-4138-b269-2bfe90f4acc2_14.jpg" />
+    <Content Include="data\active_learning\uncertain\7539664e-409b-4138-b269-2bfe90f4acc2_15.jpg" />
+    <Content Include="data\active_learning\uncertain\7539664e-409b-4138-b269-2bfe90f4acc2_17.jpg" />
+    <Content Include="data\active_learning\uncertain\7539664e-409b-4138-b269-2bfe90f4acc2_18.jpg" />
+    <Content Include="data\active_learning\uncertain\7539664e-409b-4138-b269-2bfe90f4acc2_19.jpg" />
+    <Content Include="data\active_learning\uncertain\7539664e-409b-4138-b269-2bfe90f4acc2_2.jpg" />
+    <Content Include="data\active_learning\uncertain\7539664e-409b-4138-b269-2bfe90f4acc2_5.jpg" />
+    <Content Include="data\active_learning\uncertain\7539664e-409b-4138-b269-2bfe90f4acc2_6.jpg" />
+    <Content Include="data\active_learning\uncertain\7539664e-409b-4138-b269-2bfe90f4acc2_7.jpg" />
+    <Content Include="data\active_learning\uncertain\7539664e-409b-4138-b269-2bfe90f4acc2_8.jpg" />
+    <Content Include="data\active_learning\uncertain\812e0474-8b87-45de-80b2-9e68d805bf08_obj_0.jpg" />
+    <Content Include="data\active_learning\uncertain\812e0474-8b87-45de-80b2-9e68d805bf08_obj_1.jpg" />
+    <Content Include="data\active_learning\uncertain\876f0b6f-17d1-490e-90c2-51db49f064b6_12.jpg" />
+    <Content Include="data\active_learning\uncertain\876f0b6f-17d1-490e-90c2-51db49f064b6_13.jpg" />
+    <Content Include="data\active_learning\uncertain\876f0b6f-17d1-490e-90c2-51db49f064b6_14.jpg" />
+    <Content Include="data\active_learning\uncertain\876f0b6f-17d1-490e-90c2-51db49f064b6_15.jpg" />
+    <Content Include="data\active_learning\uncertain\876f0b6f-17d1-490e-90c2-51db49f064b6_17.jpg" />
+    <Content Include="data\active_learning\uncertain\876f0b6f-17d1-490e-90c2-51db49f064b6_18.jpg" />
+    <Content Include="data\active_learning\uncertain\876f0b6f-17d1-490e-90c2-51db49f064b6_19.jpg" />
+    <Content Include="data\active_learning\uncertain\876f0b6f-17d1-490e-90c2-51db49f064b6_2.jpg" />
+    <Content Include="data\active_learning\uncertain\876f0b6f-17d1-490e-90c2-51db49f064b6_3.jpg" />
+    <Content Include="data\active_learning\uncertain\876f0b6f-17d1-490e-90c2-51db49f064b6_5.jpg" />
+    <Content Include="data\active_learning\uncertain\876f0b6f-17d1-490e-90c2-51db49f064b6_6.jpg" />
+    <Content Include="data\active_learning\uncertain\876f0b6f-17d1-490e-90c2-51db49f064b6_7.jpg" />
+    <Content Include="data\active_learning\uncertain\876f0b6f-17d1-490e-90c2-51db49f064b6_8.jpg" />
+    <Content Include="data\active_learning\uncertain\91d147a8-f96b-423c-ba7a-be887c0b2726_1.jpg" />
+    <Content Include="data\active_learning\uncertain\91d147a8-f96b-423c-ba7a-be887c0b2726_12.jpg" />
+    <Content Include="data\active_learning\uncertain\91d147a8-f96b-423c-ba7a-be887c0b2726_13.jpg" />
+    <Content Include="data\active_learning\uncertain\91d147a8-f96b-423c-ba7a-be887c0b2726_15.jpg" />
+    <Content Include="data\active_learning\uncertain\91d147a8-f96b-423c-ba7a-be887c0b2726_17.jpg" />
+    <Content Include="data\active_learning\uncertain\91d147a8-f96b-423c-ba7a-be887c0b2726_18.jpg" />
+    <Content Include="data\active_learning\uncertain\91d147a8-f96b-423c-ba7a-be887c0b2726_19.jpg" />
+    <Content Include="data\active_learning\uncertain\91d147a8-f96b-423c-ba7a-be887c0b2726_2.jpg" />
+    <Content Include="data\active_learning\uncertain\91d147a8-f96b-423c-ba7a-be887c0b2726_3.jpg" />
+    <Content Include="data\active_learning\uncertain\91d147a8-f96b-423c-ba7a-be887c0b2726_4.jpg" />
+    <Content Include="data\active_learning\uncertain\91d147a8-f96b-423c-ba7a-be887c0b2726_5.jpg" />
+    <Content Include="data\active_learning\uncertain\91d147a8-f96b-423c-ba7a-be887c0b2726_6.jpg" />
+    <Content Include="data\active_learning\uncertain\91d147a8-f96b-423c-ba7a-be887c0b2726_7.jpg" />
+    <Content Include="data\active_learning\uncertain\91d147a8-f96b-423c-ba7a-be887c0b2726_8.jpg" />
+    <Content Include="data\active_learning\uncertain\9977dc94-89b2-4c3e-a2ba-fb6f8ea9264d_obj_0.jpg" />
+    <Content Include="data\active_learning\uncertain\9977dc94-89b2-4c3e-a2ba-fb6f8ea9264d_obj_10.jpg" />
+    <Content Include="data\active_learning\uncertain\9977dc94-89b2-4c3e-a2ba-fb6f8ea9264d_obj_11.jpg" />
+    <Content Include="data\active_learning\uncertain\9977dc94-89b2-4c3e-a2ba-fb6f8ea9264d_obj_13.jpg" />
+    <Content Include="data\active_learning\uncertain\9977dc94-89b2-4c3e-a2ba-fb6f8ea9264d_obj_14.jpg" />
+    <Content Include="data\active_learning\uncertain\9977dc94-89b2-4c3e-a2ba-fb6f8ea9264d_obj_15.jpg" />
+    <Content Include="data\active_learning\uncertain\9977dc94-89b2-4c3e-a2ba-fb6f8ea9264d_obj_2.jpg" />
+    <Content Include="data\active_learning\uncertain\9977dc94-89b2-4c3e-a2ba-fb6f8ea9264d_obj_5.jpg" />
+    <Content Include="data\active_learning\uncertain\9977dc94-89b2-4c3e-a2ba-fb6f8ea9264d_obj_6.jpg" />
+    <Content Include="data\active_learning\uncertain\9977dc94-89b2-4c3e-a2ba-fb6f8ea9264d_obj_7.jpg" />
+    <Content Include="data\active_learning\uncertain\9977dc94-89b2-4c3e-a2ba-fb6f8ea9264d_obj_8.jpg" />
+    <Content Include="data\active_learning\uncertain\ad393115-4738-439e-b1f7-684118c0cdc2_obj_0.jpg" />
+    <Content Include="data\active_learning\uncertain\ad393115-4738-439e-b1f7-684118c0cdc2_obj_1.jpg" />
+    <Content Include="data\active_learning\uncertain\ad393115-4738-439e-b1f7-684118c0cdc2_obj_2.jpg" />
+    <Content Include="data\active_learning\uncertain\ad393115-4738-439e-b1f7-684118c0cdc2_obj_3.jpg" />
+    <Content Include="data\active_learning\uncertain\ad393115-4738-439e-b1f7-684118c0cdc2_obj_4.jpg" />
+    <Content Include="data\active_learning\uncertain\ad393115-4738-439e-b1f7-684118c0cdc2_obj_5.jpg" />
+    <Content Include="data\uploads\812e0474-8b87-45de-80b2-9e68d805bf08_full.jpg" />
+    <Content Include="data\uploads\ad393115-4738-439e-b1f7-684118c0cdc2_full.jpg" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
+  <!-- Uncomment the CoreCompile target to enable the Build command in
+       Visual Studio and specify your pre- and post-build commands in
+       the BeforeBuild and AfterBuild targets below. -->
+  <!--<Target Name="CoreCompile" />-->
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+</Project>
