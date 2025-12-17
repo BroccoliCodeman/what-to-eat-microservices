@@ -238,6 +238,47 @@ async def health():
     }
 
 
+from fastapi.responses import FileResponse
+
+
+@app.get("/active-learning/image/{image_id}", tags=["Active Learning"])
+async def get_uncertain_image(image_id: str):
+    """
+    Повертає зображення з папки uncertain за його ID.
+
+    Args:
+        image_id: Ім'я файлу (наприклад, "uuid_0.jpg")
+
+    Returns:
+        FileResponse: Зображення у форматі JPEG/PNG
+
+    Raises:
+        404: Якщо файл не знайдено
+        400: Якщо ім'я файлу містить небезпечні символи
+    """
+    # Безпека: перевіряємо, що image_id не містить шляхів типу "../"
+    if ".." in image_id or "/" in image_id or "\\" in image_id:
+        raise HTTPException(400, "Invalid image ID format")
+
+    # Формуємо повний шлях до файлу
+    file_path = os.path.join(Config.UNCERTAIN_DIR, image_id)
+
+    # Перевіряємо існування файлу
+    if not os.path.exists(file_path):
+        raise HTTPException(404, f"Image '{image_id}' not found in uncertain pool")
+
+    # Визначаємо media type на основі розширення
+    media_type = "image/jpeg"
+    if image_id.lower().endswith(".png"):
+        media_type = "image/png"
+
+    # Повертаємо файл
+    return FileResponse(
+        path=file_path,
+        media_type=media_type,
+        filename=image_id
+    )
+
 if __name__ == "__main__":
     import uvicorn
 

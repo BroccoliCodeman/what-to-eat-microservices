@@ -35,6 +35,9 @@ services:
     volumes:
       - sho_db_data:/var/opt/mssql
     restart: unless-stopped
+
+
+
  recipes.api:
     image: ${DOCKER_REGISTRY-}recipesapi
     build:
@@ -43,7 +46,7 @@ services:
     networks:
       - ShoNetwork
     ports:
-      - 1488:8080
+      - 5000:80
     environment:
       - DB_HOST=Database
       - DB_USER=sa
