@@ -35,10 +35,10 @@ namespace Recipes.DAL.Infrastructure
             await _table.AddAsync(entity);
         }
 
-        public virtual async Task UpdateAsync(TEntity entity)
+        public virtual Task UpdateAsync(TEntity entity)
         {
-            logger.LogInformation($"        Updating {typeof(TEntity).Name} entity");
-            await Task.Run(() => _databaseContext.Update(entity));
+            _databaseContext.Update(entity);
+            return Task.CompletedTask;
         }
 
         public virtual async Task DeleteAsync(Guid id)

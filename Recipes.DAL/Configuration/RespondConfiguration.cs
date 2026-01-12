@@ -15,12 +15,11 @@ public class RespondConfiguration : IEntityTypeConfiguration<Respond>
 
         builder
             .Property(r => r.Text)
-            .HasMaxLength(1000)
+            .HasMaxLength(5000)
             .IsRequired();
 
         builder
             .Property(r => r.Rate)
-            .HasMaxLength(1)
             .IsRequired();
         
         builder

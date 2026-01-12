@@ -6,5 +6,5 @@ public class CookingStep
     public string Description { get; set; } = string.Empty;
     public int Order { get; set; }
     public Guid? RecipeId { get; set; }
-    public Recipe? Recipe { get; set; } = null!;
+    public Recipe? Recipe { get; set; } 
 }

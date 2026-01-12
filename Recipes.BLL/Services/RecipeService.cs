@@ -242,11 +242,12 @@ public class RecipeService : IRecipeService
 
 
             }
-         
+
+            var allUnits = await _unitOfWork.WeightUnitRepository.GetAsync();
             foreach (var newIngredient in newIngredients)
             {
                 newIngredient.Id = Guid.NewGuid();
-                var unit = _unitOfWork.WeightUnitRepository.GetAsync().Result.FirstOrDefault(p => p.Type == newIngredient.WeightUnit.Type);
+                var unit = allUnits.FirstOrDefault(p => p.Type == newIngredient.WeightUnit.Type);
 
                 if (unit == null)
                 {
@@ -267,7 +268,8 @@ public class RecipeService : IRecipeService
                 if (recipesIngredient != null)
                 {
 
-                     var unit = _unitOfWork.WeightUnitRepository.GetAsync().Result.FirstOrDefault(p => p.Type == recipesIngredient.WeightUnit.Type);
+                    var unitreq = await _unitOfWork.WeightUnitRepository.GetAsync();
+                     var unit = unitreq.FirstOrDefault(p => p.Type == recipesIngredient.WeightUnit.Type);
                     
                     if (unit == null)
                     {
@@ -320,7 +322,7 @@ public class RecipeService : IRecipeService
 
             var recipes = await _unitOfWork.RecipeRepository.GetAsync();
 
-            recipes = recipes.Where(x => x.Users.Any(p=>p.Id == UserId)).ToList();
+            recipes = recipes.Where(x => x.SavedByUsers.Any(p=>p.Id == UserId)).ToList();
             if (recipes.Count == 0)
                 return _responseCreator.CreateBaseNotFound<List<RecipeIntroDto>>("No recipes found.");
 

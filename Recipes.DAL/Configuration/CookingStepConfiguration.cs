@@ -20,10 +20,8 @@ public class CookingStepConfiguration : IEntityTypeConfiguration<CookingStep>
             .HasMaxLength(3000)
             .IsRequired();
 
-        builder
-            .Property(cs => cs.Order)
-            .HasMaxLength(2)
+
+        builder.Property(cs => cs.Order)
             .IsRequired();
-        
     }
 }

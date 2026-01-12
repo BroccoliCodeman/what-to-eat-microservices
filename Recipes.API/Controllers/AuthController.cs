@@ -128,7 +128,11 @@ namespace Recipes.API.Controllers
         {
             var username = User.FindFirst("userName")?.Value;
 
-            var user = await context.Users.Where(x => x.UserName == username).Include(x => x.SavedRecipes).FirstOrDefaultAsync();
+            var user = await context.Users.Where(x => x.UserName == username)
+                .Include(x => x.SavedRecipes)
+                .Include(p => p.Responds)
+                .Include(p => p.CreatedRecipes)
+                .FirstOrDefaultAsync();
 
             if (user == null)
                 return Unauthorized();

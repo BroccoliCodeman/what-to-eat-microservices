@@ -12,8 +12,8 @@ using Recipes.DAL;
 namespace Recipes.DAL.Migrations
 {
     [DbContext(typeof(RecipesContext))]
-    [Migration("20251202124633_init")]
-    partial class init
+    [Migration("20260112151101_initial")]
+    partial class initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -145,17 +145,17 @@ namespace Recipes.DAL.Migrations
 
             modelBuilder.Entity("RecipeUser", b =>
                 {
+                    b.Property<Guid>("SavedByUsersId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<Guid>("SavedRecipesId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("UsersId")
-                        .HasColumnType("uniqueidentifier");
+                    b.HasKey("SavedByUsersId", "SavedRecipesId");
 
-                    b.HasKey("SavedRecipesId", "UsersId");
+                    b.HasIndex("SavedRecipesId");
 
-                    b.HasIndex("UsersId");
-
-                    b.ToTable("RecipeUser");
+                    b.ToTable("UserSavedRecipes", (string)null);
                 });
 
             modelBuilder.Entity("Recipes.Data.Models.CookingStep", b =>
@@ -170,7 +170,6 @@ namespace Recipes.DAL.Migrations
                         .HasColumnType("nvarchar(3000)");
 
                     b.Property<int>("Order")
-                        .HasMaxLength(2)
                         .HasColumnType("int");
 
                     b.Property<Guid?>("RecipeId")
@@ -191,7 +190,8 @@ namespace Recipes.DAL.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
 
                     b.Property<float>("Quantity")
                         .HasColumnType("real");
@@ -212,6 +212,9 @@ namespace Recipes.DAL.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<Guid?>("AuthorId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<int>("Calories")
                         .HasMaxLength(20)
                         .HasColumnType("int");
@@ -228,6 +231,7 @@ namespace Recipes.DAL.Migrations
                         .HasColumnType("nvarchar(3000)");
 
                     b.Property<string>("Photo")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Servings")
@@ -238,12 +242,9 @@ namespace Recipes.DAL.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<Guid?>("UserId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("AuthorId");
 
                     b.ToTable("Recipes");
                 });
@@ -255,7 +256,6 @@ namespace Recipes.DAL.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("Rate")
-                        .HasMaxLength(1)
                         .HasColumnType("int");
 
                     b.Property<Guid?>("RecipeId")
@@ -263,8 +263,8 @@ namespace Recipes.DAL.Migrations
 
                     b.Property<string>("Text")
                         .IsRequired()
-                        .HasMaxLength(1000)
-                        .HasColumnType("nvarchar(1000)");
+                        .HasMaxLength(5000)
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<Guid?>("UserId")
                         .HasColumnType("uniqueidentifier");
@@ -470,15 +470,15 @@ namespace Recipes.DAL.Migrations
 
             modelBuilder.Entity("RecipeUser", b =>
                 {
-                    b.HasOne("Recipes.Data.Models.Recipe", null)
+                    b.HasOne("Recipes.Data.Models.User", null)
                         .WithMany()
-                        .HasForeignKey("SavedRecipesId")
+                        .HasForeignKey("SavedByUsersId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Recipes.Data.Models.User", null)
+                    b.HasOne("Recipes.Data.Models.Recipe", null)
                         .WithMany()
-                        .HasForeignKey("UsersId")
+                        .HasForeignKey("SavedRecipesId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -487,7 +487,8 @@ namespace Recipes.DAL.Migrations
                 {
                     b.HasOne("Recipes.Data.Models.Recipe", "Recipe")
                         .WithMany("CookingSteps")
-                        .HasForeignKey("RecipeId");
+                        .HasForeignKey("RecipeId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.Navigation("Recipe");
                 });
@@ -503,11 +504,12 @@ namespace Recipes.DAL.Migrations
 
             modelBuilder.Entity("Recipes.Data.Models.Recipe", b =>
                 {
-                    b.HasOne("Recipes.Data.Models.User", "User")
+                    b.HasOne("Recipes.Data.Models.User", "Author")
                         .WithMany("CreatedRecipes")
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("AuthorId")
+                        .OnDelete(DeleteBehavior.SetNull);
 
-                    b.Navigation("User");
+                    b.Navigation("Author");
                 });
 
             modelBuilder.Entity("Recipes.Data.Models.Respond", b =>

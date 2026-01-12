@@ -42,10 +42,29 @@ public class RecipeConfiguration : IEntityTypeConfiguration<Recipe>
             .Property(r => r.CreationDate)
             .IsRequired();
 
-        builder.HasMany(p => p.Ingredients).WithMany(p => p.Recipes);
-        builder.HasMany(p => p.Users).WithMany(p => p.SavedRecipes);
-        builder.HasOne(p => p.User).WithMany(p => p.CreatedRecipes).IsRequired(false);
-        builder.HasMany(p => p.CookingSteps).WithOne(p => p.Recipe);
-        
+        // Багато-до-багатьох: Recipe <-> Ingredient
+        builder
+            .HasMany(r => r.Ingredients)
+            .WithMany(i => i.Recipes);
+
+        // Багато-до-багатьох: Recipe <-> User (збережені рецепти)
+        builder
+            .HasMany(r => r.SavedByUsers)
+            .WithMany(u => u.SavedRecipes)
+            .UsingEntity(j => j.ToTable("UserSavedRecipes"));
+
+        // Один-до-багатьох: Recipe -> User (автор)
+        builder
+            .HasOne(r => r.Author)
+            .WithMany(u => u.CreatedRecipes)
+            .HasForeignKey(r => r.AuthorId)
+            .OnDelete(DeleteBehavior.SetNull);
+
+        // Один-до-багатьох: Recipe -> CookingStep
+        builder
+            .HasMany(r => r.CookingSteps)
+            .WithOne(cs => cs.Recipe)
+            .HasForeignKey(cs => cs.RecipeId)
+            .OnDelete(DeleteBehavior.Cascade);
     }
 }

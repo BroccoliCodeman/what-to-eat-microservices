@@ -95,8 +95,9 @@ public class IngredientService : IIngredientService
             
             var ing = _mapper.Map<Ingredient>(modelDto);
             ing.Id = Guid.NewGuid();
-            var value = _unitOfWork.WeightUnitRepository.GetAsync().Result.Where(p=>p.Type == modelDto.WeightUnit.Type);
-
+            var valuereq = await _unitOfWork.WeightUnitRepository.GetAsync();
+             var value =  valuereq.Where(p=>p.Type == modelDto.WeightUnit.Type);
+            
             if (value.Count()!=0)
                 await _unitOfWork.WeightUnitRepository.InsertAsync(_mapper.Map<WeightUnit>(modelDto.WeightUnit));
 

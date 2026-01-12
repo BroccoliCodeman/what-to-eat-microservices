@@ -34,8 +34,4 @@
       <ProjectReference Include="..\Recipes.BLL\Recipes.BLL.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="SeedData\" />
-    </ItemGroup>
-
 </Project>

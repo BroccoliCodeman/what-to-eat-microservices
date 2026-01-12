@@ -3,12 +3,16 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
 using Recipes.Data.Models;
+using Microsoft.EntityFrameworkCore.Storage;
+using Recipes.Data.Parsers;
 
 namespace Recipes.DAL.Seeding
 {
-
     public static class DatabaseSeeding
     {
+        // ID дефолтного користувача
+        private static readonly Guid DEFAULT_USER_ID = Guid.Parse("8e445865-a24d-4543-a6c6-9443d048cdb9");
+
         public static async Task SeedDatabase(IServiceProvider serviceProvider)
         {
             using var scope = serviceProvider.CreateScope();
@@ -16,299 +20,371 @@ namespace Recipes.DAL.Seeding
             var userManager = scope.ServiceProvider.GetRequiredService<UserManager<User>>();
             var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<UserRole>>();
 
+            IDbContextTransaction? transaction = null;
+            string csvRecipesFilePath = "SeedData/recipes.csv";
+            string csvReviewsFilePath = "SeedData/reviews.csv";
+
             try
             {
-                // 1. Спочатку базові сутності
-                await SeedRoles(roleManager);
-                await SeedUsers(userManager, roleManager);
-                await SeedWeightUnits(context);
+                // Перевіряємо, чи база вже заповнена
+                Console.WriteLine("Checking database status...");
 
-                // 2. Інгредієнти (незалежні)
-               var ingredients =  await SeedIngredients(context);
+                var hasRoles = await roleManager.Roles.AnyAsync();
+                var hasUsers = await userManager.Users.AnyAsync();
+                var hasWeightUnits = await context.WeightUnits.AnyAsync();
+                var hasRecipes = await context.Recipes.AnyAsync();
+                var hasIngredients = await context.Ingredients.AnyAsync();
 
-                // 3. Рецепти (незалежні)
-                await SeedRecipes(context, ingredients);
+                if (hasRoles && hasUsers && hasWeightUnits && hasRecipes && hasIngredients)
+                {
+                    Console.WriteLine("Database already seeded. Skipping seeding process.");
+                    return;
+                }
 
-                // 4. Зв'язки між рецептами та інгредієнтами
-               // await SeedIngredientRecipe(context);
+                Console.WriteLine($"Database status: Roles={hasRoles}, Users={hasUsers}, WeightUnits={hasWeightUnits}, Recipes={hasRecipes}, Ingredients={hasIngredients}");
+                Console.WriteLine("Starting seeding process...");
 
-                // 5. Інші залежні дані
-                await SeedCookingSteps(context);
-                await SeedResponds(context);
-                await SeedRecipeUser(context);
+                transaction = await context.Database.BeginTransactionAsync();
 
-                Console.WriteLine("Database seeded successfully!");
+                // 1. Базові сутності
+                if (!hasRoles)
+                {
+                    Console.WriteLine("Seeding roles...");
+                    await SeedRoles(roleManager);
+                }
+                else
+                {
+                    Console.WriteLine("Roles already exist. Skipping.");
+                }
+
+                if (!hasUsers)
+                {
+                    Console.WriteLine("Seeding users...");
+                    await SeedUsers(userManager, roleManager);
+                }
+                else
+                {
+                    Console.WriteLine("Users already exist. Skipping.");
+                }
+
+                if (!hasWeightUnits)
+                {
+                    Console.WriteLine("Seeding weight units...");
+                    await SeedWeightUnits(context);
+                }
+                else
+                {
+                    Console.WriteLine("Weight units already exist. Skipping.");
+                }
+
+                await transaction.CommitAsync();
+                transaction = await context.Database.BeginTransactionAsync();
+
+                // 2. Парсимо та додаємо рецепти з CSV
+                if (!hasRecipes || !hasIngredients)
+                {
+                    Console.WriteLine("Seeding recipes from CSV...");
+                    await SeedRecipesFromCsv(context, csvRecipesFilePath, csvReviewsFilePath);
+                }
+                else
+                {
+                    Console.WriteLine("Recipes and ingredients already exist. Skipping.");
+                }
+
+                // 3. Зв'язки користувачів з рецептами (SavedRecipes)
+                if (hasRecipes && hasUsers)
+                {
+                    Console.WriteLine("Linking recipes to users...");
+                    await SeedRecipeUser(context);
+                }
+
+                await transaction.CommitAsync();
+
+                Console.WriteLine("Database seeding completed successfully!");
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Error seeding database: {ex.Message}");
+                Console.WriteLine($"Stack trace: {ex.StackTrace}");
+
+                if (transaction != null)
+                {
+                    await transaction.RollbackAsync();
+                }
+
                 throw;
             }
+            finally
+            {
+                transaction?.Dispose();
+            }
         }
 
-        private static async Task<List<IngredientDto>>? SeedIngredients(RecipesContext context)
+        private static async Task SeedRecipesFromCsv(RecipesContext context, string csvRecipesFilePath, string csvReviewsFilePath)
         {
-            var json = await File.ReadAllTextAsync("SeedData/Ingredients.json");
-            List<IngredientDto>? ingredientsDtos = JsonConvert.DeserializeObject<List<IngredientDto>>(json);
-            if (ingredientsDtos == null) return null;
-            foreach (var dto in ingredientsDtos)
+            if (!File.Exists(csvRecipesFilePath))
             {
-                dto.OldId = dto.Id;
-                dto.Id = Guid.Empty;
+                Console.WriteLine($"Warning: {csvRecipesFilePath} not found. Skipping recipes seeding.");
+                return;
             }
-            var existingNames = await context.Ingredients.Select(i => i.Name).ToListAsync();
-            var existingSet = new HashSet<string>(existingNames);
 
-            foreach (var dto in ingredientsDtos)
+            if (!File.Exists(csvReviewsFilePath))
             {
-                if (!existingSet.Contains(dto.Name))
+                Console.WriteLine($"Warning: {csvReviewsFilePath} not found. Reviews will be skipped.");
+            }
+
+            var csvParser = new RecipeCsvParser();
+            var parsedRecipes = csvParser.ParseRecipes(csvRecipesFilePath, csvReviewsFilePath);
+
+            if (parsedRecipes == null || !parsedRecipes.Any())
+            {
+                Console.WriteLine("No recipes parsed from CSV.");
+                return;
+            }
+
+            // Отримуємо існуючі заголовки рецептів
+            var existingTitles = await context.Recipes
+                .AsNoTracking()
+                .Select(r => r.Title)
+                .ToListAsync();
+            var existingTitlesSet = new HashSet<string>(existingTitles);
+
+            // Отримуємо всі унікальні назви інгредієнтів з парсених рецептів
+            var allIngredientNames = parsedRecipes
+                .Where(r => r.Ingredients != null)
+                .SelectMany(r => r.Ingredients!)
+                .Select(i => i.Name)
+                .Where(name => !string.IsNullOrWhiteSpace(name))
+                .Distinct()
+                .ToList();
+
+            // Отримуємо існуючі інгредієнти з бази
+            var existingIngredients = await context.Ingredients
+                .Where(i => allIngredientNames.Contains(i.Name))
+                .ToDictionaryAsync(i => i.Name, i => i);
+
+            // Створюємо нові інгредієнти, яких немає в базі
+            var newIngredientNames = allIngredientNames
+                .Where(name => !existingIngredients.ContainsKey(name))
+                .ToList();
+
+            if (newIngredientNames.Any())
+            {
+                var newIngredients = newIngredientNames.Select(name => new Ingredient
                 {
-                    var  item = new Ingredient
-                    {
-                        Quantity = dto.Quantity,
-                        Name = dto.Name,
-                        WeightUnitId = dto.WeightUnitId
-                    };
-                    context.Ingredients.Add(item);
-                    dto.Id = item.Id;
+                    Id = Guid.NewGuid(),
+                    Name = name,
+                    Quantity = 0,
+                    WeightUnitId = null
+                }).ToList();
+
+                await context.Ingredients.AddRangeAsync(newIngredients);
+                await context.SaveChangesAsync();
+
+                // Додаємо нові інгредієнти до словника
+                foreach (var ingredient in newIngredients)
+                {
+                    existingIngredients[ingredient.Name] = ingredient;
                 }
+
+                Console.WriteLine($"Added {newIngredients.Count} new ingredients from CSV.");
             }
 
-            await context.SaveChangesAsync();
-            return ingredientsDtos;
-        }
+            var recipesToAdd = new List<Recipe>();
 
-        private static async Task SeedRecipes(RecipesContext context, List<IngredientDto> ingredients)
-        {
-            var json = await File.ReadAllTextAsync("SeedData/Recipes.json");
-            var recipesDtos = JsonConvert.DeserializeObject<List<RecipeDto>>(json);
-            if (recipesDtos == null) return;
-            var jsonL = await File.ReadAllTextAsync("SeedData/IngredientRecipe.json");
-            var links = JsonConvert.DeserializeObject<List<RecipeToIngredientDto>>(jsonL);
-            if (links == null) return;
-
-
-            var existingTitles = await context.Recipes.Select(r => r.Title).ToListAsync();
-            var existingSet = new HashSet<string>(existingTitles);
-
-            foreach (var dto in recipesDtos)
+            foreach (var parsedRecipe in parsedRecipes)
             {
-                var reId = dto.Id;
-                var ingredientLinks = links.Where(l => l.RecipesId == reId).ToList();
-                var recipeIngredients = ingredients.Where(i => ingredientLinks.Any(l => l.IngredientsId == i.OldId))
-                    .ToList();
-                var ingredientEntities = context.Ingredients.ToList();
-               var ingredintstonsert = ingredientEntities.Where(i => recipeIngredients.Any(ri => ri.Id == i.Id))
-                    .ToList();
-
-                if (!existingSet.Contains(dto.Title))
+                if (string.IsNullOrEmpty(parsedRecipe.Photo))
                 {
-                    context.Recipes.Add(new Recipe
-                    {
-                        Servings = dto.Servings,
-                        CookingTime = dto.CookingTime,
-                        Title = dto.Title,
-                        Photo = dto.Photo,
-                        Description = dto.Description,
-                        Calories = dto.Calories,
-                        UserId = dto.UserId,
-                        CreationDate = dto.CreationDate,
-                        Ingredients = ingredintstonsert
-                    });
+                    Console.WriteLine("Skipping recipe with no photo.");
+                    continue;
                 }
-            }
-            await context.SaveChangesAsync();
-        }
-
-        // АНАЛОГІЧНО ДО SeedCookingSteps
-        private static async Task SeedIngredientRecipe(RecipesContext context)
-        {
-            var json = await File.ReadAllTextAsync("SeedData/IngredientRecipe.json");
-            var links = JsonConvert.DeserializeObject<List<RecipeToIngredientDto>>(json);
-            if (links == null) return;
-
-            // Читаємо шпаргалки для старих ID
-            var recipesJson = await File.ReadAllTextAsync("SeedData/Recipes.json");
-            var ingredientsJson = await File.ReadAllTextAsync("SeedData/Ingredients.json");
-
-            var recipeDtos = JsonConvert.DeserializeObject<List<RecipeDto>>(recipesJson);
-            var ingredientDtos = JsonConvert.DeserializeObject<List<IngredientDto>>(ingredientsJson);
-
-            // Створюємо мапи: старий ID -> назва/ім'я
-            var oldIdToRecipeTitle = recipeDtos.ToDictionary(r => r.Id, r => r.Title);
-            var oldIdToIngredientName = ingredientDtos.ToDictionary(i => i.Id, i => i.Name);
-
-            // Завантажуємо реальні об'єкти з бази: назва/ім'я -> новий ID
-            var dbRecipes = await context.Recipes.ToDictionaryAsync(r => r.Title, r => r.Id);
-            var dbIngredients = await context.Ingredients.ToDictionaryAsync(i => i.Name, i => i.Id);
-
-            // Завантажуємо рецепти з їх інгредієнтами для перевірки існуючих зв'язків
-            var recipesWithIngredients = await context.Recipes
-                .Include(r => r.Ingredients)
-                .ToDictionaryAsync(r => r.Id, r => r);
-
-            foreach (var link in links)
-            {
-                // Знаходимо назву рецепта та інгредієнта за старими ID
-                if (oldIdToRecipeTitle.TryGetValue(link.RecipesId, out var recipeTitle) &&
-                    oldIdToIngredientName.TryGetValue(link.IngredientsId, out var ingredientName))
+                if (string.IsNullOrWhiteSpace(parsedRecipe.Title))
                 {
-                    // Знаходимо нові ID за назвами
-                    if (dbRecipes.TryGetValue(recipeTitle, out var newRecipeId) &&
-                        dbIngredients.TryGetValue(ingredientName, out var newIngredientId))
+                    Console.WriteLine("Skipping recipe with empty title.");
+                    continue;
+                }
+
+                if (existingTitlesSet.Contains(parsedRecipe.Title))
+                {
+                    continue;
+                }
+
+                // Створюємо новий рецепт з AuthorId від дефолтного користувача
+                var newRecipe = new Recipe
+                {
+                    Id = parsedRecipe.Id,
+                    Title = parsedRecipe.Title,
+                    Description = parsedRecipe.Description,
+                    Servings = parsedRecipe.Servings,
+                    CookingTime = parsedRecipe.CookingTime,
+                    Calories = parsedRecipe.Calories,
+                    Photo = parsedRecipe.Photo,
+                    CreationDate = parsedRecipe.CreationDate,
+                    AuthorId = DEFAULT_USER_ID, // ✅ Виправлено з UserId на AuthorId
+                    Ingredients = new List<Ingredient>(),
+                    CookingSteps = new List<CookingStep>(),
+                    Responds = new List<Respond>()
+                };
+
+                // Додаємо інгредієнти
+                if (parsedRecipe.Ingredients != null)
+                {
+                    foreach (var ingredient in parsedRecipe.Ingredients)
                     {
-                        // Перевіряємо чи не існує вже цей зв'язок
-                        if (recipesWithIngredients.TryGetValue(newRecipeId, out var recipe))
+                        if (existingIngredients.TryGetValue(ingredient.Name, out var existingIngredient))
                         {
-                            if (recipe.Ingredients == null)
-                                recipe.Ingredients = new List<Ingredient>();
-
-                            if (!recipe.Ingredients.Any(i => i.Id == newIngredientId))
+                            // Attach існуючий інгредієнт
+                            if (context.Entry(existingIngredient).State == EntityState.Detached)
                             {
-                                var ingredient = await context.Ingredients.FindAsync(newIngredientId);
-                                if (ingredient != null)
-                                {
-                                    recipe.Ingredients.Add(ingredient);
-                                }
+                                context.Attach(existingIngredient);
                             }
+                            newRecipe.Ingredients.Add(existingIngredient);
                         }
                     }
                 }
-            }
 
-            await context.SaveChangesAsync();
-        }
-
-        private static async Task SeedCookingSteps(RecipesContext context)
-        {
-            var json = await File.ReadAllTextAsync("SeedData/CookingSteps.json");
-            var stepDtos = JsonConvert.DeserializeObject<List<CookingStepDto>>(json);
-            if (stepDtos == null) return;
-
-            var recipesJson = await File.ReadAllTextAsync("SeedData/Recipes.json");
-            var recipeDtos = JsonConvert.DeserializeObject<List<RecipeDto>>(recipesJson);
-            var oldIdToTitle = recipeDtos.ToDictionary(r => r.Id, r => r.Title);
-
-            var dbRecipes = await context.Recipes.ToDictionaryAsync(r => r.Title, r => r.Id);
-
-            foreach (var stepDto in stepDtos)
-            {
-                if (stepDto.RecipeId.HasValue &&
-                    oldIdToTitle.TryGetValue(stepDto.RecipeId.Value, out var title) &&
-                    dbRecipes.TryGetValue(title, out var newRecipeId))
+                // Додаємо кроки приготування
+                if (parsedRecipe.CookingSteps != null)
                 {
-                    if (!await context.CookingSteps.AnyAsync(s => s.RecipeId == newRecipeId && s.Order == stepDto.Order))
+                    foreach (var step in parsedRecipe.CookingSteps)
                     {
-                        context.CookingSteps.Add(new CookingStep
+                        newRecipe.CookingSteps.Add(new CookingStep
                         {
-                            Description = stepDto.Description,
-                            Order = stepDto.Order,
-                            RecipeId = newRecipeId
+                            Id = step.Id,
+                            Description = step.Description,
+                            Order = step.Order,
+                            RecipeId = newRecipe.Id
                         });
                     }
                 }
-            }
-            await context.SaveChangesAsync();
-        }
 
-        private static async Task SeedResponds(RecipesContext context)
-        {
-            var json = await File.ReadAllTextAsync("SeedData/Responds.json");
-            var dtos = JsonConvert.DeserializeObject<List<RespondDto>>(json);
-            if (dtos == null) return;
-
-            var recipesJson = await File.ReadAllTextAsync("SeedData/Recipes.json");
-            var recipeDtos = JsonConvert.DeserializeObject<List<RecipeDto>>(recipesJson);
-            var oldIdToTitle = recipeDtos.ToDictionary(r => r.Id, r => r.Title);
-
-            var dbRecipes = await context.Recipes.ToDictionaryAsync(r => r.Title, r => r.Id);
-
-            foreach (var dto in dtos)
-            {
-                if (dto.RecipeId.HasValue &&
-                    oldIdToTitle.TryGetValue(dto.RecipeId.Value, out var title) &&
-                    dbRecipes.TryGetValue(title, out var newRecipeId))
+                // Додаємо відгуки
+                if (parsedRecipe.Responds != null)
                 {
-                    if (!await context.Responds.AnyAsync(r => r.UserId == dto.UserId && r.RecipeId == newRecipeId))
+                    foreach (var respond in parsedRecipe.Responds)
                     {
-                        context.Responds.Add(new Respond
+                        newRecipe.Responds.Add(new Respond
                         {
-                            Text = dto.Text,
-                            Rate = dto.Rate,
-                            RecipeId = newRecipeId,
-                            UserId = dto.UserId
+                            Id = respond.Id,
+                            Text = respond.Text,
+                            Rate = respond.Rate,
+                            RecipeId = newRecipe.Id,
+                            UserId = respond.UserId // UserId з парсера (9c445865-a24d-4233-a6c6-9443d048cdb9)
                         });
                     }
                 }
+
+                recipesToAdd.Add(newRecipe);
+                existingTitlesSet.Add(parsedRecipe.Title);
             }
-            await context.SaveChangesAsync();
+
+            if (recipesToAdd.Any())
+            {
+                await context.Recipes.AddRangeAsync(recipesToAdd);
+                await context.SaveChangesAsync();
+                Console.WriteLine($"Added {recipesToAdd.Count} new recipes from CSV.");
+            }
         }
 
         private static async Task SeedRecipeUser(RecipesContext context)
         {
-            var json = await File.ReadAllTextAsync("SeedData/RecipeUser.json");
-            var links = JsonConvert.DeserializeObject<List<RecipeUserDto>>(json);
-            if (links == null) return;
+            // Перевіряємо, чи існує дефолтний користувач
+            var defaultUser = await context.Users
+                .FirstOrDefaultAsync(u => u.Id == DEFAULT_USER_ID);
 
-            var recipesJson = await File.ReadAllTextAsync("SeedData/Recipes.json");
-            var recipeDtos = JsonConvert.DeserializeObject<List<RecipeDto>>(recipesJson);
-            var oldIdToTitle = recipeDtos.ToDictionary(r => r.Id, r => r.Title);
-
-            var dbRecipes = await context.Recipes.ToDictionaryAsync(r => r.Title, r => r.Id);
-
-            var recipesWithUsers = await context.Recipes
-                .Include(r => r.Users)
-                .ToDictionaryAsync(r => r.Id, r => r);
-
-            foreach (var link in links)
+            if (defaultUser == null)
             {
-                if (oldIdToTitle.TryGetValue(link.RecipesId, out var title) &&
-                    dbRecipes.TryGetValue(title, out var newRecipeId))
-                {
-                    if (recipesWithUsers.TryGetValue(newRecipeId, out var recipe))
-                    {
-                        var user = await context.Users.FindAsync(link.UsersId);
-                        if (user != null)
-                        {
-                            if (recipe.Users == null)
-                                recipe.Users = new List<User>();
-
-                            if (!recipe.Users.Any(u => u.Id == user.Id))
-                            {
-                                recipe.Users.Add(user);
-                            }
-                        }
-                    }
-                }
+                Console.WriteLine($"Warning: Default user with ID {DEFAULT_USER_ID} not found. Skipping recipe-user links.");
+                return;
             }
 
+            // Завантажуємо всі рецепти БЕЗ tracking для оптимізації
+            var recipeIds = await context.Recipes
+                .Select(r => r.Id)
+                .ToListAsync();
+
+            if (!recipeIds.Any())
+            {
+                Console.WriteLine("No recipes found.");
+                return;
+            }
+
+            var existingSavedRecipeIds = await context.Recipes.Where(p=>p.Author==null).ToListAsync();
+
+            if (!existingSavedRecipeIds.Any())
+            {
+                Console.WriteLine("All recipes already linked to default user.");
+                return;
+            }
+
+            // Додаємо зв'язки через raw SQL для оптимізації
+            foreach (var recipe in existingSavedRecipeIds)
+            {
+                recipe.Author = defaultUser;
+            }
             await context.SaveChangesAsync();
         }
 
         private static async Task SeedRoles(RoleManager<UserRole> roleManager)
         {
-            var json = await File.ReadAllTextAsync("SeedData/AspNetRoles.json");
+            var filePath = "SeedData/AspNetRoles.json";
+            if (!File.Exists(filePath))
+            {
+                Console.WriteLine($"Warning: {filePath} not found. Skipping roles seeding.");
+                return;
+            }
+
+            var json = await File.ReadAllTextAsync(filePath);
             var roles = JsonConvert.DeserializeObject<List<AspNetRoleDto>>(json);
-            if (roles == null) return;
+            if (roles == null || !roles.Any()) return;
+
             foreach (var r in roles)
             {
+                if (string.IsNullOrWhiteSpace(r.Name)) continue;
+
                 if (!await roleManager.RoleExistsAsync(r.Name))
-                    await roleManager.CreateAsync(new UserRole { Id = r.Id, Name = r.Name, NormalizedName = r.NormalizedName });
+                {
+                    var result = await roleManager.CreateAsync(new UserRole
+                    {
+                        Id = r.Id,
+                        Name = r.Name,
+                        NormalizedName = r.NormalizedName
+                    });
+
+                    if (result.Succeeded)
+                    {
+                        Console.WriteLine($"Role '{r.Name}' created successfully.");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Failed to create role '{r.Name}': {string.Join(", ", result.Errors.Select(e => e.Description))}");
+                    }
+                }
             }
         }
 
         private static async Task SeedUsers(UserManager<User> userManager, RoleManager<UserRole> roleManager)
         {
-            var json = await File.ReadAllTextAsync("SeedData/AspNetUsers.json");
-            var users = JsonConvert.DeserializeObject<List<AspNetUserDto>>(json);
-            var userRolesJson = await File.ReadAllTextAsync("SeedData/AspNetUserRoles.json");
-            var userRoles = JsonConvert.DeserializeObject<List<AspNetUserRoleDto>>(userRolesJson);
+            var usersFilePath = "SeedData/AspNetUsers.json";
+            var userRolesFilePath = "SeedData/AspNetUserRoles.json";
 
-            if (users == null) return;
+            if (!File.Exists(usersFilePath))
+            {
+                Console.WriteLine($"Warning: {usersFilePath} not found. Skipping users seeding.");
+                return;
+            }
+
+            var json = await File.ReadAllTextAsync(usersFilePath);
+            var users = JsonConvert.DeserializeObject<List<AspNetUserDto>>(json);
+            if (users == null || !users.Any()) return;
 
             foreach (var dto in users)
             {
-                if (await userManager.FindByIdAsync(dto.Id.ToString()) == null)
+                if (string.IsNullOrWhiteSpace(dto.UserName)) continue;
+
+                var exists = await userManager.FindByIdAsync(dto.Id.ToString());
+                if (exists == null)
                 {
                     var user = new User
                     {
@@ -318,24 +394,55 @@ namespace Recipes.DAL.Seeding
                         FirstName = dto.FirstName,
                         LastName = dto.LastName,
                         Avatar = dto.Avatar,
-                        EmailConfirmed = dto.EmailConfirmed
+                        EmailConfirmed = dto.EmailConfirmed,
+                        PasswordHash = dto.PasswordHash,
+                        SecurityStamp = dto.SecurityStamp
                     };
-                    user.PasswordHash = dto.PasswordHash;
-                    user.SecurityStamp = dto.SecurityStamp;
 
-                    await userManager.CreateAsync(user);
+                    var result = await userManager.CreateAsync(user);
+
+                    if (result.Succeeded)
+                    {
+                        Console.WriteLine($"User '{user.UserName}' created successfully.");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Failed to create user '{user.UserName}': {string.Join(", ", result.Errors.Select(e => e.Description))}");
+                    }
                 }
             }
 
-            if (userRoles != null)
+            if (!File.Exists(userRolesFilePath))
             {
-                foreach (var ur in userRoles)
+                Console.WriteLine($"Warning: {userRolesFilePath} not found. Skipping user roles assignment.");
+                return;
+            }
+
+            var userRolesJson = await File.ReadAllTextAsync(userRolesFilePath);
+            var userRoles = JsonConvert.DeserializeObject<List<AspNetUserRoleDto>>(userRolesJson);
+            if (userRoles == null || !userRoles.Any()) return;
+
+            var allRoles = await roleManager.Roles.ToListAsync();
+
+            foreach (var ur in userRoles)
+            {
+                var user = await userManager.FindByIdAsync(ur.UserId.ToString());
+                var role = allRoles.FirstOrDefault(r => r.Id == ur.RoleId);
+
+                if (user != null && role != null && !string.IsNullOrWhiteSpace(role.Name))
                 {
-                    var user = await userManager.FindByIdAsync(ur.UserId.ToString());
-                    var role = await roleManager.FindByIdAsync(ur.RoleId.ToString());
-                    if (user != null && role != null && !await userManager.IsInRoleAsync(user, role.Name))
+                    if (!await userManager.IsInRoleAsync(user, role.Name))
                     {
-                        await userManager.AddToRoleAsync(user, role.Name);
+                        var result = await userManager.AddToRoleAsync(user, role.Name);
+
+                        if (result.Succeeded)
+                        {
+                            Console.WriteLine($"User '{user.UserName}' assigned to role '{role.Name}'.");
+                        }
+                        else
+                        {
+                            Console.WriteLine($"Failed to assign user '{user.UserName}' to role '{role.Name}': {string.Join(", ", result.Errors.Select(e => e.Description))}");
+                        }
                     }
                 }
             }
@@ -343,18 +450,42 @@ namespace Recipes.DAL.Seeding
 
         private static async Task SeedWeightUnits(RecipesContext context)
         {
-            var json = await File.ReadAllTextAsync("SeedData/WeightUnits.json");
+            var filePath = "SeedData/WeightUnits.json";
+            if (!File.Exists(filePath))
+            {
+                Console.WriteLine($"Warning: {filePath} not found. Skipping weight units seeding.");
+                return;
+            }
+
+            var json = await File.ReadAllTextAsync(filePath);
             var units = JsonConvert.DeserializeObject<List<WeightUnitDto>>(json);
-            if (units == null) return;
+            if (units == null || !units.Any()) return;
+
+            var existingUnits = await context.WeightUnits
+                .AsNoTracking()
+                .Select(w => w.Type)
+                .ToListAsync();
+            var existingSet = new HashSet<string>(existingUnits);
+
+            var unitsToAdd = new List<WeightUnit>();
 
             foreach (var unit in units)
             {
-                if (!await context.WeightUnits.AnyAsync(w => w.Type == unit.Type))
+                if (string.IsNullOrWhiteSpace(unit.Type)) continue;
+
+                if (!existingSet.Contains(unit.Type))
                 {
-                    context.WeightUnits.Add(new WeightUnit { Type = unit.Type });
+                    unitsToAdd.Add(new WeightUnit { Type = unit.Type });
+                    existingSet.Add(unit.Type);
                 }
             }
-            await context.SaveChangesAsync();
+
+            if (unitsToAdd.Any())
+            {
+                await context.WeightUnits.AddRangeAsync(unitsToAdd);
+                await context.SaveChangesAsync();
+                Console.WriteLine($"Added {unitsToAdd.Count} new weight units.");
+            }
         }
     }
 
@@ -398,56 +529,5 @@ namespace Recipes.DAL.Seeding
     {
         public int Id { get; set; }
         public string Type { get; set; }
-    }
-
-    public class IngredientDto
-    {
-        public Guid Id { get; set; }
-        public Guid OldId { get; set; }
-        public float Quantity { get; set; }
-        public string Name { get; set; }
-        public int? WeightUnitId { get; set; }
-    }
-
-    public class RecipeDto
-    {
-        public Guid Id { get; set; }
-        public int Servings { get; set; }
-        public int CookingTime { get; set; }
-        public string Title { get; set; }
-        public string Photo { get; set; }
-        public string Description { get; set; }
-        public int Calories { get; set; }
-        public Guid? UserId { get; set; }
-        public DateTime CreationDate { get; set; }
-    }
-
-    public class CookingStepDto
-    {
-        public Guid Id { get; set; }
-        public string Description { get; set; }
-        public int Order { get; set; }
-        public Guid? RecipeId { get; set; }
-    }
-
-    public class RecipeToIngredientDto
-    {
-        public Guid RecipesId { get; set; }
-        public Guid IngredientsId { get; set; }
-    }
-
-    public class RecipeUserDto
-    {
-        public Guid RecipesId { get; set; }
-        public Guid UsersId { get; set; }
-    }
-
-    public class RespondDto
-    {
-        public Guid Id { get; set; }
-        public string Text { get; set; }
-        public int Rate { get; set; }
-        public Guid? RecipeId { get; set; }
-        public Guid? UserId { get; set; }
     }
 }

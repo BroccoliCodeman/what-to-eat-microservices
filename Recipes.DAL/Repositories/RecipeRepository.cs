@@ -16,36 +16,42 @@ public class RecipeRepository : GenericRepository<Recipe>, IRecipeRepository
 
     public async override Task<List<Recipe>> GetAsync()
     {
-        return await _table.Include(p => p.Ingredients).Include(p => p.Responds).Include(p => p.CookingSteps).Include(p => p.Users).Include(p => p.User).ToListAsync();
+        return await _table.Include(p => p.Ingredients).Include(p => p.Responds).Include(p => p.CookingSteps).Include(p => p.SavedByUsers).Include(p => p.Author).ToListAsync();
     }
 
     public async Task<PagedList<Recipe>> GetAsync(PaginationParams? paginationParams, SearchParams? searchParams)
     {
-        var recipes = await _table.Include(p => p.Ingredients).Include(p => p.Users).Include(p => p.User).ToListAsync();
-       
+        IQueryable<Recipe> query = _table
+            .Include(p => p.Ingredients)
+            .Include(p => p.SavedByUsers)
+            .Include(p => p.Author)
+            .AsNoTracking(); // ✅ Read-only оптимізація
+
+        // ✅ Фільтрація в SQL
         if (searchParams != null)
         {
             if (!string.IsNullOrEmpty(searchParams.Title))
-            {
-                recipes = recipes.Where(dto => dto.Title.Contains(searchParams.Title, StringComparison.OrdinalIgnoreCase)).ToList();
-            }
+                query = query.Where(r => r.Title.Contains(searchParams.Title));
 
             if (searchParams.Ingredients != null && searchParams.Ingredients.Any())
             {
-                recipes = recipes.Where(dto => searchParams.Ingredients.All(ingredient =>
-                    dto.Ingredients.Any(dtoIngredient => dtoIngredient.Name.Contains(ingredient, StringComparison.OrdinalIgnoreCase))
-                )).ToList();
+                foreach (var ingredient in searchParams.Ingredients)
+                {
+                    query = query.Where(r => r.Ingredients.Any(i => i.Name.Contains(ingredient)));
+                }
             }
         }
 
-        var totalCount = recipes.Count;
+        // ✅ Підрахунок в SQL
+        var totalCount = await query.CountAsync();
 
-        recipes = recipes
-            .Skip((paginationParams!.PageNumber - 1) * paginationParams.PageSize)
+        // ✅ Пагінація в SQL
+        var recipes = await query
+            .Skip((paginationParams.PageNumber - 1) * paginationParams.PageSize)
             .Take(paginationParams.PageSize)
-        .ToList();
+            .ToListAsync();
 
-        return new PagedList<Recipe>(recipes!, (int)totalCount, paginationParams.PageNumber, paginationParams.PageSize);
+        return new PagedList<Recipe>(recipes, totalCount, paginationParams.PageNumber, paginationParams.PageSize);
     }
 
     public async Task<List<Recipe>> GetByTitle(string title)
@@ -58,16 +64,15 @@ public class RecipeRepository : GenericRepository<Recipe>, IRecipeRepository
 
     public override async Task<Recipe> GetByIdAsync(Guid id)
     {
-        var recipes = await _table.
-                        Include(p => p.Ingredients)!
-                       .ThenInclude(x=>x.WeightUnit)
-                       .Include(p => p.CookingSteps)
-                       .Include(p => p.Responds).ThenInclude(x=>x.User)
-                       .ToListAsync();
-
-        var recipe = recipes.Where(x => x.Id == id).FirstOrDefault();
-
-        return recipe!;
+        return await _table
+            .Include(p => p.Ingredients)
+                .ThenInclude(x => x.WeightUnit)
+            .Include(p => p.CookingSteps)
+            .Include(p => p.Author)
+            .Include(p => p.Responds)
+                .ThenInclude(x => x.User)
+            .AsNoTracking()
+            .FirstOrDefaultAsync(x => x.Id == id); // ✅ WHERE в SQL
     }
     public async Task SaveRecipe(Guid UserId, Guid RecipeId)
     {

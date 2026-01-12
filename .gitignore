@@ -490,3 +490,7 @@ FastAPIProject/yolov8n.pt
 FastAPIProject/test_main.http
 /FastAPIProject/data
 /FastAPIProject/yolov8s-world.pt
+/Recipes.API/SeedData/IngredientRecipe.json
+/Recipes.API/SeedData/recipes.csv
+/Recipes.API/SeedData/reviews.csv
+/Recipes.API/SeedData/IngredientRecipe.json

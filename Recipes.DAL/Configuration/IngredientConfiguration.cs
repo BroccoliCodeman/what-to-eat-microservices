@@ -17,6 +17,10 @@ public class IngredientConfiguration : IEntityTypeConfiguration<Ingredient>
             .Property(i => i.Quantity)
             .IsRequired();
 
+        builder.Property(i => i.Name)
+            .HasMaxLength(200)
+            .IsRequired();
+
         builder.HasOne(i => i.WeightUnit).WithMany(p=>p.Ingredients).IsRequired(false);
 
 
