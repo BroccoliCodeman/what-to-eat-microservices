@@ -118,7 +118,7 @@ public class RecipeController : ControllerBase
     public async Task<ActionResult<IEnumerable<RecipeIntroDto>>> GetByUserIdAsync(Guid UserId)
         {
 
-        var response = await _service.GetByUserId(UserId);
+        var response = await _service.GetByUserIdRecipes(UserId);
 
         return response.StatusCode switch
         {
@@ -161,9 +161,9 @@ public class RecipeController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<ActionResult> Insert([FromBody] RecipeDto modelDto)
+    public async Task<ActionResult> Insert([FromBody] RecipeDto resipeDto)
     {
-        var response = await _service.Insert(modelDto);
+        var response = await _service.Insert(resipeDto);
         
         return response.StatusCode switch
         {
@@ -174,11 +174,25 @@ public class RecipeController : ControllerBase
             _ => throw new ArgumentOutOfRangeException()
         };
     }
-    
-    [HttpPost("PostWithIngredientsAndCookingSteps")]
-    public async Task<ActionResult> InsertWithIngredientsAndCookingSteps([FromBody] RecipeDtoWithIngredientsAndSteps modelDto)
+    [HttpPut("{id}")]
+    public async Task<ActionResult> Update( Guid id, [FromBody] RecipeDto resipeDto)
     {
-        var response = await _service.InsertWithIngredients(modelDto);
+        var response = await _service.Update(id,resipeDto);
+
+        return response.StatusCode switch
+        {
+            Data.Responses.Enums.StatusCode.Ok => Ok(response),
+            Data.Responses.Enums.StatusCode.NotFound => NotFound(response),
+            Data.Responses.Enums.StatusCode.BadRequest => BadRequest(response),
+            Data.Responses.Enums.StatusCode.InternalServerError => StatusCode(500, response),
+            _ => throw new ArgumentOutOfRangeException()
+        };
+    }
+
+    [HttpPost("PostWithIngredientsAndCookingSteps")]
+    public async Task<ActionResult> InsertWithIngredientsAndCookingSteps([FromBody] RecipeDtoWithIngredientsAndSteps resipeDto)
+    {
+        var response = await _service.InsertWithIngredients(resipeDto);
         
         return response.StatusCode switch
         {

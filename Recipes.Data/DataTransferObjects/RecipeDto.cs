@@ -12,10 +12,10 @@ public class RecipeDto
     public string? Photo { get; set; } = string.Empty;
     public string Description { get; set; } = string.Empty;
     public int? Calories { get; set; }
-    public DateTime CreationDate { get; set; } = DateTime.Now;
-    public List<IngredientDto> Ingredients { get; set; }
-    public List<CookingStepDto>? CookingSteps { get; set; } = null!;
-    public ICollection<RespondDto>? Responds { get; set; } = null!;
+    public DateTime? CreationDate { get; set; } = DateTime.Now;
+    public List<IngredientDto?>? Ingredients { get; set; }
+    public List<CookingStepDto?>? CookingSteps { get; set; } = null!;
+    public ICollection<RespondDto?>? Responds { get; set; } = null!;
     public GetUserForRecipeDto? User { get; set; } = null!;
-    public int SavesCount { get; set; }
+    public int? SavesCount { get; set; }
 }

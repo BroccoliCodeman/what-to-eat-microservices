@@ -119,7 +119,6 @@ namespace Recipes.DAL.Seeding
                 transaction?.Dispose();
             }
         }
-
         private static async Task SeedRecipesFromCsv(RecipesContext context, string csvRecipesFilePath, string csvReviewsFilePath)
         {
             if (!File.Exists(csvRecipesFilePath))
@@ -149,47 +148,6 @@ namespace Recipes.DAL.Seeding
                 .ToListAsync();
             var existingTitlesSet = new HashSet<string>(existingTitles);
 
-            // Отримуємо всі унікальні назви інгредієнтів з парсених рецептів
-            var allIngredientNames = parsedRecipes
-                .Where(r => r.Ingredients != null)
-                .SelectMany(r => r.Ingredients!)
-                .Select(i => i.Name)
-                .Where(name => !string.IsNullOrWhiteSpace(name))
-                .Distinct()
-                .ToList();
-
-            // Отримуємо існуючі інгредієнти з бази
-            var existingIngredients = await context.Ingredients
-                .Where(i => allIngredientNames.Contains(i.Name))
-                .ToDictionaryAsync(i => i.Name, i => i);
-
-            // Створюємо нові інгредієнти, яких немає в базі
-            var newIngredientNames = allIngredientNames
-                .Where(name => !existingIngredients.ContainsKey(name))
-                .ToList();
-
-            if (newIngredientNames.Any())
-            {
-                var newIngredients = newIngredientNames.Select(name => new Ingredient
-                {
-                    Id = Guid.NewGuid(),
-                    Name = name,
-                    Quantity = 0,
-                    WeightUnitId = null
-                }).ToList();
-
-                await context.Ingredients.AddRangeAsync(newIngredients);
-                await context.SaveChangesAsync();
-
-                // Додаємо нові інгредієнти до словника
-                foreach (var ingredient in newIngredients)
-                {
-                    existingIngredients[ingredient.Name] = ingredient;
-                }
-
-                Console.WriteLine($"Added {newIngredients.Count} new ingredients from CSV.");
-            }
-
             var recipesToAdd = new List<Recipe>();
 
             foreach (var parsedRecipe in parsedRecipes)
@@ -210,7 +168,7 @@ namespace Recipes.DAL.Seeding
                     continue;
                 }
 
-                // Створюємо новий рецепт з AuthorId від дефолтного користувача
+                // Створюємо новий рецепт
                 var newRecipe = new Recipe
                 {
                     Id = parsedRecipe.Id,
@@ -221,26 +179,28 @@ namespace Recipes.DAL.Seeding
                     Calories = parsedRecipe.Calories,
                     Photo = parsedRecipe.Photo,
                     CreationDate = parsedRecipe.CreationDate,
-                    AuthorId = DEFAULT_USER_ID, // ✅ Виправлено з UserId на AuthorId
+                    AuthorId = DEFAULT_USER_ID,
                     Ingredients = new List<Ingredient>(),
                     CookingSteps = new List<CookingStep>(),
                     Responds = new List<Respond>()
                 };
 
-                // Додаємо інгредієнти
+                var wu = await context.WeightUnits.FirstAsync();
+                // Додаємо інгредієнти - кожен інгредієнт є окремим екземпляром з кількістю
                 if (parsedRecipe.Ingredients != null)
                 {
-                    foreach (var ingredient in parsedRecipe.Ingredients)
+                    foreach (var parsedIngredient in parsedRecipe.Ingredients)
                     {
-                        if (existingIngredients.TryGetValue(ingredient.Name, out var existingIngredient))
+                        // Створюємо новий екземпляр інгредієнта для цього рецепта
+                        var recipeIngredient = new Ingredient
                         {
-                            // Attach існуючий інгредієнт
-                            if (context.Entry(existingIngredient).State == EntityState.Detached)
-                            {
-                                context.Attach(existingIngredient);
-                            }
-                            newRecipe.Ingredients.Add(existingIngredient);
-                        }
+                            Id = Guid.NewGuid(),
+                            Name = parsedIngredient.Name,
+                            Quantity = parsedIngredient.Quantity, // ✅ Зберігаємо кількість з CSV
+                            WeightUnit = wu
+                        };
+
+                        newRecipe.Ingredients.Add(recipeIngredient);
                     }
                 }
 
@@ -270,7 +230,7 @@ namespace Recipes.DAL.Seeding
                             Text = respond.Text,
                             Rate = respond.Rate,
                             RecipeId = newRecipe.Id,
-                            UserId = respond.UserId // UserId з парсера (9c445865-a24d-4233-a6c6-9443d048cdb9)
+                            UserId = respond.UserId
                         });
                     }
                 }
@@ -284,9 +244,12 @@ namespace Recipes.DAL.Seeding
                 await context.Recipes.AddRangeAsync(recipesToAdd);
                 await context.SaveChangesAsync();
                 Console.WriteLine($"Added {recipesToAdd.Count} new recipes from CSV.");
+
+                // Підраховуємо скільки інгредієнтів було додано
+                var totalIngredients = recipesToAdd.Sum(r => r.Ingredients.Count);
+                Console.WriteLine($"Added {totalIngredients} ingredient entries with quantities.");
             }
         }
-
         private static async Task SeedRecipeUser(RecipesContext context)
         {
             // Перевіряємо, чи існує дефолтний користувач

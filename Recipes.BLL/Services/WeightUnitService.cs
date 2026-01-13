@@ -32,6 +32,7 @@ public class WeightUnitService : IWeightUnitService
         {
             var models = await _unitOfWork.WeightUnitRepository.GetAsync();
 
+            models = models.OrderBy(model => model.Type).DistinctBy(p=>p.Type).ToList();
             if (models.Count is 0)
                 return _responseCreator.CreateBaseNotFound<List<WeightUnitDto>>("No weight units found.");
 

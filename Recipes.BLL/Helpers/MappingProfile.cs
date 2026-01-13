@@ -30,7 +30,7 @@ public class MappingProfile : Profile
 
         CreateMap<RecipeDtoWithIngredientsAndSteps, Recipe>()
         .ForMember(dest => dest.Ingredients, opt => { opt.MapFrom(src => src.Ingredients);opt.AllowNull(); })
-        .ForMember(dest => dest.CookingSteps,opt => { opt.MapFrom(src => src.Steps); opt.AllowNull(); } )
+        .ForMember(dest => dest.CookingSteps,opt => { opt.MapFrom(src => src.CookingSteps); opt.AllowNull(); } )
         .ReverseMap();
 
         CreateMap<Recipe, RecipeIntroDto>();

@@ -11,4 +11,5 @@ public interface IRecipeRepository : IGenericRepository<Recipe>
     Task<List<Recipe>> GetByTitle(string title);
     Task RemoveRecipeFromSaved(Guid UserId, Guid RecipeId);
     Task SaveRecipe(Guid UserId, Guid RecipeId);
+    Task<List<Recipe>> GetByUserIdAsync(Guid userId);
 }

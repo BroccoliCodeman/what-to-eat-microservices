@@ -65,7 +65,32 @@ public class RecipeService : IRecipeService
             return BaseResponse<RecipeDto>.CreateBaseResponse<RecipeDto>(ex.Message, StatusCode.InternalServerError);
         }
     }
+    public async Task<IBaseResponse<List<RecipeIntroDto>>> GetByUserIdRecipes(Guid UserId)
+    {
+        try
+        {
+            var recipes = await _unitOfWork.RecipeRepository.GetByUserIdAsync(UserId);
 
+            if (recipes.Count == 0)
+                return _responseCreator.CreateBaseNotFound<List<RecipeIntroDto>>("No recipes found.");
+
+            var RecipeDtos = recipes
+                .Select(recipe => _mapper.Map<RecipeDto>(recipe))
+                .OrderByDescending(recipe => recipe.SavesCount)
+                .ToList();
+
+            if (RecipeDtos.Count == 0)
+                return _responseCreator.CreateBaseNotFound<List<RecipeIntroDto>>("No popular recipes found.");
+
+            var recipeIntroDtos = RecipeDtos.Select(recipe => _mapper.Map<RecipeIntroDto>(recipe)).ToList();
+
+            return _responseCreator.CreateBaseOk(recipeIntroDtos, recipeIntroDtos.Count);
+        }
+        catch (Exception e)
+        {
+            return _responseCreator.CreateBaseServerError<List<RecipeIntroDto>>(e.Message);
+        }
+    }
     public async Task<IBaseResponse<List<RecipeIntroDto>>> GetMostPopularRecipesTitles()
     {
         try
@@ -172,7 +197,27 @@ public class RecipeService : IRecipeService
             return BaseResponse<RecipeDto>.CreateBaseResponse<string>(e.Message, StatusCode.InternalServerError);
         }
     }
+    public async Task<IBaseResponse<string>> Update(Guid recipeId,RecipeDto? modelDto)
+    {
+        try
+        {
+            if (modelDto is null)
+                return BaseResponse<RecipeDto>.CreateBaseResponse<string>("Objet can`t be empty...", StatusCode.BadRequest);
+            if (recipeId == Guid.Empty)
+                return BaseResponse<RecipeDto>.CreateBaseResponse<string>("Id can`t be empty...", StatusCode.BadRequest);
 
+            modelDto.Id = recipeId;
+            await _unitOfWork.RecipeRepository.UpdateAsync(_mapper.Map<Recipe>(modelDto));
+            await _unitOfWork.SaveChangesAsync();
+
+            return BaseResponse<RecipeDto>.CreateBaseResponse<string>("Object Updated!", StatusCode.Ok, resultsCount: 1);
+
+        }
+        catch (Exception e)
+        {
+            return BaseResponse<RecipeDto>.CreateBaseResponse<string>(e.Message, StatusCode.InternalServerError);
+        }
+    }
     public async Task<IBaseResponse<string>> SaveRecipe(Guid UserId, Guid RecipeId)
     {
         try
@@ -229,7 +274,7 @@ public class RecipeService : IRecipeService
                 dbIng.WeightUnit.Type == dtoIng.WeightUnit.Type &&
                 dbIng.Quantity == dtoIng.Quantity));
 
-            var steps = _mapper.Map<ICollection<CookingStepDtoNoId>, ICollection<CookingStep>>(recipereqest.Steps);
+            var steps = _mapper.Map<ICollection<CookingStepDtoNoId>, ICollection<CookingStep>>(recipereqest.CookingSteps);
 
             
             foreach(var step in steps)

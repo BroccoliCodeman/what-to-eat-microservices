@@ -14,7 +14,7 @@ public class RecipeDtoWithIngredientsAndSteps
     public DateTime CreationDate { get; set; } = DateTime.Now;
 
     public List<IngredientDto> Ingredients { get; set; } = new List<IngredientDto>();
-    public List<CookingStepDtoNoId> Steps { get; set; } = new List<CookingStepDtoNoId>();
+    public List<CookingStepDtoNoId> CookingSteps { get; set; } = new List<CookingStepDtoNoId>();
 
 
 
