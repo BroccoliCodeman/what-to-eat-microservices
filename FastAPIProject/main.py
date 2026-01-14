@@ -249,6 +249,35 @@ async def health():
     }
 
 
+# ... імпорти ...
+from PydanticModels import ModelStatusResponse
+import torch  # Якщо використовуєш torch для визначення девайсу
+
+
+@app.get("/model/status", response_model=ModelStatusResponse, tags=["System"])
+async def get_model_status():
+    """Повертає загальну статистику системи."""
+
+    # ... (код підрахунку файлів залишається без змін) ...
+    uncertain_count = len(os.listdir(Config.UNCERTAIN_DIR)) if os.path.exists(Config.UNCERTAIN_DIR) else 0
+    labeled_count = len(os.listdir(Config.LABELED_DIR)) if os.path.exists(Config.LABELED_DIR) else 0
+
+    classes = getattr(container.model_service, "classes", [])
+    device = "cuda" if torch.cuda.is_available() else "cpu"
+
+    # ОТРИМУЄМО ВЕРСІЮ
+    raw_version = getattr(container.model_service, "model_version", "unknown")
+
+    return ModelStatusResponse(
+        status="online",
+        # ВИПРАВЛЕННЯ ТУТ: обгортаємо в str(), щоб гарантувати тип string
+        model_version=str(raw_version),
+        uncertain_count=uncertain_count,
+        labeled_count=labeled_count,
+        total_classes=len(classes),
+        device=device
+    )
+
 from fastapi.responses import FileResponse
 
 

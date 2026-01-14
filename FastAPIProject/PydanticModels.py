@@ -36,3 +36,11 @@ class RetrainResponse(BaseModel):
     status: str
     message: str
     samples_count: int = 0
+
+class ModelStatusResponse(BaseModel):
+    status: str
+    model_version: str
+    uncertain_count: int
+    labeled_count: int
+    total_classes: int
+    device: str
