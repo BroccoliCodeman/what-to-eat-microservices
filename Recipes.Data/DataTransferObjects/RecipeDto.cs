@@ -13,9 +13,10 @@ public class RecipeDto
     public string Description { get; set; } = string.Empty;
     public int? Calories { get; set; }
     public DateTime? CreationDate { get; set; } = DateTime.Now;
+    public int? SavesCount { get; set; }
+    public bool? isSavedByCurrentUser{ get; set; }
     public List<IngredientDto?>? Ingredients { get; set; }
     public List<CookingStepDto?>? CookingSteps { get; set; } = null!;
     public ICollection<RespondDto?>? Responds { get; set; } = null!;
     public GetUserForRecipeDto? User { get; set; } = null!;
-    public int? SavesCount { get; set; }
 }

@@ -101,7 +101,9 @@ public class RecipeController : ControllerBase
     [HttpGet("{id}")]
     public async Task<ActionResult<RecipeDto>> GetByid(Guid id)
     {
-        var response = await _service.GetById(id);
+        var username = User.FindFirst("userName")?.Value;
+
+        var response = await _service.GetById(id,username);
 
         return response.StatusCode switch
         {

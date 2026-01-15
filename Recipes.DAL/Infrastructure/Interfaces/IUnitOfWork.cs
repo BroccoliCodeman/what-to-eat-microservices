@@ -6,10 +6,10 @@ public interface IUnitOfWork
 {
     ICookingStepRepository CookingStepRepository { get; }
     IIngredientRepository IngredientRepository { get; }
-    //IRecipeIngredientRepository RecipeIngredientRepository { get; }
     IRecipeRepository RecipeRepository { get; }
     IRespondRepository RespondRepository { get; }
     IWeightUnitRepository WeightUnitRepository { get; }
-    
+    RecipesContext DatabaseContext { get; }
+
     Task SaveChangesAsync();
 }

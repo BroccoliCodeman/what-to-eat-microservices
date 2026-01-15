@@ -1,4 +1,5 @@
 using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using Recipes.BLL.Helpers;
 using Recipes.BLL.Services.Interfaces;
 using Recipes.DAL.Infrastructure.Interfaces;
@@ -8,6 +9,7 @@ using Recipes.Data.Models;
 using Recipes.Data.Responses;
 using Recipes.Data.Responses.Enums;
 using Recipes.Data.Responses.Interfaces;
+using System.Net.WebSockets;
 
 namespace Recipes.BLL.Services;
 
@@ -44,18 +46,25 @@ public class RecipeService : IRecipeService
         }
     }
 
-    public async Task<IBaseResponse<RecipeDto>> GetById(Guid id)
+    public async Task<IBaseResponse<RecipeDto>> GetById(Guid id, string? username)
     {
         try
         {
             var recipe = await _unitOfWork.RecipeRepository.GetByIdAsync(id);
+             var user = await _unitOfWork.DatabaseContext.Users.Include(p=>p.SavedRecipes).AsNoTracking().FirstOrDefaultAsync(p=>p.UserName == username);
 
             if (recipe == null)
             {
                 return BaseResponse<RecipeDto>.CreateBaseResponse<RecipeDto>($"The recipe with id {id} wasn't found", StatusCode.NotFound);
             }
 
+
             var recipeDto = _mapper.Map<RecipeDto>(recipe);
+            if (user != null)
+            {
+                recipeDto.isSavedByCurrentUser = user.SavedRecipes.Any(p => p.Id == recipeDto.Id);
+            }
+
             recipeDto.CookingSteps = recipeDto.CookingSteps?.DistinctBy(step => step.Description).ToList();
 
             return BaseResponse<RecipeDto>.CreateBaseResponse("Success!", StatusCode.Ok, recipeDto);

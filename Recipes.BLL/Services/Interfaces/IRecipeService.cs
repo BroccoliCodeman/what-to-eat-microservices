@@ -7,7 +7,7 @@ namespace Recipes.BLL.Services.Interfaces;
 public interface IRecipeService
 {
     Task<IBaseResponse<RecipeIntroDto>> GetRandom();
-    Task<IBaseResponse<RecipeDto>> GetById(Guid id);
+    Task<IBaseResponse<RecipeDto>> GetById(Guid id, string? username);
     Task<IBaseResponse<List<RecipeIntroDto>>> GetMostPopularRecipesTitles();
     Task<IBaseResponse<List<RecipeIntroDto>>> GetByTitle(string title);
     Task<IBaseResponse<PagedList<RecipeDto>>> Get(PaginationParams paginationParams, SearchParams? searchParams, int sortType = 0);

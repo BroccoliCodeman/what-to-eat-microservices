@@ -5,7 +5,7 @@ namespace Recipes.DAL.Infrastructure;
 
 public class UnitOfWork : IUnitOfWork
 {
-    protected readonly RecipesContext DatabaseContext;
+    public RecipesContext DatabaseContext { get; }
 
     public ICookingStepRepository CookingStepRepository { get; }
     public IIngredientRepository IngredientRepository { get; }
